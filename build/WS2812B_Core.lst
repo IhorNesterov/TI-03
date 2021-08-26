@@ -1,0 +1,3164 @@
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"WS2812B_Core.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.DMA_TransferError,"ax",%progbits
+  18              		.align	1
+  19              		.global	DMA_TransferError
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	DMA_TransferError:
+  27              	.LVL0:
+  28              	.LFB135:
+  29              		.file 1 "Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c"
+   1:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** #include <string.h>
+   2:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+   3:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** #include "stm32f4xx_hal.h"
+   4:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** #include "WS2812B_Core.h"
+   5:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** WS2812_Struct ws2812b;
+   6:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** // Define source arrays for my DMAs
+   7:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** uint32_t WS2812_IO_High[] =  { WS2812B_PINS };
+   8:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** uint32_t WS2812_IO_Low[] = {WS2812B_PINS << 16};
+   9:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+  10:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** // WS2812 framebuffer - buffer for 2 LEDs - two times 24 bits
+  11:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** uint16_t ws2812bDmaBitBuffer[24 * 2];
+  12:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+  13:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** // Gamma correction table
+  14:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** const uint8_t gammaTable[] = {
+  15:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+  16:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,
+  17:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  2,  2,
+  18:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     2,  3,  3,  3,  3,  3,  3,  3,  4,  4,  4,  4,  4,  5,  5,  5,
+  19:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     5,  6,  6,  6,  6,  7,  7,  7,  7,  8,  8,  8,  9,  9,  9, 10,
+  20:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****    10, 10, 11, 11, 11, 12, 12, 13, 13, 13, 14, 14, 15, 15, 16, 16,
+  21:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****    17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 22, 23, 24, 24, 25,
+  22:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****    25, 26, 27, 27, 28, 29, 29, 30, 31, 32, 32, 33, 34, 35, 35, 36,
+  23:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****    37, 38, 39, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 50,
+  24:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****    51, 52, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 66, 67, 68,
+  25:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****    69, 70, 72, 73, 74, 75, 77, 78, 79, 81, 82, 83, 85, 86, 87, 89,
+  26:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****    90, 92, 93, 95, 96, 98, 99,101,102,104,105,107,109,110,112,114,
+  27:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****   115,117,119,120,122,124,126,127,129,131,133,135,137,138,140,142,
+  28:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****   144,146,148,150,152,154,156,158,160,162,164,167,169,171,173,175,
+  29:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****   177,180,182,184,186,189,191,193,196,198,200,203,205,208,210,213,
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 2
+
+
+  30:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****   215,218,220,223,225,228,231,233,236,239,241,244,247,249,252,255 };
+  31:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+  32:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** static void ws2812b_gpio_init(void)
+  33:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** {
+  34:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// WS2812B outputs
+  35:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	WS2812B_GPIO_CLK_ENABLE();
+  36:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitTypeDef  GPIO_InitStruct;
+  37:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitStruct.Pin       = WS2812B_PINS;
+  38:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitStruct.Mode      = GPIO_MODE_OUTPUT_PP;
+  39:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitStruct.Pull      = GPIO_NOPULL;
+  40:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitStruct.Speed     = GPIO_SPEED_FREQ_LOW;
+  41:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_GPIO_Init(WS2812B_PORT, &GPIO_InitStruct);
+  42:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+  43:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// Enable output pins for debuging to see DMA Full and Half transfer interrupts
+  44:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#if defined(LED_BLUE_PORT) && defined(LED_ORANGE_PORT)
+  45:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		__HAL_RCC_GPIOD_CLK_ENABLE();
+  46:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+  47:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  48:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		GPIO_InitStruct.Pull = GPIO_NOPULL;
+  49:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  50:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+  51:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		GPIO_InitStruct.Pin = LED_BLUE_PIN;
+  52:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		HAL_GPIO_Init(LED_BLUE_PORT, &GPIO_InitStruct);
+  53:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		GPIO_InitStruct.Pin = LED_ORANGE_PIN;
+  54:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		HAL_GPIO_Init(LED_ORANGE_PORT, &GPIO_InitStruct);
+  55:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+  56:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }
+  57:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+  58:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** TIM_HandleTypeDef    TIM1_handle;
+  59:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** TIM_OC_InitTypeDef tim2OC1;
+  60:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** TIM_OC_InitTypeDef tim2OC2;
+  61:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+  62:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** uint32_t tim_period;
+  63:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** uint32_t timer_reset_pulse_period;
+  64:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+  65:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** static void TIM1_init(void)
+  66:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** {
+  67:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// TIM2 Periph clock enable
+  68:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_RCC_TIM1_CLK_ENABLE();
+  69:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+  70:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// This computation of pulse length should work ok,
+  71:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// at some slower core speeds it needs some tuning.
+  72:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim_period =  SystemCoreClock / 800000; // 0,125us period (10 times lower the 1,25us period to hav
+  73:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	timer_reset_pulse_period = (SystemCoreClock / (320 * 60)); // 60us just to be sure
+  74:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+  75:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t cc1 = (10 * tim_period) / 36;
+  76:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t cc2 = (10 * tim_period) / 15;
+  77:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+  78:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	TIM1_handle.Instance = TIM1;
+  79:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+  80:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	TIM1_handle.Init.Period            = tim_period;
+  81:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	TIM1_handle.Init.RepetitionCounter = 0;
+  82:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	TIM1_handle.Init.Prescaler         = 0;
+  83:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	TIM1_handle.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;
+  84:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	TIM1_handle.Init.CounterMode       = TIM_COUNTERMODE_UP;
+  85:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_TIM_PWM_Init(&TIM1_handle);
+  86:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 3
+
+
+  87:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_NVIC_SetPriority(TIM1_UP_TIM10_IRQn, 0, 0);
+  88:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_NVIC_EnableIRQ(TIM1_UP_TIM10_IRQn);
+  89:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+  90:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC1.OCMode       = TIM_OCMODE_PWM1;
+  91:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC1.OCPolarity   = TIM_OCPOLARITY_HIGH;
+  92:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC1.Pulse        = cc1;
+  93:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC1.OCNPolarity  = TIM_OCNPOLARITY_HIGH;
+  94:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC1.OCFastMode   = TIM_OCFAST_DISABLE;
+  95:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_TIM_PWM_ConfigChannel(&TIM1_handle, &tim2OC1, TIM_CHANNEL_1);
+  96:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+  97:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.OCMode       = TIM_OCMODE_PWM1;
+  98:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.OCPolarity   = TIM_OCPOLARITY_HIGH;
+  99:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.Pulse        = cc2;
+ 100:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.OCNPolarity  = TIM_OCNPOLARITY_HIGH;
+ 101:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.OCFastMode   = TIM_OCFAST_DISABLE;
+ 102:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.OCIdleState  = TIM_OCIDLESTATE_RESET;
+ 103:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+ 104:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_TIM_PWM_ConfigChannel(&TIM1_handle, &tim2OC2, TIM_CHANNEL_2);
+ 105:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 106:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 107:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_TIM_Base_Start(&TIM1_handle);
+ 108:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_TIM_PWM_Start(&TIM1_handle, TIM_CHANNEL_1);
+ 109:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 110:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_TIM_DISABLE(&TIM1_handle);
+ 111:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 112:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }
+ 113:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 114:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 115:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 116:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** DMA_HandleTypeDef     dmaUpdate;
+ 117:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** DMA_HandleTypeDef     dmaCC1;
+ 118:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** DMA_HandleTypeDef     dmaCC2;
+ 119:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** #define BUFFER_SIZE		(sizeof(ws2812bDmaBitBuffer)/sizeof(uint16_t))
+ 120:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 121:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** uint32_t dummy;
+ 122:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 123:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 124:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** static void DMA2_init(void)
+ 125:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** {
+ 126:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 127:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// TIM2 Update event
+ 128:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_RCC_DMA2_CLK_ENABLE();
+ 129:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 130:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.Direction = DMA_MEMORY_TO_PERIPH;
+ 131:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.PeriphInc = DMA_PINC_DISABLE;
+ 132:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.MemInc = DMA_MINC_DISABLE;
+ 133:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
+ 134:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
+ 135:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.Mode = DMA_CIRCULAR;
+ 136:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.Priority = DMA_PRIORITY_VERY_HIGH;
+ 137:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.Channel = DMA_CHANNEL_6;
+ 138:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 139:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+ 140:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
+ 141:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.MemBurst = DMA_MBURST_SINGLE;
+ 142:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.PeriphBurst = DMA_PBURST_SINGLE;
+ 143:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 4
+
+
+ 144:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Instance = DMA2_Stream5;
+ 145:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//dmaUpdate.XferCpltCallback  = TransferComplete;
+ 146:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//dmaUpdate.XferErrorCallback = TransferError;
+ 147:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 148:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_DMA_DeInit(&dmaUpdate);
+ 149:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_DMA_Init(&dmaUpdate);
+ 150:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//HAL_NVIC_SetPriority(DMA1_Channel2_IRQn, 0, 0);
+ 151:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//HAL_NVIC_EnableIRQ(DMA1_Channel2_IRQn);
+ 152:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_DMA_Start(&dmaUpdate, (uint32_t)WS2812_IO_High, (uint32_t)(&WS2812B_PORT->BSRR), BUFFER_SIZE);
+ 153:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//HAL_DMA_Start(&dmaUpdate, (uint32_t)WS2812_IO_High, (uint32_t)&dummy, BUFFER_SIZE);
+ 154:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 155:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 156:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// TIM2 CC1 event
+ 157:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.Direction = DMA_MEMORY_TO_PERIPH;
+ 158:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.PeriphInc = DMA_PINC_DISABLE;
+ 159:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.MemInc = DMA_MINC_ENABLE;
+ 160:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
+ 161:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
+ 162:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.Mode = DMA_CIRCULAR;
+ 163:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.Priority = DMA_PRIORITY_VERY_HIGH;
+ 164:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.Channel = DMA_CHANNEL_6;
+ 165:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 166:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+ 167:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
+ 168:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.MemBurst = DMA_MBURST_SINGLE;
+ 169:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.PeriphBurst = DMA_PBURST_SINGLE;
+ 170:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 171:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Instance = DMA2_Stream1;
+ 172:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//dmaUpdate.XferCpltCallback  = TransferComplete;
+ 173:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//dmaUpdate.XferErrorCallback = TransferError;
+ 174:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//dmaUpdate.XferHalfCpltCallback = TransferHalf;
+ 175:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//HAL_NVIC_SetPriority(DMA1_Channel5_IRQn, 0, 0);
+ 176:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//HAL_NVIC_EnableIRQ(DMA1_Channel5_IRQn);
+ 177:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_DMA_DeInit(&dmaCC1);
+ 178:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_DMA_Init(&dmaCC1);
+ 179:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_DMA_Start(&dmaCC1, (uint32_t)ws2812bDmaBitBuffer, (uint32_t)(&WS2812B_PORT->BSRR) + 2, BUFFER_
+ 180:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//HAL_DMA_Start(&dmaCC1, (uint32_t)ws2812bDmaBitBuffer, (uint32_t)&dummy, BUFFER_SIZE); //BRR
+ 181:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 182:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 183:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// TIM2 CC2 event
+ 184:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.Direction = DMA_MEMORY_TO_PERIPH;
+ 185:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.PeriphInc = DMA_PINC_DISABLE;
+ 186:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.MemInc = DMA_MINC_DISABLE;
+ 187:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
+ 188:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
+ 189:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.Mode = DMA_CIRCULAR;
+ 190:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.Priority = DMA_PRIORITY_VERY_HIGH;
+ 191:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.Channel = DMA_CHANNEL_6;
+ 192:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 193:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+ 194:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
+ 195:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.MemBurst = DMA_MBURST_SINGLE;
+ 196:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.PeriphBurst = DMA_PBURST_SINGLE;
+ 197:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 198:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Instance = DMA2_Stream2;
+ 199:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 200:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_DMA_DeInit(&dmaCC2);
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 5
+
+
+ 201:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 202:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.XferCpltCallback  = DMA_TransferCompleteHandler;
+ 203:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.XferHalfCpltCallback = DMA_TransferHalfHandler;
+ 204:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.XferErrorCallback = DMA_TransferError;
+ 205:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 206:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_DMA_Init(&dmaCC2);
+ 207:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, 0, 0);
+ 208:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_NVIC_EnableIRQ(DMA2_Stream2_IRQn);
+ 209:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_DMA_Start_IT(&dmaCC2, (uint32_t)WS2812_IO_Low, (uint32_t)&WS2812B_PORT->BSRR, BUFFER_SIZE);
+ 210:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//HAL_DMA_Start_IT(&dmaCC2, (uint32_t)WS2812_IO_Low, (uint32_t)&dummy, BUFFER_SIZE);
+ 211:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 212:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//__HAL_LINKDMA(&Tim2Handle, hdma,  &dmaCC2);
+ 213:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 214:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }
+ 215:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 216:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 217:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 218:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 219:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 220:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 221:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** static void loadNextFramebufferData(WS2812_BufferItem *bItem, uint32_t row)
+ 222:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** {
+ 223:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 224:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t r = bItem->frameBufferPointer[bItem->frameBufferCounter++];
+ 225:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t g = bItem->frameBufferPointer[bItem->frameBufferCounter++];
+ 226:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t b = bItem->frameBufferPointer[bItem->frameBufferCounter++];
+ 227:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 228:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	if(bItem->frameBufferCounter == bItem->frameBufferSize)
+ 229:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		bItem->frameBufferCounter = 0;
+ 230:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 231:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812b_set_pixel(bItem->channel, row, r, g, b);
+ 232:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }
+ 233:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 234:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 235:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** // Transmit the framebuffer
+ 236:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** static void WS2812_sendbuf()
+ 237:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** {
+ 238:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// transmission complete flag
+ 239:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812b.transferComplete = 0;
+ 240:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 241:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t i;
+ 242:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 243:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	for( i = 0; i < 3; i++ )
+ 244:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	{
+ 245:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		ws2812b.item[i].frameBufferCounter = 0;
+ 246:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 247:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		loadNextFramebufferData(&ws2812b.item[i], 0); // ROW 0
+ 248:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		loadNextFramebufferData(&ws2812b.item[i], 1); // ROW 0
+ 249:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	}
+ 250:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 251:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// clear all DMA flags
+ 252:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_CLEAR_FLAG(&dmaUpdate, DMA_FLAG_TCIF1_5 | DMA_FLAG_HTIF1_5 | DMA_FLAG_TEIF1_5);
+ 253:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_CLEAR_FLAG(&dmaCC1, DMA_FLAG_TCIF1_5 | DMA_FLAG_HTIF1_5 | DMA_FLAG_TEIF1_5);
+ 254:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_CLEAR_FLAG(&dmaCC2, DMA_FLAG_TCIF2_6 | DMA_FLAG_HTIF2_6 | DMA_FLAG_TEIF2_6);
+ 255:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 256:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 257:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 6
+
+
+ 258:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// configure the number of bytes to be transferred by the DMA controller
+ 259:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Instance->NDTR = BUFFER_SIZE;
+ 260:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Instance->NDTR = BUFFER_SIZE;
+ 261:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Instance->NDTR = BUFFER_SIZE;
+ 262:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 263:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// clear all TIM2 flags
+ 264:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_TIM_CLEAR_FLAG(&TIM1_handle, TIM_FLAG_UPDATE | TIM_FLAG_CC1 | TIM_FLAG_CC2 | TIM_FLAG_CC3 | 
+ 265:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 266:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// enable DMA channels
+ 267:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_ENABLE(&dmaUpdate);
+ 268:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_ENABLE(&dmaCC1);
+ 269:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_ENABLE(&dmaCC2);
+ 270:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 271:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// IMPORTANT: enable the TIM2 DMA requests AFTER enabling the DMA channels!
+ 272:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_TIM_ENABLE_DMA(&TIM1_handle, TIM_DMA_UPDATE);
+ 273:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_TIM_ENABLE_DMA(&TIM1_handle, TIM_DMA_CC1);
+ 274:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_TIM_ENABLE_DMA(&TIM1_handle, TIM_DMA_CC2);
+ 275:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 276:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	TIM1->CNT = tim_period-1;
+ 277:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 278:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// start TIM2
+ 279:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_TIM_ENABLE(&TIM1_handle);
+ 280:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }
+ 281:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 282:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 283:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** void DMA_TransferError(DMA_HandleTypeDef *DmaHandle)
+ 284:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** {
+  30              		.loc 1 284 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 8
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  35              		.loc 1 284 1 is_stmt 0 view .LVU1
+  36 0000 82B0     		sub	sp, sp, #8
+  37              	.LCFI0:
+  38              		.cfi_def_cfa_offset 8
+ 285:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	volatile int i = 0;
+  39              		.loc 1 285 2 is_stmt 1 view .LVU2
+  40              		.loc 1 285 15 is_stmt 0 view .LVU3
+  41 0002 0023     		movs	r3, #0
+  42 0004 0193     		str	r3, [sp, #4]
+ 286:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	i++;
+  43              		.loc 1 286 2 is_stmt 1 view .LVU4
+  44              		.loc 1 286 3 is_stmt 0 view .LVU5
+  45 0006 019B     		ldr	r3, [sp, #4]
+  46 0008 0133     		adds	r3, r3, #1
+  47 000a 0193     		str	r3, [sp, #4]
+ 287:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }
+  48              		.loc 1 287 1 view .LVU6
+  49 000c 02B0     		add	sp, sp, #8
+  50              	.LCFI1:
+  51              		.cfi_def_cfa_offset 0
+  52              		@ sp needed
+  53 000e 7047     		bx	lr
+  54              		.cfi_endproc
+  55              	.LFE135:
+  57              		.section	.text.ws2812b_set_pixel,"ax",%progbits
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 7
+
+
+  58              		.align	1
+  59              		.syntax unified
+  60              		.thumb
+  61              		.thumb_func
+  62              		.fpu fpv4-sp-d16
+  64              	ws2812b_set_pixel:
+  65              	.LVL1:
+  66              	.LFB141:
+ 288:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 289:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 290:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** void DMA_TransferHalfHandler(DMA_HandleTypeDef *DmaHandle)
+ 291:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** {
+ 292:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 293:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// Is this the last LED?
+ 294:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	if(ws2812b.repeatCounter == WS2812B_NUMBER_OF_LEDS)
+ 295:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	 {
+ 296:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 297:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// If this is the last pixel, set the next pixel value to zeros, because
+ 298:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// the DMA would not stop exactly at the last bit.
+ 299:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		ws2812b_set_pixel(0, 0, 0, 0, 0);
+ 300:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 301:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	} else {
+ 302:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		uint32_t i;
+ 303:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 304:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		for( i = 0; i < WS2812_BUFFER_COUNT; i++ )
+ 305:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		{
+ 306:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 			loadNextFramebufferData(&ws2812b.item[i], 0);
+ 307:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		}
+ 308:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 309:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		ws2812b.repeatCounter++;
+ 310:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	}
+ 311:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 312:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 313:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 314:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }
+ 315:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 316:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** void DMA_TransferCompleteHandler(DMA_HandleTypeDef *DmaHandle)
+ 317:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** {
+ 318:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 319:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#if defined(LED_ORANGE_PORT)
+ 320:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		LED_ORANGE_PORT->BSRR = LED_ORANGE_PIN;
+ 321:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 322:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 323:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	if(ws2812b.repeatCounter == WS2812B_NUMBER_OF_LEDS)
+ 324:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	{
+ 325:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// Transfer of all LEDs is done, disable DMA but enable tiemr update IRQ to stop the 50us pulse
+ 326:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		ws2812b.repeatCounter = 0;
+ 327:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 328:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// Stop timer
+ 329:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		TIM1->CR1 &= ~TIM_CR1_CEN;
+ 330:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 331:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// Disable DMA
+ 332:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		__HAL_DMA_DISABLE(&dmaUpdate);
+ 333:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		__HAL_DMA_DISABLE(&dmaCC1);
+ 334:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		__HAL_DMA_DISABLE(&dmaCC2);
+ 335:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 336:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// Disable the DMA requests
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 8
+
+
+ 337:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		__HAL_TIM_DISABLE_DMA(&TIM1_handle, TIM_DMA_UPDATE);
+ 338:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		__HAL_TIM_DISABLE_DMA(&TIM1_handle, TIM_DMA_CC1);
+ 339:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		__HAL_TIM_DISABLE_DMA(&TIM1_handle, TIM_DMA_CC2);
+ 340:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 341:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// Set 50us period for Treset pulse
+ 342:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		//TIM2->PSC = 1000; // For this long period we need prescaler 1000
+ 343:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		TIM1->ARR = timer_reset_pulse_period;
+ 344:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// Reset the timer
+ 345:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		TIM1->CNT = 0;
+ 346:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 347:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// Generate an update event to reload the prescaler value immediately
+ 348:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		TIM1->EGR = TIM_EGR_UG;
+ 349:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		__HAL_TIM_CLEAR_FLAG(&TIM1_handle, TIM_FLAG_UPDATE);
+ 350:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 351:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// Enable TIM2 Update interrupt for 50us Treset signal
+ 352:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		__HAL_TIM_ENABLE_IT(&TIM1_handle, TIM_IT_UPDATE);
+ 353:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// Enable timer
+ 354:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		TIM1->CR1 |= TIM_CR1_CEN;
+ 355:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 356:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// Manually set outputs to low to generate 50us reset impulse
+ 357:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		WS2812B_PORT->BSRR = WS2812_IO_Low[0];
+ 358:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	} else {
+ 359:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 360:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// Load bitbuffer with next RGB LED values
+ 361:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		uint32_t i;
+ 362:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		for( i = 0; i < 3; i++ )
+ 363:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		{
+ 364:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 			loadNextFramebufferData(&ws2812b.item[i], 1);
+ 365:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		}
+ 366:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 367:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		ws2812b.repeatCounter++;
+ 368:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	}
+ 369:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 370:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 371:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 372:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#if defined(LED_ORANGE_PORT)
+ 373:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		LED_ORANGE_PORT->BSRR = LED_ORANGE_PIN << 16;
+ 374:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 375:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 376:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }
+ 377:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 378:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** void DMA2_Stream2_IRQHandler(void)
+ 379:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** {
+ 380:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 381:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#if defined(LED_BLUE_PORT)
+ 382:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		LED_BLUE_PORT->BSRR = LED_BLUE_PIN;
+ 383:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 384:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 385:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// Check the interrupt and clear flag
+ 386:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	  HAL_DMA_IRQHandler(&dmaCC2);
+ 387:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 388:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#if defined(LED_BLUE_PORT)
+ 389:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		LED_BLUE_PORT->BSRR = LED_BLUE_PIN << 16;
+ 390:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 391:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }
+ 392:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 393:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** void TIM1_UP_TIM10_IRQHandler(void)
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 9
+
+
+ 394:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** {
+ 395:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#if defined(LED_ORANGE_PORT)
+ 396:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		LED_ORANGE_PORT->BSRR = LED_ORANGE_PIN;
+ 397:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 398:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 399:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_TIM_IRQHandler(&TIM1_handle);
+ 400:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 401:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#if defined(LED_ORANGE_PORT)
+ 402:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		LED_ORANGE_PORT->BSRR = LED_ORANGE_PIN << 16;
+ 403:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 404:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }
+ 405:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 406:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** // TIM2 Interrupt Handler gets executed on every TIM2 Update if enabled
+ 407:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+ 408:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** {
+ 409:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	/*
+ 410:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// I have to wait 50us to generate Treset signal
+ 411:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	if (ws2812b.timerPeriodCounter < (uint8_t)WS2812_RESET_PERIOD)
+ 412:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	{
+ 413:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// count the number of timer periods
+ 414:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		ws2812b.timerPeriodCounter++;
+ 415:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	}
+ 416:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	else
+ 417:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	{
+ 418:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		ws2812b.timerPeriodCounter = 0;
+ 419:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		__HAL_TIM_DISABLE(&TIM1_handle);
+ 420:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		TIM1->CR1 = 0; // disable timer
+ 421:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// disable the TIM2 Update
+ 422:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		__HAL_TIM_DISABLE_IT(&TIM1_handle, TIM_IT_UPDATE);
+ 423:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// set TransferComplete flag
+ 424:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		ws2812b.transferComplete = 1;
+ 425:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	}*/
+ 426:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 427:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     ws2812b.timerPeriodCounter = 0;
+ 428:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     TIM1->CR1 = 0; // disable timer
+ 429:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 430:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     // disable the TIM2 Update IRQ
+ 431:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     __HAL_TIM_DISABLE_IT(&TIM1_handle, TIM_IT_UPDATE);
+ 432:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 433:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     // Set back 1,25us period
+ 434:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     TIM1->ARR = tim_period;
+ 435:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 436:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     // Generate an update event to reload the Prescaler value immediatly
+ 437:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     TIM1->EGR = TIM_EGR_UG;
+ 438:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     __HAL_TIM_CLEAR_FLAG(&TIM1_handle, TIM_FLAG_UPDATE);
+ 439:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 440:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     // set transfer_complete flag
+ 441:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     ws2812b.transferComplete = 1;
+ 442:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 443:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }
+ 444:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 445:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 446:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 447:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** static void ws2812b_set_pixel(uint8_t row, uint16_t column, uint8_t red, uint8_t green, uint8_t blu
+ 448:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** {
+  67              		.loc 1 448 1 is_stmt 1 view -0
+  68              		.cfi_startproc
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 10
+
+
+  69              		@ args = 4, pretend = 0, frame = 0
+  70              		@ frame_needed = 0, uses_anonymous_args = 0
+  71              		@ link register save eliminated.
+  72              		.loc 1 448 1 is_stmt 0 view .LVU8
+  73 0000 70B4     		push	{r4, r5, r6}
+  74              	.LCFI2:
+  75              		.cfi_def_cfa_offset 12
+  76              		.cfi_offset 4, -12
+  77              		.cfi_offset 5, -8
+  78              		.cfi_offset 6, -4
+ 449:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 450:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// Apply gamma
+ 451:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	red = gammaTable[red];
+  79              		.loc 1 451 2 is_stmt 1 view .LVU9
+  80              		.loc 1 451 6 is_stmt 0 view .LVU10
+  81 0002 2E4E     		ldr	r6, .L5
+  82 0004 B45C     		ldrb	r4, [r6, r2]	@ zero_extendqisi2
+  83              	.LVL2:
+ 452:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	green = gammaTable[green];
+  84              		.loc 1 452 2 is_stmt 1 view .LVU11
+  85              		.loc 1 452 8 is_stmt 0 view .LVU12
+  86 0006 F55C     		ldrb	r5, [r6, r3]	@ zero_extendqisi2
+  87              	.LVL3:
+ 453:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	blue = gammaTable[blue];
+  88              		.loc 1 453 2 is_stmt 1 view .LVU13
+  89              		.loc 1 453 7 is_stmt 0 view .LVU14
+  90 0008 9DF80C30 		ldrb	r3, [sp, #12]	@ zero_extendqisi2
+  91 000c F25C     		ldrb	r2, [r6, r3]	@ zero_extendqisi2
+  92              	.LVL4:
+ 454:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 455:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 456:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t calcCol = (column*24);
+  93              		.loc 1 456 2 is_stmt 1 view .LVU15
+  94              		.loc 1 456 28 is_stmt 0 view .LVU16
+  95 000e 01EB4101 		add	r1, r1, r1, lsl #1
+  96              	.LVL5:
+ 457:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t invRed = ~red;
+  97              		.loc 1 457 2 is_stmt 1 view .LVU17
+  98              		.loc 1 457 20 is_stmt 0 view .LVU18
+  99 0012 E443     		mvns	r4, r4
+ 100              	.LVL6:
+ 458:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t invGreen = ~green;
+ 101              		.loc 1 458 2 is_stmt 1 view .LVU19
+ 102              		.loc 1 458 22 is_stmt 0 view .LVU20
+ 103 0014 ED43     		mvns	r5, r5
+ 104              	.LVL7:
+ 459:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t invBlue = ~blue;
+ 105              		.loc 1 459 2 is_stmt 1 view .LVU21
+ 106              		.loc 1 459 21 is_stmt 0 view .LVU22
+ 107 0016 D243     		mvns	r2, r2
+ 108              	.LVL8:
+ 460:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 461:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 462:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** #if defined(SETPIX_1)
+ 463:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint8_t i;
+ 464:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t calcClearRow = ~((0x01<<row) << 0);
+ 465:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	for (i = 0; i < 8; i++)
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 11
+
+
+ 466:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	{
+ 467:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// clear the data for pixel
+ 468:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 469:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		ws2812bDmaBitBuffer[(calcCol+i)] &= calcClearRow;
+ 470:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		ws2812bDmaBitBuffer[(calcCol+8+i)] &= calcClearRow;
+ 471:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		ws2812bDmaBitBuffer[(calcCol+16+i)] &= calcClearRow;
+ 472:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 473:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// write new data for pixel
+ 474:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		ws2812bDmaBitBuffer[(calcCol+i)] |= (((((invGreen)<<i) & 0x80)>>7)<<(row+0));
+ 475:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		ws2812bDmaBitBuffer[(calcCol+8+i)] |= (((((invRed)<<i) & 0x80)>>7)<<(row+0));
+ 476:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		ws2812bDmaBitBuffer[(calcCol+16+i)] |= (((((invBlue)<<i) & 0x80)>>7)<<(row+0));
+ 477:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	}
+ 478:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** #elif defined(SETPIX_2)
+ 479:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint8_t i;
+ 480:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	for (i = 0; i < 8; i++)
+ 481:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	{
+ 482:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// Set or clear the data for the pixel
+ 483:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 484:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		if(((invGreen)<<i) & 0x80)
+ 485:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 			varSetBit(ws2812bDmaBitBuffer[(calcCol+i)], row);
+ 486:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		else
+ 487:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 			varResetBit(ws2812bDmaBitBuffer[(calcCol+i)], row);
+ 488:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 489:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		if(((invRed)<<i) & 0x80)
+ 490:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 			varSetBit(ws2812bDmaBitBuffer[(calcCol+8+i)], row);
+ 491:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		else
+ 492:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 			varResetBit(ws2812bDmaBitBuffer[(calcCol+8+i)], row);
+ 493:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 494:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		if(((invBlue)<<i) & 0x80)
+ 495:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 			varSetBit(ws2812bDmaBitBuffer[(calcCol+16+i)], row);
+ 496:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		else
+ 497:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 			varResetBit(ws2812bDmaBitBuffer[(calcCol+16+i)], row);
+ 498:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 499:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	}
+ 500:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** #elif defined(SETPIX_3)
+ 501:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+0)] |= (((((invGreen)<<0) & 0x80)>>7)<<row);
+ 502:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+8+0)] |= (((((invRed)<<0) & 0x80)>>7)<<row);
+ 503:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+16+0)] |= (((((invBlue)<<0) & 0x80)>>7)<<row);
+ 504:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 505:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+1)] |= (((((invGreen)<<1) & 0x80)>>7)<<row);
+ 506:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+8+1)] |= (((((invRed)<<1) & 0x80)>>7)<<row);
+ 507:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+16+1)] |= (((((invBlue)<<1) & 0x80)>>7)<<row);
+ 508:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 509:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+2)] |= (((((invGreen)<<2) & 0x80)>>7)<<row);
+ 510:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+8+2)] |= (((((invRed)<<2) & 0x80)>>7)<<row);
+ 511:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+16+2)] |= (((((invBlue)<<2) & 0x80)>>7)<<row);
+ 512:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 513:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+3)] |= (((((invGreen)<<3) & 0x80)>>7)<<row);
+ 514:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+8+3)] |= (((((invRed)<<3) & 0x80)>>7)<<row);
+ 515:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+16+3)] |= (((((invBlue)<<3) & 0x80)>>7)<<row);
+ 516:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 517:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+4)] |= (((((invGreen)<<4) & 0x80)>>7)<<row);
+ 518:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+8+4)] |= (((((invRed)<<4) & 0x80)>>7)<<row);
+ 519:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+16+4)] |= (((((invBlue)<<4) & 0x80)>>7)<<row);
+ 520:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 521:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+5)] |= (((((invGreen)<<5) & 0x80)>>7)<<row);
+ 522:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+8+5)] |= (((((invRed)<<5) & 0x80)>>7)<<row);
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 12
+
+
+ 523:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+16+5)] |= (((((invBlue)<<5) & 0x80)>>7)<<row);
+ 524:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 525:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+6)] |= (((((invGreen)<<6) & 0x80)>>7)<<row);
+ 526:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+8+6)] |= (((((invRed)<<6) & 0x80)>>7)<<row);
+ 527:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+16+6)] |= (((((invBlue)<<6) & 0x80)>>7)<<row);
+ 528:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 529:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+7)] |= (((((invGreen)<<7) & 0x80)>>7)<<row);
+ 530:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+8+7)] |= (((((invRed)<<7) & 0x80)>>7)<<row);
+ 531:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812bDmaBitBuffer[(calcCol+16+7)] |= (((((invBlue)<<7) & 0x80)>>7)<<row);
+ 532:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** #elif defined(SETPIX_4)
+ 533:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 534:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// Bitband optimizations with pure increments, 5us interrupts
+ 535:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t *bitBand = BITBAND_SRAM(&ws2812bDmaBitBuffer[(calcCol)], row);
+ 109              		.loc 1 535 2 is_stmt 1 view .LVU23
+ 110              		.loc 1 535 22 is_stmt 0 view .LVU24
+ 111 0018 294B     		ldr	r3, .L5+4
+ 112 001a 03EB0113 		add	r3, r3, r1, lsl #4
+ 113 001e 03F16141 		add	r1, r3, #-520093696
+ 114              	.LVL9:
+ 115              		.loc 1 535 22 view .LVU25
+ 116 0022 01F58011 		add	r1, r1, #1048576
+ 117 0026 4E01     		lsls	r6, r1, #5
+ 118 0028 8300     		lsls	r3, r0, #2
+ 119 002a 03EB4113 		add	r3, r3, r1, lsl #5
+ 120              	.LVL10:
+ 536:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 537:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand =  (invGreen >> 7);
+ 121              		.loc 1 537 2 is_stmt 1 view .LVU26
+ 122              		.loc 1 537 24 is_stmt 0 view .LVU27
+ 123 002e E909     		lsrs	r1, r5, #7
+ 124              		.loc 1 537 11 view .LVU28
+ 125 0030 46F82010 		str	r1, [r6, r0, lsl #2]
+ 538:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 126              		.loc 1 538 2 is_stmt 1 view .LVU29
+ 127              	.LVL11:
+ 539:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 540:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invGreen >> 6);
+ 128              		.loc 1 540 2 view .LVU30
+ 129              		.loc 1 540 23 is_stmt 0 view .LVU31
+ 130 0034 A909     		lsrs	r1, r5, #6
+ 131              		.loc 1 540 11 view .LVU32
+ 132 0036 1964     		str	r1, [r3, #64]
+ 541:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 133              		.loc 1 541 2 is_stmt 1 view .LVU33
+ 134              	.LVL12:
+ 542:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 543:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invGreen >> 5);
+ 135              		.loc 1 543 2 view .LVU34
+ 136              		.loc 1 543 23 is_stmt 0 view .LVU35
+ 137 0038 6909     		lsrs	r1, r5, #5
+ 138              		.loc 1 543 11 view .LVU36
+ 139 003a C3F88010 		str	r1, [r3, #128]
+ 544:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 140              		.loc 1 544 2 is_stmt 1 view .LVU37
+ 141              	.LVL13:
+ 545:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 546:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invGreen >> 4);
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 13
+
+
+ 142              		.loc 1 546 2 view .LVU38
+ 143              		.loc 1 546 23 is_stmt 0 view .LVU39
+ 144 003e 2909     		lsrs	r1, r5, #4
+ 145              		.loc 1 546 11 view .LVU40
+ 146 0040 C3F8C010 		str	r1, [r3, #192]
+ 547:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 147              		.loc 1 547 2 is_stmt 1 view .LVU41
+ 148              	.LVL14:
+ 548:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 549:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invGreen >> 3);
+ 149              		.loc 1 549 2 view .LVU42
+ 150              		.loc 1 549 23 is_stmt 0 view .LVU43
+ 151 0044 E908     		lsrs	r1, r5, #3
+ 152              		.loc 1 549 11 view .LVU44
+ 153 0046 C3F80011 		str	r1, [r3, #256]
+ 550:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 154              		.loc 1 550 2 is_stmt 1 view .LVU45
+ 155              	.LVL15:
+ 551:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 552:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invGreen >> 2);
+ 156              		.loc 1 552 2 view .LVU46
+ 157              		.loc 1 552 23 is_stmt 0 view .LVU47
+ 158 004a A908     		lsrs	r1, r5, #2
+ 159              		.loc 1 552 11 view .LVU48
+ 160 004c C3F84011 		str	r1, [r3, #320]
+ 553:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 161              		.loc 1 553 2 is_stmt 1 view .LVU49
+ 162              	.LVL16:
+ 554:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 555:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invGreen >> 1);
+ 163              		.loc 1 555 2 view .LVU50
+ 164              		.loc 1 555 23 is_stmt 0 view .LVU51
+ 165 0050 6908     		lsrs	r1, r5, #1
+ 166              		.loc 1 555 11 view .LVU52
+ 167 0052 C3F88011 		str	r1, [r3, #384]
+ 556:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 168              		.loc 1 556 2 is_stmt 1 view .LVU53
+ 169              	.LVL17:
+ 557:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 558:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invGreen >> 0);
+ 170              		.loc 1 558 2 view .LVU54
+ 171              		.loc 1 558 11 is_stmt 0 view .LVU55
+ 172 0056 C3F8C051 		str	r5, [r3, #448]
+ 559:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 173              		.loc 1 559 2 is_stmt 1 view .LVU56
+ 174              	.LVL18:
+ 560:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 561:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// RED
+ 562:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand =  (invRed >> 7);
+ 175              		.loc 1 562 2 view .LVU57
+ 176              		.loc 1 562 22 is_stmt 0 view .LVU58
+ 177 005a E109     		lsrs	r1, r4, #7
+ 178              		.loc 1 562 11 view .LVU59
+ 179 005c C3F80012 		str	r1, [r3, #512]
+ 563:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 180              		.loc 1 563 2 is_stmt 1 view .LVU60
+ 181              	.LVL19:
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 14
+
+
+ 564:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 565:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invRed >> 6);
+ 182              		.loc 1 565 2 view .LVU61
+ 183              		.loc 1 565 21 is_stmt 0 view .LVU62
+ 184 0060 A109     		lsrs	r1, r4, #6
+ 185              		.loc 1 565 11 view .LVU63
+ 186 0062 C3F84012 		str	r1, [r3, #576]
+ 566:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 187              		.loc 1 566 2 is_stmt 1 view .LVU64
+ 188              	.LVL20:
+ 567:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 568:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invRed >> 5);
+ 189              		.loc 1 568 2 view .LVU65
+ 190              		.loc 1 568 21 is_stmt 0 view .LVU66
+ 191 0066 6109     		lsrs	r1, r4, #5
+ 192              		.loc 1 568 11 view .LVU67
+ 193 0068 C3F88012 		str	r1, [r3, #640]
+ 569:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 194              		.loc 1 569 2 is_stmt 1 view .LVU68
+ 195              	.LVL21:
+ 570:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 571:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invRed >> 4);
+ 196              		.loc 1 571 2 view .LVU69
+ 197              		.loc 1 571 21 is_stmt 0 view .LVU70
+ 198 006c 2109     		lsrs	r1, r4, #4
+ 199              		.loc 1 571 11 view .LVU71
+ 200 006e C3F8C012 		str	r1, [r3, #704]
+ 572:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 201              		.loc 1 572 2 is_stmt 1 view .LVU72
+ 202              	.LVL22:
+ 573:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 574:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invRed >> 3);
+ 203              		.loc 1 574 2 view .LVU73
+ 204              		.loc 1 574 21 is_stmt 0 view .LVU74
+ 205 0072 E108     		lsrs	r1, r4, #3
+ 206              		.loc 1 574 11 view .LVU75
+ 207 0074 C3F80013 		str	r1, [r3, #768]
+ 575:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 208              		.loc 1 575 2 is_stmt 1 view .LVU76
+ 209              	.LVL23:
+ 576:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 577:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invRed >> 2);
+ 210              		.loc 1 577 2 view .LVU77
+ 211              		.loc 1 577 21 is_stmt 0 view .LVU78
+ 212 0078 A108     		lsrs	r1, r4, #2
+ 213              		.loc 1 577 11 view .LVU79
+ 214 007a C3F84013 		str	r1, [r3, #832]
+ 578:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 215              		.loc 1 578 2 is_stmt 1 view .LVU80
+ 216              	.LVL24:
+ 579:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 580:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invRed >> 1);
+ 217              		.loc 1 580 2 view .LVU81
+ 218              		.loc 1 580 21 is_stmt 0 view .LVU82
+ 219 007e 6108     		lsrs	r1, r4, #1
+ 220              		.loc 1 580 11 view .LVU83
+ 221 0080 C3F88013 		str	r1, [r3, #896]
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 15
+
+
+ 581:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 222              		.loc 1 581 2 is_stmt 1 view .LVU84
+ 223              	.LVL25:
+ 582:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 583:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invRed >> 0);
+ 224              		.loc 1 583 2 view .LVU85
+ 225              		.loc 1 583 11 is_stmt 0 view .LVU86
+ 226 0084 C3F8C043 		str	r4, [r3, #960]
+ 584:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 227              		.loc 1 584 2 is_stmt 1 view .LVU87
+ 228              	.LVL26:
+ 585:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 586:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// BLUE
+ 587:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand =  (invBlue >> 7);
+ 229              		.loc 1 587 2 view .LVU88
+ 230              		.loc 1 587 23 is_stmt 0 view .LVU89
+ 231 0088 D109     		lsrs	r1, r2, #7
+ 232              		.loc 1 587 11 view .LVU90
+ 233 008a C3F80014 		str	r1, [r3, #1024]
+ 588:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 234              		.loc 1 588 2 is_stmt 1 view .LVU91
+ 235              	.LVL27:
+ 589:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 590:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invBlue >> 6);
+ 236              		.loc 1 590 2 view .LVU92
+ 237              		.loc 1 590 22 is_stmt 0 view .LVU93
+ 238 008e 9109     		lsrs	r1, r2, #6
+ 239              		.loc 1 590 11 view .LVU94
+ 240 0090 C3F84014 		str	r1, [r3, #1088]
+ 591:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 241              		.loc 1 591 2 is_stmt 1 view .LVU95
+ 242              	.LVL28:
+ 592:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 593:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invBlue >> 5);
+ 243              		.loc 1 593 2 view .LVU96
+ 244              		.loc 1 593 22 is_stmt 0 view .LVU97
+ 245 0094 5109     		lsrs	r1, r2, #5
+ 246              		.loc 1 593 11 view .LVU98
+ 247 0096 C3F88014 		str	r1, [r3, #1152]
+ 594:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 248              		.loc 1 594 2 is_stmt 1 view .LVU99
+ 249              	.LVL29:
+ 595:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 596:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invBlue >> 4);
+ 250              		.loc 1 596 2 view .LVU100
+ 251              		.loc 1 596 22 is_stmt 0 view .LVU101
+ 252 009a 1109     		lsrs	r1, r2, #4
+ 253              		.loc 1 596 11 view .LVU102
+ 254 009c C3F8C014 		str	r1, [r3, #1216]
+ 597:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 255              		.loc 1 597 2 is_stmt 1 view .LVU103
+ 256              	.LVL30:
+ 598:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 599:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invBlue >> 3);
+ 257              		.loc 1 599 2 view .LVU104
+ 258              		.loc 1 599 22 is_stmt 0 view .LVU105
+ 259 00a0 D108     		lsrs	r1, r2, #3
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 16
+
+
+ 260              		.loc 1 599 11 view .LVU106
+ 261 00a2 C3F80015 		str	r1, [r3, #1280]
+ 600:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 262              		.loc 1 600 2 is_stmt 1 view .LVU107
+ 263              	.LVL31:
+ 601:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 602:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invBlue >> 2);
+ 264              		.loc 1 602 2 view .LVU108
+ 265              		.loc 1 602 22 is_stmt 0 view .LVU109
+ 266 00a6 9108     		lsrs	r1, r2, #2
+ 267              		.loc 1 602 11 view .LVU110
+ 268 00a8 C3F84015 		str	r1, [r3, #1344]
+ 603:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 269              		.loc 1 603 2 is_stmt 1 view .LVU111
+ 270              	.LVL32:
+ 604:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 605:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invBlue >> 1);
+ 271              		.loc 1 605 2 view .LVU112
+ 272              		.loc 1 605 22 is_stmt 0 view .LVU113
+ 273 00ac 5108     		lsrs	r1, r2, #1
+ 274              		.loc 1 605 11 view .LVU114
+ 275 00ae C3F88015 		str	r1, [r3, #1408]
+ 606:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 276              		.loc 1 606 2 is_stmt 1 view .LVU115
+ 277              	.LVL33:
+ 607:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 608:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	*bitBand = (invBlue >> 0);
+ 278              		.loc 1 608 2 view .LVU116
+ 279              		.loc 1 608 11 is_stmt 0 view .LVU117
+ 280 00b2 C3F8C025 		str	r2, [r3, #1472]
+ 609:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	bitBand+=16;
+ 281              		.loc 1 609 2 is_stmt 1 view .LVU118
+ 282              	.LVL34:
+ 610:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 611:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** #endif
+ 612:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }
+ 283              		.loc 1 612 1 is_stmt 0 view .LVU119
+ 284 00b6 70BC     		pop	{r4, r5, r6}
+ 285              	.LCFI3:
+ 286              		.cfi_restore 6
+ 287              		.cfi_restore 5
+ 288              		.cfi_restore 4
+ 289              		.cfi_def_cfa_offset 0
+ 290              	.LVL35:
+ 291              		.loc 1 612 1 view .LVU120
+ 292 00b8 7047     		bx	lr
+ 293              	.L6:
+ 294 00ba 00BF     		.align	2
+ 295              	.L5:
+ 296 00bc 00000000 		.word	.LANCHOR0
+ 297 00c0 00000000 		.word	.LANCHOR1
+ 298              		.cfi_endproc
+ 299              	.LFE141:
+ 301              		.section	.text.loadNextFramebufferData,"ax",%progbits
+ 302              		.align	1
+ 303              		.syntax unified
+ 304              		.thumb
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 17
+
+
+ 305              		.thumb_func
+ 306              		.fpu fpv4-sp-d16
+ 308              	loadNextFramebufferData:
+ 309              	.LVL36:
+ 310              	.LFB133:
+ 222:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 311              		.loc 1 222 1 is_stmt 1 view -0
+ 312              		.cfi_startproc
+ 313              		@ args = 0, pretend = 0, frame = 0
+ 314              		@ frame_needed = 0, uses_anonymous_args = 0
+ 222:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 315              		.loc 1 222 1 is_stmt 0 view .LVU122
+ 316 0000 70B5     		push	{r4, r5, r6, lr}
+ 317              	.LCFI4:
+ 318              		.cfi_def_cfa_offset 16
+ 319              		.cfi_offset 4, -16
+ 320              		.cfi_offset 5, -12
+ 321              		.cfi_offset 6, -8
+ 322              		.cfi_offset 14, -4
+ 323 0002 82B0     		sub	sp, sp, #8
+ 324              	.LCFI5:
+ 325              		.cfi_def_cfa_offset 24
+ 224:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t g = bItem->frameBufferPointer[bItem->frameBufferCounter++];
+ 326              		.loc 1 224 2 is_stmt 1 view .LVU123
+ 224:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t g = bItem->frameBufferPointer[bItem->frameBufferCounter++];
+ 327              		.loc 1 224 20 is_stmt 0 view .LVU124
+ 328 0004 0568     		ldr	r5, [r0]
+ 224:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t g = bItem->frameBufferPointer[bItem->frameBufferCounter++];
+ 329              		.loc 1 224 46 view .LVU125
+ 330 0006 8268     		ldr	r2, [r0, #8]
+ 224:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t g = bItem->frameBufferPointer[bItem->frameBufferCounter++];
+ 331              		.loc 1 224 66 view .LVU126
+ 332 0008 531C     		adds	r3, r2, #1
+ 333 000a 8360     		str	r3, [r0, #8]
+ 224:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t g = bItem->frameBufferPointer[bItem->frameBufferCounter++];
+ 334              		.loc 1 224 40 view .LVU127
+ 335 000c AA5C     		ldrb	r2, [r5, r2]	@ zero_extendqisi2
+ 336              	.LVL37:
+ 225:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t b = bItem->frameBufferPointer[bItem->frameBufferCounter++];
+ 337              		.loc 1 225 2 is_stmt 1 view .LVU128
+ 225:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t b = bItem->frameBufferPointer[bItem->frameBufferCounter++];
+ 338              		.loc 1 225 66 is_stmt 0 view .LVU129
+ 339 000e 5C1C     		adds	r4, r3, #1
+ 340 0010 8460     		str	r4, [r0, #8]
+ 225:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t b = bItem->frameBufferPointer[bItem->frameBufferCounter++];
+ 341              		.loc 1 225 40 view .LVU130
+ 342 0012 EB5C     		ldrb	r3, [r5, r3]	@ zero_extendqisi2
+ 343              	.LVL38:
+ 226:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 344              		.loc 1 226 2 is_stmt 1 view .LVU131
+ 226:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 345              		.loc 1 226 66 is_stmt 0 view .LVU132
+ 346 0014 661C     		adds	r6, r4, #1
+ 347 0016 8660     		str	r6, [r0, #8]
+ 226:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 348              		.loc 1 226 40 view .LVU133
+ 349 0018 2C5D     		ldrb	r4, [r5, r4]	@ zero_extendqisi2
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 18
+
+
+ 350              	.LVL39:
+ 228:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		bItem->frameBufferCounter = 0;
+ 351              		.loc 1 228 2 is_stmt 1 view .LVU134
+ 228:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		bItem->frameBufferCounter = 0;
+ 352              		.loc 1 228 39 is_stmt 0 view .LVU135
+ 353 001a 4568     		ldr	r5, [r0, #4]
+ 228:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		bItem->frameBufferCounter = 0;
+ 354              		.loc 1 228 4 view .LVU136
+ 355 001c AE42     		cmp	r6, r5
+ 356 001e 06D0     		beq	.L10
+ 357              	.L8:
+ 231:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }
+ 358              		.loc 1 231 2 is_stmt 1 view .LVU137
+ 359 0020 0094     		str	r4, [sp]
+ 360 0022 89B2     		uxth	r1, r1
+ 361              	.LVL40:
+ 231:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }
+ 362              		.loc 1 231 2 is_stmt 0 view .LVU138
+ 363 0024 007B     		ldrb	r0, [r0, #12]	@ zero_extendqisi2
+ 364              	.LVL41:
+ 231:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }
+ 365              		.loc 1 231 2 view .LVU139
+ 366 0026 FFF7FEFF 		bl	ws2812b_set_pixel
+ 367              	.LVL42:
+ 232:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 368              		.loc 1 232 1 view .LVU140
+ 369 002a 02B0     		add	sp, sp, #8
+ 370              	.LCFI6:
+ 371              		.cfi_remember_state
+ 372              		.cfi_def_cfa_offset 16
+ 373              		@ sp needed
+ 374 002c 70BD     		pop	{r4, r5, r6, pc}
+ 375              	.LVL43:
+ 376              	.L10:
+ 377              	.LCFI7:
+ 378              		.cfi_restore_state
+ 229:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 379              		.loc 1 229 3 is_stmt 1 view .LVU141
+ 229:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 380              		.loc 1 229 29 is_stmt 0 view .LVU142
+ 381 002e 0025     		movs	r5, #0
+ 382 0030 8560     		str	r5, [r0, #8]
+ 383 0032 F5E7     		b	.L8
+ 384              		.cfi_endproc
+ 385              	.LFE133:
+ 387              		.section	.text.DMA_TransferCompleteHandler,"ax",%progbits
+ 388              		.align	1
+ 389              		.global	DMA_TransferCompleteHandler
+ 390              		.syntax unified
+ 391              		.thumb
+ 392              		.thumb_func
+ 393              		.fpu fpv4-sp-d16
+ 395              	DMA_TransferCompleteHandler:
+ 396              	.LVL44:
+ 397              	.LFB137:
+ 317:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 398              		.loc 1 317 1 is_stmt 1 view -0
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 19
+
+
+ 399              		.cfi_startproc
+ 400              		@ args = 0, pretend = 0, frame = 0
+ 401              		@ frame_needed = 0, uses_anonymous_args = 0
+ 320:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 402              		.loc 1 320 3 view .LVU144
+ 320:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 403              		.loc 1 320 25 is_stmt 0 view .LVU145
+ 404 0000 2F4B     		ldr	r3, .L20
+ 405 0002 4FF40052 		mov	r2, #8192
+ 406 0006 9A61     		str	r2, [r3, #24]
+ 323:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	{
+ 407              		.loc 1 323 2 is_stmt 1 view .LVU146
+ 323:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	{
+ 408              		.loc 1 323 12 is_stmt 0 view .LVU147
+ 409 0008 2E4B     		ldr	r3, .L20+4
+ 410 000a 9B6B     		ldr	r3, [r3, #56]
+ 323:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	{
+ 411              		.loc 1 323 4 view .LVU148
+ 412 000c B3F5C06F 		cmp	r3, #1536
+ 413 0010 02D0     		beq	.L19
+ 317:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 414              		.loc 1 317 1 view .LVU149
+ 415 0012 10B5     		push	{r4, lr}
+ 416              	.LCFI8:
+ 417              		.cfi_def_cfa_offset 8
+ 418              		.cfi_offset 4, -8
+ 419              		.cfi_offset 14, -4
+ 420              	.LBB2:
+ 362:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		{
+ 421              		.loc 1 362 10 view .LVU150
+ 422 0014 0024     		movs	r4, #0
+ 423 0016 48E0     		b	.L12
+ 424              	.L19:
+ 425              	.LCFI9:
+ 426              		.cfi_def_cfa_offset 0
+ 427              		.cfi_restore 4
+ 428              		.cfi_restore 14
+ 429              	.LBE2:
+ 326:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 430              		.loc 1 326 3 is_stmt 1 view .LVU151
+ 326:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 431              		.loc 1 326 25 is_stmt 0 view .LVU152
+ 432 0018 0020     		movs	r0, #0
+ 433              	.LVL45:
+ 326:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 434              		.loc 1 326 25 view .LVU153
+ 435 001a 2A4B     		ldr	r3, .L20+4
+ 436 001c 9863     		str	r0, [r3, #56]
+ 329:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 437              		.loc 1 329 3 is_stmt 1 view .LVU154
+ 329:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 438              		.loc 1 329 13 is_stmt 0 view .LVU155
+ 439 001e 2A4A     		ldr	r2, .L20+8
+ 440 0020 1368     		ldr	r3, [r2]
+ 441 0022 23F00103 		bic	r3, r3, #1
+ 442 0026 1360     		str	r3, [r2]
+ 332:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		__HAL_DMA_DISABLE(&dmaCC1);
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 20
+
+
+ 443              		.loc 1 332 3 is_stmt 1 view .LVU156
+ 444 0028 284B     		ldr	r3, .L20+12
+ 445 002a 1968     		ldr	r1, [r3]
+ 446 002c 0B68     		ldr	r3, [r1]
+ 447 002e 23F00103 		bic	r3, r3, #1
+ 448 0032 0B60     		str	r3, [r1]
+ 333:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		__HAL_DMA_DISABLE(&dmaCC2);
+ 449              		.loc 1 333 3 view .LVU157
+ 450 0034 264B     		ldr	r3, .L20+16
+ 451 0036 1968     		ldr	r1, [r3]
+ 452 0038 0B68     		ldr	r3, [r1]
+ 453 003a 23F00103 		bic	r3, r3, #1
+ 454 003e 0B60     		str	r3, [r1]
+ 334:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 455              		.loc 1 334 3 view .LVU158
+ 456 0040 244B     		ldr	r3, .L20+20
+ 457 0042 1968     		ldr	r1, [r3]
+ 458 0044 0B68     		ldr	r3, [r1]
+ 459 0046 23F00103 		bic	r3, r3, #1
+ 460 004a 0B60     		str	r3, [r1]
+ 337:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		__HAL_TIM_DISABLE_DMA(&TIM1_handle, TIM_DMA_CC1);
+ 461              		.loc 1 337 3 view .LVU159
+ 462 004c 224B     		ldr	r3, .L20+24
+ 463 004e 1B68     		ldr	r3, [r3]
+ 464 0050 D968     		ldr	r1, [r3, #12]
+ 465 0052 21F48071 		bic	r1, r1, #256
+ 466 0056 D960     		str	r1, [r3, #12]
+ 338:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		__HAL_TIM_DISABLE_DMA(&TIM1_handle, TIM_DMA_CC2);
+ 467              		.loc 1 338 3 view .LVU160
+ 468 0058 D968     		ldr	r1, [r3, #12]
+ 469 005a 21F40071 		bic	r1, r1, #512
+ 470 005e D960     		str	r1, [r3, #12]
+ 339:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 471              		.loc 1 339 3 view .LVU161
+ 472 0060 D968     		ldr	r1, [r3, #12]
+ 473 0062 21F48061 		bic	r1, r1, #1024
+ 474 0066 D960     		str	r1, [r3, #12]
+ 343:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// Reset the timer
+ 475              		.loc 1 343 3 view .LVU162
+ 343:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// Reset the timer
+ 476              		.loc 1 343 13 is_stmt 0 view .LVU163
+ 477 0068 1C49     		ldr	r1, .L20+28
+ 478 006a 0968     		ldr	r1, [r1]
+ 479 006c D162     		str	r1, [r2, #44]
+ 345:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 480              		.loc 1 345 3 is_stmt 1 view .LVU164
+ 345:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 481              		.loc 1 345 13 is_stmt 0 view .LVU165
+ 482 006e 5062     		str	r0, [r2, #36]
+ 348:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		__HAL_TIM_CLEAR_FLAG(&TIM1_handle, TIM_FLAG_UPDATE);
+ 483              		.loc 1 348 3 is_stmt 1 view .LVU166
+ 348:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		__HAL_TIM_CLEAR_FLAG(&TIM1_handle, TIM_FLAG_UPDATE);
+ 484              		.loc 1 348 13 is_stmt 0 view .LVU167
+ 485 0070 0121     		movs	r1, #1
+ 486 0072 5161     		str	r1, [r2, #20]
+ 349:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 487              		.loc 1 349 3 is_stmt 1 view .LVU168
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 21
+
+
+ 488 0074 6FF00101 		mvn	r1, #1
+ 489 0078 1961     		str	r1, [r3, #16]
+ 352:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		// Enable timer
+ 490              		.loc 1 352 3 view .LVU169
+ 491 007a D968     		ldr	r1, [r3, #12]
+ 492 007c 41F00101 		orr	r1, r1, #1
+ 493 0080 D960     		str	r1, [r3, #12]
+ 354:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 494              		.loc 1 354 3 view .LVU170
+ 354:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 495              		.loc 1 354 13 is_stmt 0 view .LVU171
+ 496 0082 1368     		ldr	r3, [r2]
+ 497 0084 43F00103 		orr	r3, r3, #1
+ 498 0088 1360     		str	r3, [r2]
+ 357:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	} else {
+ 499              		.loc 1 357 3 is_stmt 1 view .LVU172
+ 357:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	} else {
+ 500              		.loc 1 357 37 is_stmt 0 view .LVU173
+ 501 008a 154B     		ldr	r3, .L20+32
+ 502 008c 1A68     		ldr	r2, [r3]
+ 357:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	} else {
+ 503              		.loc 1 357 22 view .LVU174
+ 504 008e 154B     		ldr	r3, .L20+36
+ 505 0090 9A61     		str	r2, [r3, #24]
+ 373:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 506              		.loc 1 373 3 is_stmt 1 view .LVU175
+ 373:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 507              		.loc 1 373 25 is_stmt 0 view .LVU176
+ 508 0092 0B4B     		ldr	r3, .L20
+ 509 0094 4FF00052 		mov	r2, #536870912
+ 510 0098 9A61     		str	r2, [r3, #24]
+ 511 009a 7047     		bx	lr
+ 512              	.LVL46:
+ 513              	.L14:
+ 514              	.LCFI10:
+ 515              		.cfi_def_cfa_offset 8
+ 516              		.cfi_offset 4, -8
+ 517              		.cfi_offset 14, -4
+ 518              	.LBB3:
+ 364:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		}
+ 519              		.loc 1 364 4 is_stmt 1 discriminator 3 view .LVU177
+ 520 009c 0121     		movs	r1, #1
+ 521 009e 0948     		ldr	r0, .L20+4
+ 522 00a0 00EB0410 		add	r0, r0, r4, lsl #4
+ 523 00a4 FFF7FEFF 		bl	loadNextFramebufferData
+ 524              	.LVL47:
+ 362:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		{
+ 525              		.loc 1 362 22 discriminator 3 view .LVU178
+ 362:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		{
+ 526              		.loc 1 362 23 is_stmt 0 discriminator 3 view .LVU179
+ 527 00a8 0134     		adds	r4, r4, #1
+ 528              	.LVL48:
+ 529              	.L12:
+ 362:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		{
+ 530              		.loc 1 362 15 is_stmt 1 discriminator 1 view .LVU180
+ 362:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		{
+ 531              		.loc 1 362 3 is_stmt 0 discriminator 1 view .LVU181
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 22
+
+
+ 532 00aa 022C     		cmp	r4, #2
+ 533 00ac F6D9     		bls	.L14
+ 367:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	}
+ 534              		.loc 1 367 3 is_stmt 1 view .LVU182
+ 367:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	}
+ 535              		.loc 1 367 10 is_stmt 0 view .LVU183
+ 536 00ae 054A     		ldr	r2, .L20+4
+ 537 00b0 936B     		ldr	r3, [r2, #56]
+ 367:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	}
+ 538              		.loc 1 367 24 view .LVU184
+ 539 00b2 0133     		adds	r3, r3, #1
+ 540 00b4 9363     		str	r3, [r2, #56]
+ 541              	.LBE3:
+ 373:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 542              		.loc 1 373 3 is_stmt 1 view .LVU185
+ 373:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 543              		.loc 1 373 25 is_stmt 0 view .LVU186
+ 544 00b6 024B     		ldr	r3, .L20
+ 545 00b8 4FF00052 		mov	r2, #536870912
+ 546 00bc 9A61     		str	r2, [r3, #24]
+ 376:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 547              		.loc 1 376 1 view .LVU187
+ 548 00be 10BD     		pop	{r4, pc}
+ 549              	.LVL49:
+ 550              	.L21:
+ 376:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 551              		.loc 1 376 1 view .LVU188
+ 552              		.align	2
+ 553              	.L20:
+ 554 00c0 000C0240 		.word	1073875968
+ 555 00c4 00000000 		.word	.LANCHOR2
+ 556 00c8 00000140 		.word	1073807360
+ 557 00cc 00000000 		.word	.LANCHOR3
+ 558 00d0 00000000 		.word	.LANCHOR4
+ 559 00d4 00000000 		.word	.LANCHOR5
+ 560 00d8 00000000 		.word	.LANCHOR6
+ 561 00dc 00000000 		.word	.LANCHOR7
+ 562 00e0 00000000 		.word	.LANCHOR8
+ 563 00e4 00080240 		.word	1073874944
+ 564              		.cfi_endproc
+ 565              	.LFE137:
+ 567              		.section	.text.WS2812_sendbuf,"ax",%progbits
+ 568              		.align	1
+ 569              		.syntax unified
+ 570              		.thumb
+ 571              		.thumb_func
+ 572              		.fpu fpv4-sp-d16
+ 574              	WS2812_sendbuf:
+ 575              	.LFB134:
+ 237:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// transmission complete flag
+ 576              		.loc 1 237 1 is_stmt 1 view -0
+ 577              		.cfi_startproc
+ 578              		@ args = 0, pretend = 0, frame = 0
+ 579              		@ frame_needed = 0, uses_anonymous_args = 0
+ 580 0000 38B5     		push	{r3, r4, r5, lr}
+ 581              	.LCFI11:
+ 582              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 23
+
+
+ 583              		.cfi_offset 3, -16
+ 584              		.cfi_offset 4, -12
+ 585              		.cfi_offset 5, -8
+ 586              		.cfi_offset 14, -4
+ 239:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 587              		.loc 1 239 2 view .LVU190
+ 239:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 588              		.loc 1 239 27 is_stmt 0 view .LVU191
+ 589 0002 0025     		movs	r5, #0
+ 590 0004 4F4B     		ldr	r3, .L38
+ 591 0006 83F83050 		strb	r5, [r3, #48]
+ 241:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 592              		.loc 1 241 2 is_stmt 1 view .LVU192
+ 243:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	{
+ 593              		.loc 1 243 2 view .LVU193
+ 594              	.LVL50:
+ 243:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	{
+ 595              		.loc 1 243 2 is_stmt 0 view .LVU194
+ 596 000a 0CE0     		b	.L23
+ 597              	.LVL51:
+ 598              	.L24:
+ 245:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 599              		.loc 1 245 3 is_stmt 1 discriminator 3 view .LVU195
+ 245:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 600              		.loc 1 245 38 is_stmt 0 discriminator 3 view .LVU196
+ 601 000c 4D4C     		ldr	r4, .L38
+ 602 000e 04EB0514 		add	r4, r4, r5, lsl #4
+ 603 0012 0021     		movs	r1, #0
+ 604 0014 A160     		str	r1, [r4, #8]
+ 247:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		loadNextFramebufferData(&ws2812b.item[i], 1); // ROW 0
+ 605              		.loc 1 247 3 is_stmt 1 discriminator 3 view .LVU197
+ 606 0016 2046     		mov	r0, r4
+ 607 0018 FFF7FEFF 		bl	loadNextFramebufferData
+ 608              	.LVL52:
+ 248:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	}
+ 609              		.loc 1 248 3 discriminator 3 view .LVU198
+ 610 001c 0121     		movs	r1, #1
+ 611 001e 2046     		mov	r0, r4
+ 612 0020 FFF7FEFF 		bl	loadNextFramebufferData
+ 613              	.LVL53:
+ 243:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	{
+ 614              		.loc 1 243 21 discriminator 3 view .LVU199
+ 243:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	{
+ 615              		.loc 1 243 22 is_stmt 0 discriminator 3 view .LVU200
+ 616 0024 0135     		adds	r5, r5, #1
+ 617              	.LVL54:
+ 618              	.L23:
+ 243:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	{
+ 619              		.loc 1 243 14 is_stmt 1 discriminator 1 view .LVU201
+ 243:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	{
+ 620              		.loc 1 243 2 is_stmt 0 discriminator 1 view .LVU202
+ 621 0026 022D     		cmp	r5, #2
+ 622 0028 F0D9     		bls	.L24
+ 252:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_CLEAR_FLAG(&dmaCC1, DMA_FLAG_TCIF1_5 | DMA_FLAG_HTIF1_5 | DMA_FLAG_TEIF1_5);
+ 623              		.loc 1 252 2 is_stmt 1 view .LVU203
+ 624 002a 474B     		ldr	r3, .L38+4
+ 625 002c 1B68     		ldr	r3, [r3]
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 24
+
+
+ 626 002e 474A     		ldr	r2, .L38+8
+ 627 0030 9342     		cmp	r3, r2
+ 628 0032 45D9     		bls	.L25
+ 252:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_CLEAR_FLAG(&dmaCC1, DMA_FLAG_TCIF1_5 | DMA_FLAG_HTIF1_5 | DMA_FLAG_TEIF1_5);
+ 629              		.loc 1 252 2 is_stmt 0 discriminator 1 view .LVU204
+ 630 0034 583A     		subs	r2, r2, #88
+ 631 0036 4FF46061 		mov	r1, #3584
+ 632 003a D160     		str	r1, [r2, #12]
+ 633              	.L26:
+ 253:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_CLEAR_FLAG(&dmaCC2, DMA_FLAG_TCIF2_6 | DMA_FLAG_HTIF2_6 | DMA_FLAG_TEIF2_6);
+ 634              		.loc 1 253 2 is_stmt 1 view .LVU205
+ 635 003c 444A     		ldr	r2, .L38+12
+ 636 003e 1068     		ldr	r0, [r2]
+ 637 0040 424A     		ldr	r2, .L38+8
+ 638 0042 9042     		cmp	r0, r2
+ 639 0044 52D9     		bls	.L29
+ 253:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_CLEAR_FLAG(&dmaCC2, DMA_FLAG_TCIF2_6 | DMA_FLAG_HTIF2_6 | DMA_FLAG_TEIF2_6);
+ 640              		.loc 1 253 2 is_stmt 0 discriminator 1 view .LVU206
+ 641 0046 583A     		subs	r2, r2, #88
+ 642 0048 4FF46061 		mov	r1, #3584
+ 643 004c D160     		str	r1, [r2, #12]
+ 644              	.L30:
+ 254:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 645              		.loc 1 254 2 is_stmt 1 view .LVU207
+ 646 004e 414A     		ldr	r2, .L38+16
+ 647 0050 1168     		ldr	r1, [r2]
+ 648 0052 3E4A     		ldr	r2, .L38+8
+ 649 0054 9142     		cmp	r1, r2
+ 650 0056 5FD9     		bls	.L33
+ 254:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 651              		.loc 1 254 2 is_stmt 0 discriminator 1 view .LVU208
+ 652 0058 583A     		subs	r2, r2, #88
+ 653 005a 4FF46014 		mov	r4, #3670016
+ 654 005e D460     		str	r4, [r2, #12]
+ 655              	.L34:
+ 259:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Instance->NDTR = BUFFER_SIZE;
+ 656              		.loc 1 259 2 is_stmt 1 view .LVU209
+ 259:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Instance->NDTR = BUFFER_SIZE;
+ 657              		.loc 1 259 27 is_stmt 0 view .LVU210
+ 658 0060 3022     		movs	r2, #48
+ 659 0062 5A60     		str	r2, [r3, #4]
+ 260:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Instance->NDTR = BUFFER_SIZE;
+ 660              		.loc 1 260 2 is_stmt 1 view .LVU211
+ 260:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Instance->NDTR = BUFFER_SIZE;
+ 661              		.loc 1 260 24 is_stmt 0 view .LVU212
+ 662 0064 4260     		str	r2, [r0, #4]
+ 261:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 663              		.loc 1 261 2 is_stmt 1 view .LVU213
+ 261:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 664              		.loc 1 261 24 is_stmt 0 view .LVU214
+ 665 0066 4A60     		str	r2, [r1, #4]
+ 264:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 666              		.loc 1 264 2 is_stmt 1 view .LVU215
+ 667 0068 3B49     		ldr	r1, .L38+20
+ 668 006a 0A68     		ldr	r2, [r1]
+ 669 006c 6FF01F00 		mvn	r0, #31
+ 670 0070 1061     		str	r0, [r2, #16]
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 25
+
+
+ 267:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_ENABLE(&dmaCC1);
+ 671              		.loc 1 267 2 view .LVU216
+ 672 0072 1A68     		ldr	r2, [r3]
+ 673 0074 42F00102 		orr	r2, r2, #1
+ 674 0078 1A60     		str	r2, [r3]
+ 268:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_ENABLE(&dmaCC2);
+ 675              		.loc 1 268 2 view .LVU217
+ 676 007a 354B     		ldr	r3, .L38+12
+ 677 007c 1A68     		ldr	r2, [r3]
+ 678 007e 1368     		ldr	r3, [r2]
+ 679 0080 43F00103 		orr	r3, r3, #1
+ 680 0084 1360     		str	r3, [r2]
+ 269:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 681              		.loc 1 269 2 view .LVU218
+ 682 0086 334B     		ldr	r3, .L38+16
+ 683 0088 1A68     		ldr	r2, [r3]
+ 684 008a 1368     		ldr	r3, [r2]
+ 685 008c 43F00103 		orr	r3, r3, #1
+ 686 0090 1360     		str	r3, [r2]
+ 272:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_TIM_ENABLE_DMA(&TIM1_handle, TIM_DMA_CC1);
+ 687              		.loc 1 272 2 view .LVU219
+ 688 0092 0B68     		ldr	r3, [r1]
+ 689 0094 DA68     		ldr	r2, [r3, #12]
+ 690 0096 42F48072 		orr	r2, r2, #256
+ 691 009a DA60     		str	r2, [r3, #12]
+ 273:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_TIM_ENABLE_DMA(&TIM1_handle, TIM_DMA_CC2);
+ 692              		.loc 1 273 2 view .LVU220
+ 693 009c DA68     		ldr	r2, [r3, #12]
+ 694 009e 42F40072 		orr	r2, r2, #512
+ 695 00a2 DA60     		str	r2, [r3, #12]
+ 274:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 696              		.loc 1 274 2 view .LVU221
+ 697 00a4 DA68     		ldr	r2, [r3, #12]
+ 698 00a6 42F48062 		orr	r2, r2, #1024
+ 699 00aa DA60     		str	r2, [r3, #12]
+ 276:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 700              		.loc 1 276 2 view .LVU222
+ 276:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 701              		.loc 1 276 24 is_stmt 0 view .LVU223
+ 702 00ac 2B4A     		ldr	r2, .L38+24
+ 703 00ae 1268     		ldr	r2, [r2]
+ 704 00b0 013A     		subs	r2, r2, #1
+ 276:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 705              		.loc 1 276 12 view .LVU224
+ 706 00b2 2B49     		ldr	r1, .L38+28
+ 707 00b4 4A62     		str	r2, [r1, #36]
+ 279:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }
+ 708              		.loc 1 279 2 is_stmt 1 view .LVU225
+ 709 00b6 1A68     		ldr	r2, [r3]
+ 710 00b8 42F00102 		orr	r2, r2, #1
+ 711 00bc 1A60     		str	r2, [r3]
+ 280:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 712              		.loc 1 280 1 is_stmt 0 view .LVU226
+ 713 00be 38BD     		pop	{r3, r4, r5, pc}
+ 714              	.LVL55:
+ 715              	.L25:
+ 252:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_CLEAR_FLAG(&dmaCC1, DMA_FLAG_TCIF1_5 | DMA_FLAG_HTIF1_5 | DMA_FLAG_TEIF1_5);
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 26
+
+
+ 716              		.loc 1 252 2 discriminator 2 view .LVU227
+ 717 00c0 284A     		ldr	r2, .L38+32
+ 718 00c2 9342     		cmp	r3, r2
+ 719 00c4 05D9     		bls	.L27
+ 252:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_CLEAR_FLAG(&dmaCC1, DMA_FLAG_TCIF1_5 | DMA_FLAG_HTIF1_5 | DMA_FLAG_TEIF1_5);
+ 720              		.loc 1 252 2 discriminator 3 view .LVU228
+ 721 00c6 02F55272 		add	r2, r2, #840
+ 722 00ca 4FF46061 		mov	r1, #3584
+ 723 00ce 9160     		str	r1, [r2, #8]
+ 724 00d0 B4E7     		b	.L26
+ 725              	.L27:
+ 252:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_CLEAR_FLAG(&dmaCC1, DMA_FLAG_TCIF1_5 | DMA_FLAG_HTIF1_5 | DMA_FLAG_TEIF1_5);
+ 726              		.loc 1 252 2 discriminator 4 view .LVU229
+ 727 00d2 254A     		ldr	r2, .L38+36
+ 728 00d4 9342     		cmp	r3, r2
+ 729 00d6 04D9     		bls	.L28
+ 252:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_CLEAR_FLAG(&dmaCC1, DMA_FLAG_TCIF1_5 | DMA_FLAG_HTIF1_5 | DMA_FLAG_TEIF1_5);
+ 730              		.loc 1 252 2 discriminator 6 view .LVU230
+ 731 00d8 583A     		subs	r2, r2, #88
+ 732 00da 4FF46061 		mov	r1, #3584
+ 733 00de D160     		str	r1, [r2, #12]
+ 734 00e0 ACE7     		b	.L26
+ 735              	.L28:
+ 252:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_CLEAR_FLAG(&dmaCC1, DMA_FLAG_TCIF1_5 | DMA_FLAG_HTIF1_5 | DMA_FLAG_TEIF1_5);
+ 736              		.loc 1 252 2 discriminator 7 view .LVU231
+ 737 00e2 224A     		ldr	r2, .L38+40
+ 738 00e4 4FF46061 		mov	r1, #3584
+ 739 00e8 9160     		str	r1, [r2, #8]
+ 740 00ea A7E7     		b	.L26
+ 741              	.L29:
+ 253:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_CLEAR_FLAG(&dmaCC2, DMA_FLAG_TCIF2_6 | DMA_FLAG_HTIF2_6 | DMA_FLAG_TEIF2_6);
+ 742              		.loc 1 253 2 discriminator 2 view .LVU232
+ 743 00ec 1D4A     		ldr	r2, .L38+32
+ 744 00ee 9042     		cmp	r0, r2
+ 745 00f0 05D9     		bls	.L31
+ 253:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_CLEAR_FLAG(&dmaCC2, DMA_FLAG_TCIF2_6 | DMA_FLAG_HTIF2_6 | DMA_FLAG_TEIF2_6);
+ 746              		.loc 1 253 2 discriminator 3 view .LVU233
+ 747 00f2 02F55272 		add	r2, r2, #840
+ 748 00f6 4FF46061 		mov	r1, #3584
+ 749 00fa 9160     		str	r1, [r2, #8]
+ 750 00fc A7E7     		b	.L30
+ 751              	.L31:
+ 253:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_CLEAR_FLAG(&dmaCC2, DMA_FLAG_TCIF2_6 | DMA_FLAG_HTIF2_6 | DMA_FLAG_TEIF2_6);
+ 752              		.loc 1 253 2 discriminator 4 view .LVU234
+ 753 00fe 1A4A     		ldr	r2, .L38+36
+ 754 0100 9042     		cmp	r0, r2
+ 755 0102 04D9     		bls	.L32
+ 253:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_CLEAR_FLAG(&dmaCC2, DMA_FLAG_TCIF2_6 | DMA_FLAG_HTIF2_6 | DMA_FLAG_TEIF2_6);
+ 756              		.loc 1 253 2 discriminator 6 view .LVU235
+ 757 0104 583A     		subs	r2, r2, #88
+ 758 0106 4FF46061 		mov	r1, #3584
+ 759 010a D160     		str	r1, [r2, #12]
+ 760 010c 9FE7     		b	.L30
+ 761              	.L32:
+ 253:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	__HAL_DMA_CLEAR_FLAG(&dmaCC2, DMA_FLAG_TCIF2_6 | DMA_FLAG_HTIF2_6 | DMA_FLAG_TEIF2_6);
+ 762              		.loc 1 253 2 discriminator 7 view .LVU236
+ 763 010e 174A     		ldr	r2, .L38+40
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 27
+
+
+ 764 0110 4FF46061 		mov	r1, #3584
+ 765 0114 9160     		str	r1, [r2, #8]
+ 766 0116 9AE7     		b	.L30
+ 767              	.L33:
+ 254:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 768              		.loc 1 254 2 discriminator 2 view .LVU237
+ 769 0118 124A     		ldr	r2, .L38+32
+ 770 011a 9142     		cmp	r1, r2
+ 771 011c 05D9     		bls	.L35
+ 254:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 772              		.loc 1 254 2 discriminator 3 view .LVU238
+ 773 011e 02F55272 		add	r2, r2, #840
+ 774 0122 4FF46014 		mov	r4, #3670016
+ 775 0126 9460     		str	r4, [r2, #8]
+ 776 0128 9AE7     		b	.L34
+ 777              	.L35:
+ 254:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 778              		.loc 1 254 2 discriminator 4 view .LVU239
+ 779 012a 0F4A     		ldr	r2, .L38+36
+ 780 012c 9142     		cmp	r1, r2
+ 781 012e 04D9     		bls	.L36
+ 254:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 782              		.loc 1 254 2 discriminator 6 view .LVU240
+ 783 0130 583A     		subs	r2, r2, #88
+ 784 0132 4FF46014 		mov	r4, #3670016
+ 785 0136 D460     		str	r4, [r2, #12]
+ 786 0138 92E7     		b	.L34
+ 787              	.L36:
+ 254:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 788              		.loc 1 254 2 discriminator 7 view .LVU241
+ 789 013a 0C4A     		ldr	r2, .L38+40
+ 790 013c 4FF46014 		mov	r4, #3670016
+ 791 0140 9460     		str	r4, [r2, #8]
+ 792 0142 8DE7     		b	.L34
+ 793              	.L39:
+ 794              		.align	2
+ 795              	.L38:
+ 796 0144 00000000 		.word	.LANCHOR2
+ 797 0148 00000000 		.word	.LANCHOR3
+ 798 014c 58640240 		.word	1073898584
+ 799 0150 00000000 		.word	.LANCHOR4
+ 800 0154 00000000 		.word	.LANCHOR5
+ 801 0158 00000000 		.word	.LANCHOR6
+ 802 015c 00000000 		.word	.LANCHOR9
+ 803 0160 00000140 		.word	1073807360
+ 804 0164 B8600240 		.word	1073897656
+ 805 0168 58600240 		.word	1073897560
+ 806 016c 00600240 		.word	1073897472
+ 807              		.cfi_endproc
+ 808              	.LFE134:
+ 810              		.section	.text.DMA_TransferHalfHandler,"ax",%progbits
+ 811              		.align	1
+ 812              		.global	DMA_TransferHalfHandler
+ 813              		.syntax unified
+ 814              		.thumb
+ 815              		.thumb_func
+ 816              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 28
+
+
+ 818              	DMA_TransferHalfHandler:
+ 819              	.LVL56:
+ 820              	.LFB136:
+ 291:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 821              		.loc 1 291 1 is_stmt 1 view -0
+ 822              		.cfi_startproc
+ 823              		@ args = 0, pretend = 0, frame = 0
+ 824              		@ frame_needed = 0, uses_anonymous_args = 0
+ 291:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 825              		.loc 1 291 1 is_stmt 0 view .LVU243
+ 826 0000 10B5     		push	{r4, lr}
+ 827              	.LCFI12:
+ 828              		.cfi_def_cfa_offset 8
+ 829              		.cfi_offset 4, -8
+ 830              		.cfi_offset 14, -4
+ 831 0002 82B0     		sub	sp, sp, #8
+ 832              	.LCFI13:
+ 833              		.cfi_def_cfa_offset 16
+ 294:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	 {
+ 834              		.loc 1 294 2 is_stmt 1 view .LVU244
+ 294:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	 {
+ 835              		.loc 1 294 12 is_stmt 0 view .LVU245
+ 836 0004 0E4B     		ldr	r3, .L47
+ 837 0006 9B6B     		ldr	r3, [r3, #56]
+ 294:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	 {
+ 838              		.loc 1 294 4 view .LVU246
+ 839 0008 B3F5C06F 		cmp	r3, #1536
+ 840 000c 01D0     		beq	.L46
+ 841              	.LBB4:
+ 304:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		{
+ 842              		.loc 1 304 10 view .LVU247
+ 843 000e 0024     		movs	r4, #0
+ 844 0010 0EE0     		b	.L41
+ 845              	.L46:
+ 846              	.LBE4:
+ 299:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 847              		.loc 1 299 3 is_stmt 1 view .LVU248
+ 848 0012 0020     		movs	r0, #0
+ 849              	.LVL57:
+ 299:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 850              		.loc 1 299 3 is_stmt 0 view .LVU249
+ 851 0014 0090     		str	r0, [sp]
+ 852 0016 0346     		mov	r3, r0
+ 853 0018 0246     		mov	r2, r0
+ 854 001a 0146     		mov	r1, r0
+ 855 001c FFF7FEFF 		bl	ws2812b_set_pixel
+ 856              	.LVL58:
+ 857 0020 0CE0     		b	.L40
+ 858              	.LVL59:
+ 859              	.L43:
+ 860              	.LBB5:
+ 306:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		}
+ 861              		.loc 1 306 4 is_stmt 1 discriminator 3 view .LVU250
+ 862 0022 0021     		movs	r1, #0
+ 863 0024 0648     		ldr	r0, .L47
+ 864 0026 00EB0410 		add	r0, r0, r4, lsl #4
+ 865 002a FFF7FEFF 		bl	loadNextFramebufferData
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 29
+
+
+ 866              	.LVL60:
+ 304:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		{
+ 867              		.loc 1 304 40 discriminator 3 view .LVU251
+ 304:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		{
+ 868              		.loc 1 304 41 is_stmt 0 discriminator 3 view .LVU252
+ 869 002e 0134     		adds	r4, r4, #1
+ 870              	.LVL61:
+ 871              	.L41:
+ 304:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		{
+ 872              		.loc 1 304 15 is_stmt 1 discriminator 1 view .LVU253
+ 304:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		{
+ 873              		.loc 1 304 3 is_stmt 0 discriminator 1 view .LVU254
+ 874 0030 022C     		cmp	r4, #2
+ 875 0032 F6D9     		bls	.L43
+ 309:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	}
+ 876              		.loc 1 309 3 is_stmt 1 view .LVU255
+ 309:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	}
+ 877              		.loc 1 309 10 is_stmt 0 view .LVU256
+ 878 0034 024A     		ldr	r2, .L47
+ 879 0036 936B     		ldr	r3, [r2, #56]
+ 309:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	}
+ 880              		.loc 1 309 24 view .LVU257
+ 881 0038 0133     		adds	r3, r3, #1
+ 882 003a 9363     		str	r3, [r2, #56]
+ 883              	.LVL62:
+ 884              	.L40:
+ 309:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	}
+ 885              		.loc 1 309 24 view .LVU258
+ 886              	.LBE5:
+ 314:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 887              		.loc 1 314 1 view .LVU259
+ 888 003c 02B0     		add	sp, sp, #8
+ 889              	.LCFI14:
+ 890              		.cfi_def_cfa_offset 8
+ 891              		@ sp needed
+ 892 003e 10BD     		pop	{r4, pc}
+ 893              	.L48:
+ 894              		.align	2
+ 895              	.L47:
+ 896 0040 00000000 		.word	.LANCHOR2
+ 897              		.cfi_endproc
+ 898              	.LFE136:
+ 900              		.section	.text.ws2812b_gpio_init,"ax",%progbits
+ 901              		.align	1
+ 902              		.syntax unified
+ 903              		.thumb
+ 904              		.thumb_func
+ 905              		.fpu fpv4-sp-d16
+ 907              	ws2812b_gpio_init:
+ 908              	.LFB130:
+  33:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// WS2812B outputs
+ 909              		.loc 1 33 1 is_stmt 1 view -0
+ 910              		.cfi_startproc
+ 911              		@ args = 0, pretend = 0, frame = 32
+ 912              		@ frame_needed = 0, uses_anonymous_args = 0
+ 913 0000 70B5     		push	{r4, r5, r6, lr}
+ 914              	.LCFI15:
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 30
+
+
+ 915              		.cfi_def_cfa_offset 16
+ 916              		.cfi_offset 4, -16
+ 917              		.cfi_offset 5, -12
+ 918              		.cfi_offset 6, -8
+ 919              		.cfi_offset 14, -4
+ 920 0002 88B0     		sub	sp, sp, #32
+ 921              	.LCFI16:
+ 922              		.cfi_def_cfa_offset 48
+  35:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitTypeDef  GPIO_InitStruct;
+ 923              		.loc 1 35 2 view .LVU261
+ 924              	.LBB6:
+  35:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitTypeDef  GPIO_InitStruct;
+ 925              		.loc 1 35 2 view .LVU262
+ 926 0004 0025     		movs	r5, #0
+ 927 0006 0195     		str	r5, [sp, #4]
+  35:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitTypeDef  GPIO_InitStruct;
+ 928              		.loc 1 35 2 view .LVU263
+ 929 0008 194C     		ldr	r4, .L51
+ 930 000a 236B     		ldr	r3, [r4, #48]
+ 931 000c 43F00403 		orr	r3, r3, #4
+ 932 0010 2363     		str	r3, [r4, #48]
+  35:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitTypeDef  GPIO_InitStruct;
+ 933              		.loc 1 35 2 view .LVU264
+ 934 0012 236B     		ldr	r3, [r4, #48]
+ 935 0014 03F00403 		and	r3, r3, #4
+ 936 0018 0193     		str	r3, [sp, #4]
+  35:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitTypeDef  GPIO_InitStruct;
+ 937              		.loc 1 35 2 view .LVU265
+ 938 001a 019B     		ldr	r3, [sp, #4]
+ 939              	.LBE6:
+  35:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitTypeDef  GPIO_InitStruct;
+ 940              		.loc 1 35 2 view .LVU266
+  36:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitStruct.Pin       = WS2812B_PINS;
+ 941              		.loc 1 36 2 view .LVU267
+  37:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitStruct.Mode      = GPIO_MODE_OUTPUT_PP;
+ 942              		.loc 1 37 2 view .LVU268
+  37:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitStruct.Mode      = GPIO_MODE_OUTPUT_PP;
+ 943              		.loc 1 37 28 is_stmt 0 view .LVU269
+ 944 001c 0F23     		movs	r3, #15
+ 945 001e 0393     		str	r3, [sp, #12]
+  38:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitStruct.Pull      = GPIO_NOPULL;
+ 946              		.loc 1 38 2 is_stmt 1 view .LVU270
+  38:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitStruct.Pull      = GPIO_NOPULL;
+ 947              		.loc 1 38 28 is_stmt 0 view .LVU271
+ 948 0020 0126     		movs	r6, #1
+ 949 0022 0496     		str	r6, [sp, #16]
+  39:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitStruct.Speed     = GPIO_SPEED_FREQ_LOW;
+ 950              		.loc 1 39 2 is_stmt 1 view .LVU272
+  39:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	GPIO_InitStruct.Speed     = GPIO_SPEED_FREQ_LOW;
+ 951              		.loc 1 39 28 is_stmt 0 view .LVU273
+ 952 0024 0595     		str	r5, [sp, #20]
+  40:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_GPIO_Init(WS2812B_PORT, &GPIO_InitStruct);
+ 953              		.loc 1 40 2 is_stmt 1 view .LVU274
+  40:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_GPIO_Init(WS2812B_PORT, &GPIO_InitStruct);
+ 954              		.loc 1 40 28 is_stmt 0 view .LVU275
+ 955 0026 0695     		str	r5, [sp, #24]
+  41:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 31
+
+
+ 956              		.loc 1 41 2 is_stmt 1 view .LVU276
+ 957 0028 03A9     		add	r1, sp, #12
+ 958 002a 1248     		ldr	r0, .L51+4
+ 959 002c FFF7FEFF 		bl	HAL_GPIO_Init
+ 960              	.LVL63:
+  45:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 961              		.loc 1 45 3 view .LVU277
+ 962              	.LBB7:
+  45:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 963              		.loc 1 45 3 view .LVU278
+ 964 0030 0295     		str	r5, [sp, #8]
+  45:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 965              		.loc 1 45 3 view .LVU279
+ 966 0032 236B     		ldr	r3, [r4, #48]
+ 967 0034 43F00803 		orr	r3, r3, #8
+ 968 0038 2363     		str	r3, [r4, #48]
+  45:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 969              		.loc 1 45 3 view .LVU280
+ 970 003a 236B     		ldr	r3, [r4, #48]
+ 971 003c 03F00803 		and	r3, r3, #8
+ 972 0040 0293     		str	r3, [sp, #8]
+  45:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 973              		.loc 1 45 3 view .LVU281
+ 974 0042 029B     		ldr	r3, [sp, #8]
+ 975              	.LBE7:
+  45:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 976              		.loc 1 45 3 view .LVU282
+  47:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 977              		.loc 1 47 3 view .LVU283
+  47:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 978              		.loc 1 47 24 is_stmt 0 view .LVU284
+ 979 0044 0496     		str	r6, [sp, #16]
+  48:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+ 980              		.loc 1 48 3 is_stmt 1 view .LVU285
+  48:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+ 981              		.loc 1 48 24 is_stmt 0 view .LVU286
+ 982 0046 0595     		str	r5, [sp, #20]
+  49:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 983              		.loc 1 49 3 is_stmt 1 view .LVU287
+  49:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 984              		.loc 1 49 25 is_stmt 0 view .LVU288
+ 985 0048 0223     		movs	r3, #2
+ 986 004a 0693     		str	r3, [sp, #24]
+  51:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		HAL_GPIO_Init(LED_BLUE_PORT, &GPIO_InitStruct);
+ 987              		.loc 1 51 3 is_stmt 1 view .LVU289
+  51:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		HAL_GPIO_Init(LED_BLUE_PORT, &GPIO_InitStruct);
+ 988              		.loc 1 51 23 is_stmt 0 view .LVU290
+ 989 004c 4FF40043 		mov	r3, #32768
+ 990 0050 0393     		str	r3, [sp, #12]
+  52:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		GPIO_InitStruct.Pin = LED_ORANGE_PIN;
+ 991              		.loc 1 52 3 is_stmt 1 view .LVU291
+ 992 0052 A4F53054 		sub	r4, r4, #11264
+ 993 0056 03A9     		add	r1, sp, #12
+ 994 0058 2046     		mov	r0, r4
+ 995 005a FFF7FEFF 		bl	HAL_GPIO_Init
+ 996              	.LVL64:
+  53:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		HAL_GPIO_Init(LED_ORANGE_PORT, &GPIO_InitStruct);
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 32
+
+
+ 997              		.loc 1 53 3 view .LVU292
+  53:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		HAL_GPIO_Init(LED_ORANGE_PORT, &GPIO_InitStruct);
+ 998              		.loc 1 53 23 is_stmt 0 view .LVU293
+ 999 005e 4FF40053 		mov	r3, #8192
+ 1000 0062 0393     		str	r3, [sp, #12]
+  54:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 1001              		.loc 1 54 3 is_stmt 1 view .LVU294
+ 1002 0064 03A9     		add	r1, sp, #12
+ 1003 0066 2046     		mov	r0, r4
+ 1004 0068 FFF7FEFF 		bl	HAL_GPIO_Init
+ 1005              	.LVL65:
+  56:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1006              		.loc 1 56 1 is_stmt 0 view .LVU295
+ 1007 006c 08B0     		add	sp, sp, #32
+ 1008              	.LCFI17:
+ 1009              		.cfi_def_cfa_offset 16
+ 1010              		@ sp needed
+ 1011 006e 70BD     		pop	{r4, r5, r6, pc}
+ 1012              	.L52:
+ 1013              		.align	2
+ 1014              	.L51:
+ 1015 0070 00380240 		.word	1073887232
+ 1016 0074 00080240 		.word	1073874944
+ 1017              		.cfi_endproc
+ 1018              	.LFE130:
+ 1020              		.section	.text.DMA2_init,"ax",%progbits
+ 1021              		.align	1
+ 1022              		.syntax unified
+ 1023              		.thumb
+ 1024              		.thumb_func
+ 1025              		.fpu fpv4-sp-d16
+ 1027              	DMA2_init:
+ 1028              	.LFB132:
+ 125:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1029              		.loc 1 125 1 is_stmt 1 view -0
+ 1030              		.cfi_startproc
+ 1031              		@ args = 0, pretend = 0, frame = 8
+ 1032              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1033 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 1034              	.LCFI18:
+ 1035              		.cfi_def_cfa_offset 36
+ 1036              		.cfi_offset 4, -36
+ 1037              		.cfi_offset 5, -32
+ 1038              		.cfi_offset 6, -28
+ 1039              		.cfi_offset 7, -24
+ 1040              		.cfi_offset 8, -20
+ 1041              		.cfi_offset 9, -16
+ 1042              		.cfi_offset 10, -12
+ 1043              		.cfi_offset 11, -8
+ 1044              		.cfi_offset 14, -4
+ 1045 0004 83B0     		sub	sp, sp, #12
+ 1046              	.LCFI19:
+ 1047              		.cfi_def_cfa_offset 48
+ 128:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1048              		.loc 1 128 2 view .LVU297
+ 1049              	.LBB8:
+ 128:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 33
+
+
+ 1050              		.loc 1 128 2 view .LVU298
+ 1051 0006 0025     		movs	r5, #0
+ 1052 0008 0195     		str	r5, [sp, #4]
+ 128:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1053              		.loc 1 128 2 view .LVU299
+ 1054 000a 464B     		ldr	r3, .L55
+ 1055 000c 1A6B     		ldr	r2, [r3, #48]
+ 1056 000e 42F48002 		orr	r2, r2, #4194304
+ 1057 0012 1A63     		str	r2, [r3, #48]
+ 128:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1058              		.loc 1 128 2 view .LVU300
+ 1059 0014 1B6B     		ldr	r3, [r3, #48]
+ 1060 0016 03F48003 		and	r3, r3, #4194304
+ 1061 001a 0193     		str	r3, [sp, #4]
+ 128:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1062              		.loc 1 128 2 view .LVU301
+ 1063 001c 019B     		ldr	r3, [sp, #4]
+ 1064              	.LBE8:
+ 128:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1065              		.loc 1 128 2 view .LVU302
+ 130:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.PeriphInc = DMA_PINC_DISABLE;
+ 1066              		.loc 1 130 2 view .LVU303
+ 130:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.PeriphInc = DMA_PINC_DISABLE;
+ 1067              		.loc 1 130 27 is_stmt 0 view .LVU304
+ 1068 001e 424C     		ldr	r4, .L55+4
+ 1069 0020 4FF0400A 		mov	r10, #64
+ 1070 0024 C4F808A0 		str	r10, [r4, #8]
+ 131:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.MemInc = DMA_MINC_DISABLE;
+ 1071              		.loc 1 131 2 is_stmt 1 view .LVU305
+ 131:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.MemInc = DMA_MINC_DISABLE;
+ 1072              		.loc 1 131 27 is_stmt 0 view .LVU306
+ 1073 0028 E560     		str	r5, [r4, #12]
+ 132:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
+ 1074              		.loc 1 132 2 is_stmt 1 view .LVU307
+ 132:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
+ 1075              		.loc 1 132 24 is_stmt 0 view .LVU308
+ 1076 002a 2561     		str	r5, [r4, #16]
+ 133:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
+ 1077              		.loc 1 133 2 is_stmt 1 view .LVU309
+ 133:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
+ 1078              		.loc 1 133 37 is_stmt 0 view .LVU310
+ 1079 002c 4FF48053 		mov	r3, #4096
+ 1080 0030 6361     		str	r3, [r4, #20]
+ 134:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.Mode = DMA_CIRCULAR;
+ 1081              		.loc 1 134 2 is_stmt 1 view .LVU311
+ 134:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.Mode = DMA_CIRCULAR;
+ 1082              		.loc 1 134 34 is_stmt 0 view .LVU312
+ 1083 0032 4FF4804B 		mov	fp, #16384
+ 1084 0036 C4F818B0 		str	fp, [r4, #24]
+ 135:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.Priority = DMA_PRIORITY_VERY_HIGH;
+ 1085              		.loc 1 135 2 is_stmt 1 view .LVU313
+ 135:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.Priority = DMA_PRIORITY_VERY_HIGH;
+ 1086              		.loc 1 135 22 is_stmt 0 view .LVU314
+ 1087 003a 4FF48079 		mov	r9, #256
+ 1088 003e C4F81C90 		str	r9, [r4, #28]
+ 136:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.Channel = DMA_CHANNEL_6;
+ 1089              		.loc 1 136 2 is_stmt 1 view .LVU315
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 34
+
+
+ 136:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.Channel = DMA_CHANNEL_6;
+ 1090              		.loc 1 136 26 is_stmt 0 view .LVU316
+ 1091 0042 4FF44038 		mov	r8, #196608
+ 1092 0046 C4F82080 		str	r8, [r4, #32]
+ 137:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1093              		.loc 1 137 2 is_stmt 1 view .LVU317
+ 137:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1094              		.loc 1 137 25 is_stmt 0 view .LVU318
+ 1095 004a 4FF04067 		mov	r7, #201326592
+ 1096 004e 6760     		str	r7, [r4, #4]
+ 139:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
+ 1097              		.loc 1 139 2 is_stmt 1 view .LVU319
+ 139:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
+ 1098              		.loc 1 139 26 is_stmt 0 view .LVU320
+ 1099 0050 6562     		str	r5, [r4, #36]
+ 140:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.MemBurst = DMA_MBURST_SINGLE;
+ 1100              		.loc 1 140 2 is_stmt 1 view .LVU321
+ 140:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.MemBurst = DMA_MBURST_SINGLE;
+ 1101              		.loc 1 140 31 is_stmt 0 view .LVU322
+ 1102 0052 0326     		movs	r6, #3
+ 1103 0054 A662     		str	r6, [r4, #40]
+ 141:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.PeriphBurst = DMA_PBURST_SINGLE;
+ 1104              		.loc 1 141 2 is_stmt 1 view .LVU323
+ 141:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaUpdate.Init.PeriphBurst = DMA_PBURST_SINGLE;
+ 1105              		.loc 1 141 26 is_stmt 0 view .LVU324
+ 1106 0056 E562     		str	r5, [r4, #44]
+ 142:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1107              		.loc 1 142 2 is_stmt 1 view .LVU325
+ 142:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1108              		.loc 1 142 29 is_stmt 0 view .LVU326
+ 1109 0058 2563     		str	r5, [r4, #48]
+ 144:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//dmaUpdate.XferCpltCallback  = TransferComplete;
+ 1110              		.loc 1 144 2 is_stmt 1 view .LVU327
+ 144:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//dmaUpdate.XferCpltCallback  = TransferComplete;
+ 1111              		.loc 1 144 21 is_stmt 0 view .LVU328
+ 1112 005a 344B     		ldr	r3, .L55+8
+ 1113 005c 2360     		str	r3, [r4]
+ 148:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_DMA_Init(&dmaUpdate);
+ 1114              		.loc 1 148 2 is_stmt 1 view .LVU329
+ 1115 005e 2046     		mov	r0, r4
+ 1116 0060 FFF7FEFF 		bl	HAL_DMA_DeInit
+ 1117              	.LVL66:
+ 149:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//HAL_NVIC_SetPriority(DMA1_Channel2_IRQn, 0, 0);
+ 1118              		.loc 1 149 2 view .LVU330
+ 1119 0064 2046     		mov	r0, r4
+ 1120 0066 FFF7FEFF 		bl	HAL_DMA_Init
+ 1121              	.LVL67:
+ 152:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//HAL_DMA_Start(&dmaUpdate, (uint32_t)WS2812_IO_High, (uint32_t)&dummy, BUFFER_SIZE);
+ 1122              		.loc 1 152 2 view .LVU331
+ 1123 006a 3023     		movs	r3, #48
+ 1124 006c 304A     		ldr	r2, .L55+12
+ 1125 006e 3149     		ldr	r1, .L55+16
+ 1126 0070 2046     		mov	r0, r4
+ 1127 0072 FFF7FEFF 		bl	HAL_DMA_Start
+ 1128              	.LVL68:
+ 157:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.PeriphInc = DMA_PINC_DISABLE;
+ 1129              		.loc 1 157 2 view .LVU332
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 35
+
+
+ 157:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.PeriphInc = DMA_PINC_DISABLE;
+ 1130              		.loc 1 157 24 is_stmt 0 view .LVU333
+ 1131 0076 304C     		ldr	r4, .L55+20
+ 1132 0078 C4F808A0 		str	r10, [r4, #8]
+ 158:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.MemInc = DMA_MINC_ENABLE;
+ 1133              		.loc 1 158 2 is_stmt 1 view .LVU334
+ 158:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.MemInc = DMA_MINC_ENABLE;
+ 1134              		.loc 1 158 24 is_stmt 0 view .LVU335
+ 1135 007c E560     		str	r5, [r4, #12]
+ 159:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
+ 1136              		.loc 1 159 2 is_stmt 1 view .LVU336
+ 159:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
+ 1137              		.loc 1 159 21 is_stmt 0 view .LVU337
+ 1138 007e 4FF48063 		mov	r3, #1024
+ 1139 0082 2361     		str	r3, [r4, #16]
+ 160:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
+ 1140              		.loc 1 160 2 is_stmt 1 view .LVU338
+ 160:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
+ 1141              		.loc 1 160 34 is_stmt 0 view .LVU339
+ 1142 0084 4FF40063 		mov	r3, #2048
+ 1143 0088 6361     		str	r3, [r4, #20]
+ 161:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.Mode = DMA_CIRCULAR;
+ 1144              		.loc 1 161 2 is_stmt 1 view .LVU340
+ 161:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.Mode = DMA_CIRCULAR;
+ 1145              		.loc 1 161 31 is_stmt 0 view .LVU341
+ 1146 008a 4FF40053 		mov	r3, #8192
+ 1147 008e A361     		str	r3, [r4, #24]
+ 162:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.Priority = DMA_PRIORITY_VERY_HIGH;
+ 1148              		.loc 1 162 2 is_stmt 1 view .LVU342
+ 162:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.Priority = DMA_PRIORITY_VERY_HIGH;
+ 1149              		.loc 1 162 19 is_stmt 0 view .LVU343
+ 1150 0090 C4F81C90 		str	r9, [r4, #28]
+ 163:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.Channel = DMA_CHANNEL_6;
+ 1151              		.loc 1 163 2 is_stmt 1 view .LVU344
+ 163:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.Channel = DMA_CHANNEL_6;
+ 1152              		.loc 1 163 23 is_stmt 0 view .LVU345
+ 1153 0094 C4F82080 		str	r8, [r4, #32]
+ 164:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1154              		.loc 1 164 2 is_stmt 1 view .LVU346
+ 164:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1155              		.loc 1 164 22 is_stmt 0 view .LVU347
+ 1156 0098 6760     		str	r7, [r4, #4]
+ 166:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
+ 1157              		.loc 1 166 2 is_stmt 1 view .LVU348
+ 166:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
+ 1158              		.loc 1 166 23 is_stmt 0 view .LVU349
+ 1159 009a 6562     		str	r5, [r4, #36]
+ 167:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.MemBurst = DMA_MBURST_SINGLE;
+ 1160              		.loc 1 167 2 is_stmt 1 view .LVU350
+ 167:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.MemBurst = DMA_MBURST_SINGLE;
+ 1161              		.loc 1 167 28 is_stmt 0 view .LVU351
+ 1162 009c A662     		str	r6, [r4, #40]
+ 168:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.PeriphBurst = DMA_PBURST_SINGLE;
+ 1163              		.loc 1 168 2 is_stmt 1 view .LVU352
+ 168:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC1.Init.PeriphBurst = DMA_PBURST_SINGLE;
+ 1164              		.loc 1 168 23 is_stmt 0 view .LVU353
+ 1165 009e E562     		str	r5, [r4, #44]
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 36
+
+
+ 169:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1166              		.loc 1 169 2 is_stmt 1 view .LVU354
+ 169:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1167              		.loc 1 169 26 is_stmt 0 view .LVU355
+ 1168 00a0 2563     		str	r5, [r4, #48]
+ 171:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//dmaUpdate.XferCpltCallback  = TransferComplete;
+ 1169              		.loc 1 171 2 is_stmt 1 view .LVU356
+ 171:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//dmaUpdate.XferCpltCallback  = TransferComplete;
+ 1170              		.loc 1 171 18 is_stmt 0 view .LVU357
+ 1171 00a2 264B     		ldr	r3, .L55+24
+ 1172 00a4 2360     		str	r3, [r4]
+ 177:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_DMA_Init(&dmaCC1);
+ 1173              		.loc 1 177 2 is_stmt 1 view .LVU358
+ 1174 00a6 2046     		mov	r0, r4
+ 1175 00a8 FFF7FEFF 		bl	HAL_DMA_DeInit
+ 1176              	.LVL69:
+ 178:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_DMA_Start(&dmaCC1, (uint32_t)ws2812bDmaBitBuffer, (uint32_t)(&WS2812B_PORT->BSRR) + 2, BUFFER_
+ 1177              		.loc 1 178 2 view .LVU359
+ 1178 00ac 2046     		mov	r0, r4
+ 1179 00ae FFF7FEFF 		bl	HAL_DMA_Init
+ 1180              	.LVL70:
+ 179:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//HAL_DMA_Start(&dmaCC1, (uint32_t)ws2812bDmaBitBuffer, (uint32_t)&dummy, BUFFER_SIZE); //BRR
+ 1181              		.loc 1 179 2 view .LVU360
+ 1182 00b2 3023     		movs	r3, #48
+ 1183 00b4 224A     		ldr	r2, .L55+28
+ 1184 00b6 2349     		ldr	r1, .L55+32
+ 1185 00b8 2046     		mov	r0, r4
+ 1186 00ba FFF7FEFF 		bl	HAL_DMA_Start
+ 1187              	.LVL71:
+ 184:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.PeriphInc = DMA_PINC_DISABLE;
+ 1188              		.loc 1 184 2 view .LVU361
+ 184:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.PeriphInc = DMA_PINC_DISABLE;
+ 1189              		.loc 1 184 24 is_stmt 0 view .LVU362
+ 1190 00be 224C     		ldr	r4, .L55+36
+ 1191 00c0 C4F808A0 		str	r10, [r4, #8]
+ 185:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.MemInc = DMA_MINC_DISABLE;
+ 1192              		.loc 1 185 2 is_stmt 1 view .LVU363
+ 185:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.MemInc = DMA_MINC_DISABLE;
+ 1193              		.loc 1 185 24 is_stmt 0 view .LVU364
+ 1194 00c4 E560     		str	r5, [r4, #12]
+ 186:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
+ 1195              		.loc 1 186 2 is_stmt 1 view .LVU365
+ 186:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
+ 1196              		.loc 1 186 21 is_stmt 0 view .LVU366
+ 1197 00c6 2561     		str	r5, [r4, #16]
+ 187:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
+ 1198              		.loc 1 187 2 is_stmt 1 view .LVU367
+ 187:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
+ 1199              		.loc 1 187 34 is_stmt 0 view .LVU368
+ 1200 00c8 4FF48053 		mov	r3, #4096
+ 1201 00cc 6361     		str	r3, [r4, #20]
+ 188:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.Mode = DMA_CIRCULAR;
+ 1202              		.loc 1 188 2 is_stmt 1 view .LVU369
+ 188:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.Mode = DMA_CIRCULAR;
+ 1203              		.loc 1 188 31 is_stmt 0 view .LVU370
+ 1204 00ce C4F818B0 		str	fp, [r4, #24]
+ 189:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.Priority = DMA_PRIORITY_VERY_HIGH;
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 37
+
+
+ 1205              		.loc 1 189 2 is_stmt 1 view .LVU371
+ 189:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.Priority = DMA_PRIORITY_VERY_HIGH;
+ 1206              		.loc 1 189 19 is_stmt 0 view .LVU372
+ 1207 00d2 C4F81C90 		str	r9, [r4, #28]
+ 190:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.Channel = DMA_CHANNEL_6;
+ 1208              		.loc 1 190 2 is_stmt 1 view .LVU373
+ 190:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.Channel = DMA_CHANNEL_6;
+ 1209              		.loc 1 190 23 is_stmt 0 view .LVU374
+ 1210 00d6 C4F82080 		str	r8, [r4, #32]
+ 191:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1211              		.loc 1 191 2 is_stmt 1 view .LVU375
+ 191:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1212              		.loc 1 191 22 is_stmt 0 view .LVU376
+ 1213 00da 6760     		str	r7, [r4, #4]
+ 193:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
+ 1214              		.loc 1 193 2 is_stmt 1 view .LVU377
+ 193:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
+ 1215              		.loc 1 193 23 is_stmt 0 view .LVU378
+ 1216 00dc 6562     		str	r5, [r4, #36]
+ 194:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.MemBurst = DMA_MBURST_SINGLE;
+ 1217              		.loc 1 194 2 is_stmt 1 view .LVU379
+ 194:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.MemBurst = DMA_MBURST_SINGLE;
+ 1218              		.loc 1 194 28 is_stmt 0 view .LVU380
+ 1219 00de A662     		str	r6, [r4, #40]
+ 195:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.PeriphBurst = DMA_PBURST_SINGLE;
+ 1220              		.loc 1 195 2 is_stmt 1 view .LVU381
+ 195:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.Init.PeriphBurst = DMA_PBURST_SINGLE;
+ 1221              		.loc 1 195 23 is_stmt 0 view .LVU382
+ 1222 00e0 E562     		str	r5, [r4, #44]
+ 196:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1223              		.loc 1 196 2 is_stmt 1 view .LVU383
+ 196:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1224              		.loc 1 196 26 is_stmt 0 view .LVU384
+ 1225 00e2 2563     		str	r5, [r4, #48]
+ 198:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1226              		.loc 1 198 2 is_stmt 1 view .LVU385
+ 198:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1227              		.loc 1 198 18 is_stmt 0 view .LVU386
+ 1228 00e4 194B     		ldr	r3, .L55+40
+ 1229 00e6 2360     		str	r3, [r4]
+ 200:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1230              		.loc 1 200 2 is_stmt 1 view .LVU387
+ 1231 00e8 2046     		mov	r0, r4
+ 1232 00ea FFF7FEFF 		bl	HAL_DMA_DeInit
+ 1233              	.LVL72:
+ 202:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.XferHalfCpltCallback = DMA_TransferHalfHandler;
+ 1234              		.loc 1 202 2 view .LVU388
+ 202:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.XferHalfCpltCallback = DMA_TransferHalfHandler;
+ 1235              		.loc 1 202 27 is_stmt 0 view .LVU389
+ 1236 00ee 184B     		ldr	r3, .L55+44
+ 1237 00f0 E363     		str	r3, [r4, #60]
+ 203:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.XferErrorCallback = DMA_TransferError;
+ 1238              		.loc 1 203 2 is_stmt 1 view .LVU390
+ 203:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	dmaCC2.XferErrorCallback = DMA_TransferError;
+ 1239              		.loc 1 203 30 is_stmt 0 view .LVU391
+ 1240 00f2 184B     		ldr	r3, .L55+48
+ 1241 00f4 2364     		str	r3, [r4, #64]
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 38
+
+
+ 204:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1242              		.loc 1 204 2 is_stmt 1 view .LVU392
+ 204:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1243              		.loc 1 204 27 is_stmt 0 view .LVU393
+ 1244 00f6 184B     		ldr	r3, .L55+52
+ 1245 00f8 E364     		str	r3, [r4, #76]
+ 206:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, 0, 0);
+ 1246              		.loc 1 206 2 is_stmt 1 view .LVU394
+ 1247 00fa 2046     		mov	r0, r4
+ 1248 00fc FFF7FEFF 		bl	HAL_DMA_Init
+ 1249              	.LVL73:
+ 207:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_NVIC_EnableIRQ(DMA2_Stream2_IRQn);
+ 1250              		.loc 1 207 2 view .LVU395
+ 1251 0100 2A46     		mov	r2, r5
+ 1252 0102 2946     		mov	r1, r5
+ 1253 0104 3A20     		movs	r0, #58
+ 1254 0106 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 1255              	.LVL74:
+ 208:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_DMA_Start_IT(&dmaCC2, (uint32_t)WS2812_IO_Low, (uint32_t)&WS2812B_PORT->BSRR, BUFFER_SIZE);
+ 1256              		.loc 1 208 2 view .LVU396
+ 1257 010a 3A20     		movs	r0, #58
+ 1258 010c FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 1259              	.LVL75:
+ 209:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	//HAL_DMA_Start_IT(&dmaCC2, (uint32_t)WS2812_IO_Low, (uint32_t)&dummy, BUFFER_SIZE);
+ 1260              		.loc 1 209 2 view .LVU397
+ 1261 0110 3023     		movs	r3, #48
+ 1262 0112 074A     		ldr	r2, .L55+12
+ 1263 0114 1149     		ldr	r1, .L55+56
+ 1264 0116 2046     		mov	r0, r4
+ 1265 0118 FFF7FEFF 		bl	HAL_DMA_Start_IT
+ 1266              	.LVL76:
+ 214:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1267              		.loc 1 214 1 is_stmt 0 view .LVU398
+ 1268 011c 03B0     		add	sp, sp, #12
+ 1269              	.LCFI20:
+ 1270              		.cfi_def_cfa_offset 36
+ 1271              		@ sp needed
+ 1272 011e BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 1273              	.L56:
+ 1274 0122 00BF     		.align	2
+ 1275              	.L55:
+ 1276 0124 00380240 		.word	1073887232
+ 1277 0128 00000000 		.word	.LANCHOR3
+ 1278 012c 88640240 		.word	1073898632
+ 1279 0130 18080240 		.word	1073874968
+ 1280 0134 00000000 		.word	.LANCHOR10
+ 1281 0138 00000000 		.word	.LANCHOR4
+ 1282 013c 28640240 		.word	1073898536
+ 1283 0140 1A080240 		.word	1073874970
+ 1284 0144 00000000 		.word	.LANCHOR1
+ 1285 0148 00000000 		.word	.LANCHOR5
+ 1286 014c 40640240 		.word	1073898560
+ 1287 0150 00000000 		.word	DMA_TransferCompleteHandler
+ 1288 0154 00000000 		.word	DMA_TransferHalfHandler
+ 1289 0158 00000000 		.word	DMA_TransferError
+ 1290 015c 00000000 		.word	.LANCHOR8
+ 1291              		.cfi_endproc
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 39
+
+
+ 1292              	.LFE132:
+ 1294              		.section	.text.TIM1_init,"ax",%progbits
+ 1295              		.align	1
+ 1296              		.syntax unified
+ 1297              		.thumb
+ 1298              		.thumb_func
+ 1299              		.fpu fpv4-sp-d16
+ 1301              	TIM1_init:
+ 1302              	.LFB131:
+  66:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// TIM2 Periph clock enable
+ 1303              		.loc 1 66 1 is_stmt 1 view -0
+ 1304              		.cfi_startproc
+ 1305              		@ args = 0, pretend = 0, frame = 8
+ 1306              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1307 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 1308              	.LCFI21:
+ 1309              		.cfi_def_cfa_offset 24
+ 1310              		.cfi_offset 4, -24
+ 1311              		.cfi_offset 5, -20
+ 1312              		.cfi_offset 6, -16
+ 1313              		.cfi_offset 7, -12
+ 1314              		.cfi_offset 8, -8
+ 1315              		.cfi_offset 14, -4
+ 1316 0004 82B0     		sub	sp, sp, #8
+ 1317              	.LCFI22:
+ 1318              		.cfi_def_cfa_offset 32
+  68:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1319              		.loc 1 68 2 view .LVU400
+ 1320              	.LBB9:
+  68:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1321              		.loc 1 68 2 view .LVU401
+ 1322 0006 0024     		movs	r4, #0
+ 1323 0008 0194     		str	r4, [sp, #4]
+  68:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1324              		.loc 1 68 2 view .LVU402
+ 1325 000a 354B     		ldr	r3, .L60
+ 1326 000c 5A6C     		ldr	r2, [r3, #68]
+ 1327 000e 42F00102 		orr	r2, r2, #1
+ 1328 0012 5A64     		str	r2, [r3, #68]
+  68:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1329              		.loc 1 68 2 view .LVU403
+ 1330 0014 5B6C     		ldr	r3, [r3, #68]
+ 1331 0016 03F00103 		and	r3, r3, #1
+ 1332 001a 0193     		str	r3, [sp, #4]
+  68:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1333              		.loc 1 68 2 view .LVU404
+ 1334 001c 019B     		ldr	r3, [sp, #4]
+ 1335              	.LBE9:
+  68:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1336              		.loc 1 68 2 view .LVU405
+  72:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	timer_reset_pulse_period = (SystemCoreClock / (320 * 60)); // 60us just to be sure
+ 1337              		.loc 1 72 2 view .LVU406
+  72:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	timer_reset_pulse_period = (SystemCoreClock / (320 * 60)); // 60us just to be sure
+ 1338              		.loc 1 72 32 is_stmt 0 view .LVU407
+ 1339 001e 314B     		ldr	r3, .L60+4
+ 1340 0020 1A68     		ldr	r2, [r3]
+ 1341 0022 130A     		lsrs	r3, r2, #8
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 40
+
+
+ 1342 0024 3049     		ldr	r1, .L60+8
+ 1343 0026 A1FB0313 		umull	r1, r3, r1, r3
+ 1344 002a 1B09     		lsrs	r3, r3, #4
+  72:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	timer_reset_pulse_period = (SystemCoreClock / (320 * 60)); // 60us just to be sure
+ 1345              		.loc 1 72 13 view .LVU408
+ 1346 002c 2F49     		ldr	r1, .L60+12
+ 1347 002e 0B60     		str	r3, [r1]
+  73:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1348              		.loc 1 73 2 is_stmt 1 view .LVU409
+  73:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1349              		.loc 1 73 46 is_stmt 0 view .LVU410
+ 1350 0030 2F49     		ldr	r1, .L60+16
+ 1351 0032 A1FB0212 		umull	r1, r2, r1, r2
+ 1352 0036 D20A     		lsrs	r2, r2, #11
+  73:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1353              		.loc 1 73 27 view .LVU411
+ 1354 0038 2E49     		ldr	r1, .L60+20
+ 1355 003a 0A60     		str	r2, [r1]
+  75:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t cc2 = (10 * tim_period) / 15;
+ 1356              		.loc 1 75 2 is_stmt 1 view .LVU412
+  75:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t cc2 = (10 * tim_period) / 15;
+ 1357              		.loc 1 75 21 is_stmt 0 view .LVU413
+ 1358 003c 03EB8301 		add	r1, r3, r3, lsl #2
+ 1359 0040 4A00     		lsls	r2, r1, #1
+  75:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	uint32_t cc2 = (10 * tim_period) / 15;
+ 1360              		.loc 1 75 11 view .LVU414
+ 1361 0042 2D49     		ldr	r1, .L60+24
+ 1362 0044 A1FB0201 		umull	r0, r1, r1, r2
+ 1363 0048 CF08     		lsrs	r7, r1, #3
+ 1364              	.LVL77:
+  76:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1365              		.loc 1 76 2 is_stmt 1 view .LVU415
+  76:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1366              		.loc 1 76 11 is_stmt 0 view .LVU416
+ 1367 004a 2C49     		ldr	r1, .L60+28
+ 1368 004c A1FB0212 		umull	r1, r2, r1, r2
+ 1369 0050 D608     		lsrs	r6, r2, #3
+ 1370              	.LVL78:
+  78:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1371              		.loc 1 78 2 is_stmt 1 view .LVU417
+  78:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1372              		.loc 1 78 23 is_stmt 0 view .LVU418
+ 1373 0052 2B4D     		ldr	r5, .L60+32
+ 1374 0054 2B4A     		ldr	r2, .L60+36
+ 1375 0056 2A60     		str	r2, [r5]
+  80:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	TIM1_handle.Init.RepetitionCounter = 0;
+ 1376              		.loc 1 80 2 is_stmt 1 view .LVU419
+  80:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	TIM1_handle.Init.RepetitionCounter = 0;
+ 1377              		.loc 1 80 37 is_stmt 0 view .LVU420
+ 1378 0058 EB60     		str	r3, [r5, #12]
+  81:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	TIM1_handle.Init.Prescaler         = 0;
+ 1379              		.loc 1 81 2 is_stmt 1 view .LVU421
+  81:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	TIM1_handle.Init.Prescaler         = 0;
+ 1380              		.loc 1 81 37 is_stmt 0 view .LVU422
+ 1381 005a 6C61     		str	r4, [r5, #20]
+  82:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	TIM1_handle.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;
+ 1382              		.loc 1 82 2 is_stmt 1 view .LVU423
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 41
+
+
+  82:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	TIM1_handle.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;
+ 1383              		.loc 1 82 37 is_stmt 0 view .LVU424
+ 1384 005c 6C60     		str	r4, [r5, #4]
+  83:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	TIM1_handle.Init.CounterMode       = TIM_COUNTERMODE_UP;
+ 1385              		.loc 1 83 2 is_stmt 1 view .LVU425
+  83:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	TIM1_handle.Init.CounterMode       = TIM_COUNTERMODE_UP;
+ 1386              		.loc 1 83 37 is_stmt 0 view .LVU426
+ 1387 005e 2C61     		str	r4, [r5, #16]
+  84:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_TIM_PWM_Init(&TIM1_handle);
+ 1388              		.loc 1 84 2 is_stmt 1 view .LVU427
+  84:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_TIM_PWM_Init(&TIM1_handle);
+ 1389              		.loc 1 84 37 is_stmt 0 view .LVU428
+ 1390 0060 AC60     		str	r4, [r5, #8]
+  85:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1391              		.loc 1 85 2 is_stmt 1 view .LVU429
+ 1392 0062 2846     		mov	r0, r5
+ 1393 0064 FFF7FEFF 		bl	HAL_TIM_PWM_Init
+ 1394              	.LVL79:
+  87:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_NVIC_EnableIRQ(TIM1_UP_TIM10_IRQn);
+ 1395              		.loc 1 87 2 view .LVU430
+ 1396 0068 2246     		mov	r2, r4
+ 1397 006a 2146     		mov	r1, r4
+ 1398 006c 1920     		movs	r0, #25
+ 1399 006e FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 1400              	.LVL80:
+  88:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1401              		.loc 1 88 2 view .LVU431
+ 1402 0072 1920     		movs	r0, #25
+ 1403 0074 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 1404              	.LVL81:
+  90:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC1.OCPolarity   = TIM_OCPOLARITY_HIGH;
+ 1405              		.loc 1 90 2 view .LVU432
+  90:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC1.OCPolarity   = TIM_OCPOLARITY_HIGH;
+ 1406              		.loc 1 90 23 is_stmt 0 view .LVU433
+ 1407 0078 2349     		ldr	r1, .L60+40
+ 1408 007a 4FF06008 		mov	r8, #96
+ 1409 007e C1F80080 		str	r8, [r1]
+  91:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC1.Pulse        = cc1;
+ 1410              		.loc 1 91 2 is_stmt 1 view .LVU434
+  91:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC1.Pulse        = cc1;
+ 1411              		.loc 1 91 23 is_stmt 0 view .LVU435
+ 1412 0082 8C60     		str	r4, [r1, #8]
+  92:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC1.OCNPolarity  = TIM_OCNPOLARITY_HIGH;
+ 1413              		.loc 1 92 2 is_stmt 1 view .LVU436
+  92:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC1.OCNPolarity  = TIM_OCNPOLARITY_HIGH;
+ 1414              		.loc 1 92 23 is_stmt 0 view .LVU437
+ 1415 0084 4F60     		str	r7, [r1, #4]
+  93:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC1.OCFastMode   = TIM_OCFAST_DISABLE;
+ 1416              		.loc 1 93 2 is_stmt 1 view .LVU438
+  93:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC1.OCFastMode   = TIM_OCFAST_DISABLE;
+ 1417              		.loc 1 93 23 is_stmt 0 view .LVU439
+ 1418 0086 CC60     		str	r4, [r1, #12]
+  94:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_TIM_PWM_ConfigChannel(&TIM1_handle, &tim2OC1, TIM_CHANNEL_1);
+ 1419              		.loc 1 94 2 is_stmt 1 view .LVU440
+  94:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_TIM_PWM_ConfigChannel(&TIM1_handle, &tim2OC1, TIM_CHANNEL_1);
+ 1420              		.loc 1 94 23 is_stmt 0 view .LVU441
+ 1421 0088 0C61     		str	r4, [r1, #16]
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 42
+
+
+  95:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1422              		.loc 1 95 2 is_stmt 1 view .LVU442
+ 1423 008a 2246     		mov	r2, r4
+ 1424 008c 2846     		mov	r0, r5
+ 1425 008e FFF7FEFF 		bl	HAL_TIM_PWM_ConfigChannel
+ 1426              	.LVL82:
+  97:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.OCPolarity   = TIM_OCPOLARITY_HIGH;
+ 1427              		.loc 1 97 2 view .LVU443
+  97:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.OCPolarity   = TIM_OCPOLARITY_HIGH;
+ 1428              		.loc 1 97 23 is_stmt 0 view .LVU444
+ 1429 0092 1E49     		ldr	r1, .L60+44
+ 1430 0094 C1F80080 		str	r8, [r1]
+  98:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.Pulse        = cc2;
+ 1431              		.loc 1 98 2 is_stmt 1 view .LVU445
+  98:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.Pulse        = cc2;
+ 1432              		.loc 1 98 23 is_stmt 0 view .LVU446
+ 1433 0098 8C60     		str	r4, [r1, #8]
+  99:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.OCNPolarity  = TIM_OCNPOLARITY_HIGH;
+ 1434              		.loc 1 99 2 is_stmt 1 view .LVU447
+  99:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.OCNPolarity  = TIM_OCNPOLARITY_HIGH;
+ 1435              		.loc 1 99 23 is_stmt 0 view .LVU448
+ 1436 009a 4E60     		str	r6, [r1, #4]
+ 100:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.OCFastMode   = TIM_OCFAST_DISABLE;
+ 1437              		.loc 1 100 2 is_stmt 1 view .LVU449
+ 100:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.OCFastMode   = TIM_OCFAST_DISABLE;
+ 1438              		.loc 1 100 23 is_stmt 0 view .LVU450
+ 1439 009c CC60     		str	r4, [r1, #12]
+ 101:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.OCIdleState  = TIM_OCIDLESTATE_RESET;
+ 1440              		.loc 1 101 2 is_stmt 1 view .LVU451
+ 101:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.OCIdleState  = TIM_OCIDLESTATE_RESET;
+ 1441              		.loc 1 101 23 is_stmt 0 view .LVU452
+ 1442 009e 0C61     		str	r4, [r1, #16]
+ 102:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+ 1443              		.loc 1 102 2 is_stmt 1 view .LVU453
+ 102:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	tim2OC2.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+ 1444              		.loc 1 102 23 is_stmt 0 view .LVU454
+ 1445 00a0 4C61     		str	r4, [r1, #20]
+ 103:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_TIM_PWM_ConfigChannel(&TIM1_handle, &tim2OC2, TIM_CHANNEL_2);
+ 1446              		.loc 1 103 2 is_stmt 1 view .LVU455
+ 103:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_TIM_PWM_ConfigChannel(&TIM1_handle, &tim2OC2, TIM_CHANNEL_2);
+ 1447              		.loc 1 103 23 is_stmt 0 view .LVU456
+ 1448 00a2 8C61     		str	r4, [r1, #24]
+ 104:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1449              		.loc 1 104 2 is_stmt 1 view .LVU457
+ 1450 00a4 0422     		movs	r2, #4
+ 1451 00a6 2846     		mov	r0, r5
+ 1452 00a8 FFF7FEFF 		bl	HAL_TIM_PWM_ConfigChannel
+ 1453              	.LVL83:
+ 107:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	HAL_TIM_PWM_Start(&TIM1_handle, TIM_CHANNEL_1);
+ 1454              		.loc 1 107 2 view .LVU458
+ 1455 00ac 2846     		mov	r0, r5
+ 1456 00ae FFF7FEFF 		bl	HAL_TIM_Base_Start
+ 1457              	.LVL84:
+ 108:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1458              		.loc 1 108 2 view .LVU459
+ 1459 00b2 2146     		mov	r1, r4
+ 1460 00b4 2846     		mov	r0, r5
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 43
+
+
+ 1461 00b6 FFF7FEFF 		bl	HAL_TIM_PWM_Start
+ 1462              	.LVL85:
+ 110:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1463              		.loc 1 110 2 view .LVU460
+ 110:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1464              		.loc 1 110 2 view .LVU461
+ 1465 00ba 2B68     		ldr	r3, [r5]
+ 1466 00bc 196A     		ldr	r1, [r3, #32]
+ 1467 00be 41F21112 		movw	r2, #4369
+ 1468 00c2 1142     		tst	r1, r2
+ 1469 00c4 08D1     		bne	.L57
+ 110:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1470              		.loc 1 110 2 discriminator 1 view .LVU462
+ 1471 00c6 196A     		ldr	r1, [r3, #32]
+ 1472 00c8 40F24442 		movw	r2, #1092
+ 1473 00cc 1142     		tst	r1, r2
+ 1474 00ce 03D1     		bne	.L57
+ 110:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1475              		.loc 1 110 2 discriminator 3 view .LVU463
+ 1476 00d0 1A68     		ldr	r2, [r3]
+ 1477 00d2 22F00102 		bic	r2, r2, #1
+ 1478 00d6 1A60     		str	r2, [r3]
+ 110:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1479              		.loc 1 110 2 discriminator 3 view .LVU464
+ 1480              	.L57:
+ 112:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1481              		.loc 1 112 1 is_stmt 0 view .LVU465
+ 1482 00d8 02B0     		add	sp, sp, #8
+ 1483              	.LCFI23:
+ 1484              		.cfi_def_cfa_offset 24
+ 1485              		@ sp needed
+ 1486 00da BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 1487              	.LVL86:
+ 1488              	.L61:
+ 112:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1489              		.loc 1 112 1 view .LVU466
+ 1490 00de 00BF     		.align	2
+ 1491              	.L60:
+ 1492 00e0 00380240 		.word	1073887232
+ 1493 00e4 00000000 		.word	SystemCoreClock
+ 1494 00e8 598B4F01 		.word	21990233
+ 1495 00ec 00000000 		.word	.LANCHOR9
+ 1496 00f0 B5814E1B 		.word	458129845
+ 1497 00f4 00000000 		.word	.LANCHOR7
+ 1498 00f8 398EE338 		.word	954437177
+ 1499 00fc 89888888 		.word	-2004318071
+ 1500 0100 00000000 		.word	.LANCHOR6
+ 1501 0104 00000140 		.word	1073807360
+ 1502 0108 00000000 		.word	.LANCHOR11
+ 1503 010c 00000000 		.word	.LANCHOR12
+ 1504              		.cfi_endproc
+ 1505              	.LFE131:
+ 1507              		.section	.text.DMA2_Stream2_IRQHandler,"ax",%progbits
+ 1508              		.align	1
+ 1509              		.global	DMA2_Stream2_IRQHandler
+ 1510              		.syntax unified
+ 1511              		.thumb
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 44
+
+
+ 1512              		.thumb_func
+ 1513              		.fpu fpv4-sp-d16
+ 1515              	DMA2_Stream2_IRQHandler:
+ 1516              	.LFB138:
+ 379:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1517              		.loc 1 379 1 is_stmt 1 view -0
+ 1518              		.cfi_startproc
+ 1519              		@ args = 0, pretend = 0, frame = 0
+ 1520              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1521 0000 10B5     		push	{r4, lr}
+ 1522              	.LCFI24:
+ 1523              		.cfi_def_cfa_offset 8
+ 1524              		.cfi_offset 4, -8
+ 1525              		.cfi_offset 14, -4
+ 382:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 1526              		.loc 1 382 3 view .LVU468
+ 382:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 1527              		.loc 1 382 23 is_stmt 0 view .LVU469
+ 1528 0002 054C     		ldr	r4, .L64
+ 1529 0004 4FF40043 		mov	r3, #32768
+ 1530 0008 A361     		str	r3, [r4, #24]
+ 386:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1531              		.loc 1 386 4 is_stmt 1 view .LVU470
+ 1532 000a 0448     		ldr	r0, .L64+4
+ 1533 000c FFF7FEFF 		bl	HAL_DMA_IRQHandler
+ 1534              	.LVL87:
+ 389:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 1535              		.loc 1 389 3 view .LVU471
+ 389:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 1536              		.loc 1 389 23 is_stmt 0 view .LVU472
+ 1537 0010 4FF00043 		mov	r3, #-2147483648
+ 1538 0014 A361     		str	r3, [r4, #24]
+ 391:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1539              		.loc 1 391 1 view .LVU473
+ 1540 0016 10BD     		pop	{r4, pc}
+ 1541              	.L65:
+ 1542              		.align	2
+ 1543              	.L64:
+ 1544 0018 000C0240 		.word	1073875968
+ 1545 001c 00000000 		.word	.LANCHOR5
+ 1546              		.cfi_endproc
+ 1547              	.LFE138:
+ 1549              		.section	.text.TIM1_UP_TIM10_IRQHandler,"ax",%progbits
+ 1550              		.align	1
+ 1551              		.global	TIM1_UP_TIM10_IRQHandler
+ 1552              		.syntax unified
+ 1553              		.thumb
+ 1554              		.thumb_func
+ 1555              		.fpu fpv4-sp-d16
+ 1557              	TIM1_UP_TIM10_IRQHandler:
+ 1558              	.LFB139:
+ 394:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#if defined(LED_ORANGE_PORT)
+ 1559              		.loc 1 394 1 is_stmt 1 view -0
+ 1560              		.cfi_startproc
+ 1561              		@ args = 0, pretend = 0, frame = 0
+ 1562              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1563 0000 10B5     		push	{r4, lr}
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 45
+
+
+ 1564              	.LCFI25:
+ 1565              		.cfi_def_cfa_offset 8
+ 1566              		.cfi_offset 4, -8
+ 1567              		.cfi_offset 14, -4
+ 396:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 1568              		.loc 1 396 3 view .LVU475
+ 396:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 1569              		.loc 1 396 25 is_stmt 0 view .LVU476
+ 1570 0002 054C     		ldr	r4, .L68
+ 1571 0004 4FF40053 		mov	r3, #8192
+ 1572 0008 A361     		str	r3, [r4, #24]
+ 399:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1573              		.loc 1 399 2 is_stmt 1 view .LVU477
+ 1574 000a 0448     		ldr	r0, .L68+4
+ 1575 000c FFF7FEFF 		bl	HAL_TIM_IRQHandler
+ 1576              	.LVL88:
+ 402:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 1577              		.loc 1 402 3 view .LVU478
+ 402:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	#endif
+ 1578              		.loc 1 402 25 is_stmt 0 view .LVU479
+ 1579 0010 4FF00053 		mov	r3, #536870912
+ 1580 0014 A361     		str	r3, [r4, #24]
+ 404:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1581              		.loc 1 404 1 view .LVU480
+ 1582 0016 10BD     		pop	{r4, pc}
+ 1583              	.L69:
+ 1584              		.align	2
+ 1585              	.L68:
+ 1586 0018 000C0240 		.word	1073875968
+ 1587 001c 00000000 		.word	.LANCHOR6
+ 1588              		.cfi_endproc
+ 1589              	.LFE139:
+ 1591              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
+ 1592              		.align	1
+ 1593              		.global	HAL_TIM_PeriodElapsedCallback
+ 1594              		.syntax unified
+ 1595              		.thumb
+ 1596              		.thumb_func
+ 1597              		.fpu fpv4-sp-d16
+ 1599              	HAL_TIM_PeriodElapsedCallback:
+ 1600              	.LVL89:
+ 1601              	.LFB140:
+ 408:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	/*
+ 1602              		.loc 1 408 1 is_stmt 1 view -0
+ 1603              		.cfi_startproc
+ 1604              		@ args = 0, pretend = 0, frame = 0
+ 1605              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1606              		@ link register save eliminated.
+ 427:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     TIM1->CR1 = 0; // disable timer
+ 1607              		.loc 1 427 5 view .LVU482
+ 427:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     TIM1->CR1 = 0; // disable timer
+ 1608              		.loc 1 427 32 is_stmt 0 view .LVU483
+ 1609 0000 0A48     		ldr	r0, .L71
+ 1610              	.LVL90:
+ 427:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     TIM1->CR1 = 0; // disable timer
+ 1611              		.loc 1 427 32 view .LVU484
+ 1612 0002 0023     		movs	r3, #0
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 46
+
+
+ 1613 0004 4363     		str	r3, [r0, #52]
+ 428:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1614              		.loc 1 428 5 is_stmt 1 view .LVU485
+ 428:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1615              		.loc 1 428 15 is_stmt 0 view .LVU486
+ 1616 0006 0A4A     		ldr	r2, .L71+4
+ 1617 0008 1360     		str	r3, [r2]
+ 431:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1618              		.loc 1 431 5 is_stmt 1 view .LVU487
+ 1619 000a 0A4B     		ldr	r3, .L71+8
+ 1620 000c 1B68     		ldr	r3, [r3]
+ 1621 000e D968     		ldr	r1, [r3, #12]
+ 1622 0010 21F00101 		bic	r1, r1, #1
+ 1623 0014 D960     		str	r1, [r3, #12]
+ 434:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1624              		.loc 1 434 5 view .LVU488
+ 434:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1625              		.loc 1 434 15 is_stmt 0 view .LVU489
+ 1626 0016 0849     		ldr	r1, .L71+12
+ 1627 0018 0968     		ldr	r1, [r1]
+ 1628 001a D162     		str	r1, [r2, #44]
+ 437:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     __HAL_TIM_CLEAR_FLAG(&TIM1_handle, TIM_FLAG_UPDATE);
+ 1629              		.loc 1 437 5 is_stmt 1 view .LVU490
+ 437:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c ****     __HAL_TIM_CLEAR_FLAG(&TIM1_handle, TIM_FLAG_UPDATE);
+ 1630              		.loc 1 437 15 is_stmt 0 view .LVU491
+ 1631 001c 0121     		movs	r1, #1
+ 1632 001e 5161     		str	r1, [r2, #20]
+ 438:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1633              		.loc 1 438 5 is_stmt 1 view .LVU492
+ 1634 0020 6FF00102 		mvn	r2, #1
+ 1635 0024 1A61     		str	r2, [r3, #16]
+ 441:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1636              		.loc 1 441 5 view .LVU493
+ 441:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1637              		.loc 1 441 30 is_stmt 0 view .LVU494
+ 1638 0026 80F83010 		strb	r1, [r0, #48]
+ 443:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 1639              		.loc 1 443 1 view .LVU495
+ 1640 002a 7047     		bx	lr
+ 1641              	.L72:
+ 1642              		.align	2
+ 1643              	.L71:
+ 1644 002c 00000000 		.word	.LANCHOR2
+ 1645 0030 00000140 		.word	1073807360
+ 1646 0034 00000000 		.word	.LANCHOR6
+ 1647 0038 00000000 		.word	.LANCHOR9
+ 1648              		.cfi_endproc
+ 1649              	.LFE140:
+ 1651              		.section	.text.ws2812b_init,"ax",%progbits
+ 1652              		.align	1
+ 1653              		.global	ws2812b_init
+ 1654              		.syntax unified
+ 1655              		.thumb
+ 1656              		.thumb_func
+ 1657              		.fpu fpv4-sp-d16
+ 1659              	ws2812b_init:
+ 1660              	.LFB142:
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 47
+
+
+ 613:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 614:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 615:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** void ws2812b_init()
+ 616:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** {
+ 1661              		.loc 1 616 1 is_stmt 1 view -0
+ 1662              		.cfi_startproc
+ 1663              		@ args = 0, pretend = 0, frame = 0
+ 1664              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1665 0000 08B5     		push	{r3, lr}
+ 1666              	.LCFI26:
+ 1667              		.cfi_def_cfa_offset 8
+ 1668              		.cfi_offset 3, -8
+ 1669              		.cfi_offset 14, -4
+ 617:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812b_gpio_init();
+ 1670              		.loc 1 617 2 view .LVU497
+ 1671 0002 FFF7FEFF 		bl	ws2812b_gpio_init
+ 1672              	.LVL91:
+ 618:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 619:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	/*TIM2_init();
+ 620:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	DMA_init();*/
+ 621:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 622:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 623:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	DMA2_init();
+ 1673              		.loc 1 623 2 view .LVU498
+ 1674 0006 FFF7FEFF 		bl	DMA2_init
+ 1675              	.LVL92:
+ 624:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	TIM1_init();
+ 1676              		.loc 1 624 2 view .LVU499
+ 1677 000a FFF7FEFF 		bl	TIM1_init
+ 1678              	.LVL93:
+ 625:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 626:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 627:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	// Need to start the first transfer
+ 628:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	ws2812b.transferComplete = 1;
+ 1679              		.loc 1 628 2 view .LVU500
+ 1680              		.loc 1 628 27 is_stmt 0 view .LVU501
+ 1681 000e 024B     		ldr	r3, .L75
+ 1682 0010 0122     		movs	r2, #1
+ 1683 0012 83F83020 		strb	r2, [r3, #48]
+ 629:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }
+ 1684              		.loc 1 629 1 view .LVU502
+ 1685 0016 08BD     		pop	{r3, pc}
+ 1686              	.L76:
+ 1687              		.align	2
+ 1688              	.L75:
+ 1689 0018 00000000 		.word	.LANCHOR2
+ 1690              		.cfi_endproc
+ 1691              	.LFE142:
+ 1693              		.section	.text.ws2812b_handle,"ax",%progbits
+ 1694              		.align	1
+ 1695              		.global	ws2812b_handle
+ 1696              		.syntax unified
+ 1697              		.thumb
+ 1698              		.thumb_func
+ 1699              		.fpu fpv4-sp-d16
+ 1701              	ws2812b_handle:
+ 1702              	.LFB143:
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 48
+
+
+ 630:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 631:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 632:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** void ws2812b_handle()
+ 633:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** {
+ 1703              		.loc 1 633 1 is_stmt 1 view -0
+ 1704              		.cfi_startproc
+ 1705              		@ args = 0, pretend = 0, frame = 0
+ 1706              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1707 0000 08B5     		push	{r3, lr}
+ 1708              	.LCFI27:
+ 1709              		.cfi_def_cfa_offset 8
+ 1710              		.cfi_offset 3, -8
+ 1711              		.cfi_offset 14, -4
+ 634:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	if(ws2812b.startTransfer) {
+ 1712              		.loc 1 634 2 view .LVU504
+ 1713              		.loc 1 634 12 is_stmt 0 view .LVU505
+ 1714 0002 064B     		ldr	r3, .L81
+ 1715 0004 93F83130 		ldrb	r3, [r3, #49]	@ zero_extendqisi2
+ 1716              		.loc 1 634 4 view .LVU506
+ 1717 0008 03B9     		cbnz	r3, .L80
+ 1718              	.L77:
+ 635:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		ws2812b.startTransfer = 0;
+ 636:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		WS2812_sendbuf();
+ 637:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 	}
+ 638:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 
+ 639:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** }...
+ 1719              		.loc 1 639 1 view .LVU507
+ 1720 000a 08BD     		pop	{r3, pc}
+ 1721              	.L80:
+ 635:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		ws2812b.startTransfer = 0;
+ 1722              		.loc 1 635 3 is_stmt 1 view .LVU508
+ 635:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		ws2812b.startTransfer = 0;
+ 1723              		.loc 1 635 25 is_stmt 0 view .LVU509
+ 1724 000c 034B     		ldr	r3, .L81
+ 1725 000e 0022     		movs	r2, #0
+ 1726 0010 83F83120 		strb	r2, [r3, #49]
+ 636:Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c **** 		WS2812_sendbuf();
+ 1727              		.loc 1 636 3 is_stmt 1 view .LVU510
+ 1728 0014 FFF7FEFF 		bl	WS2812_sendbuf
+ 1729              	.LVL94:
+ 1730              		.loc 1 639 1 is_stmt 0 view .LVU511
+ 1731 0018 F7E7     		b	.L77
+ 1732              	.L82:
+ 1733 001a 00BF     		.align	2
+ 1734              	.L81:
+ 1735 001c 00000000 		.word	.LANCHOR2
+ 1736              		.cfi_endproc
+ 1737              	.LFE143:
+ 1739              		.global	dummy
+ 1740              		.global	dmaCC2
+ 1741              		.global	dmaCC1
+ 1742              		.global	dmaUpdate
+ 1743              		.global	timer_reset_pulse_period
+ 1744              		.global	tim_period
+ 1745              		.global	tim2OC2
+ 1746              		.global	tim2OC1
+ 1747              		.global	TIM1_handle
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 49
+
+
+ 1748              		.global	gammaTable
+ 1749              		.global	ws2812bDmaBitBuffer
+ 1750              		.global	WS2812_IO_Low
+ 1751              		.global	WS2812_IO_High
+ 1752              		.global	ws2812b
+ 1753              		.section	.bss.TIM1_handle,"aw",%nobits
+ 1754              		.align	2
+ 1755              		.set	.LANCHOR6,. + 0
+ 1758              	TIM1_handle:
+ 1759 0000 00000000 		.space	72
+ 1759      00000000 
+ 1759      00000000 
+ 1759      00000000 
+ 1759      00000000 
+ 1760              		.section	.bss.dmaCC1,"aw",%nobits
+ 1761              		.align	2
+ 1762              		.set	.LANCHOR4,. + 0
+ 1765              	dmaCC1:
+ 1766 0000 00000000 		.space	96
+ 1766      00000000 
+ 1766      00000000 
+ 1766      00000000 
+ 1766      00000000 
+ 1767              		.section	.bss.dmaCC2,"aw",%nobits
+ 1768              		.align	2
+ 1769              		.set	.LANCHOR5,. + 0
+ 1772              	dmaCC2:
+ 1773 0000 00000000 		.space	96
+ 1773      00000000 
+ 1773      00000000 
+ 1773      00000000 
+ 1773      00000000 
+ 1774              		.section	.bss.dmaUpdate,"aw",%nobits
+ 1775              		.align	2
+ 1776              		.set	.LANCHOR3,. + 0
+ 1779              	dmaUpdate:
+ 1780 0000 00000000 		.space	96
+ 1780      00000000 
+ 1780      00000000 
+ 1780      00000000 
+ 1780      00000000 
+ 1781              		.section	.bss.dummy,"aw",%nobits
+ 1782              		.align	2
+ 1785              	dummy:
+ 1786 0000 00000000 		.space	4
+ 1787              		.section	.bss.tim2OC1,"aw",%nobits
+ 1788              		.align	2
+ 1789              		.set	.LANCHOR11,. + 0
+ 1792              	tim2OC1:
+ 1793 0000 00000000 		.space	28
+ 1793      00000000 
+ 1793      00000000 
+ 1793      00000000 
+ 1793      00000000 
+ 1794              		.section	.bss.tim2OC2,"aw",%nobits
+ 1795              		.align	2
+ 1796              		.set	.LANCHOR12,. + 0
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 50
+
+
+ 1799              	tim2OC2:
+ 1800 0000 00000000 		.space	28
+ 1800      00000000 
+ 1800      00000000 
+ 1800      00000000 
+ 1800      00000000 
+ 1801              		.section	.bss.tim_period,"aw",%nobits
+ 1802              		.align	2
+ 1803              		.set	.LANCHOR9,. + 0
+ 1806              	tim_period:
+ 1807 0000 00000000 		.space	4
+ 1808              		.section	.bss.timer_reset_pulse_period,"aw",%nobits
+ 1809              		.align	2
+ 1810              		.set	.LANCHOR7,. + 0
+ 1813              	timer_reset_pulse_period:
+ 1814 0000 00000000 		.space	4
+ 1815              		.section	.bss.ws2812b,"aw",%nobits
+ 1816              		.align	2
+ 1817              		.set	.LANCHOR2,. + 0
+ 1820              	ws2812b:
+ 1821 0000 00000000 		.space	60
+ 1821      00000000 
+ 1821      00000000 
+ 1821      00000000 
+ 1821      00000000 
+ 1822              		.section	.bss.ws2812bDmaBitBuffer,"aw",%nobits
+ 1823              		.align	2
+ 1824              		.set	.LANCHOR1,. + 0
+ 1827              	ws2812bDmaBitBuffer:
+ 1828 0000 00000000 		.space	96
+ 1828      00000000 
+ 1828      00000000 
+ 1828      00000000 
+ 1828      00000000 
+ 1829              		.section	.data.WS2812_IO_High,"aw"
+ 1830              		.align	2
+ 1831              		.set	.LANCHOR10,. + 0
+ 1834              	WS2812_IO_High:
+ 1835 0000 0F000000 		.word	15
+ 1836              		.section	.data.WS2812_IO_Low,"aw"
+ 1837              		.align	2
+ 1838              		.set	.LANCHOR8,. + 0
+ 1841              	WS2812_IO_Low:
+ 1842 0000 00000F00 		.word	983040
+ 1843              		.section	.rodata.gammaTable,"a"
+ 1844              		.align	2
+ 1845              		.set	.LANCHOR0,. + 0
+ 1848              	gammaTable:
+ 1849 0000 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1849      00000000 
+ 1849      00000000 
+ 1849      00
+ 1850 000d 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1850      00000000 
+ 1850      00000000 
+ 1850      00
+ 1851 001a 00000101 		.ascii	"\000\000\001\001\001\001\001\001\001\001\001\001\001"
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 51
+
+
+ 1851      01010101 
+ 1851      01010101 
+ 1851      01
+ 1852 0027 01010202 		.ascii	"\001\001\002\002\002\002\002\002\002\002\003\003\003"
+ 1852      02020202 
+ 1852      02020303 
+ 1852      03
+ 1853 0034 03030303 		.ascii	"\003\003\003\003\004\004\004\004\004\005\005\005\005"
+ 1853      04040404 
+ 1853      04050505 
+ 1853      05
+ 1854 0041 06060606 		.ascii	"\006\006\006\006\007\007\007\007\010\010\010\011\011"
+ 1854      07070707 
+ 1854      08080809 
+ 1854      09
+ 1855 004e 090A0A0A 		.ascii	"\011\012\012\012\013\013\013\014\014\015\015\015\016"
+ 1855      0B0B0B0C 
+ 1855      0C0D0D0D 
+ 1855      0E
+ 1856 005b 0E0F0F10 		.ascii	"\016\017\017\020\020\021\021\022\022\023\023\024\024"
+ 1856      10111112 
+ 1856      12131314 
+ 1856      14
+ 1857 0068 15151616 		.ascii	"\025\025\026\026\027\030\030\031\031\032\033\033\034"
+ 1857      17181819 
+ 1857      191A1B1B 
+ 1857      1C
+ 1858 0075 1D1D1E1F 		.ascii	"\035\035\036\037  !\"##$%&''()*+,-./0122346789:;<=>"
+ 1858      20202122 
+ 1858      23232425 
+ 1858      26272728 
+ 1858      292A2B2C 
+ 1859 009b 3F404243 		.ascii	"?@BCDEFHIJKMNOQRSUVWYZ\\]_`bcefhikmnprsuwxz|~\177\201"
+ 1859      44454648 
+ 1859      494A4B4D 
+ 1859      4E4F5152 
+ 1859      53555657 
+ 1860 00c9 83858789 		.ascii	"\203\205\207\211\212\214\216\220\222\224\226\230\232"
+ 1860      8A8C8E90 
+ 1860      92949698 
+ 1860      9A
+ 1861 00d6 9C9EA0A2 		.ascii	"\234\236\240\242\244\247\251\253\255\257\261\264\266"
+ 1861      A4A7A9AB 
+ 1861      ADAFB1B4 
+ 1861      B6
+ 1862 00e3 B8BABDBF 		.ascii	"\270\272\275\277\301\304\306\310\313\315\320\322\325"
+ 1862      C1C4C6C8 
+ 1862      CBCDD0D2 
+ 1862      D5
+ 1863 00f0 D7DADCDF 		.ascii	"\327\332\334\337\341\344\347\351\354\357\361\364\367"
+ 1863      E1E4E7E9 
+ 1863      ECEFF1F4 
+ 1863      F7
+ 1864 00fd F9FCFF   		.ascii	"\371\374\377"
+ 1865              		.text
+ 1866              	.Letext0:
+ 1867              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 52
+
+
+ 1868              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 1869              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 1870              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1871              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 1872              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1873              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 1874              		.file 9 "Core/Src/NOS_LIB_Driver/Inc/WS2812B_Core.h"
+ 1875              		.file 10 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 1876              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 53
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 WS2812B_Core.c
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:18     .text.DMA_TransferError:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:26     .text.DMA_TransferError:0000000000000000 DMA_TransferError
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:58     .text.ws2812b_set_pixel:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:64     .text.ws2812b_set_pixel:0000000000000000 ws2812b_set_pixel
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:296    .text.ws2812b_set_pixel:00000000000000bc $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:302    .text.loadNextFramebufferData:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:308    .text.loadNextFramebufferData:0000000000000000 loadNextFramebufferData
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:388    .text.DMA_TransferCompleteHandler:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:395    .text.DMA_TransferCompleteHandler:0000000000000000 DMA_TransferCompleteHandler
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:554    .text.DMA_TransferCompleteHandler:00000000000000c0 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:568    .text.WS2812_sendbuf:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:574    .text.WS2812_sendbuf:0000000000000000 WS2812_sendbuf
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:796    .text.WS2812_sendbuf:0000000000000144 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:811    .text.DMA_TransferHalfHandler:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:818    .text.DMA_TransferHalfHandler:0000000000000000 DMA_TransferHalfHandler
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:896    .text.DMA_TransferHalfHandler:0000000000000040 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:901    .text.ws2812b_gpio_init:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:907    .text.ws2812b_gpio_init:0000000000000000 ws2812b_gpio_init
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1015   .text.ws2812b_gpio_init:0000000000000070 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1021   .text.DMA2_init:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1027   .text.DMA2_init:0000000000000000 DMA2_init
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1276   .text.DMA2_init:0000000000000124 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1295   .text.TIM1_init:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1301   .text.TIM1_init:0000000000000000 TIM1_init
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1492   .text.TIM1_init:00000000000000e0 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1508   .text.DMA2_Stream2_IRQHandler:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1515   .text.DMA2_Stream2_IRQHandler:0000000000000000 DMA2_Stream2_IRQHandler
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1544   .text.DMA2_Stream2_IRQHandler:0000000000000018 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1550   .text.TIM1_UP_TIM10_IRQHandler:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1557   .text.TIM1_UP_TIM10_IRQHandler:0000000000000000 TIM1_UP_TIM10_IRQHandler
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1586   .text.TIM1_UP_TIM10_IRQHandler:0000000000000018 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1592   .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1599   .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 HAL_TIM_PeriodElapsedCallback
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1644   .text.HAL_TIM_PeriodElapsedCallback:000000000000002c $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1652   .text.ws2812b_init:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1659   .text.ws2812b_init:0000000000000000 ws2812b_init
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1689   .text.ws2812b_init:0000000000000018 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1694   .text.ws2812b_handle:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1701   .text.ws2812b_handle:0000000000000000 ws2812b_handle
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1735   .text.ws2812b_handle:000000000000001c $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1785   .bss.dummy:0000000000000000 dummy
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1772   .bss.dmaCC2:0000000000000000 dmaCC2
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1765   .bss.dmaCC1:0000000000000000 dmaCC1
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1779   .bss.dmaUpdate:0000000000000000 dmaUpdate
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1813   .bss.timer_reset_pulse_period:0000000000000000 timer_reset_pulse_period
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1806   .bss.tim_period:0000000000000000 tim_period
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1799   .bss.tim2OC2:0000000000000000 tim2OC2
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1792   .bss.tim2OC1:0000000000000000 tim2OC1
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1758   .bss.TIM1_handle:0000000000000000 TIM1_handle
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1848   .rodata.gammaTable:0000000000000000 gammaTable
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1827   .bss.ws2812bDmaBitBuffer:0000000000000000 ws2812bDmaBitBuffer
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1841   .data.WS2812_IO_Low:0000000000000000 WS2812_IO_Low
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1834   .data.WS2812_IO_High:0000000000000000 WS2812_IO_High
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1820   .bss.ws2812b:0000000000000000 ws2812b
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1754   .bss.TIM1_handle:0000000000000000 $d
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccO5Q55j.s 			page 54
+
+
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1761   .bss.dmaCC1:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1768   .bss.dmaCC2:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1775   .bss.dmaUpdate:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1782   .bss.dummy:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1788   .bss.tim2OC1:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1795   .bss.tim2OC2:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1802   .bss.tim_period:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1809   .bss.timer_reset_pulse_period:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1816   .bss.ws2812b:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1823   .bss.ws2812bDmaBitBuffer:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1830   .data.WS2812_IO_High:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1837   .data.WS2812_IO_Low:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccO5Q55j.s:1844   .rodata.gammaTable:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_Init
+HAL_DMA_DeInit
+HAL_DMA_Init
+HAL_DMA_Start
+HAL_NVIC_SetPriority
+HAL_NVIC_EnableIRQ
+HAL_DMA_Start_IT
+HAL_TIM_PWM_Init
+HAL_TIM_PWM_ConfigChannel
+HAL_TIM_Base_Start
+HAL_TIM_PWM_Start
+SystemCoreClock
+HAL_DMA_IRQHandler
+HAL_TIM_IRQHandler

@@ -20,6 +20,7 @@
       "name": "STM32",
       "includePath": [
         "Core/Inc",
+        "Core/Src/NOS_LIB_Driver/Inc",
         "Drivers/CMSIS/Device/ST/STM32F4xx/Include",
         "Drivers/CMSIS/Include",
         "Drivers/STM32F4xx_HAL_Driver/Inc",

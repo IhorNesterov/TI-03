@@ -32,7 +32,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "../Src/NOS_LIB_Driver/Inc/NOS_Lib.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

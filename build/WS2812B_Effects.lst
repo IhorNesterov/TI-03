@@ -1,0 +1,249 @@
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccZqgBsb.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"WS2812B_Effects.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.visInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	visInit
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	visInit:
+  27              	.LFB130:
+  28              		.file 1 "Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c"
+   1:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** #include <stdint.h>
+   2:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 
+   3:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** #include "stm32f4xx_hal.h"
+   4:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** #include "WS2812B_Core.h"
+   5:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** #include <stdlib.h>
+   6:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** extern WS2812_Struct ws2812b;
+   7:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** // RGB Framebuffers
+   8:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** uint8_t frameBuffer1[3*8*96];
+   9:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** uint8_t frameBuffer2[3*8*64];
+  10:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** uint8_t frameBuffer3[3*8*32];
+  11:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 
+  12:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** // Helper defines
+  13:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** #define newColor(r, g, b) (((uint32_t)(r) << 16) | ((uint32_t)(g) <<  8) | (b))
+  14:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** #define Red(c) ((uint8_t)((c >> 16) & 0xFF))
+  15:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** #define Green(c) ((uint8_t)((c >> 8) & 0xFF))
+  16:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** #define Blue(c) ((uint8_t)(c & 0xFF))
+  17:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 
+  18:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** void visInit()
+  19:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** {
+  29              		.loc 1 19 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  20:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 		// Set output channel/pin, GPIO_PIN_0 = 0, for GPIO_PIN_5 = 5 - this has to correspond to WS2812B
+  21:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 		ws2812b.item[0].channel = 1;
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccZqgBsb.s 			page 2
+
+
+  38              		.loc 1 21 3 view .LVU1
+  39              		.loc 1 21 27 is_stmt 0 view .LVU2
+  40 0002 0D4B     		ldr	r3, .L3
+  41 0004 0122     		movs	r2, #1
+  42 0006 1A73     		strb	r2, [r3, #12]
+  22:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 		ws2812b.item[0].frameBufferPointer = frameBuffer1;
+  43              		.loc 1 22 3 is_stmt 1 view .LVU3
+  44              		.loc 1 22 38 is_stmt 0 view .LVU4
+  45 0008 0C4A     		ldr	r2, .L3+4
+  46 000a 1A60     		str	r2, [r3]
+  23:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 	    ws2812b.item[0].frameBufferSize = sizeof(frameBuffer1);
+  47              		.loc 1 23 6 is_stmt 1 view .LVU5
+  48              		.loc 1 23 38 is_stmt 0 view .LVU6
+  49 000c 4FF41062 		mov	r2, #2304
+  50 0010 5A60     		str	r2, [r3, #4]
+  24:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 		ws2812b.item[1].channel = 2;
+  51              		.loc 1 24 3 is_stmt 1 view .LVU7
+  52              		.loc 1 24 27 is_stmt 0 view .LVU8
+  53 0012 0222     		movs	r2, #2
+  54 0014 1A77     		strb	r2, [r3, #28]
+  25:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 		ws2812b.item[1].frameBufferPointer = frameBuffer2;
+  55              		.loc 1 25 3 is_stmt 1 view .LVU9
+  56              		.loc 1 25 38 is_stmt 0 view .LVU10
+  57 0016 0A4A     		ldr	r2, .L3+8
+  58 0018 1A61     		str	r2, [r3, #16]
+  26:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 	    ws2812b.item[1].frameBufferSize = sizeof(frameBuffer2);
+  59              		.loc 1 26 6 is_stmt 1 view .LVU11
+  60              		.loc 1 26 38 is_stmt 0 view .LVU12
+  61 001a 4FF4C062 		mov	r2, #1536
+  62 001e 5A61     		str	r2, [r3, #20]
+  27:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 		ws2812b.item[2].channel = 3;
+  63              		.loc 1 27 3 is_stmt 1 view .LVU13
+  64              		.loc 1 27 27 is_stmt 0 view .LVU14
+  65 0020 0322     		movs	r2, #3
+  66 0022 83F82C20 		strb	r2, [r3, #44]
+  28:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 		ws2812b.item[2].frameBufferPointer = frameBuffer3;
+  67              		.loc 1 28 3 is_stmt 1 view .LVU15
+  68              		.loc 1 28 38 is_stmt 0 view .LVU16
+  69 0026 074A     		ldr	r2, .L3+12
+  70 0028 1A62     		str	r2, [r3, #32]
+  29:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 	    ws2812b.item[2].frameBufferSize = sizeof(frameBuffer3);
+  71              		.loc 1 29 6 is_stmt 1 view .LVU17
+  72              		.loc 1 29 38 is_stmt 0 view .LVU18
+  73 002a 4FF44072 		mov	r2, #768
+  74 002e 5A62     		str	r2, [r3, #36]
+  30:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 	ws2812b_init();
+  75              		.loc 1 30 2 is_stmt 1 view .LVU19
+  76 0030 FFF7FEFF 		bl	ws2812b_init
+  77              	.LVL0:
+  31:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** }
+  78              		.loc 1 31 1 is_stmt 0 view .LVU20
+  79 0034 08BD     		pop	{r3, pc}
+  80              	.L4:
+  81 0036 00BF     		.align	2
+  82              	.L3:
+  83 0038 00000000 		.word	ws2812b
+  84 003c 00000000 		.word	.LANCHOR0
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccZqgBsb.s 			page 3
+
+
+  85 0040 00000000 		.word	.LANCHOR1
+  86 0044 00000000 		.word	.LANCHOR2
+  87              		.cfi_endproc
+  88              	.LFE130:
+  90              		.section	.text.visHandle,"ax",%progbits
+  91              		.align	1
+  92              		.global	visHandle
+  93              		.syntax unified
+  94              		.thumb
+  95              		.thumb_func
+  96              		.fpu fpv4-sp-d16
+  98              	visHandle:
+  99              	.LFB131:
+  32:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 
+  33:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 
+  34:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** void visHandle()
+  35:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** {
+ 100              		.loc 1 35 1 is_stmt 1 view -0
+ 101              		.cfi_startproc
+ 102              		@ args = 0, pretend = 0, frame = 0
+ 103              		@ frame_needed = 0, uses_anonymous_args = 0
+ 104 0000 08B5     		push	{r3, lr}
+ 105              	.LCFI1:
+ 106              		.cfi_def_cfa_offset 8
+ 107              		.cfi_offset 3, -8
+ 108              		.cfi_offset 14, -4
+  36:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 
+  37:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 	if(ws2812b.transferComplete)
+ 109              		.loc 1 37 2 view .LVU22
+ 110              		.loc 1 37 12 is_stmt 0 view .LVU23
+ 111 0002 064B     		ldr	r3, .L9
+ 112 0004 93F83030 		ldrb	r3, [r3, #48]	@ zero_extendqisi2
+ 113              		.loc 1 37 4 view .LVU24
+ 114 0008 03B9     		cbnz	r3, .L8
+ 115              	.L5:
+  38:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 	{
+  39:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 		// Update your framebuffer here or swap buffers
+  40:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 
+  41:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 		// Signal that buffer is changed and transfer new data
+  42:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 		ws2812b.startTransfer = 1;
+  43:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 		ws2812b_handle();
+  44:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 	}
+  45:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 	
+  46:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** }...
+ 116              		.loc 1 46 1 view .LVU25
+ 117 000a 08BD     		pop	{r3, pc}
+ 118              	.L8:
+  42:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 		ws2812b.startTransfer = 1;
+ 119              		.loc 1 42 3 is_stmt 1 view .LVU26
+  42:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 		ws2812b.startTransfer = 1;
+ 120              		.loc 1 42 25 is_stmt 0 view .LVU27
+ 121 000c 034B     		ldr	r3, .L9
+ 122 000e 0122     		movs	r2, #1
+ 123 0010 83F83120 		strb	r2, [r3, #49]
+  43:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 		ws2812b_handle();
+ 124              		.loc 1 43 3 is_stmt 1 view .LVU28
+ 125 0014 FFF7FEFF 		bl	ws2812b_handle
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccZqgBsb.s 			page 4
+
+
+ 126              	.LVL1:
+ 127              		.loc 1 46 1 is_stmt 0 view .LVU29
+ 128 0018 F7E7     		b	.L5
+ 129              	.L10:
+ 130 001a 00BF     		.align	2
+ 131              	.L9:
+ 132 001c 00000000 		.word	ws2812b
+ 133              		.cfi_endproc
+ 134              	.LFE131:
+ 136              		.global	frameBuffer3
+ 137              		.global	frameBuffer2
+ 138              		.global	frameBuffer1
+ 139              		.section	.bss.frameBuffer1,"aw",%nobits
+ 140              		.align	2
+ 141              		.set	.LANCHOR0,. + 0
+ 144              	frameBuffer1:
+ 145 0000 00000000 		.space	2304
+ 145      00000000 
+ 145      00000000 
+ 145      00000000 
+ 145      00000000 
+ 146              		.section	.bss.frameBuffer2,"aw",%nobits
+ 147              		.align	2
+ 148              		.set	.LANCHOR1,. + 0
+ 151              	frameBuffer2:
+ 152 0000 00000000 		.space	1536
+ 152      00000000 
+ 152      00000000 
+ 152      00000000 
+ 152      00000000 
+ 153              		.section	.bss.frameBuffer3,"aw",%nobits
+ 154              		.align	2
+ 155              		.set	.LANCHOR2,. + 0
+ 158              	frameBuffer3:
+ 159 0000 00000000 		.space	768
+ 159      00000000 
+ 159      00000000 
+ 159      00000000 
+ 159      00000000 
+ 160              		.text
+ 161              	.Letext0:
+ 162              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 163              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 164              		.file 4 "Core/Src/NOS_LIB_Driver/Inc/WS2812B_Core.h"
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccZqgBsb.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 WS2812B_Effects.c
+C:\Users\user\AppData\Local\Temp\ccZqgBsb.s:18     .text.visInit:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccZqgBsb.s:26     .text.visInit:0000000000000000 visInit
+C:\Users\user\AppData\Local\Temp\ccZqgBsb.s:83     .text.visInit:0000000000000038 $d
+C:\Users\user\AppData\Local\Temp\ccZqgBsb.s:91     .text.visHandle:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccZqgBsb.s:98     .text.visHandle:0000000000000000 visHandle
+C:\Users\user\AppData\Local\Temp\ccZqgBsb.s:132    .text.visHandle:000000000000001c $d
+C:\Users\user\AppData\Local\Temp\ccZqgBsb.s:158    .bss.frameBuffer3:0000000000000000 frameBuffer3
+C:\Users\user\AppData\Local\Temp\ccZqgBsb.s:151    .bss.frameBuffer2:0000000000000000 frameBuffer2
+C:\Users\user\AppData\Local\Temp\ccZqgBsb.s:144    .bss.frameBuffer1:0000000000000000 frameBuffer1
+C:\Users\user\AppData\Local\Temp\ccZqgBsb.s:140    .bss.frameBuffer1:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccZqgBsb.s:147    .bss.frameBuffer2:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccZqgBsb.s:154    .bss.frameBuffer3:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+ws2812b_init
+ws2812b
+ws2812b_handle

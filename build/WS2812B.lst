@@ -1,0 +1,138 @@
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccgq2dkg.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"WS2812B.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.NOS_WS2812B_Matrix_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	NOS_WS2812B_Matrix_Init
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	NOS_WS2812B_Matrix_Init:
+  27              	.LVL0:
+  28              	.LFB0:
+  29              		.file 1 "Core/Src/NOS_LIB_Driver/Src/WS2812B.c"
+   1:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** #include "WS2812B.h"
+   2:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+   3:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** void NOS_WS2812B_Matrix_Init(WS2812B_Matrix* matrix,uint8_t* buff,uint16_t ledsCount)
+   4:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** {
+  30              		.loc 1 4 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+   5:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****      matrix->buffer = buff;
+  35              		.loc 1 5 6 view .LVU1
+  36              		.loc 1 5 21 is_stmt 0 view .LVU2
+  37 0000 0160     		str	r1, [r0]
+   6:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****      matrix->ledsCount.data = ledsCount;
+  38              		.loc 1 6 6 is_stmt 1 view .LVU3
+  39              		.loc 1 6 29 is_stmt 0 view .LVU4
+  40 0002 8280     		strh	r2, [r0, #4]	@ movhi
+   7:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** }
+  41              		.loc 1 7 1 view .LVU5
+  42 0004 7047     		bx	lr
+  43              		.cfi_endproc
+  44              	.LFE0:
+  46              		.section	.text.NOS_WS2812B_Matrix_SetPixel,"ax",%progbits
+  47              		.align	1
+  48              		.global	NOS_WS2812B_Matrix_SetPixel
+  49              		.syntax unified
+  50              		.thumb
+  51              		.thumb_func
+  52              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccgq2dkg.s 			page 2
+
+
+  54              	NOS_WS2812B_Matrix_SetPixel:
+  55              	.LVL1:
+  56              	.LFB1:
+   8:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+   9:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** void NOS_WS2812B_Matrix_SetPixel(WS2812B_Matrix* matrix,PixelColor* color,uint16_t pixelPos)
+  10:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** {
+  57              		.loc 1 10 1 is_stmt 1 view -0
+  58              		.cfi_startproc
+  59              		@ args = 0, pretend = 0, frame = 0
+  60              		@ frame_needed = 0, uses_anonymous_args = 0
+  61              		@ link register save eliminated.
+  62              		.loc 1 10 1 is_stmt 0 view .LVU7
+  63 0000 10B4     		push	{r4}
+  64              	.LCFI0:
+  65              		.cfi_def_cfa_offset 4
+  66              		.cfi_offset 4, -4
+  11:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     matrix->buffer[pixelPos * 3] = color->R;
+  67              		.loc 1 11 5 is_stmt 1 view .LVU8
+  68              		.loc 1 11 11 is_stmt 0 view .LVU9
+  69 0002 0368     		ldr	r3, [r0]
+  70              		.loc 1 11 29 view .LVU10
+  71 0004 02EB4202 		add	r2, r2, r2, lsl #1
+  72              	.LVL2:
+  73              		.loc 1 11 41 view .LVU11
+  74 0008 91F800C0 		ldrb	ip, [r1]	@ zero_extendqisi2
+  75              		.loc 1 11 34 view .LVU12
+  76 000c 03F802C0 		strb	ip, [r3, r2]
+  12:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     matrix->buffer[pixelPos * 3 + 1] = color->G;
+  77              		.loc 1 12 5 is_stmt 1 view .LVU13
+  78              		.loc 1 12 19 is_stmt 0 view .LVU14
+  79 0010 531C     		adds	r3, r2, #1
+  80              		.loc 1 12 45 view .LVU15
+  81 0012 91F801C0 		ldrb	ip, [r1, #1]	@ zero_extendqisi2
+  82              		.loc 1 12 38 view .LVU16
+  83 0016 0468     		ldr	r4, [r0]
+  84 0018 04F803C0 		strb	ip, [r4, r3]
+  13:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     matrix->buffer[pixelPos * 3 + 2] = color->B;
+  85              		.loc 1 13 5 is_stmt 1 view .LVU17
+  86              		.loc 1 13 11 is_stmt 0 view .LVU18
+  87 001c 0368     		ldr	r3, [r0]
+  88              		.loc 1 13 19 view .LVU19
+  89 001e 0232     		adds	r2, r2, #2
+  90              		.loc 1 13 45 view .LVU20
+  91 0020 8978     		ldrb	r1, [r1, #2]	@ zero_extendqisi2
+  92              	.LVL3:
+  93              		.loc 1 13 38 view .LVU21
+  94 0022 9954     		strb	r1, [r3, r2]
+  14:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** }
+  95              		.loc 1 14 1 view .LVU22
+  96 0024 5DF8044B 		ldr	r4, [sp], #4
+  97              	.LCFI1:
+  98              		.cfi_restore 4
+  99              		.cfi_def_cfa_offset 0
+ 100 0028 7047     		bx	lr
+ 101              		.cfi_endproc
+ 102              	.LFE1:
+ 104              		.text
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccgq2dkg.s 			page 3
+
+
+ 105              	.Letext0:
+ 106              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 107              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 108              		.file 4 "Core/Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h"
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccgq2dkg.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 WS2812B.c
+C:\Users\user\AppData\Local\Temp\ccgq2dkg.s:18     .text.NOS_WS2812B_Matrix_Init:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccgq2dkg.s:26     .text.NOS_WS2812B_Matrix_Init:0000000000000000 NOS_WS2812B_Matrix_Init
+C:\Users\user\AppData\Local\Temp\ccgq2dkg.s:47     .text.NOS_WS2812B_Matrix_SetPixel:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccgq2dkg.s:54     .text.NOS_WS2812B_Matrix_SetPixel:0000000000000000 NOS_WS2812B_Matrix_SetPixel
+
+NO UNDEFINED SYMBOLS
