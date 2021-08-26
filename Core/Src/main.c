@@ -22,12 +22,12 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "NOS_Lib.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+uint32_t Time = 0;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -42,11 +42,23 @@
 /* Private variables ---------------------------------------------------------*/
 RTC_HandleTypeDef hrtc;
 
+TIM_HandleTypeDef htim6;
+
 UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
+extern uint8_t frameBuffer1[3*8*96];
+extern uint8_t frameBuffer2[3*8*64];
+extern uint8_t frameBuffer3[3*8*32];
 
+WS2812B_Matrix matrixA = {0};
+WS2812B_Matrix matrixB = {0};
+WS2812B_Matrix matrixC = {0};
+
+PixelColor red = {120,0x00,0x00};
+PixelColor green = {0x00,120,0x00};
+PixelColor blue = {0x00,0x00,120};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -55,8 +67,8 @@ static void MX_GPIO_Init(void);
 static void MX_RTC_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_TIM6_Init(void);
 /* USER CODE BEGIN PFP */
-
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -92,10 +104,16 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_RTC_Init();
+  // MX_RTC_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
+  MX_TIM6_Init();
+  visInit();
   /* USER CODE BEGIN 2 */
+NOS_WS2812B_Matrix_Init(&matrixA,&frameBuffer1,8 * 96);
+NOS_WS2812B_Matrix_Init(&matrixB,&frameBuffer2,8 * 64);
+NOS_WS2812B_Matrix_Init(&matrixC,&frameBuffer3,8 * 32);
+
 
   /* USER CODE END 2 */
 
@@ -104,11 +122,68 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-HAL_GPIO_TogglePin(GPIOD,GPIO_PIN_13);
-HAL_Delay(500);
+    if(Time > 50)
+    {
+      for(int i = 0; i < 8 * 32; i++)
+      {
+        if(i % 2 == 0)
+        {
+          NOS_WS2812B_Matrix_SetPixel(&matrixA,&red,i);
+          NOS_WS2812B_Matrix_SetPixel(&matrixB,&red,i);
+          NOS_WS2812B_Matrix_SetPixel(&matrixC,&red,i);
+        }
+        else
+        {
+          NOS_WS2812B_Matrix_SetPixel(&matrixA,&green,i);
+          NOS_WS2812B_Matrix_SetPixel(&matrixB,&green,i);
+          NOS_WS2812B_Matrix_SetPixel(&matrixC,&green,i);
+        }
+      }
+
+      for(int i = 8 * 32; i < 8 * 64; i++)
+      {
+        if(i % 2 == 0)
+        {
+          NOS_WS2812B_Matrix_SetPixel(&matrixA,&green,i);
+          NOS_WS2812B_Matrix_SetPixel(&matrixB,&green,i);
+        }
+        else
+        {
+          NOS_WS2812B_Matrix_SetPixel(&matrixA,&blue,i);
+          NOS_WS2812B_Matrix_SetPixel(&matrixB,&blue,i);
+        }
+      }
+
+      for(int i = 8 * 64; i < 8 * 96; i++)
+      {
+        if(i%2 == 0)
+        {
+          NOS_WS2812B_Matrix_SetPixel(&matrixA,&blue,i);
+        }
+        else
+        {
+          NOS_WS2812B_Matrix_SetPixel(&matrixA,&red,i);
+        }
+      }
+
+
+       visHandle();
+       Time = 0;
+    }
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
+}
+
+void SysTick_Handler(void)
+{
+  /* USER CODE BEGIN SysTick_IRQn 0 */
+
+  /* USER CODE END SysTick_IRQn 0 */
+  HAL_IncTick();
+  /* USER CODE BEGIN SysTick_IRQn 1 */
+Time++;
+  /* USER CODE END SysTick_IRQn 1 */
 }
 
 /**
@@ -215,6 +290,44 @@ static void MX_RTC_Init(void)
   /* USER CODE BEGIN RTC_Init 2 */
 
   /* USER CODE END RTC_Init 2 */
+
+}
+
+/**
+  * @brief TIM6 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM6_Init(void)
+{
+
+  /* USER CODE BEGIN TIM6_Init 0 */
+
+  /* USER CODE END TIM6_Init 0 */
+
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM6_Init 1 */
+
+  /* USER CODE END TIM6_Init 1 */
+  htim6.Instance = TIM6;
+  htim6.Init.Prescaler = 0;
+  htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim6.Init.Period = 65535;
+  htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim6, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM6_Init 2 */
+
+  /* USER CODE END TIM6_Init 2 */
 
 }
 
