@@ -15,7 +15,7 @@ void NOS_WS2812B_Matrix_PrintStaticString(WS2812B_Matrix* matrix,char string[],u
 
 void NOS_WS2812B_Matrix_PrintIntNumber(WS2812B_Matrix* matrix,int num,uint8_t startpos,uint8_t lenght);
 
-void NOS_WS2812B_Matrix_PrintFloatNumber(WS2812B_Matrix* matrix,float num,uint8_t startpos,uint8_t lenbeforedot,uint8_t accuracy);
+void NOS_WS2812B_Matrix_PrintFloatNumber(WS2812B_Matrix* matrix,float num,uint8_t startpos);
 
 uint8_t* Symvol_GetBitMap(char sym);
 
