@@ -143,7 +143,7 @@ matrixC.textColor = &blue;
 
 
 NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"IT WORKS+-",1,10);
-NOS_WS2812B_Matrix_PrintIntNumber(&matrixB,123456789,0,4);
+NOS_WS2812B_Matrix_PrintFloatNumber(&matrixB,12.34f,0,2,2);
   /* USER CODE END 2 */
 
   /* Infinite loop */

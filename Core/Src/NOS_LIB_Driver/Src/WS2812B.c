@@ -139,7 +139,16 @@ void NOS_WS2812B_Matrix_PrintIntNumber(WS2812B_Matrix* matrix,int num,uint8_t st
     }
 }
 
-void NOS_WS2812B_Matrix_PrintFloatNumber(WS2812B_Matrix* matrix,float num,uint8_t startpos,uint8_t lenbeforedot,uint8_t accuracy);
+void NOS_WS2812B_Matrix_PrintFloatNumber(WS2812B_Matrix* matrix,float num,uint8_t startpos,uint8_t lenbeforedot,uint8_t accuracy)
+{
+    int before = num;
+    float after = num - (float)before;
+    int af = after * 100;
+
+    NOS_WS2812B_Matrix_PrintIntNumber(matrix,before,startpos,2);
+    NOS_WS2812B_Matrix_PrintStaticString(matrix,".",startpos + 2,1);
+    NOS_WS2812B_Matrix_PrintIntNumber(matrix,af,startpos+ 3,2);
+}
 
 uint8_t* Symvol_GetBitMap(char sym)
 {
@@ -242,6 +251,10 @@ case '/':
 case '*':
     return Celcium;
     break;
+case '.':
+    return Dot;
+    break;
+
 
 /* Special symvols */
 
