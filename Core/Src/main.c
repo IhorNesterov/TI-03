@@ -56,7 +56,10 @@ WS2812B_Matrix matrixA = {0};
 WS2812B_Matrix matrixB = {0};
 WS2812B_Matrix matrixC = {0};
 
-MatrixSize ms = {96,8};
+MatrixSize msA = {96,8};
+MatrixSize msB = {64,8};
+MatrixSize msC = {32,8};
+
 PixelColor red = {120,0x00,0x00};
 PixelColor green = {0x00,120,0x00};
 PixelColor yellow = {120,120,0x00};
@@ -129,8 +132,9 @@ NOS_WS2812B_Matrix_Init(&matrixA,&frameBuffer1,8 * 96);
 NOS_WS2812B_Matrix_Init(&matrixB,&frameBuffer2,8 * 64);
 NOS_WS2812B_Matrix_Init(&matrixC,&frameBuffer3,8 * 32);
 matrixA.symvols = &matrixAsymc;
-matrixA.size = &ms;
+matrixA.size = &msA;
 matrixB.symvols = &matrixBsymc;
+matrixB.size = &msB;
 matrixC.symvols = &matrixCsymc;
 matrixA.textColor = &red;
 matrixA.foneColor = &fone;
@@ -139,6 +143,7 @@ matrixC.textColor = &blue;
 
 
 NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"IT WORKS+-",1,10);
+NOS_WS2812B_Matrix_PrintIntNumber(&matrixB,123456789,0,4);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -151,6 +156,7 @@ NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"IT WORKS+-",1,10);
     {
        x++;
        NOS_WS2812B_Matrix_Update(&matrixA,5);
+              NOS_WS2812B_Matrix_Update(&matrixB,1);
        visHandle();
        Time = 0;
     }

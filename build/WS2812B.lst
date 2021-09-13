@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
   47              		.align	1
   48              		.global	NOS_WS2812B_Matrix_SetPixel
   49              		.syntax unified
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 2
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 2
 
 
   50              		.thumb
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
   98              		.cfi_restore 4
   99              		.cfi_def_cfa_offset 0
  100 0028 7047     		bx	lr
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 3
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 3
 
 
  101              		.cfi_endproc
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  146              		.global	NOS_WS2812B_Matrix_Update
  147              		.syntax unified
  148              		.thumb
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 4
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 4
 
 
  149              		.thumb_func
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  197 001a A3FB0A3A 		umull	r3, r10, r3, r10
  198 001e 4FEA9A0A 		lsr	r10, r10, #2
  199              	.LVL13:
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 5
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 5
 
 
   37:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****      symvolCount--;
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
   60:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****                    }
   61:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****                    currX++;
  231              		.loc 1 61 20 is_stmt 1 discriminator 2 view .LVU56
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 6
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 6
 
 
  232              		.loc 1 61 25 is_stmt 0 discriminator 2 view .LVU57
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  274              	.L15:
  275              	.LBB5:
   62:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****                 }
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 7
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 7
 
 
   63:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****             }
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  306              		.loc 1 71 20 is_stmt 1 view .LVU80
   71:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****                    {
  307              		.loc 1 71 22 is_stmt 0 view .LVU81
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 8
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 8
 
 
  308 0094 1F42     		tst	r7, r3
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
   44:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
  348              		.loc 1 44 22 view .LVU95
  349 00c4 13F80870 		ldrb	r7, [r3, r8]	@ zero_extendqisi2
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 9
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 9
 
 
  350              	.LVL37:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  390 00f0 F3DD     		ble	.L20
  391              	.LBE7:
   89:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         }
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 10
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 10
 
 
   90:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         currColumn++;
@@ -591,14 +591,14 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  432              		.fpu fpv4-sp-d16
  434              	Symvol_GetBitMap:
  435              	.LVL47:
- 436              	.LFB6:
+ 436              	.LFB7:
   93:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
   94:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** void NOS_WS2812B_Matrix_SetSymvol(WS2812B_Matrix* matrix,char sym,uint8_t pos)
   95:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** {
   96:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     uint8_t* buff = Symvol_GetBitMap(sym);
   97:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     for(int i = 0; i < 5; i++)
   98:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 11
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 11
 
 
   99:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         matrix->symvols[pos].data[i] = buff[i];
@@ -613,18 +613,54 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  108:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     }
  109:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** }
  110:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
- 111:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** uint8_t* Symvol_GetBitMap(char sym)
+ 111:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** void NOS_WS2812B_Matrix_PrintIntNumber(WS2812B_Matrix* matrix,int num,uint8_t startpos,uint8_t leng
  112:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** {
- 437              		.loc 1 112 1 is_stmt 1 view -0
+ 113:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 114:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     int probe = 10;
+ 115:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     int a = 0;
+ 116:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     int power = 1;
+ 117:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     char buff[16];
+ 118:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 119:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     while (num > probe)
+ 120:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 121:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         power++;
+ 122:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         probe = probe * 10;
+ 123:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     }
+ 124:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 125:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 126:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     for (int i = power - 1; i > 0; i--)
+ 127:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 128:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         buff[a] = num / pow(10,i);
+ 129:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         num = num - (buff[a] * pow(10,i));
+ 130:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         a++;
+ 131:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     }
+ 132:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 133:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     buff[a] = num % 10;
+ 134:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 135:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     for(int i = 0; i < a + 1; i++)
+ 136:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 137:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         buff[i] += 48;
+ 138:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         NOS_WS2812B_Matrix_SetSymvol(matrix,buff[i],i + startpos);
+ 139:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     }
+ 140:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** }
+ 141:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 142:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** void NOS_WS2812B_Matrix_PrintFloatNumber(WS2812B_Matrix* matrix,float num,uint8_t startpos,uint8_t 
+ 143:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 144:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** uint8_t* Symvol_GetBitMap(char sym)
+ 145:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** {
+ 437              		.loc 1 145 1 is_stmt 1 view -0
  438              		.cfi_startproc
  439              		@ args = 0, pretend = 0, frame = 0
  440              		@ frame_needed = 0, uses_anonymous_args = 0
  441              		@ link register save eliminated.
- 113:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     switch (sym)
- 442              		.loc 1 113 5 view .LVU118
+ 146:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     switch (sym)
+ 442              		.loc 1 146 5 view .LVU118
  443 0000 2038     		subs	r0, r0, #32
  444              	.LVL48:
- 445              		.loc 1 113 5 is_stmt 0 view .LVU119
+ 445              		.loc 1 146 5 is_stmt 0 view .LVU119
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 12
+
+
  446 0002 3A28     		cmp	r0, #58
  447 0004 6FD8     		bhi	.L30
  448 0006 DFE800F0 		tbb	[pc, r0]
@@ -658,9 +694,6 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  476 0024 6E       		.byte	(.L30-.L32)/2
  477 0025 6E       		.byte	(.L30-.L32)/2
  478 0026 6E       		.byte	(.L30-.L32)/2
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 12
-
-
  479 0027 6E       		.byte	(.L30-.L32)/2
  480 0028 6E       		.byte	(.L30-.L32)/2
  481 0029 6E       		.byte	(.L30-.L32)/2
@@ -685,6 +718,9 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  500 003c 3E       		.byte	(.L40-.L32)/2
  501 003d 40       		.byte	(.L39-.L32)/2
  502 003e 42       		.byte	(.L38-.L32)/2
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 13
+
+
  503 003f 44       		.byte	(.L37-.L32)/2
  504 0040 46       		.byte	(.L36-.L32)/2
  505 0041 48       		.byte	(.L35-.L32)/2
@@ -693,538 +729,538 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  508 0044 4E       		.byte	(.L31-.L32)/2
  509 0045 00       		.p2align 1
  510              	.L57:
- 114:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
- 115:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** /* English upper case */
- 116:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'A':
- 117:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_A;
- 118:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 119:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'B':
- 120:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_B;
- 121:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 122:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'C':
- 123:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_C;
- 124:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 125:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'D':
- 126:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_D;
- 127:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 128:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'E':
- 129:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_E;
- 130:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 131:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'F':
- 132:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_F;
- 133:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 134:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'G':
- 135:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_G;
- 136:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 137:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'H':
- 138:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_H;
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 13
-
-
- 139:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 140:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'I':
- 141:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_I;
- 142:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 143:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'J':
- 144:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_J;
- 145:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 146:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'K':
- 147:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_K;
- 148:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 149:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'L':
- 150:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_L;
+ 147:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 148:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** /* English upper case */
+ 149:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'A':
+ 150:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_A;
  151:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 152:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'M':
- 153:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_M;
+ 152:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'B':
+ 153:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_B;
  154:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 155:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'N':
- 156:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_N;
+ 155:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'C':
+ 156:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_C;
  157:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 158:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'O':
- 159:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_O;
+ 158:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'D':
+ 159:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_D;
  160:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 161:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'P':
- 162:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_P;
+ 161:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'E':
+ 162:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_E;
  163:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 164:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'Q':
- 165:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_Q;
+ 164:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'F':
+ 165:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_F;
  166:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 167:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'R':
- 168:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_R;
+ 167:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'G':
+ 168:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_G;
  169:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 170:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'S':
- 171:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_S;
+ 170:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'H':
+ 171:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_H;
  172:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 173:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'T':
- 174:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_T;
+ 173:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'I':
+ 174:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_I;
  175:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 176:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'U':
- 177:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_U;
+ 176:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'J':
+ 177:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_J;
  178:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 179:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'V':
- 180:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_V;
+ 179:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'K':
+ 180:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_K;
  181:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 182:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'W':
- 183:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_W;
+ 182:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'L':
+ 183:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_L;
  184:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 185:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'X':
- 186:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_X;
+ 185:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'M':
+ 186:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_M;
  187:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 188:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'Y':
- 189:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_Y;
+ 188:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'N':
+ 189:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_N;
  190:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 191:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'Z':
- 192:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_Z;
+ 191:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'O':
+ 192:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_O;
  193:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 194:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** /* English upper case */
- 195:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 14
+ 194:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'P':
+ 195:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_P;
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 14
 
 
- 196:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** /* Special symvols */
- 197:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case ' ':
- 198:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Space;
+ 196:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 197:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'Q':
+ 198:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_Q;
  199:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 200:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '+':
- 201:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Plus;
+ 200:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'R':
+ 201:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_R;
  202:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 203:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '-':
- 204:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Minus;
- 205:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;    
- 206:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '/':
- 207:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Slash;
+ 203:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'S':
+ 204:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_S;
+ 205:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 206:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'T':
+ 207:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_T;
  208:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 209:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '*':
- 210:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Celcium;
+ 209:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'U':
+ 210:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_U;
  211:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 212:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         
- 213:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** /* Special symvols */
- 214:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
- 215:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** /* Numbers */
- 216:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '0':
- 217:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_0;
- 218:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 219:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '1':
- 220:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_1;
- 221:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 222:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '2':
- 223:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_2;
- 224:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 225:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '3':
- 226:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_3;
- 227:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 228:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '4':
- 229:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_4;
- 230:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 231:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '5':
- 232:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_5;
- 233:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 234:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '6':
- 235:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_6;
- 236:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 237:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '7':
- 238:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_7;
- 239:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 240:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '8':
- 241:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_8;
- 242:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 243:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '9':
- 244:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_9;
- 511              		.loc 1 244 12 view .LVU120
+ 212:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'V':
+ 213:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_V;
+ 214:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 215:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'W':
+ 216:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_W;
+ 217:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 218:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'X':
+ 219:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_X;
+ 220:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 221:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'Y':
+ 222:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_Y;
+ 223:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 224:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'Z':
+ 225:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Eng_Z;
+ 226:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 227:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** /* English upper case */
+ 228:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 229:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** /* Special symvols */
+ 230:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case ' ':
+ 231:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Space;
+ 232:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 233:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '+':
+ 234:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Plus;
+ 235:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 236:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '-':
+ 237:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Minus;
+ 238:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;    
+ 239:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '/':
+ 240:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Slash;
+ 241:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 242:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '*':
+ 243:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Celcium;
+ 244:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 245:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 246:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** /* Special symvols */
+ 247:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 248:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** /* Numbers */
+ 249:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '0':
+ 250:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_0;
+ 251:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 252:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '1':
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 15
+
+
+ 253:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_1;
+ 254:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 255:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '2':
+ 256:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_2;
+ 257:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 258:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '3':
+ 259:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_3;
+ 260:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 261:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '4':
+ 262:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_4;
+ 263:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 264:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '5':
+ 265:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_5;
+ 266:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 267:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '6':
+ 268:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_6;
+ 269:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 270:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '7':
+ 271:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_7;
+ 272:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 273:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '8':
+ 274:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_8;
+ 275:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 276:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '9':
+ 277:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return Num_9;
+ 511              		.loc 1 277 12 view .LVU120
  512 0046 2A48     		ldr	r0, .L74
  513 0048 7047     		bx	lr
  514              	.L55:
- 121:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'C':
- 515              		.loc 1 121 5 is_stmt 1 view .LVU121
- 123:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 516              		.loc 1 123 5 view .LVU122
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 15
-
-
- 123:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 517              		.loc 1 123 12 is_stmt 0 view .LVU123
+ 154:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'C':
+ 515              		.loc 1 154 5 is_stmt 1 view .LVU121
+ 156:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 516              		.loc 1 156 5 view .LVU122
+ 156:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 517              		.loc 1 156 12 is_stmt 0 view .LVU123
  518 004a 2A48     		ldr	r0, .L74+4
  519 004c 7047     		bx	lr
  520              	.L54:
- 124:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'D':
- 521              		.loc 1 124 5 is_stmt 1 view .LVU124
- 126:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 522              		.loc 1 126 5 view .LVU125
- 126:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 523              		.loc 1 126 12 is_stmt 0 view .LVU126
+ 157:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'D':
+ 521              		.loc 1 157 5 is_stmt 1 view .LVU124
+ 159:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 522              		.loc 1 159 5 view .LVU125
+ 159:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 523              		.loc 1 159 12 is_stmt 0 view .LVU126
  524 004e 2A48     		ldr	r0, .L74+8
  525 0050 7047     		bx	lr
  526              	.L53:
- 127:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'E':
- 527              		.loc 1 127 5 is_stmt 1 view .LVU127
- 129:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 528              		.loc 1 129 5 view .LVU128
- 129:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 529              		.loc 1 129 12 is_stmt 0 view .LVU129
+ 160:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'E':
+ 527              		.loc 1 160 5 is_stmt 1 view .LVU127
+ 162:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 528              		.loc 1 162 5 view .LVU128
+ 162:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 529              		.loc 1 162 12 is_stmt 0 view .LVU129
  530 0052 2A48     		ldr	r0, .L74+12
  531 0054 7047     		bx	lr
  532              	.L52:
- 130:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'F':
- 533              		.loc 1 130 5 is_stmt 1 view .LVU130
- 132:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 534              		.loc 1 132 5 view .LVU131
- 132:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 535              		.loc 1 132 12 is_stmt 0 view .LVU132
+ 163:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'F':
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 16
+
+
+ 533              		.loc 1 163 5 is_stmt 1 view .LVU130
+ 165:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 534              		.loc 1 165 5 view .LVU131
+ 165:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 535              		.loc 1 165 12 is_stmt 0 view .LVU132
  536 0056 2A48     		ldr	r0, .L74+16
  537 0058 7047     		bx	lr
  538              	.L51:
- 133:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'G':
- 539              		.loc 1 133 5 is_stmt 1 view .LVU133
- 135:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 540              		.loc 1 135 5 view .LVU134
- 135:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 541              		.loc 1 135 12 is_stmt 0 view .LVU135
+ 166:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'G':
+ 539              		.loc 1 166 5 is_stmt 1 view .LVU133
+ 168:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 540              		.loc 1 168 5 view .LVU134
+ 168:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 541              		.loc 1 168 12 is_stmt 0 view .LVU135
  542 005a 2A48     		ldr	r0, .L74+20
  543 005c 7047     		bx	lr
  544              	.L50:
- 136:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'H':
- 545              		.loc 1 136 5 is_stmt 1 view .LVU136
- 138:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 546              		.loc 1 138 5 view .LVU137
- 138:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 547              		.loc 1 138 12 is_stmt 0 view .LVU138
+ 169:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'H':
+ 545              		.loc 1 169 5 is_stmt 1 view .LVU136
+ 171:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 546              		.loc 1 171 5 view .LVU137
+ 171:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 547              		.loc 1 171 12 is_stmt 0 view .LVU138
  548 005e 2A48     		ldr	r0, .L74+24
  549 0060 7047     		bx	lr
  550              	.L49:
- 139:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'I':
- 551              		.loc 1 139 5 is_stmt 1 view .LVU139
- 141:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 552              		.loc 1 141 5 view .LVU140
- 141:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 553              		.loc 1 141 12 is_stmt 0 view .LVU141
+ 172:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'I':
+ 551              		.loc 1 172 5 is_stmt 1 view .LVU139
+ 174:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 552              		.loc 1 174 5 view .LVU140
+ 174:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 553              		.loc 1 174 12 is_stmt 0 view .LVU141
  554 0062 2A48     		ldr	r0, .L74+28
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 16
-
-
  555 0064 7047     		bx	lr
  556              	.L48:
- 142:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'J':
- 557              		.loc 1 142 5 is_stmt 1 view .LVU142
- 144:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 558              		.loc 1 144 5 view .LVU143
- 144:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 559              		.loc 1 144 12 is_stmt 0 view .LVU144
+ 175:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'J':
+ 557              		.loc 1 175 5 is_stmt 1 view .LVU142
+ 177:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 558              		.loc 1 177 5 view .LVU143
+ 177:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 559              		.loc 1 177 12 is_stmt 0 view .LVU144
  560 0066 2A48     		ldr	r0, .L74+32
  561 0068 7047     		bx	lr
  562              	.L47:
- 145:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'K':
- 563              		.loc 1 145 5 is_stmt 1 view .LVU145
- 147:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 564              		.loc 1 147 5 view .LVU146
- 147:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 565              		.loc 1 147 12 is_stmt 0 view .LVU147
+ 178:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'K':
+ 563              		.loc 1 178 5 is_stmt 1 view .LVU145
+ 180:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 564              		.loc 1 180 5 view .LVU146
+ 180:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 565              		.loc 1 180 12 is_stmt 0 view .LVU147
  566 006a 2A48     		ldr	r0, .L74+36
  567 006c 7047     		bx	lr
  568              	.L46:
- 148:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'L':
- 569              		.loc 1 148 5 is_stmt 1 view .LVU148
- 150:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 570              		.loc 1 150 5 view .LVU149
- 150:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 571              		.loc 1 150 12 is_stmt 0 view .LVU150
+ 181:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'L':
+ 569              		.loc 1 181 5 is_stmt 1 view .LVU148
+ 183:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 570              		.loc 1 183 5 view .LVU149
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 17
+
+
+ 183:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 571              		.loc 1 183 12 is_stmt 0 view .LVU150
  572 006e 2A48     		ldr	r0, .L74+40
  573 0070 7047     		bx	lr
  574              	.L45:
- 151:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'M':
- 575              		.loc 1 151 5 is_stmt 1 view .LVU151
- 153:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 576              		.loc 1 153 5 view .LVU152
- 153:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 577              		.loc 1 153 12 is_stmt 0 view .LVU153
+ 184:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'M':
+ 575              		.loc 1 184 5 is_stmt 1 view .LVU151
+ 186:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 576              		.loc 1 186 5 view .LVU152
+ 186:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 577              		.loc 1 186 12 is_stmt 0 view .LVU153
  578 0072 2A48     		ldr	r0, .L74+44
  579 0074 7047     		bx	lr
  580              	.L44:
- 154:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'N':
- 581              		.loc 1 154 5 is_stmt 1 view .LVU154
- 156:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 582              		.loc 1 156 5 view .LVU155
- 156:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 583              		.loc 1 156 12 is_stmt 0 view .LVU156
+ 187:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'N':
+ 581              		.loc 1 187 5 is_stmt 1 view .LVU154
+ 189:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 582              		.loc 1 189 5 view .LVU155
+ 189:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 583              		.loc 1 189 12 is_stmt 0 view .LVU156
  584 0076 2A48     		ldr	r0, .L74+48
  585 0078 7047     		bx	lr
  586              	.L43:
- 157:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'O':
- 587              		.loc 1 157 5 is_stmt 1 view .LVU157
- 159:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 588              		.loc 1 159 5 view .LVU158
- 159:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 589              		.loc 1 159 12 is_stmt 0 view .LVU159
+ 190:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'O':
+ 587              		.loc 1 190 5 is_stmt 1 view .LVU157
+ 192:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 588              		.loc 1 192 5 view .LVU158
+ 192:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 589              		.loc 1 192 12 is_stmt 0 view .LVU159
  590 007a 2A48     		ldr	r0, .L74+52
  591 007c 7047     		bx	lr
  592              	.L42:
- 160:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'P':
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 17
-
-
- 593              		.loc 1 160 5 is_stmt 1 view .LVU160
- 162:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 594              		.loc 1 162 5 view .LVU161
- 162:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 595              		.loc 1 162 12 is_stmt 0 view .LVU162
+ 193:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'P':
+ 593              		.loc 1 193 5 is_stmt 1 view .LVU160
+ 195:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 594              		.loc 1 195 5 view .LVU161
+ 195:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 595              		.loc 1 195 12 is_stmt 0 view .LVU162
  596 007e 2A48     		ldr	r0, .L74+56
  597 0080 7047     		bx	lr
  598              	.L41:
- 163:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'Q':
- 599              		.loc 1 163 5 is_stmt 1 view .LVU163
- 165:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 600              		.loc 1 165 5 view .LVU164
- 165:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 601              		.loc 1 165 12 is_stmt 0 view .LVU165
+ 196:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'Q':
+ 599              		.loc 1 196 5 is_stmt 1 view .LVU163
+ 198:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 600              		.loc 1 198 5 view .LVU164
+ 198:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 601              		.loc 1 198 12 is_stmt 0 view .LVU165
  602 0082 2A48     		ldr	r0, .L74+60
  603 0084 7047     		bx	lr
  604              	.L40:
- 166:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'R':
- 605              		.loc 1 166 5 is_stmt 1 view .LVU166
- 168:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 606              		.loc 1 168 5 view .LVU167
- 168:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 607              		.loc 1 168 12 is_stmt 0 view .LVU168
+ 199:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'R':
+ 605              		.loc 1 199 5 is_stmt 1 view .LVU166
+ 201:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 606              		.loc 1 201 5 view .LVU167
+ 201:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 607              		.loc 1 201 12 is_stmt 0 view .LVU168
  608 0086 2A48     		ldr	r0, .L74+64
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 18
+
+
  609 0088 7047     		bx	lr
  610              	.L39:
- 169:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'S':
- 611              		.loc 1 169 5 is_stmt 1 view .LVU169
- 171:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 612              		.loc 1 171 5 view .LVU170
- 171:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 613              		.loc 1 171 12 is_stmt 0 view .LVU171
+ 202:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'S':
+ 611              		.loc 1 202 5 is_stmt 1 view .LVU169
+ 204:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 612              		.loc 1 204 5 view .LVU170
+ 204:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 613              		.loc 1 204 12 is_stmt 0 view .LVU171
  614 008a 2A48     		ldr	r0, .L74+68
  615 008c 7047     		bx	lr
  616              	.L38:
- 172:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'T':
- 617              		.loc 1 172 5 is_stmt 1 view .LVU172
- 174:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 618              		.loc 1 174 5 view .LVU173
- 174:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 619              		.loc 1 174 12 is_stmt 0 view .LVU174
+ 205:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'T':
+ 617              		.loc 1 205 5 is_stmt 1 view .LVU172
+ 207:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 618              		.loc 1 207 5 view .LVU173
+ 207:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 619              		.loc 1 207 12 is_stmt 0 view .LVU174
  620 008e 2A48     		ldr	r0, .L74+72
  621 0090 7047     		bx	lr
  622              	.L37:
- 175:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'U':
- 623              		.loc 1 175 5 is_stmt 1 view .LVU175
- 177:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 624              		.loc 1 177 5 view .LVU176
- 177:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 625              		.loc 1 177 12 is_stmt 0 view .LVU177
+ 208:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'U':
+ 623              		.loc 1 208 5 is_stmt 1 view .LVU175
+ 210:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 624              		.loc 1 210 5 view .LVU176
+ 210:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 625              		.loc 1 210 12 is_stmt 0 view .LVU177
  626 0092 2A48     		ldr	r0, .L74+76
  627 0094 7047     		bx	lr
  628              	.L36:
- 178:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'V':
- 629              		.loc 1 178 5 is_stmt 1 view .LVU178
- 180:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 630              		.loc 1 180 5 view .LVU179
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 18
-
-
- 180:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 631              		.loc 1 180 12 is_stmt 0 view .LVU180
+ 211:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'V':
+ 629              		.loc 1 211 5 is_stmt 1 view .LVU178
+ 213:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 630              		.loc 1 213 5 view .LVU179
+ 213:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 631              		.loc 1 213 12 is_stmt 0 view .LVU180
  632 0096 2A48     		ldr	r0, .L74+80
  633 0098 7047     		bx	lr
  634              	.L35:
- 181:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'W':
- 635              		.loc 1 181 5 is_stmt 1 view .LVU181
- 183:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 636              		.loc 1 183 5 view .LVU182
- 183:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 637              		.loc 1 183 12 is_stmt 0 view .LVU183
+ 214:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'W':
+ 635              		.loc 1 214 5 is_stmt 1 view .LVU181
+ 216:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 636              		.loc 1 216 5 view .LVU182
+ 216:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 637              		.loc 1 216 12 is_stmt 0 view .LVU183
  638 009a 2A48     		ldr	r0, .L74+84
  639 009c 7047     		bx	lr
  640              	.L34:
- 184:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'X':
- 641              		.loc 1 184 5 is_stmt 1 view .LVU184
- 186:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 642              		.loc 1 186 5 view .LVU185
- 186:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 643              		.loc 1 186 12 is_stmt 0 view .LVU186
+ 217:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'X':
+ 641              		.loc 1 217 5 is_stmt 1 view .LVU184
+ 219:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 642              		.loc 1 219 5 view .LVU185
+ 219:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 643              		.loc 1 219 12 is_stmt 0 view .LVU186
  644 009e 2A48     		ldr	r0, .L74+88
  645 00a0 7047     		bx	lr
  646              	.L33:
- 187:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'Y':
- 647              		.loc 1 187 5 is_stmt 1 view .LVU187
- 189:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 648              		.loc 1 189 5 view .LVU188
- 189:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 649              		.loc 1 189 12 is_stmt 0 view .LVU189
+ 220:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'Y':
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 19
+
+
+ 647              		.loc 1 220 5 is_stmt 1 view .LVU187
+ 222:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 648              		.loc 1 222 5 view .LVU188
+ 222:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 649              		.loc 1 222 12 is_stmt 0 view .LVU189
  650 00a2 2A48     		ldr	r0, .L74+92
  651 00a4 7047     		bx	lr
  652              	.L31:
- 190:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'Z':
- 653              		.loc 1 190 5 is_stmt 1 view .LVU190
- 192:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 654              		.loc 1 192 5 view .LVU191
- 192:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 655              		.loc 1 192 12 is_stmt 0 view .LVU192
+ 223:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case 'Z':
+ 653              		.loc 1 223 5 is_stmt 1 view .LVU190
+ 225:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 654              		.loc 1 225 5 view .LVU191
+ 225:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 655              		.loc 1 225 12 is_stmt 0 view .LVU192
  656 00a6 2A48     		ldr	r0, .L74+96
  657 00a8 7047     		bx	lr
  658              	.L72:
- 193:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** /* English upper case */
- 659              		.loc 1 193 5 is_stmt 1 view .LVU193
- 198:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 660              		.loc 1 198 5 view .LVU194
- 198:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 661              		.loc 1 198 12 is_stmt 0 view .LVU195
+ 226:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** /* English upper case */
+ 659              		.loc 1 226 5 is_stmt 1 view .LVU193
+ 231:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 660              		.loc 1 231 5 view .LVU194
+ 231:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 661              		.loc 1 231 12 is_stmt 0 view .LVU195
  662 00aa 2A48     		ldr	r0, .L74+100
  663 00ac 7047     		bx	lr
  664              	.L70:
- 199:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '+':
- 665              		.loc 1 199 5 is_stmt 1 view .LVU196
- 201:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 666              		.loc 1 201 5 view .LVU197
- 201:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 667              		.loc 1 201 12 is_stmt 0 view .LVU198
+ 232:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '+':
+ 665              		.loc 1 232 5 is_stmt 1 view .LVU196
+ 234:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 666              		.loc 1 234 5 view .LVU197
+ 234:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 667              		.loc 1 234 12 is_stmt 0 view .LVU198
  668 00ae 2A48     		ldr	r0, .L74+104
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 19
-
-
  669 00b0 7047     		bx	lr
  670              	.L69:
- 202:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '-':
- 671              		.loc 1 202 5 is_stmt 1 view .LVU199
- 204:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;    
- 672              		.loc 1 204 5 view .LVU200
- 204:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;    
- 673              		.loc 1 204 12 is_stmt 0 view .LVU201
+ 235:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '-':
+ 671              		.loc 1 235 5 is_stmt 1 view .LVU199
+ 237:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;    
+ 672              		.loc 1 237 5 view .LVU200
+ 237:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;    
+ 673              		.loc 1 237 12 is_stmt 0 view .LVU201
  674 00b2 2A48     		ldr	r0, .L74+108
  675 00b4 7047     		bx	lr
  676              	.L68:
- 205:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '/':
- 677              		.loc 1 205 5 is_stmt 1 view .LVU202
- 207:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 678              		.loc 1 207 5 view .LVU203
- 207:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 679              		.loc 1 207 12 is_stmt 0 view .LVU204
+ 238:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '/':
+ 677              		.loc 1 238 5 is_stmt 1 view .LVU202
+ 240:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 678              		.loc 1 240 5 view .LVU203
+ 240:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 679              		.loc 1 240 12 is_stmt 0 view .LVU204
  680 00b6 2A48     		ldr	r0, .L74+112
  681 00b8 7047     		bx	lr
  682              	.L71:
- 208:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '*':
- 683              		.loc 1 208 5 is_stmt 1 view .LVU205
- 210:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 684              		.loc 1 210 5 view .LVU206
- 210:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 685              		.loc 1 210 12 is_stmt 0 view .LVU207
+ 241:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** case '*':
+ 683              		.loc 1 241 5 is_stmt 1 view .LVU205
+ 243:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 684              		.loc 1 243 5 view .LVU206
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 20
+
+
+ 243:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 685              		.loc 1 243 12 is_stmt 0 view .LVU207
  686 00ba 2A48     		ldr	r0, .L74+116
  687 00bc 7047     		bx	lr
  688              	.L67:
- 211:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         
- 689              		.loc 1 211 5 is_stmt 1 view .LVU208
- 217:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 690              		.loc 1 217 5 view .LVU209
- 217:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 691              		.loc 1 217 12 is_stmt 0 view .LVU210
+ 244:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 689              		.loc 1 244 5 is_stmt 1 view .LVU208
+ 250:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 690              		.loc 1 250 5 view .LVU209
+ 250:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 691              		.loc 1 250 12 is_stmt 0 view .LVU210
  692 00be 2A48     		ldr	r0, .L74+120
  693 00c0 7047     		bx	lr
  694              	.L66:
- 218:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '1':
- 695              		.loc 1 218 5 is_stmt 1 view .LVU211
- 220:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 696              		.loc 1 220 5 view .LVU212
- 220:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 697              		.loc 1 220 12 is_stmt 0 view .LVU213
+ 251:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '1':
+ 695              		.loc 1 251 5 is_stmt 1 view .LVU211
+ 253:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 696              		.loc 1 253 5 view .LVU212
+ 253:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 697              		.loc 1 253 12 is_stmt 0 view .LVU213
  698 00c2 2A48     		ldr	r0, .L74+124
  699 00c4 7047     		bx	lr
  700              	.L65:
- 221:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '2':
- 701              		.loc 1 221 5 is_stmt 1 view .LVU214
- 223:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 702              		.loc 1 223 5 view .LVU215
- 223:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 703              		.loc 1 223 12 is_stmt 0 view .LVU216
+ 254:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '2':
+ 701              		.loc 1 254 5 is_stmt 1 view .LVU214
+ 256:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 702              		.loc 1 256 5 view .LVU215
+ 256:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 703              		.loc 1 256 12 is_stmt 0 view .LVU216
  704 00c6 2A48     		ldr	r0, .L74+128
  705 00c8 7047     		bx	lr
  706              	.L64:
- 224:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '3':
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 20
-
-
- 707              		.loc 1 224 5 is_stmt 1 view .LVU217
- 226:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 708              		.loc 1 226 5 view .LVU218
- 226:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 709              		.loc 1 226 12 is_stmt 0 view .LVU219
+ 257:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '3':
+ 707              		.loc 1 257 5 is_stmt 1 view .LVU217
+ 259:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 708              		.loc 1 259 5 view .LVU218
+ 259:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 709              		.loc 1 259 12 is_stmt 0 view .LVU219
  710 00ca 2A48     		ldr	r0, .L74+132
  711 00cc 7047     		bx	lr
  712              	.L63:
- 227:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '4':
- 713              		.loc 1 227 5 is_stmt 1 view .LVU220
- 229:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 714              		.loc 1 229 5 view .LVU221
- 229:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 715              		.loc 1 229 12 is_stmt 0 view .LVU222
+ 260:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '4':
+ 713              		.loc 1 260 5 is_stmt 1 view .LVU220
+ 262:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 714              		.loc 1 262 5 view .LVU221
+ 262:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 715              		.loc 1 262 12 is_stmt 0 view .LVU222
  716 00ce 2A48     		ldr	r0, .L74+136
  717 00d0 7047     		bx	lr
  718              	.L62:
- 230:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '5':
- 719              		.loc 1 230 5 is_stmt 1 view .LVU223
- 232:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 720              		.loc 1 232 5 view .LVU224
- 232:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 721              		.loc 1 232 12 is_stmt 0 view .LVU225
+ 263:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '5':
+ 719              		.loc 1 263 5 is_stmt 1 view .LVU223
+ 265:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 720              		.loc 1 265 5 view .LVU224
+ 265:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 721              		.loc 1 265 12 is_stmt 0 view .LVU225
  722 00d2 2A48     		ldr	r0, .L74+140
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 21
+
+
  723 00d4 7047     		bx	lr
  724              	.L61:
- 233:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '6':
- 725              		.loc 1 233 5 is_stmt 1 view .LVU226
- 235:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 726              		.loc 1 235 5 view .LVU227
- 235:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 727              		.loc 1 235 12 is_stmt 0 view .LVU228
+ 266:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '6':
+ 725              		.loc 1 266 5 is_stmt 1 view .LVU226
+ 268:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 726              		.loc 1 268 5 view .LVU227
+ 268:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 727              		.loc 1 268 12 is_stmt 0 view .LVU228
  728 00d6 2A48     		ldr	r0, .L74+144
  729 00d8 7047     		bx	lr
  730              	.L60:
- 236:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '7':
- 731              		.loc 1 236 5 is_stmt 1 view .LVU229
- 238:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 732              		.loc 1 238 5 view .LVU230
- 238:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 733              		.loc 1 238 12 is_stmt 0 view .LVU231
+ 269:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '7':
+ 731              		.loc 1 269 5 is_stmt 1 view .LVU229
+ 271:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 732              		.loc 1 271 5 view .LVU230
+ 271:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 733              		.loc 1 271 12 is_stmt 0 view .LVU231
  734 00da 2A48     		ldr	r0, .L74+148
  735 00dc 7047     		bx	lr
  736              	.L59:
- 239:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '8':
- 737              		.loc 1 239 5 is_stmt 1 view .LVU232
- 241:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 738              		.loc 1 241 5 view .LVU233
- 241:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 739              		.loc 1 241 12 is_stmt 0 view .LVU234
+ 272:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '8':
+ 737              		.loc 1 272 5 is_stmt 1 view .LVU232
+ 274:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 738              		.loc 1 274 5 view .LVU233
+ 274:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 739              		.loc 1 274 12 is_stmt 0 view .LVU234
  740 00de 2A48     		ldr	r0, .L74+152
  741 00e0 7047     		bx	lr
  742              	.L58:
- 242:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '9':
- 743              		.loc 1 242 5 is_stmt 1 view .LVU235
- 744              		.loc 1 244 5 view .LVU236
- 745              		.loc 1 244 12 is_stmt 0 view .LVU237
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 21
-
-
+ 275:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     case '9':
+ 743              		.loc 1 275 5 is_stmt 1 view .LVU235
+ 744              		.loc 1 277 5 view .LVU236
+ 745              		.loc 1 277 12 is_stmt 0 view .LVU237
  746 00e2 2A48     		ldr	r0, .L74+156
  747 00e4 7047     		bx	lr
  748              	.L30:
- 245:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 749              		.loc 1 245 5 is_stmt 1 view .LVU238
- 246:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** /* Numbers */
- 247:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
- 248:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     default:
- 249:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return 0;
- 750              		.loc 1 249 5 view .LVU239
- 751              		.loc 1 249 12 is_stmt 0 view .LVU240
+ 278:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 749              		.loc 1 278 5 is_stmt 1 view .LVU238
+ 279:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** /* Numbers */
+ 280:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 281:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     default:
+ 282:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     return 0;
+ 750              		.loc 1 282 5 view .LVU239
+ 751              		.loc 1 282 12 is_stmt 0 view .LVU240
  752 00e6 0020     		movs	r0, #0
  753 00e8 7047     		bx	lr
  754              	.L73:
- 120:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
- 755              		.loc 1 120 12 view .LVU241
+ 153:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     break;
+ 755              		.loc 1 153 12 view .LVU241
  756 00ea 2948     		ldr	r0, .L74+160
- 250:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         break;
- 757              		.loc 1 250 9 is_stmt 1 view .LVU242
- 251:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     }
- 252:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** }
- 758              		.loc 1 252 1 is_stmt 0 view .LVU243
+ 283:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         break;
+ 757              		.loc 1 283 9 is_stmt 1 view .LVU242
+ 284:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     }
+ 285:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** }
+ 758              		.loc 1 285 1 is_stmt 0 view .LVU243
  759 00ec 7047     		bx	lr
  760              	.L75:
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 22
+
+
  761 00ee 00BF     		.align	2
  762              	.L74:
  763 00f0 00000000 		.word	.LANCHOR40
@@ -1258,9 +1294,6 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  791 0160 00000000 		.word	.LANCHOR28
  792 0164 00000000 		.word	.LANCHOR29
  793 0168 00000000 		.word	.LANCHOR30
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 22
-
-
  794 016c 00000000 		.word	.LANCHOR31
  795 0170 00000000 		.word	.LANCHOR32
  796 0174 00000000 		.word	.LANCHOR33
@@ -1272,7 +1305,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  802 018c 00000000 		.word	.LANCHOR39
  803 0190 00000000 		.word	.LANCHOR0
  804              		.cfi_endproc
- 805              	.LFE6:
+ 805              	.LFE7:
  807              		.section	.text.NOS_WS2812B_Matrix_SetSymvol,"ax",%progbits
  808              		.align	1
  809              		.global	NOS_WS2812B_Matrix_SetSymvol
@@ -1285,6 +1318,9 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  817              	.LFB4:
   95:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     uint8_t* buff = Symvol_GetBitMap(sym);
  818              		.loc 1 95 1 is_stmt 1 view -0
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 23
+
+
  819              		.cfi_startproc
  820              		@ args = 0, pretend = 0, frame = 0
  821              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1318,9 +1354,6 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  842              		.loc 1 97 13 is_stmt 0 view .LVU251
  843 000c 0023     		movs	r3, #0
   97:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 23
-
-
  844              		.loc 1 97 5 view .LVU252
  845 000e 06E0     		b	.L77
  846              	.LVL52:
@@ -1345,6 +1378,9 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
   97:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
  859              		.loc 1 97 28 is_stmt 0 discriminator 3 view .LVU259
  860 001c 0133     		adds	r3, r3, #1
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 24
+
+
  861              	.LVL53:
  862              	.L77:
   97:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
@@ -1378,9 +1414,6 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  888              		@ frame_needed = 0, uses_anonymous_args = 0
  104:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     for(int i = startpos; i < startpos + lenght; i++)
  889              		.loc 1 104 1 is_stmt 0 view .LVU265
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 24
-
-
  890 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
  891              	.LCFI4:
  892              		.cfi_def_cfa_offset 24
@@ -1405,6 +1438,9 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  908 000c 1446     		mov	r4, r2
  105:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
  909              		.loc 1 105 5 view .LVU269
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 25
+
+
  910 000e 08E0     		b	.L81
  911              	.LVL56:
  912              	.L82:
@@ -1438,9 +1474,6 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  932 0026 F3DC     		bgt	.L82
  105:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
  933              		.loc 1 105 5 discriminator 1 view .LVU278
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 25
-
-
  934              	.LBE10:
  109:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
  935              		.loc 1 109 1 view .LVU279
@@ -1449,440 +1482,769 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 1
  937              		.loc 1 109 1 view .LVU280
  938              		.cfi_endproc
  939              	.LFE5:
- 941              		.global	Num_9
- 942              		.global	Num_8
- 943              		.global	Num_7
- 944              		.global	Num_6
- 945              		.global	Num_5
- 946              		.global	Num_4
- 947              		.global	Num_3
- 948              		.global	Num_2
- 949              		.global	Num_1
- 950              		.global	Num_0
- 951              		.global	Celcium
- 952              		.global	Multiply
- 953              		.global	Minus
- 954              		.global	Plus
- 955              		.global	Slash
- 956              		.global	Dot
- 957              		.global	Space
- 958              		.global	Eng_Z
- 959              		.global	Eng_Y
- 960              		.global	Eng_X
- 961              		.global	Eng_W
- 962              		.global	Eng_V
- 963              		.global	Eng_U
- 964              		.global	Eng_T
- 965              		.global	Eng_S
- 966              		.global	Eng_R
- 967              		.global	Eng_Q
- 968              		.global	Eng_P
- 969              		.global	Eng_O
- 970              		.global	Eng_N
- 971              		.global	Eng_M
- 972              		.global	Eng_L
- 973              		.global	Eng_K
- 974              		.global	Eng_J
- 975              		.global	Eng_I
- 976              		.global	Eng_H
- 977              		.global	Eng_G
- 978              		.global	Eng_F
- 979              		.global	Eng_E
- 980              		.global	Eng_D
- 981              		.global	Eng_C
- 982              		.global	Eng_B
- 983              		.global	Eng_A
- 984              		.section	.bss.Space,"aw",%nobits
- 985              		.align	2
- 986              		.set	.LANCHOR25,. + 0
- 989              	Space:
- 990 0000 00000000 		.space	5
- 990      00
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 26
+ 941              		.global	__aeabi_i2d
+ 942              		.global	__aeabi_ddiv
+ 943              		.global	__aeabi_d2uiz
+ 944              		.global	__aeabi_dmul
+ 945              		.global	__aeabi_dsub
+ 946              		.global	__aeabi_d2iz
+ 947              		.section	.text.NOS_WS2812B_Matrix_PrintIntNumber,"ax",%progbits
+ 948              		.align	1
+ 949              		.global	NOS_WS2812B_Matrix_PrintIntNumber
+ 950              		.syntax unified
+ 951              		.thumb
+ 952              		.thumb_func
+ 953              		.fpu fpv4-sp-d16
+ 955              	NOS_WS2812B_Matrix_PrintIntNumber:
+ 956              	.LVL59:
+ 957              	.LFB6:
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 26
 
 
- 991              		.section	.data.Celcium,"aw"
- 992              		.align	2
- 993              		.set	.LANCHOR29,. + 0
- 996              	Celcium:
- 997 0000 0000040A 		.ascii	"\000\000\004\012\004"
- 997      04
- 998              		.section	.data.Dot,"aw"
- 999              		.align	2
- 1002              	Dot:
- 1003 0000 00008000 		.ascii	"\000\000\200\000\000"
- 1003      00
- 1004              		.section	.data.Eng_A,"aw"
- 1005              		.align	2
- 1006              		.set	.LANCHOR40,. + 0
- 1009              	Eng_A:
- 1010 0000 FC121212 		.ascii	"\374\022\022\022\374"
- 1010      FC
- 1011              		.section	.data.Eng_B,"aw"
- 1012              		.align	2
- 1013              		.set	.LANCHOR0,. + 0
- 1016              	Eng_B:
- 1017 0000 FE929292 		.ascii	"\376\222\222\222l"
- 1017      6C
- 1018              		.section	.data.Eng_C,"aw"
- 1019              		.align	2
- 1020              		.set	.LANCHOR1,. + 0
- 1023              	Eng_C:
- 1024 0000 7C828282 		.ascii	"|\202\202\202D"
- 1024      44
- 1025              		.section	.data.Eng_D,"aw"
- 1026              		.align	2
- 1027              		.set	.LANCHOR2,. + 0
- 1030              	Eng_D:
- 1031 0000 FE828282 		.ascii	"\376\202\202\202|"
- 1031      7C
- 1032              		.section	.data.Eng_E,"aw"
- 1033              		.align	2
- 1034              		.set	.LANCHOR3,. + 0
- 1037              	Eng_E:
- 1038 0000 FE929292 		.ascii	"\376\222\222\222\202"
- 1038      82
- 1039              		.section	.data.Eng_F,"aw"
- 1040              		.align	2
- 1041              		.set	.LANCHOR4,. + 0
- 1044              	Eng_F:
- 1045 0000 FE121212 		.ascii	"\376\022\022\022\002"
- 1045      02
- 1046              		.section	.data.Eng_G,"aw"
- 1047              		.align	2
- 1048              		.set	.LANCHOR5,. + 0
- 1051              	Eng_G:
- 1052 0000 7C829292 		.ascii	"|\202\222\222t"
- 1052      74
- 1053              		.section	.data.Eng_H,"aw"
- 1054              		.align	2
- 1055              		.set	.LANCHOR6,. + 0
- 1058              	Eng_H:
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 27
+ 112:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 958              		.loc 1 112 1 is_stmt 1 view -0
+ 959              		.cfi_startproc
+ 960              		@ args = 0, pretend = 0, frame = 24
+ 961              		@ frame_needed = 0, uses_anonymous_args = 0
+ 112:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 962              		.loc 1 112 1 is_stmt 0 view .LVU282
+ 963 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 964              	.LCFI5:
+ 965              		.cfi_def_cfa_offset 36
+ 966              		.cfi_offset 4, -36
+ 967              		.cfi_offset 5, -32
+ 968              		.cfi_offset 6, -28
+ 969              		.cfi_offset 7, -24
+ 970              		.cfi_offset 8, -20
+ 971              		.cfi_offset 9, -16
+ 972              		.cfi_offset 10, -12
+ 973              		.cfi_offset 11, -8
+ 974              		.cfi_offset 14, -4
+ 975 0004 2DED048B 		vpush.64	{d8, d9}
+ 976              	.LCFI6:
+ 977              		.cfi_def_cfa_offset 52
+ 978              		.cfi_offset 80, -52
+ 979              		.cfi_offset 81, -48
+ 980              		.cfi_offset 82, -44
+ 981              		.cfi_offset 83, -40
+ 982 0008 87B0     		sub	sp, sp, #28
+ 983              	.LCFI7:
+ 984              		.cfi_def_cfa_offset 80
+ 985 000a 0190     		str	r0, [sp, #4]
+ 986 000c 0846     		mov	r0, r1
+ 987              	.LVL60:
+ 112:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 988              		.loc 1 112 1 view .LVU283
+ 989 000e 9346     		mov	fp, r2
+ 114:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     int a = 0;
+ 990              		.loc 1 114 5 is_stmt 1 view .LVU284
+ 991              	.LVL61:
+ 115:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     int power = 1;
+ 992              		.loc 1 115 5 view .LVU285
+ 116:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     char buff[16];
+ 993              		.loc 1 116 5 view .LVU286
+ 117:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 994              		.loc 1 117 5 view .LVU287
+ 119:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 995              		.loc 1 119 5 view .LVU288
+ 116:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     char buff[16];
+ 996              		.loc 1 116 9 is_stmt 0 view .LVU289
+ 997 0010 0124     		movs	r4, #1
+ 114:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     int a = 0;
+ 998              		.loc 1 114 9 view .LVU290
+ 999 0012 0A23     		movs	r3, #10
+ 1000              	.LVL62:
+ 119:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1001              		.loc 1 119 11 view .LVU291
+ 1002 0014 03E0     		b	.L85
+ 1003              	.LVL63:
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 27
 
 
- 1059 0000 FE101010 		.ascii	"\376\020\020\020\376"
- 1059      FE
- 1060              		.section	.data.Eng_I,"aw"
- 1061              		.align	2
- 1062              		.set	.LANCHOR7,. + 0
- 1065              	Eng_I:
- 1066 0000 0082FE82 		.ascii	"\000\202\376\202\000"
- 1066      00
- 1067              		.section	.data.Eng_J,"aw"
- 1068              		.align	2
- 1069              		.set	.LANCHOR8,. + 0
- 1072              	Eng_J:
- 1073 0000 40808080 		.ascii	"@\200\200\200~"
- 1073      7E
- 1074              		.section	.data.Eng_K,"aw"
- 1075              		.align	2
- 1076              		.set	.LANCHOR9,. + 0
- 1079              	Eng_K:
- 1080 0000 FE102844 		.ascii	"\376\020(D\202"
- 1080      82
- 1081              		.section	.data.Eng_L,"aw"
- 1082              		.align	2
- 1083              		.set	.LANCHOR10,. + 0
- 1086              	Eng_L:
- 1087 0000 FE808080 		.ascii	"\376\200\200\200\200"
- 1087      80
- 1088              		.section	.data.Eng_M,"aw"
- 1089              		.align	2
- 1090              		.set	.LANCHOR11,. + 0
- 1093              	Eng_M:
- 1094 0000 FE040804 		.ascii	"\376\004\010\004\376"
- 1094      FE
- 1095              		.section	.data.Eng_N,"aw"
- 1096              		.align	2
- 1097              		.set	.LANCHOR12,. + 0
- 1100              	Eng_N:
- 1101 0000 FE081020 		.ascii	"\376\010\020 \376"
- 1101      FE
- 1102              		.section	.data.Eng_O,"aw"
- 1103              		.align	2
- 1104              		.set	.LANCHOR13,. + 0
- 1107              	Eng_O:
- 1108 0000 7C828282 		.ascii	"|\202\202\202|"
- 1108      7C
- 1109              		.section	.data.Eng_P,"aw"
- 1110              		.align	2
- 1111              		.set	.LANCHOR14,. + 0
- 1114              	Eng_P:
- 1115 0000 FE121212 		.ascii	"\376\022\022\022\014"
- 1115      0C
- 1116              		.section	.data.Eng_Q,"aw"
- 1117              		.align	2
- 1118              		.set	.LANCHOR15,. + 0
- 1121              	Eng_Q:
- 1122 0000 7C82A242 		.ascii	"|\202\242B\274"
- 1122      BC
- 1123              		.section	.data.Eng_R,"aw"
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 28
+ 1004              	.L86:
+ 121:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         probe = probe * 10;
+ 1005              		.loc 1 121 9 is_stmt 1 view .LVU292
+ 121:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         probe = probe * 10;
+ 1006              		.loc 1 121 14 is_stmt 0 view .LVU293
+ 1007 0016 0134     		adds	r4, r4, #1
+ 1008              	.LVL64:
+ 122:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     }
+ 1009              		.loc 1 122 9 is_stmt 1 view .LVU294
+ 122:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     }
+ 1010              		.loc 1 122 15 is_stmt 0 view .LVU295
+ 1011 0018 03EB8303 		add	r3, r3, r3, lsl #2
+ 1012              	.LVL65:
+ 122:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     }
+ 1013              		.loc 1 122 15 view .LVU296
+ 1014 001c 5B00     		lsls	r3, r3, #1
+ 1015              	.LVL66:
+ 1016              	.L85:
+ 119:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1017              		.loc 1 119 11 is_stmt 1 view .LVU297
+ 1018 001e 8342     		cmp	r3, r0
+ 1019 0020 F9DB     		blt	.L86
+ 126:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1020              		.loc 1 126 5 view .LVU298
+ 1021              	.LBB11:
+ 126:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1022              		.loc 1 126 10 view .LVU299
+ 126:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1023              		.loc 1 126 14 is_stmt 0 view .LVU300
+ 1024 0022 013C     		subs	r4, r4, #1
+ 1025              	.LVL67:
+ 126:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1026              		.loc 1 126 14 view .LVU301
+ 1027              	.LBE11:
+ 115:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     int power = 1;
+ 1028              		.loc 1 115 9 view .LVU302
+ 1029 0024 4FF0000A 		mov	r10, #0
+ 1030              	.LBB13:
+ 126:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1031              		.loc 1 126 5 view .LVU303
+ 1032 0028 3DE0     		b	.L87
+ 1033              	.LVL68:
+ 1034              	.L88:
+ 1035              	.LBB12:
+ 128:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         num = num - (buff[a] * pow(10,i));
+ 1036              		.loc 1 128 9 is_stmt 1 discriminator 3 view .LVU304
+ 128:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         num = num - (buff[a] * pow(10,i));
+ 1037              		.loc 1 128 23 is_stmt 0 discriminator 3 view .LVU305
+ 1038 002a FFF7FEFF 		bl	__aeabi_i2d
+ 1039              	.LVL69:
+ 128:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         num = num - (buff[a] * pow(10,i));
+ 1040              		.loc 1 128 23 discriminator 3 view .LVU306
+ 1041 002e 0646     		mov	r6, r0
+ 1042 0030 0F46     		mov	r7, r1
+ 128:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         num = num - (buff[a] * pow(10,i));
+ 1043              		.loc 1 128 25 discriminator 3 view .LVU307
+ 1044 0032 2046     		mov	r0, r4
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 28
 
 
- 1124              		.align	2
- 1125              		.set	.LANCHOR16,. + 0
- 1128              	Eng_R:
- 1129 0000 FE123252 		.ascii	"\376\0222R\214"
- 1129      8C
- 1130              		.section	.data.Eng_S,"aw"
- 1131              		.align	2
- 1132              		.set	.LANCHOR17,. + 0
- 1135              	Eng_S:
- 1136 0000 4C929292 		.ascii	"L\222\222\222d"
- 1136      64
- 1137              		.section	.data.Eng_T,"aw"
- 1138              		.align	2
- 1139              		.set	.LANCHOR18,. + 0
- 1142              	Eng_T:
- 1143 0000 0202FE02 		.ascii	"\002\002\376\002\002"
- 1143      02
- 1144              		.section	.data.Eng_U,"aw"
- 1145              		.align	2
- 1146              		.set	.LANCHOR19,. + 0
- 1149              	Eng_U:
- 1150 0000 7E808080 		.ascii	"~\200\200\200~"
- 1150      7E
- 1151              		.section	.data.Eng_V,"aw"
- 1152              		.align	2
- 1153              		.set	.LANCHOR20,. + 0
- 1156              	Eng_V:
- 1157 0000 3E408040 		.ascii	">@\200@>"
- 1157      3E
- 1158              		.section	.data.Eng_W,"aw"
- 1159              		.align	2
- 1160              		.set	.LANCHOR21,. + 0
- 1163              	Eng_W:
- 1164 0000 7E807880 		.ascii	"~\200x\200~"
- 1164      7E
- 1165              		.section	.data.Eng_X,"aw"
- 1166              		.align	2
- 1167              		.set	.LANCHOR22,. + 0
- 1170              	Eng_X:
- 1171 0000 C6281028 		.ascii	"\306(\020(\306"
- 1171      C6
- 1172              		.section	.data.Eng_Y,"aw"
- 1173              		.align	2
- 1174              		.set	.LANCHOR23,. + 0
- 1177              	Eng_Y:
- 1178 0000 0204F804 		.ascii	"\002\004\370\004\002"
- 1178      02
- 1179              		.section	.data.Eng_Z,"aw"
- 1180              		.align	2
- 1181              		.set	.LANCHOR24,. + 0
- 1184              	Eng_Z:
- 1185 0000 C2A2928A 		.ascii	"\302\242\222\212\206"
- 1185      86
- 1186              		.section	.data.Minus,"aw"
- 1187              		.align	2
- 1188              		.set	.LANCHOR27,. + 0
- 1191              	Minus:
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 29
+ 1045 0034 FFF7FEFF 		bl	__aeabi_i2d
+ 1046              	.LVL70:
+ 1047 0038 41EC180B 		vmov	d8, r0, r1
+ 1048 003c 9FED2E9B 		vldr.64	d9, .L92
+ 1049 0040 41EC110B 		vmov	d1, r0, r1
+ 1050 0044 B0EE490A 		vmov.f32	s0, s18
+ 1051 0048 F0EE690A 		vmov.f32	s1, s19
+ 1052 004c FFF7FEFF 		bl	pow
+ 1053              	.LVL71:
+ 1054 0050 53EC102B 		vmov	r2, r3, d0
+ 128:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         num = num - (buff[a] * pow(10,i));
+ 1055              		.loc 1 128 23 discriminator 3 view .LVU308
+ 1056 0054 3046     		mov	r0, r6
+ 1057 0056 3946     		mov	r1, r7
+ 1058 0058 FFF7FEFF 		bl	__aeabi_ddiv
+ 1059              	.LVL72:
+ 128:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         num = num - (buff[a] * pow(10,i));
+ 1060              		.loc 1 128 17 discriminator 3 view .LVU309
+ 1061 005c FFF7FEFF 		bl	__aeabi_d2uiz
+ 1062              	.LVL73:
+ 1063 0060 C5B2     		uxtb	r5, r0
+ 1064 0062 06AB     		add	r3, sp, #24
+ 1065 0064 5344     		add	r3, r3, r10
+ 1066 0066 03F8105C 		strb	r5, [r3, #-16]
+ 129:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         a++;
+ 1067              		.loc 1 129 9 is_stmt 1 discriminator 3 view .LVU310
+ 129:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         a++;
+ 1068              		.loc 1 129 32 is_stmt 0 discriminator 3 view .LVU311
+ 1069 006a B0EE481A 		vmov.f32	s2, s16
+ 1070 006e F0EE681A 		vmov.f32	s3, s17
+ 1071 0072 B0EE490A 		vmov.f32	s0, s18
+ 1072 0076 F0EE690A 		vmov.f32	s1, s19
+ 1073 007a FFF7FEFF 		bl	pow
+ 1074              	.LVL74:
+ 1075 007e 59EC108B 		vmov	r8, r9, d0
+ 129:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         a++;
+ 1076              		.loc 1 129 30 discriminator 3 view .LVU312
+ 1077 0082 2846     		mov	r0, r5
+ 1078 0084 FFF7FEFF 		bl	__aeabi_i2d
+ 1079              	.LVL75:
+ 1080 0088 4246     		mov	r2, r8
+ 1081 008a 4B46     		mov	r3, r9
+ 1082 008c FFF7FEFF 		bl	__aeabi_dmul
+ 1083              	.LVL76:
+ 1084 0090 0246     		mov	r2, r0
+ 1085 0092 0B46     		mov	r3, r1
+ 129:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         a++;
+ 1086              		.loc 1 129 19 discriminator 3 view .LVU313
+ 1087 0094 3046     		mov	r0, r6
+ 1088 0096 3946     		mov	r1, r7
+ 1089 0098 FFF7FEFF 		bl	__aeabi_dsub
+ 1090              	.LVL77:
+ 129:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         a++;
+ 1091              		.loc 1 129 13 discriminator 3 view .LVU314
+ 1092 009c FFF7FEFF 		bl	__aeabi_d2iz
+ 1093              	.LVL78:
+ 130:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     }
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 29
 
 
- 1192 0000 10101010 		.ascii	"\020\020\020\020\020"
- 1192      10
- 1193              		.section	.data.Multiply,"aw"
- 1194              		.align	2
- 1197              	Multiply:
- 1198 0000 44281028 		.ascii	"D(\020(D"
- 1198      44
- 1199              		.section	.data.Num_0,"aw"
- 1200              		.align	2
- 1201              		.set	.LANCHOR30,. + 0
- 1204              	Num_0:
- 1205 0000 7CA2928A 		.ascii	"|\242\222\212|"
- 1205      7C
- 1206              		.section	.data.Num_1,"aw"
- 1207              		.align	2
- 1208              		.set	.LANCHOR31,. + 0
- 1211              	Num_1:
- 1212 0000 8884FE80 		.ascii	"\210\204\376\200\200"
- 1212      80
- 1213              		.section	.data.Num_2,"aw"
- 1214              		.align	2
- 1215              		.set	.LANCHOR32,. + 0
- 1218              	Num_2:
- 1219 0000 C4A29292 		.ascii	"\304\242\222\222\214"
- 1219      8C
- 1220              		.section	.data.Num_3,"aw"
- 1221              		.align	2
- 1222              		.set	.LANCHOR33,. + 0
- 1225              	Num_3:
- 1226 0000 44929292 		.ascii	"D\222\222\222l"
- 1226      6C
- 1227              		.section	.data.Num_4,"aw"
- 1228              		.align	2
- 1229              		.set	.LANCHOR34,. + 0
- 1232              	Num_4:
- 1233 0000 0E101010 		.ascii	"\016\020\020\020\376"
- 1233      FE
- 1234              		.section	.data.Num_5,"aw"
- 1235              		.align	2
- 1236              		.set	.LANCHOR35,. + 0
- 1239              	Num_5:
- 1240 0000 8E929292 		.ascii	"\216\222\222\222b"
- 1240      62
- 1241              		.section	.data.Num_6,"aw"
- 1242              		.align	2
- 1243              		.set	.LANCHOR36,. + 0
- 1246              	Num_6:
- 1247 0000 7C929292 		.ascii	"|\222\222\222d"
- 1247      64
- 1248              		.section	.data.Num_7,"aw"
- 1249              		.align	2
- 1250              		.set	.LANCHOR37,. + 0
- 1253              	Num_7:
- 1254 0000 0202F20A 		.ascii	"\002\002\362\012\006"
- 1254      06
- 1255              		.section	.data.Num_8,"aw"
- 1256              		.align	2
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 30
+ 1094              		.loc 1 130 9 is_stmt 1 discriminator 3 view .LVU315
+ 130:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     }
+ 1095              		.loc 1 130 10 is_stmt 0 discriminator 3 view .LVU316
+ 1096 00a0 0AF1010A 		add	r10, r10, #1
+ 1097              	.LVL79:
+ 130:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     }
+ 1098              		.loc 1 130 10 discriminator 3 view .LVU317
+ 1099              	.LBE12:
+ 126:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1100              		.loc 1 126 36 is_stmt 1 discriminator 3 view .LVU318
+ 126:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1101              		.loc 1 126 37 is_stmt 0 discriminator 3 view .LVU319
+ 1102 00a4 013C     		subs	r4, r4, #1
+ 1103              	.LVL80:
+ 1104              	.L87:
+ 126:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1105              		.loc 1 126 29 is_stmt 1 discriminator 1 view .LVU320
+ 126:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1106              		.loc 1 126 5 is_stmt 0 discriminator 1 view .LVU321
+ 1107 00a6 002C     		cmp	r4, #0
+ 1108 00a8 BFDC     		bgt	.L88
+ 126:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1109              		.loc 1 126 5 discriminator 1 view .LVU322
+ 1110              	.LBE13:
+ 133:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 1111              		.loc 1 133 5 is_stmt 1 view .LVU323
+ 133:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 1112              		.loc 1 133 19 is_stmt 0 view .LVU324
+ 1113 00aa 154A     		ldr	r2, .L92+8
+ 1114 00ac 82FB0032 		smull	r3, r2, r2, r0
+ 1115 00b0 C317     		asrs	r3, r0, #31
+ 1116 00b2 C3EBA203 		rsb	r3, r3, r2, asr #2
+ 1117 00b6 03EB8303 		add	r3, r3, r3, lsl #2
+ 1118 00ba A0EB4303 		sub	r3, r0, r3, lsl #1
+ 133:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 1119              		.loc 1 133 13 view .LVU325
+ 1120 00be 06AA     		add	r2, sp, #24
+ 1121 00c0 5244     		add	r2, r2, r10
+ 1122 00c2 02F8103C 		strb	r3, [r2, #-16]
+ 135:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1123              		.loc 1 135 5 is_stmt 1 view .LVU326
+ 1124              	.LBB14:
+ 135:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1125              		.loc 1 135 9 view .LVU327
+ 1126              	.LVL81:
+ 135:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1127              		.loc 1 135 13 is_stmt 0 view .LVU328
+ 1128 00c6 0024     		movs	r4, #0
+ 1129              	.LVL82:
+ 135:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1130              		.loc 1 135 5 view .LVU329
+ 1131 00c8 0EE0     		b	.L89
+ 1132              	.LVL83:
+ 1133              	.L90:
+ 137:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         NOS_WS2812B_Matrix_SetSymvol(matrix,buff[i],i + startpos);
+ 1134              		.loc 1 137 9 is_stmt 1 discriminator 3 view .LVU330
+ 137:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****         NOS_WS2812B_Matrix_SetSymvol(matrix,buff[i],i + startpos);
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 30
 
 
- 1257              		.set	.LANCHOR38,. + 0
- 1260              	Num_8:
- 1261 0000 6C929292 		.ascii	"l\222\222\222l"
- 1261      6C
- 1262              		.section	.data.Num_9,"aw"
- 1263              		.align	2
- 1264              		.set	.LANCHOR39,. + 0
- 1267              	Num_9:
- 1268 0000 4C929292 		.ascii	"L\222\222\222|"
- 1268      7C
- 1269              		.section	.data.Plus,"aw"
- 1270              		.align	2
- 1271              		.set	.LANCHOR26,. + 0
- 1274              	Plus:
- 1275 0000 10107C10 		.ascii	"\020\020|\020\020"
- 1275      10
- 1276              		.section	.data.Slash,"aw"
- 1277              		.align	2
- 1278              		.set	.LANCHOR28,. + 0
- 1281              	Slash:
- 1282 0000 40201008 		.ascii	"@ \020\010\004"
- 1282      04
- 1283              		.text
- 1284              	.Letext0:
- 1285              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
- 1286              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
- 1287              		.file 4 "Core/Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h"
- 1288              		.file 5 "Core/Src/NOS_LIB_Driver/Inc/CharLib(7x5).h"
- 1289              		.file 6 "Core/Src/NOS_LIB_Driver/Inc/NOS_Math.h"
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 31
+ 1135              		.loc 1 137 17 is_stmt 0 discriminator 3 view .LVU331
+ 1136 00ca 06AB     		add	r3, sp, #24
+ 1137 00cc 2344     		add	r3, r3, r4
+ 1138 00ce 13F8101C 		ldrb	r1, [r3, #-16]	@ zero_extendqisi2
+ 1139 00d2 3031     		adds	r1, r1, #48
+ 1140 00d4 C9B2     		uxtb	r1, r1
+ 1141 00d6 03F8101C 		strb	r1, [r3, #-16]
+ 138:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     }
+ 1142              		.loc 1 138 9 is_stmt 1 discriminator 3 view .LVU332
+ 1143 00da 0BEB0402 		add	r2, fp, r4
+ 1144 00de D2B2     		uxtb	r2, r2
+ 1145 00e0 0198     		ldr	r0, [sp, #4]
+ 1146 00e2 FFF7FEFF 		bl	NOS_WS2812B_Matrix_SetSymvol
+ 1147              	.LVL84:
+ 135:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1148              		.loc 1 135 31 discriminator 3 view .LVU333
+ 135:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1149              		.loc 1 135 32 is_stmt 0 discriminator 3 view .LVU334
+ 1150 00e6 0134     		adds	r4, r4, #1
+ 1151              	.LVL85:
+ 1152              	.L89:
+ 135:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1153              		.loc 1 135 20 is_stmt 1 discriminator 1 view .LVU335
+ 135:Core/Src/NOS_LIB_Driver/Src/WS2812B.c ****     {
+ 1154              		.loc 1 135 5 is_stmt 0 discriminator 1 view .LVU336
+ 1155 00e8 A245     		cmp	r10, r4
+ 1156 00ea EEDA     		bge	.L90
+ 1157              	.LBE14:
+ 140:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 1158              		.loc 1 140 1 view .LVU337
+ 1159 00ec 07B0     		add	sp, sp, #28
+ 1160              	.LCFI8:
+ 1161              		.cfi_def_cfa_offset 52
+ 1162              		@ sp needed
+ 1163 00ee BDEC048B 		vldm	sp!, {d8-d9}
+ 1164              	.LCFI9:
+ 1165              		.cfi_restore 82
+ 1166              		.cfi_restore 83
+ 1167              		.cfi_restore 80
+ 1168              		.cfi_restore 81
+ 1169              		.cfi_def_cfa_offset 36
+ 1170 00f2 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 1171              	.LVL86:
+ 1172              	.L93:
+ 140:Core/Src/NOS_LIB_Driver/Src/WS2812B.c **** 
+ 1173              		.loc 1 140 1 view .LVU338
+ 1174 00f6 00BF     		.align	3
+ 1175              	.L92:
+ 1176 00f8 00000000 		.word	0
+ 1177 00fc 00002440 		.word	1076101120
+ 1178 0100 67666666 		.word	1717986919
+ 1179              		.cfi_endproc
+ 1180              	.LFE6:
+ 1182              		.global	Num_9
+ 1183              		.global	Num_8
+ 1184              		.global	Num_7
+ 1185              		.global	Num_6
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 31
+
+
+ 1186              		.global	Num_5
+ 1187              		.global	Num_4
+ 1188              		.global	Num_3
+ 1189              		.global	Num_2
+ 1190              		.global	Num_1
+ 1191              		.global	Num_0
+ 1192              		.global	Celcium
+ 1193              		.global	Multiply
+ 1194              		.global	Minus
+ 1195              		.global	Plus
+ 1196              		.global	Slash
+ 1197              		.global	Dot
+ 1198              		.global	Space
+ 1199              		.global	Eng_Z
+ 1200              		.global	Eng_Y
+ 1201              		.global	Eng_X
+ 1202              		.global	Eng_W
+ 1203              		.global	Eng_V
+ 1204              		.global	Eng_U
+ 1205              		.global	Eng_T
+ 1206              		.global	Eng_S
+ 1207              		.global	Eng_R
+ 1208              		.global	Eng_Q
+ 1209              		.global	Eng_P
+ 1210              		.global	Eng_O
+ 1211              		.global	Eng_N
+ 1212              		.global	Eng_M
+ 1213              		.global	Eng_L
+ 1214              		.global	Eng_K
+ 1215              		.global	Eng_J
+ 1216              		.global	Eng_I
+ 1217              		.global	Eng_H
+ 1218              		.global	Eng_G
+ 1219              		.global	Eng_F
+ 1220              		.global	Eng_E
+ 1221              		.global	Eng_D
+ 1222              		.global	Eng_C
+ 1223              		.global	Eng_B
+ 1224              		.global	Eng_A
+ 1225              		.section	.bss.Space,"aw",%nobits
+ 1226              		.align	2
+ 1227              		.set	.LANCHOR25,. + 0
+ 1230              	Space:
+ 1231 0000 00000000 		.space	5
+ 1231      00
+ 1232              		.section	.data.Celcium,"aw"
+ 1233              		.align	2
+ 1234              		.set	.LANCHOR29,. + 0
+ 1237              	Celcium:
+ 1238 0000 0000040A 		.ascii	"\000\000\004\012\004"
+ 1238      04
+ 1239              		.section	.data.Dot,"aw"
+ 1240              		.align	2
+ 1243              	Dot:
+ 1244 0000 00008000 		.ascii	"\000\000\200\000\000"
+ 1244      00
+ 1245              		.section	.data.Eng_A,"aw"
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 32
+
+
+ 1246              		.align	2
+ 1247              		.set	.LANCHOR40,. + 0
+ 1250              	Eng_A:
+ 1251 0000 FC121212 		.ascii	"\374\022\022\022\374"
+ 1251      FC
+ 1252              		.section	.data.Eng_B,"aw"
+ 1253              		.align	2
+ 1254              		.set	.LANCHOR0,. + 0
+ 1257              	Eng_B:
+ 1258 0000 FE929292 		.ascii	"\376\222\222\222l"
+ 1258      6C
+ 1259              		.section	.data.Eng_C,"aw"
+ 1260              		.align	2
+ 1261              		.set	.LANCHOR1,. + 0
+ 1264              	Eng_C:
+ 1265 0000 7C828282 		.ascii	"|\202\202\202D"
+ 1265      44
+ 1266              		.section	.data.Eng_D,"aw"
+ 1267              		.align	2
+ 1268              		.set	.LANCHOR2,. + 0
+ 1271              	Eng_D:
+ 1272 0000 FE828282 		.ascii	"\376\202\202\202|"
+ 1272      7C
+ 1273              		.section	.data.Eng_E,"aw"
+ 1274              		.align	2
+ 1275              		.set	.LANCHOR3,. + 0
+ 1278              	Eng_E:
+ 1279 0000 FE929292 		.ascii	"\376\222\222\222\202"
+ 1279      82
+ 1280              		.section	.data.Eng_F,"aw"
+ 1281              		.align	2
+ 1282              		.set	.LANCHOR4,. + 0
+ 1285              	Eng_F:
+ 1286 0000 FE121212 		.ascii	"\376\022\022\022\002"
+ 1286      02
+ 1287              		.section	.data.Eng_G,"aw"
+ 1288              		.align	2
+ 1289              		.set	.LANCHOR5,. + 0
+ 1292              	Eng_G:
+ 1293 0000 7C829292 		.ascii	"|\202\222\222t"
+ 1293      74
+ 1294              		.section	.data.Eng_H,"aw"
+ 1295              		.align	2
+ 1296              		.set	.LANCHOR6,. + 0
+ 1299              	Eng_H:
+ 1300 0000 FE101010 		.ascii	"\376\020\020\020\376"
+ 1300      FE
+ 1301              		.section	.data.Eng_I,"aw"
+ 1302              		.align	2
+ 1303              		.set	.LANCHOR7,. + 0
+ 1306              	Eng_I:
+ 1307 0000 0082FE82 		.ascii	"\000\202\376\202\000"
+ 1307      00
+ 1308              		.section	.data.Eng_J,"aw"
+ 1309              		.align	2
+ 1310              		.set	.LANCHOR8,. + 0
+ 1313              	Eng_J:
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 33
+
+
+ 1314 0000 40808080 		.ascii	"@\200\200\200~"
+ 1314      7E
+ 1315              		.section	.data.Eng_K,"aw"
+ 1316              		.align	2
+ 1317              		.set	.LANCHOR9,. + 0
+ 1320              	Eng_K:
+ 1321 0000 FE102844 		.ascii	"\376\020(D\202"
+ 1321      82
+ 1322              		.section	.data.Eng_L,"aw"
+ 1323              		.align	2
+ 1324              		.set	.LANCHOR10,. + 0
+ 1327              	Eng_L:
+ 1328 0000 FE808080 		.ascii	"\376\200\200\200\200"
+ 1328      80
+ 1329              		.section	.data.Eng_M,"aw"
+ 1330              		.align	2
+ 1331              		.set	.LANCHOR11,. + 0
+ 1334              	Eng_M:
+ 1335 0000 FE040804 		.ascii	"\376\004\010\004\376"
+ 1335      FE
+ 1336              		.section	.data.Eng_N,"aw"
+ 1337              		.align	2
+ 1338              		.set	.LANCHOR12,. + 0
+ 1341              	Eng_N:
+ 1342 0000 FE081020 		.ascii	"\376\010\020 \376"
+ 1342      FE
+ 1343              		.section	.data.Eng_O,"aw"
+ 1344              		.align	2
+ 1345              		.set	.LANCHOR13,. + 0
+ 1348              	Eng_O:
+ 1349 0000 7C828282 		.ascii	"|\202\202\202|"
+ 1349      7C
+ 1350              		.section	.data.Eng_P,"aw"
+ 1351              		.align	2
+ 1352              		.set	.LANCHOR14,. + 0
+ 1355              	Eng_P:
+ 1356 0000 FE121212 		.ascii	"\376\022\022\022\014"
+ 1356      0C
+ 1357              		.section	.data.Eng_Q,"aw"
+ 1358              		.align	2
+ 1359              		.set	.LANCHOR15,. + 0
+ 1362              	Eng_Q:
+ 1363 0000 7C82A242 		.ascii	"|\202\242B\274"
+ 1363      BC
+ 1364              		.section	.data.Eng_R,"aw"
+ 1365              		.align	2
+ 1366              		.set	.LANCHOR16,. + 0
+ 1369              	Eng_R:
+ 1370 0000 FE123252 		.ascii	"\376\0222R\214"
+ 1370      8C
+ 1371              		.section	.data.Eng_S,"aw"
+ 1372              		.align	2
+ 1373              		.set	.LANCHOR17,. + 0
+ 1376              	Eng_S:
+ 1377 0000 4C929292 		.ascii	"L\222\222\222d"
+ 1377      64
+ 1378              		.section	.data.Eng_T,"aw"
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 34
+
+
+ 1379              		.align	2
+ 1380              		.set	.LANCHOR18,. + 0
+ 1383              	Eng_T:
+ 1384 0000 0202FE02 		.ascii	"\002\002\376\002\002"
+ 1384      02
+ 1385              		.section	.data.Eng_U,"aw"
+ 1386              		.align	2
+ 1387              		.set	.LANCHOR19,. + 0
+ 1390              	Eng_U:
+ 1391 0000 7E808080 		.ascii	"~\200\200\200~"
+ 1391      7E
+ 1392              		.section	.data.Eng_V,"aw"
+ 1393              		.align	2
+ 1394              		.set	.LANCHOR20,. + 0
+ 1397              	Eng_V:
+ 1398 0000 3E408040 		.ascii	">@\200@>"
+ 1398      3E
+ 1399              		.section	.data.Eng_W,"aw"
+ 1400              		.align	2
+ 1401              		.set	.LANCHOR21,. + 0
+ 1404              	Eng_W:
+ 1405 0000 7E807880 		.ascii	"~\200x\200~"
+ 1405      7E
+ 1406              		.section	.data.Eng_X,"aw"
+ 1407              		.align	2
+ 1408              		.set	.LANCHOR22,. + 0
+ 1411              	Eng_X:
+ 1412 0000 C6281028 		.ascii	"\306(\020(\306"
+ 1412      C6
+ 1413              		.section	.data.Eng_Y,"aw"
+ 1414              		.align	2
+ 1415              		.set	.LANCHOR23,. + 0
+ 1418              	Eng_Y:
+ 1419 0000 0204F804 		.ascii	"\002\004\370\004\002"
+ 1419      02
+ 1420              		.section	.data.Eng_Z,"aw"
+ 1421              		.align	2
+ 1422              		.set	.LANCHOR24,. + 0
+ 1425              	Eng_Z:
+ 1426 0000 C2A2928A 		.ascii	"\302\242\222\212\206"
+ 1426      86
+ 1427              		.section	.data.Minus,"aw"
+ 1428              		.align	2
+ 1429              		.set	.LANCHOR27,. + 0
+ 1432              	Minus:
+ 1433 0000 10101010 		.ascii	"\020\020\020\020\020"
+ 1433      10
+ 1434              		.section	.data.Multiply,"aw"
+ 1435              		.align	2
+ 1438              	Multiply:
+ 1439 0000 44281028 		.ascii	"D(\020(D"
+ 1439      44
+ 1440              		.section	.data.Num_0,"aw"
+ 1441              		.align	2
+ 1442              		.set	.LANCHOR30,. + 0
+ 1445              	Num_0:
+ 1446 0000 7CA2928A 		.ascii	"|\242\222\212|"
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 35
+
+
+ 1446      7C
+ 1447              		.section	.data.Num_1,"aw"
+ 1448              		.align	2
+ 1449              		.set	.LANCHOR31,. + 0
+ 1452              	Num_1:
+ 1453 0000 8884FE80 		.ascii	"\210\204\376\200\200"
+ 1453      80
+ 1454              		.section	.data.Num_2,"aw"
+ 1455              		.align	2
+ 1456              		.set	.LANCHOR32,. + 0
+ 1459              	Num_2:
+ 1460 0000 C4A29292 		.ascii	"\304\242\222\222\214"
+ 1460      8C
+ 1461              		.section	.data.Num_3,"aw"
+ 1462              		.align	2
+ 1463              		.set	.LANCHOR33,. + 0
+ 1466              	Num_3:
+ 1467 0000 44929292 		.ascii	"D\222\222\222l"
+ 1467      6C
+ 1468              		.section	.data.Num_4,"aw"
+ 1469              		.align	2
+ 1470              		.set	.LANCHOR34,. + 0
+ 1473              	Num_4:
+ 1474 0000 0E101010 		.ascii	"\016\020\020\020\376"
+ 1474      FE
+ 1475              		.section	.data.Num_5,"aw"
+ 1476              		.align	2
+ 1477              		.set	.LANCHOR35,. + 0
+ 1480              	Num_5:
+ 1481 0000 8E929292 		.ascii	"\216\222\222\222b"
+ 1481      62
+ 1482              		.section	.data.Num_6,"aw"
+ 1483              		.align	2
+ 1484              		.set	.LANCHOR36,. + 0
+ 1487              	Num_6:
+ 1488 0000 7C929292 		.ascii	"|\222\222\222d"
+ 1488      64
+ 1489              		.section	.data.Num_7,"aw"
+ 1490              		.align	2
+ 1491              		.set	.LANCHOR37,. + 0
+ 1494              	Num_7:
+ 1495 0000 0202F20A 		.ascii	"\002\002\362\012\006"
+ 1495      06
+ 1496              		.section	.data.Num_8,"aw"
+ 1497              		.align	2
+ 1498              		.set	.LANCHOR38,. + 0
+ 1501              	Num_8:
+ 1502 0000 6C929292 		.ascii	"l\222\222\222l"
+ 1502      6C
+ 1503              		.section	.data.Num_9,"aw"
+ 1504              		.align	2
+ 1505              		.set	.LANCHOR39,. + 0
+ 1508              	Num_9:
+ 1509 0000 4C929292 		.ascii	"L\222\222\222|"
+ 1509      7C
+ 1510              		.section	.data.Plus,"aw"
+ 1511              		.align	2
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 36
+
+
+ 1512              		.set	.LANCHOR26,. + 0
+ 1515              	Plus:
+ 1516 0000 10107C10 		.ascii	"\020\020|\020\020"
+ 1516      10
+ 1517              		.section	.data.Slash,"aw"
+ 1518              		.align	2
+ 1519              		.set	.LANCHOR28,. + 0
+ 1522              	Slash:
+ 1523 0000 40201008 		.ascii	"@ \020\010\004"
+ 1523      04
+ 1524              		.text
+ 1525              	.Letext0:
+ 1526              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 1527              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 1528              		.file 4 "Core/Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h"
+ 1529              		.file 5 "Core/Src/NOS_LIB_Driver/Inc/CharLib(7x5).h"
+ 1530              		.file 6 "<built-in>"
+ 1531              		.file 7 "Core/Src/NOS_LIB_Driver/Inc/NOS_Math.h"
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 37
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 WS2812B.c
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:18     .text.NOS_WS2812B_Matrix_Init:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:26     .text.NOS_WS2812B_Matrix_Init:0000000000000000 NOS_WS2812B_Matrix_Init
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:47     .text.NOS_WS2812B_Matrix_SetPixel:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:54     .text.NOS_WS2812B_Matrix_SetPixel:0000000000000000 NOS_WS2812B_Matrix_SetPixel
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:105    .text.GetPixelPos:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:112    .text.GetPixelPos:0000000000000000 GetPixelPos
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:145    .text.NOS_WS2812B_Matrix_Update:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:152    .text.NOS_WS2812B_Matrix_Update:0000000000000000 NOS_WS2812B_Matrix_Update
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:422    .text.NOS_WS2812B_Matrix_Update:0000000000000108 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:427    .text.Symvol_GetBitMap:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:434    .text.Symvol_GetBitMap:0000000000000000 Symvol_GetBitMap
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:450    .text.Symvol_GetBitMap:000000000000000a $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:763    .text.Symvol_GetBitMap:00000000000000f0 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:808    .text.NOS_WS2812B_Matrix_SetSymvol:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:815    .text.NOS_WS2812B_Matrix_SetSymvol:0000000000000000 NOS_WS2812B_Matrix_SetSymvol
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:875    .text.NOS_WS2812B_Matrix_PrintStaticString:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:882    .text.NOS_WS2812B_Matrix_PrintStaticString:0000000000000000 NOS_WS2812B_Matrix_PrintStaticString
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1267   .data.Num_9:0000000000000000 Num_9
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1260   .data.Num_8:0000000000000000 Num_8
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1253   .data.Num_7:0000000000000000 Num_7
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1246   .data.Num_6:0000000000000000 Num_6
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1239   .data.Num_5:0000000000000000 Num_5
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1232   .data.Num_4:0000000000000000 Num_4
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1225   .data.Num_3:0000000000000000 Num_3
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1218   .data.Num_2:0000000000000000 Num_2
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1211   .data.Num_1:0000000000000000 Num_1
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1204   .data.Num_0:0000000000000000 Num_0
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:996    .data.Celcium:0000000000000000 Celcium
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1197   .data.Multiply:0000000000000000 Multiply
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1191   .data.Minus:0000000000000000 Minus
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1274   .data.Plus:0000000000000000 Plus
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1281   .data.Slash:0000000000000000 Slash
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1002   .data.Dot:0000000000000000 Dot
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:989    .bss.Space:0000000000000000 Space
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1184   .data.Eng_Z:0000000000000000 Eng_Z
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1177   .data.Eng_Y:0000000000000000 Eng_Y
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1170   .data.Eng_X:0000000000000000 Eng_X
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1163   .data.Eng_W:0000000000000000 Eng_W
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1156   .data.Eng_V:0000000000000000 Eng_V
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1149   .data.Eng_U:0000000000000000 Eng_U
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1142   .data.Eng_T:0000000000000000 Eng_T
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1135   .data.Eng_S:0000000000000000 Eng_S
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1128   .data.Eng_R:0000000000000000 Eng_R
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1121   .data.Eng_Q:0000000000000000 Eng_Q
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1114   .data.Eng_P:0000000000000000 Eng_P
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1107   .data.Eng_O:0000000000000000 Eng_O
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1100   .data.Eng_N:0000000000000000 Eng_N
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1093   .data.Eng_M:0000000000000000 Eng_M
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1086   .data.Eng_L:0000000000000000 Eng_L
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1079   .data.Eng_K:0000000000000000 Eng_K
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1072   .data.Eng_J:0000000000000000 Eng_J
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1065   .data.Eng_I:0000000000000000 Eng_I
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1058   .data.Eng_H:0000000000000000 Eng_H
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1051   .data.Eng_G:0000000000000000 Eng_G
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1044   .data.Eng_F:0000000000000000 Eng_F
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccDnmNdg.s 			page 32
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:18     .text.NOS_WS2812B_Matrix_Init:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:26     .text.NOS_WS2812B_Matrix_Init:0000000000000000 NOS_WS2812B_Matrix_Init
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:47     .text.NOS_WS2812B_Matrix_SetPixel:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:54     .text.NOS_WS2812B_Matrix_SetPixel:0000000000000000 NOS_WS2812B_Matrix_SetPixel
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:105    .text.GetPixelPos:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:112    .text.GetPixelPos:0000000000000000 GetPixelPos
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:145    .text.NOS_WS2812B_Matrix_Update:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:152    .text.NOS_WS2812B_Matrix_Update:0000000000000000 NOS_WS2812B_Matrix_Update
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:422    .text.NOS_WS2812B_Matrix_Update:0000000000000108 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:427    .text.Symvol_GetBitMap:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:434    .text.Symvol_GetBitMap:0000000000000000 Symvol_GetBitMap
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:450    .text.Symvol_GetBitMap:000000000000000a $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:763    .text.Symvol_GetBitMap:00000000000000f0 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:808    .text.NOS_WS2812B_Matrix_SetSymvol:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:815    .text.NOS_WS2812B_Matrix_SetSymvol:0000000000000000 NOS_WS2812B_Matrix_SetSymvol
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:875    .text.NOS_WS2812B_Matrix_PrintStaticString:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:882    .text.NOS_WS2812B_Matrix_PrintStaticString:0000000000000000 NOS_WS2812B_Matrix_PrintStaticString
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:948    .text.NOS_WS2812B_Matrix_PrintIntNumber:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:955    .text.NOS_WS2812B_Matrix_PrintIntNumber:0000000000000000 NOS_WS2812B_Matrix_PrintIntNumber
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1176   .text.NOS_WS2812B_Matrix_PrintIntNumber:00000000000000f8 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1508   .data.Num_9:0000000000000000 Num_9
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1501   .data.Num_8:0000000000000000 Num_8
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1494   .data.Num_7:0000000000000000 Num_7
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1487   .data.Num_6:0000000000000000 Num_6
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1480   .data.Num_5:0000000000000000 Num_5
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1473   .data.Num_4:0000000000000000 Num_4
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1466   .data.Num_3:0000000000000000 Num_3
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1459   .data.Num_2:0000000000000000 Num_2
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1452   .data.Num_1:0000000000000000 Num_1
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1445   .data.Num_0:0000000000000000 Num_0
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1237   .data.Celcium:0000000000000000 Celcium
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1438   .data.Multiply:0000000000000000 Multiply
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1432   .data.Minus:0000000000000000 Minus
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1515   .data.Plus:0000000000000000 Plus
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1522   .data.Slash:0000000000000000 Slash
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1243   .data.Dot:0000000000000000 Dot
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1230   .bss.Space:0000000000000000 Space
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1425   .data.Eng_Z:0000000000000000 Eng_Z
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1418   .data.Eng_Y:0000000000000000 Eng_Y
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1411   .data.Eng_X:0000000000000000 Eng_X
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1404   .data.Eng_W:0000000000000000 Eng_W
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1397   .data.Eng_V:0000000000000000 Eng_V
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1390   .data.Eng_U:0000000000000000 Eng_U
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1383   .data.Eng_T:0000000000000000 Eng_T
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1376   .data.Eng_S:0000000000000000 Eng_S
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1369   .data.Eng_R:0000000000000000 Eng_R
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1362   .data.Eng_Q:0000000000000000 Eng_Q
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1355   .data.Eng_P:0000000000000000 Eng_P
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1348   .data.Eng_O:0000000000000000 Eng_O
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1341   .data.Eng_N:0000000000000000 Eng_N
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1334   .data.Eng_M:0000000000000000 Eng_M
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1327   .data.Eng_L:0000000000000000 Eng_L
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1320   .data.Eng_K:0000000000000000 Eng_K
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1313   .data.Eng_J:0000000000000000 Eng_J
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1306   .data.Eng_I:0000000000000000 Eng_I
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 38
 
 
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1037   .data.Eng_E:0000000000000000 Eng_E
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1030   .data.Eng_D:0000000000000000 Eng_D
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1023   .data.Eng_C:0000000000000000 Eng_C
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1016   .data.Eng_B:0000000000000000 Eng_B
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1009   .data.Eng_A:0000000000000000 Eng_A
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:985    .bss.Space:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:992    .data.Celcium:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:999    .data.Dot:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1005   .data.Eng_A:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1012   .data.Eng_B:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1019   .data.Eng_C:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1026   .data.Eng_D:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1033   .data.Eng_E:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1040   .data.Eng_F:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1047   .data.Eng_G:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1054   .data.Eng_H:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1061   .data.Eng_I:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1068   .data.Eng_J:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1075   .data.Eng_K:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1082   .data.Eng_L:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1089   .data.Eng_M:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1096   .data.Eng_N:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1103   .data.Eng_O:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1110   .data.Eng_P:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1117   .data.Eng_Q:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1124   .data.Eng_R:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1131   .data.Eng_S:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1138   .data.Eng_T:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1145   .data.Eng_U:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1152   .data.Eng_V:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1159   .data.Eng_W:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1166   .data.Eng_X:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1173   .data.Eng_Y:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1180   .data.Eng_Z:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1187   .data.Minus:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1194   .data.Multiply:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1200   .data.Num_0:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1207   .data.Num_1:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1214   .data.Num_2:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1221   .data.Num_3:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1228   .data.Num_4:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1235   .data.Num_5:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1242   .data.Num_6:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1249   .data.Num_7:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1256   .data.Num_8:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1263   .data.Num_9:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1270   .data.Plus:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:1277   .data.Slash:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:509    .text.Symvol_GetBitMap:0000000000000045 $d
-C:\Users\user\AppData\Local\Temp\ccDnmNdg.s:509    .text.Symvol_GetBitMap:0000000000000046 $t
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1299   .data.Eng_H:0000000000000000 Eng_H
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1292   .data.Eng_G:0000000000000000 Eng_G
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1285   .data.Eng_F:0000000000000000 Eng_F
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1278   .data.Eng_E:0000000000000000 Eng_E
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1271   .data.Eng_D:0000000000000000 Eng_D
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1264   .data.Eng_C:0000000000000000 Eng_C
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1257   .data.Eng_B:0000000000000000 Eng_B
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1250   .data.Eng_A:0000000000000000 Eng_A
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1226   .bss.Space:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1233   .data.Celcium:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1240   .data.Dot:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1246   .data.Eng_A:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1253   .data.Eng_B:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1260   .data.Eng_C:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1267   .data.Eng_D:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1274   .data.Eng_E:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1281   .data.Eng_F:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1288   .data.Eng_G:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1295   .data.Eng_H:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1302   .data.Eng_I:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1309   .data.Eng_J:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1316   .data.Eng_K:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1323   .data.Eng_L:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1330   .data.Eng_M:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1337   .data.Eng_N:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1344   .data.Eng_O:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1351   .data.Eng_P:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1358   .data.Eng_Q:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1365   .data.Eng_R:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1372   .data.Eng_S:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1379   .data.Eng_T:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1386   .data.Eng_U:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1393   .data.Eng_V:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1400   .data.Eng_W:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1407   .data.Eng_X:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1414   .data.Eng_Y:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1421   .data.Eng_Z:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1428   .data.Minus:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1435   .data.Multiply:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1441   .data.Num_0:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1448   .data.Num_1:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1455   .data.Num_2:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1462   .data.Num_3:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1469   .data.Num_4:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1476   .data.Num_5:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1483   .data.Num_6:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1490   .data.Num_7:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1497   .data.Num_8:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1504   .data.Num_9:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1511   .data.Plus:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:1518   .data.Slash:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:509    .text.Symvol_GetBitMap:0000000000000045 $d
+C:\Users\user\AppData\Local\Temp\ccjUZp31.s:509    .text.Symvol_GetBitMap:0000000000000046 $t
 
 UNDEFINED SYMBOLS
 NOS_Math_NormalizeValue
+__aeabi_i2d
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccjUZp31.s 			page 39
+
+
+__aeabi_ddiv
+__aeabi_d2uiz
+__aeabi_dmul
+__aeabi_dsub
+__aeabi_d2iz
+pow
