@@ -136,14 +136,13 @@ matrixA.size = &msA;
 matrixB.symvols = &matrixBsymc;
 matrixB.size = &msB;
 matrixC.symvols = &matrixCsymc;
-matrixA.textColor = &red;
+matrixA.textColor = &blue;
 matrixA.foneColor = &fone;
 matrixB.textColor = &green;
 matrixC.textColor = &blue;
-
+int num = 0;
 
 NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"IT WORKS+-",1,10);
-NOS_WS2812B_Matrix_PrintFloatNumber(&matrixB,12.34f,1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -155,8 +154,11 @@ NOS_WS2812B_Matrix_PrintFloatNumber(&matrixB,12.34f,1);
     if(Time > 50)
     {
        x++;
-       NOS_WS2812B_Matrix_Update(&matrixA,5);
-              NOS_WS2812B_Matrix_Update(&matrixB,1);
+       num += 1;
+       NOS_WS2812B_Matrix_PrintIntNumber(&matrixB,num,1,0);
+       NOS_WS2812B_Matrix_Update(&matrixA,x);
+
+       NOS_WS2812B_Matrix_Update(&matrixB,1);
        visHandle();
        Time = 0;
     }

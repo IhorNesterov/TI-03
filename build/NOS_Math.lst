@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\user\AppData\Local\Temp\cce2hhPD.s 			page 1
+ARM GAS  C:\Users\user\AppData\Local\Temp\cczKM3J4.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -38,7 +38,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\cce2hhPD.s 			page 1
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
   34              		@ link register save eliminated.
-   5:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     while(value > maxValue)
+   5:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     while(value >= maxValue)
   35              		.loc 1 5 5 view .LVU1
   36              		.loc 1 5 10 is_stmt 0 view .LVU2
   37 0000 00E0     		b	.L2
@@ -50,15 +50,15 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\cce2hhPD.s 			page 1
   41 0002 401A     		subs	r0, r0, r1
   42              	.LVL1:
   43              	.L2:
-   5:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     while(value > maxValue)
+   5:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     while(value >= maxValue)
   44              		.loc 1 5 10 is_stmt 1 view .LVU5
   45 0004 8842     		cmp	r0, r1
-  46 0006 FCDC     		bgt	.L3
+  46 0006 FCDA     		bge	.L3
    8:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     }
    9:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** 
   10:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     return value;
   47              		.loc 1 10 5 view .LVU6
-ARM GAS  C:\Users\user\AppData\Local\Temp\cce2hhPD.s 			page 2
+ARM GAS  C:\Users\user\AppData\Local\Temp\cczKM3J4.s 			page 2
 
 
   11:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** }
@@ -91,7 +91,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\cce2hhPD.s 			page 1
   72              	.LVL3:
   16:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     int power = 1;
   73              		.loc 1 16 5 view .LVU11
-  17:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     while (value > probe)
+  17:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     while (value >= probe)
   74              		.loc 1 17 5 view .LVU12
   16:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     int power = 1;
   75              		.loc 1 16 9 is_stmt 0 view .LVU13
@@ -118,14 +118,14 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\cce2hhPD.s 			page 1
   92              		.loc 1 20 15 view .LVU20
   93 000e 5B00     		lsls	r3, r3, #1
   94              	.LVL8:
-ARM GAS  C:\Users\user\AppData\Local\Temp\cce2hhPD.s 			page 3
+ARM GAS  C:\Users\user\AppData\Local\Temp\cczKM3J4.s 			page 3
 
 
   95              	.L5:
-  17:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     while (value > probe)
+  17:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     while (value >= probe)
   96              		.loc 1 17 11 is_stmt 1 view .LVU21
   97 0010 9342     		cmp	r3, r2
-  98 0012 F9DB     		blt	.L6
+  98 0012 F9DD     		ble	.L6
   21:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     }
   22:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     return power;
   99              		.loc 1 22 5 view .LVU22
@@ -136,14 +136,14 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\cce2hhPD.s 			page 1
  103              	.LFE1:
  105              		.text
  106              	.Letext0:
-ARM GAS  C:\Users\user\AppData\Local\Temp\cce2hhPD.s 			page 4
+ARM GAS  C:\Users\user\AppData\Local\Temp\cczKM3J4.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 NOS_Math.c
-C:\Users\user\AppData\Local\Temp\cce2hhPD.s:18     .text.NOS_Math_NormalizeValue:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\cce2hhPD.s:26     .text.NOS_Math_NormalizeValue:0000000000000000 NOS_Math_NormalizeValue
-C:\Users\user\AppData\Local\Temp\cce2hhPD.s:54     .text.NOS_Math_GetNumberPower:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\cce2hhPD.s:61     .text.NOS_Math_GetNumberPower:0000000000000000 NOS_Math_GetNumberPower
+C:\Users\user\AppData\Local\Temp\cczKM3J4.s:18     .text.NOS_Math_NormalizeValue:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cczKM3J4.s:26     .text.NOS_Math_NormalizeValue:0000000000000000 NOS_Math_NormalizeValue
+C:\Users\user\AppData\Local\Temp\cczKM3J4.s:54     .text.NOS_Math_GetNumberPower:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cczKM3J4.s:61     .text.NOS_Math_GetNumberPower:0000000000000000 NOS_Math_GetNumberPower
 
 NO UNDEFINED SYMBOLS

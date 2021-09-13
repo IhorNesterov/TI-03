@@ -28,9 +28,9 @@ uint16_t GetPixelPos(uint8_t x, uint8_t y)
     }
 }
 
-void NOS_WS2812B_Matrix_Update(WS2812B_Matrix* matrix,uint8_t offset)
+void NOS_WS2812B_Matrix_Update(WS2812B_Matrix* matrix,uint16_t offset)
 {
-     uint8_t currColumn = NOS_Math_NormalizeValue(offset,matrix->size->col);
+     uint16_t currColumn = offset;
      uint8_t currByte = 0;
      bool bit = false;
      uint8_t symvolCount = matrix->size->col / 6;
@@ -52,11 +52,11 @@ void NOS_WS2812B_Matrix_Update(WS2812B_Matrix* matrix,uint8_t offset)
 
                    if(bit)
                    {
-                       NOS_WS2812B_Matrix_SetPixel(matrix,matrix->textColor,GetPixelPos(currColumn,currX));
+                       NOS_WS2812B_Matrix_SetPixel(matrix,matrix->textColor,GetPixelPos(NOS_Math_NormalizeValue(currColumn,matrix->size->col),currX));
                    }
                    else
                    {
-                       NOS_WS2812B_Matrix_SetPixel(matrix,matrix->foneColor,GetPixelPos(currColumn,currX));
+                       NOS_WS2812B_Matrix_SetPixel(matrix,matrix->foneColor,GetPixelPos(NOS_Math_NormalizeValue(currColumn,matrix->size->col),currX));
                    }
                    currX++;
                 }
@@ -70,11 +70,11 @@ void NOS_WS2812B_Matrix_Update(WS2812B_Matrix* matrix,uint8_t offset)
 
                    if(bit)
                    {
-                       NOS_WS2812B_Matrix_SetPixel(matrix,matrix->textColor,GetPixelPos(currColumn,currX));
+                       NOS_WS2812B_Matrix_SetPixel(matrix,matrix->textColor,GetPixelPos(NOS_Math_NormalizeValue(currColumn,matrix->size->col),currX));
                    }
                    else
                    {
-                       NOS_WS2812B_Matrix_SetPixel(matrix,matrix->foneColor,GetPixelPos(currColumn,currX));
+                       NOS_WS2812B_Matrix_SetPixel(matrix,matrix->foneColor,GetPixelPos(NOS_Math_NormalizeValue(currColumn,matrix->size->col),currX));
                    }
                    currX++;
                 }
@@ -85,7 +85,7 @@ void NOS_WS2812B_Matrix_Update(WS2812B_Matrix* matrix,uint8_t offset)
 
         for(int i = 1; i < 9; i++)
         {
-            NOS_WS2812B_Matrix_SetPixel(matrix,matrix->foneColor,GetPixelPos(currColumn,i));
+            NOS_WS2812B_Matrix_SetPixel(matrix,matrix->foneColor,GetPixelPos(NOS_Math_NormalizeValue(currColumn,matrix->size->col),i));
         }
         currColumn++;
      }
@@ -143,6 +143,8 @@ void NOS_WS2812B_Matrix_PrintFloatNumber(WS2812B_Matrix* matrix,float num,uint8_
     NOS_WS2812B_Matrix_PrintStaticString(matrix,".",startpos + pow,1);
     NOS_WS2812B_Matrix_PrintIntNumber(matrix,af,startpos + pow + 1,2);
 }
+
+
 
 uint8_t* Symvol_GetBitMap(char sym)
 {
