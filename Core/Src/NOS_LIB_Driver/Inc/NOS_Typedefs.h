@@ -20,6 +20,13 @@ typedef union Float_t //float data wrap
 /* Structures begin */
 
 /*WS2812B Matrix*/
+typedef struct Point_t
+{
+  uint16_t x;
+  uint16_t y;
+}Point;
+
+
 typedef struct PixelColor_t
 {
    uint8_t R;
@@ -33,6 +40,12 @@ typedef struct MatrixSize_t
   uint8_t row;
 } MatrixSize;
 
+typedef struct  Symvol_t
+{
+  uint8_t data[5];
+} Symvol;
+
+
 typedef struct WS2812B_Matrix_t
 {
     uint8_t* buffer;
@@ -40,6 +53,7 @@ typedef struct WS2812B_Matrix_t
     MatrixSize* size;
     PixelColor* textColor;
     PixelColor* foneColor;
+    Symvol* symvols;
 } WS2812B_Matrix;
 
 

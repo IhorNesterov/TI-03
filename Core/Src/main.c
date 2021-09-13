@@ -56,9 +56,19 @@ WS2812B_Matrix matrixA = {0};
 WS2812B_Matrix matrixB = {0};
 WS2812B_Matrix matrixC = {0};
 
+MatrixSize ms = {96,8};
 PixelColor red = {120,0x00,0x00};
 PixelColor green = {0x00,120,0x00};
+PixelColor yellow = {120,120,0x00};
 PixelColor blue = {0x00,0x00,120};
+PixelColor fone = {0x00,0x00,0x00};
+
+Symvol matrixAsymc[15];
+Symvol matrixBsymc[10];
+Symvol matrixCsymc[5];
+
+uint16_t x = 1;
+uint16_t y = 1;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -73,7 +83,12 @@ static void MX_TIM6_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+typedef struct Snake_t
+{
+  Point points[32 * 8];
 
+  Point head;
+}ll;
 /* USER CODE END 0 */
 
 /**
@@ -113,60 +128,29 @@ int main(void)
 NOS_WS2812B_Matrix_Init(&matrixA,&frameBuffer1,8 * 96);
 NOS_WS2812B_Matrix_Init(&matrixB,&frameBuffer2,8 * 64);
 NOS_WS2812B_Matrix_Init(&matrixC,&frameBuffer3,8 * 32);
+matrixA.symvols = &matrixAsymc;
+matrixA.size = &ms;
+matrixB.symvols = &matrixBsymc;
+matrixC.symvols = &matrixCsymc;
+matrixA.textColor = &red;
+matrixA.foneColor = &fone;
+matrixB.textColor = &green;
+matrixC.textColor = &blue;
 
 
+NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"IT WORKS",1,8);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
     /* USER CODE END WHILE */
     if(Time > 50)
     {
-      for(int i = 0; i < 8 * 32; i++)
-      {
-        if(i % 2 == 0)
-        {
-          NOS_WS2812B_Matrix_SetPixel(&matrixA,&red,i);
-          NOS_WS2812B_Matrix_SetPixel(&matrixB,&red,i);
-          NOS_WS2812B_Matrix_SetPixel(&matrixC,&red,i);
-        }
-        else
-        {
-          NOS_WS2812B_Matrix_SetPixel(&matrixA,&green,i);
-          NOS_WS2812B_Matrix_SetPixel(&matrixB,&green,i);
-          NOS_WS2812B_Matrix_SetPixel(&matrixC,&green,i);
-        }
-      }
-
-      for(int i = 8 * 32; i < 8 * 64; i++)
-      {
-        if(i % 2 == 0)
-        {
-          NOS_WS2812B_Matrix_SetPixel(&matrixA,&green,i);
-          NOS_WS2812B_Matrix_SetPixel(&matrixB,&green,i);
-        }
-        else
-        {
-          NOS_WS2812B_Matrix_SetPixel(&matrixA,&blue,i);
-          NOS_WS2812B_Matrix_SetPixel(&matrixB,&blue,i);
-        }
-      }
-
-      for(int i = 8 * 64; i < 8 * 96; i++)
-      {
-        if(i%2 == 0)
-        {
-          NOS_WS2812B_Matrix_SetPixel(&matrixA,&blue,i);
-        }
-        else
-        {
-          NOS_WS2812B_Matrix_SetPixel(&matrixA,&red,i);
-        }
-      }
-
-
+       x++;
+       NOS_WS2812B_Matrix_Update(&matrixA,0);
        visHandle();
        Time = 0;
     }
