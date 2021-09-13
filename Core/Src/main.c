@@ -67,7 +67,7 @@ Symvol matrixAsymc[15];
 Symvol matrixBsymc[10];
 Symvol matrixCsymc[5];
 
-uint16_t x = 1;
+uint8_t x = 1;
 uint16_t y = 1;
 /* USER CODE END PV */
 
@@ -138,7 +138,7 @@ matrixB.textColor = &green;
 matrixC.textColor = &blue;
 
 
-NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"IT WORKS",1,8);
+NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"IT WORKS+-",1,10);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -150,7 +150,7 @@ NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"IT WORKS",1,8);
     if(Time > 50)
     {
        x++;
-       NOS_WS2812B_Matrix_Update(&matrixA,0);
+       NOS_WS2812B_Matrix_Update(&matrixA,5);
        visHandle();
        Time = 0;
     }

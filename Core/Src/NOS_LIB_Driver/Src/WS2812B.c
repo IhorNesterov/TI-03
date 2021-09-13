@@ -1,6 +1,7 @@
 #include "WS2812B.h"
 #include "CharLib(7x5).h"
 #include <stdbool.h>
+#include "NOS_Math.h"
 
 void NOS_WS2812B_Matrix_Init(WS2812B_Matrix* matrix,uint8_t* buff,uint16_t ledsCount)
 {
@@ -29,7 +30,7 @@ uint16_t GetPixelPos(uint8_t x, uint8_t y)
 
 void NOS_WS2812B_Matrix_Update(WS2812B_Matrix* matrix,uint8_t offset)
 {
-     uint8_t currColumn = offset;
+     uint8_t currColumn = NOS_Math_NormalizeValue(offset,matrix->size->col);
      uint8_t currByte = 0;
      bool bit = false;
      uint8_t symvolCount = matrix->size->col / 6;
@@ -111,6 +112,7 @@ uint8_t* Symvol_GetBitMap(char sym)
 {
     switch (sym)
     {
+/* English upper case */
 case 'A':
     return Eng_A;
     break;
@@ -189,10 +191,60 @@ case 'Y':
 case 'Z':
     return Eng_Z;
     break;
+/* English upper case */
+
+/* Special symvols */
 case ' ':
     return Space;
     break;
-    
+case '+':
+    return Plus;
+    break;
+case '-':
+    return Minus;
+    break;    
+case '/':
+    return Slash;
+    break;
+case '*':
+    return Celcium;
+    break;
+        
+/* Special symvols */
+
+/* Numbers */
+case '0':
+    return Num_0;
+    break;
+    case '1':
+    return Num_1;
+    break;
+    case '2':
+    return Num_2;
+    break;
+    case '3':
+    return Num_3;
+    break;
+    case '4':
+    return Num_4;
+    break;
+    case '5':
+    return Num_5;
+    break;
+    case '6':
+    return Num_6;
+    break;
+    case '7':
+    return Num_7;
+    break;
+    case '8':
+    return Num_8;
+    break;
+    case '9':
+    return Num_9;
+    break;
+/* Numbers */
+
     default:
     return 0;
         break;

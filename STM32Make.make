@@ -36,6 +36,7 @@ BUILD_DIR = build
 ######################################
 # C sources
 C_SOURCES =  \
+Core/Src/NOS_LIB_Driver/Src/NOS_Math.c \
 Core/Src/NOS_LIB_Driver/Src/WS2812B.c \
 Core/Src/NOS_LIB_Driver/Src/WS2812B_Core.c \
 Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c \
