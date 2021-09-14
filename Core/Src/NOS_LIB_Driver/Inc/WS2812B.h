@@ -17,6 +17,8 @@ void NOS_WS2812B_Matrix_PrintIntNumber(WS2812B_Matrix* matrix,int num,uint8_t st
 
 void NOS_WS2812B_Matrix_PrintFloatNumber(WS2812B_Matrix* matrix,float num,uint8_t startpos);
 
+void NOS_WS2812B_Matrix_PrintRealTime(WS2812B_Matrix* matrix,RealTime* rt);
+
 uint8_t* Symvol_GetBitMap(char sym);
 
 uint16_t GetPixelPos(uint8_t x, uint8_t y);

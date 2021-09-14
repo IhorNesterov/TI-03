@@ -51,6 +51,8 @@ UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
+RealTime realtime = {0};
+
 extern uint8_t frameBuffer1[3*8*96];
 extern uint8_t frameBuffer2[3*8*64];
 extern uint8_t frameBuffer3[3*8*32];
@@ -135,6 +137,7 @@ int main(void)
 NOS_WS2812B_Matrix_Init(&matrixA,&frameBuffer1,8 * 96);
 NOS_WS2812B_Matrix_Init(&matrixB,&frameBuffer2,8 * 64);
 NOS_WS2812B_Matrix_Init(&matrixC,&frameBuffer3,8 * 32);
+NOS_RealTime_SetTime(&realtime,11,04,25,Hour24);
 matrixA.symvols = &matrixAsymc;
 matrixA.size = &msA;
 matrixB.symvols = &matrixBsymc;
@@ -157,10 +160,10 @@ NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"0.11 mk3B/yac",1,13);
     if(Time > 50)
     {
        x++;
-       NOS_WS2812B_Matrix_PrintIntNumber(&matrixB,num,1,0);
+       NOS_WS2812B_Matrix_PrintRealTime(&matrixB,&realtime);
        NOS_WS2812B_Matrix_Update(&matrixA,x);
 
-       NOS_WS2812B_Matrix_Update(&matrixB,1);
+       NOS_WS2812B_Matrix_Update(&matrixB,0);
        visHandle();
        Time = 0;
     }
@@ -178,6 +181,7 @@ void SysTick_Handler(void)
   /* USER CODE BEGIN SysTick_IRQn 1 */
 Time++;
        num += 1;
+      NOS_RealTime_Handler(&realtime);
   /* USER CODE END SysTick_IRQn 1 */
 }
 

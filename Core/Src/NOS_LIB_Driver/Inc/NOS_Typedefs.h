@@ -56,9 +56,19 @@ typedef struct WS2812B_Matrix_t
     Symvol* symvols;
 } WS2812B_Matrix;
 
-
-
 /*WS2812B Matrix*/
+
+typedef enum TimeFormat_e{Hour24,Hour12} TimeFormat;
+
+typedef struct RealTime_t
+{
+  uint16_t milliseconds;
+  uint8_t hour;
+  uint8_t min;
+  uint8_t sec;
+  TimeFormat format;
+} RealTime;
+
 
 /* Structures end */
 #endif

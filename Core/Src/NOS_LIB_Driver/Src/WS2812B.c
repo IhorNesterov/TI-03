@@ -34,7 +34,11 @@ void NOS_WS2812B_Matrix_Update(WS2812B_Matrix* matrix,uint16_t offset)
      uint8_t currByte = 0;
      bool bit = false;
      uint8_t symvolCount = matrix->size->col / 6;
-     symvolCount--;
+     //kastil
+     if(symvolCount > 15)
+     {
+        symvolCount--;
+     }
      int currX = 0;
 
      for(int currSymvol = 0; currSymvol < symvolCount; currSymvol++)
@@ -144,7 +148,56 @@ void NOS_WS2812B_Matrix_PrintFloatNumber(WS2812B_Matrix* matrix,float num,uint8_
     NOS_WS2812B_Matrix_PrintIntNumber(matrix,af,startpos + pow + 1,2);
 }
 
+void NOS_WS2812B_Matrix_PrintRealTime(WS2812B_Matrix* matrix,RealTime* rt)
+{
+    int startpos = 0;
+    if(rt->format == Hour24)
+    {
+        startpos = 1;
+    }
 
+    if(rt->format == Hour12)
+    {
+        if(rt->hour > 12)
+        {
+            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt->hour - 12) / 10 + 48,startpos);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt->hour - 12) % 10 + 48,startpos + 1);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,'P',startpos + 8);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,'M',startpos + 9);
+        }
+        else
+        {
+            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt->hour / 10 + 48,startpos);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt->hour % 10 + 48,startpos + 1);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,'A',startpos + 8);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,'M',startpos + 9);
+        }
+    }
+    else
+    {
+            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt->hour / 10 + 48,startpos);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt->hour % 10 + 48,startpos + 1);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,' ',startpos + 8);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,' ',startpos + 9);
+    }
+
+    NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt->min/10) + 48,startpos + 3);
+    NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt->min%10) + 48,startpos + 4);
+
+    NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt->sec/10 + 48,startpos + 6);
+    NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt->sec%10 + 48,startpos + 7);
+
+    if(rt->sec % 2 == 0)
+    {
+        NOS_WS2812B_Matrix_SetSymvol(matrix,':',startpos + 2);
+        NOS_WS2812B_Matrix_SetSymvol(matrix,':',startpos + 5);
+    }
+    else
+    {
+        NOS_WS2812B_Matrix_SetSymvol(matrix,' ',startpos + 2);
+        NOS_WS2812B_Matrix_SetSymvol(matrix,' ',startpos + 5);
+    }
+}
 
 uint8_t* Symvol_GetBitMap(char sym)
 {
@@ -326,7 +379,7 @@ case '0':
 /* Numbers */
 
     default:
-    return 0;
+    return Space;
         break;
     }
 }

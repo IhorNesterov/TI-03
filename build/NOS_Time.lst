@@ -1,0 +1,215 @@
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccat0sU1.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"NOS_Time.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.NOS_RealTime_Handler,"ax",%progbits
+  18              		.align	1
+  19              		.global	NOS_RealTime_Handler
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	NOS_RealTime_Handler:
+  27              	.LVL0:
+  28              	.LFB0:
+  29              		.file 1 "Core/Src/NOS_LIB_Driver/Src/NOS_Time.c"
+   1:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c **** #include "NOS_Time.h"
+   2:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c **** 
+   3:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c **** void NOS_RealTime_Handler(RealTime* rt)
+   4:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c **** {
+  30              		.loc 1 4 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+   5:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     rt->milliseconds++;
+  35              		.loc 1 5 5 view .LVU1
+  36              		.loc 1 5 7 is_stmt 0 view .LVU2
+  37 0000 0388     		ldrh	r3, [r0]
+  38              		.loc 1 5 21 view .LVU3
+  39 0002 0133     		adds	r3, r3, #1
+  40 0004 9BB2     		uxth	r3, r3
+  41 0006 0380     		strh	r3, [r0]	@ movhi
+   6:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     if(rt->milliseconds > 999)
+  42              		.loc 1 6 5 is_stmt 1 view .LVU4
+  43              		.loc 1 6 7 is_stmt 0 view .LVU5
+  44 0008 B3F57A7F 		cmp	r3, #1000
+  45 000c 19D3     		bcc	.L1
+   7:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     {
+   8:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     rt->sec++;
+  46              		.loc 1 8 5 is_stmt 1 view .LVU6
+  47              		.loc 1 8 7 is_stmt 0 view .LVU7
+  48 000e 0379     		ldrb	r3, [r0, #4]	@ zero_extendqisi2
+  49              		.loc 1 8 12 view .LVU8
+  50 0010 0133     		adds	r3, r3, #1
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccat0sU1.s 			page 2
+
+
+  51 0012 DBB2     		uxtb	r3, r3
+  52 0014 0371     		strb	r3, [r0, #4]
+   9:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     if(rt->sec > 59)
+  53              		.loc 1 9 5 is_stmt 1 view .LVU9
+  54              		.loc 1 9 7 is_stmt 0 view .LVU10
+  55 0016 3B2B     		cmp	r3, #59
+  56 0018 04D9     		bls	.L3
+  10:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     {
+  11:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****         rt->sec = 0;
+  57              		.loc 1 11 9 is_stmt 1 view .LVU11
+  58              		.loc 1 11 17 is_stmt 0 view .LVU12
+  59 001a 0023     		movs	r3, #0
+  60 001c 0371     		strb	r3, [r0, #4]
+  12:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****         rt->min++;
+  61              		.loc 1 12 9 is_stmt 1 view .LVU13
+  62              		.loc 1 12 11 is_stmt 0 view .LVU14
+  63 001e C378     		ldrb	r3, [r0, #3]	@ zero_extendqisi2
+  64              		.loc 1 12 16 view .LVU15
+  65 0020 0133     		adds	r3, r3, #1
+  66 0022 C370     		strb	r3, [r0, #3]
+  67              	.L3:
+  13:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     }
+  14:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c **** 
+  15:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     if(rt->min > 59)
+  68              		.loc 1 15 5 is_stmt 1 view .LVU16
+  69              		.loc 1 15 10 is_stmt 0 view .LVU17
+  70 0024 C378     		ldrb	r3, [r0, #3]	@ zero_extendqisi2
+  71              		.loc 1 15 7 view .LVU18
+  72 0026 3B2B     		cmp	r3, #59
+  73 0028 04D9     		bls	.L4
+  16:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     {
+  17:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****         rt->min = 0;
+  74              		.loc 1 17 9 is_stmt 1 view .LVU19
+  75              		.loc 1 17 17 is_stmt 0 view .LVU20
+  76 002a 0023     		movs	r3, #0
+  77 002c C370     		strb	r3, [r0, #3]
+  18:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****         rt->hour++;
+  78              		.loc 1 18 9 is_stmt 1 view .LVU21
+  79              		.loc 1 18 11 is_stmt 0 view .LVU22
+  80 002e 8378     		ldrb	r3, [r0, #2]	@ zero_extendqisi2
+  81              		.loc 1 18 17 view .LVU23
+  82 0030 0133     		adds	r3, r3, #1
+  83 0032 8370     		strb	r3, [r0, #2]
+  84              	.L4:
+  19:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     }
+  20:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c **** 
+  21:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     if(rt->hour > 23)
+  85              		.loc 1 21 5 is_stmt 1 view .LVU24
+  86              		.loc 1 21 10 is_stmt 0 view .LVU25
+  87 0034 8378     		ldrb	r3, [r0, #2]	@ zero_extendqisi2
+  88              		.loc 1 21 7 view .LVU26
+  89 0036 172B     		cmp	r3, #23
+  90 0038 01D9     		bls	.L5
+  22:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     {
+  23:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****         rt->hour = 0;
+  91              		.loc 1 23 9 is_stmt 1 view .LVU27
+  92              		.loc 1 23 18 is_stmt 0 view .LVU28
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccat0sU1.s 			page 3
+
+
+  93 003a 0023     		movs	r3, #0
+  94 003c 8370     		strb	r3, [r0, #2]
+  95              	.L5:
+  24:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     }
+  25:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     rt->milliseconds = 0;
+  96              		.loc 1 25 5 is_stmt 1 view .LVU29
+  97              		.loc 1 25 22 is_stmt 0 view .LVU30
+  98 003e 0023     		movs	r3, #0
+  99 0040 0380     		strh	r3, [r0]	@ movhi
+ 100              	.L1:
+  26:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     }
+  27:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c **** }
+ 101              		.loc 1 27 1 view .LVU31
+ 102 0042 7047     		bx	lr
+ 103              		.cfi_endproc
+ 104              	.LFE0:
+ 106              		.section	.text.NOS_RealTime_SetTime,"ax",%progbits
+ 107              		.align	1
+ 108              		.global	NOS_RealTime_SetTime
+ 109              		.syntax unified
+ 110              		.thumb
+ 111              		.thumb_func
+ 112              		.fpu fpv4-sp-d16
+ 114              	NOS_RealTime_SetTime:
+ 115              	.LVL1:
+ 116              	.LFB1:
+  28:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c **** 
+  29:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c **** void NOS_RealTime_SetTime(RealTime* rt,uint8_t _hour,uint8_t _min,uint8_t _sec,TimeFormat _format)
+  30:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c **** {
+ 117              		.loc 1 30 1 is_stmt 1 view -0
+ 118              		.cfi_startproc
+ 119              		@ args = 4, pretend = 0, frame = 0
+ 120              		@ frame_needed = 0, uses_anonymous_args = 0
+ 121              		@ link register save eliminated.
+  31:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     if(_hour < 24 && _min < 60 && _sec < 60)
+ 122              		.loc 1 31 5 view .LVU33
+ 123              		.loc 1 31 7 is_stmt 0 view .LVU34
+ 124 0000 1729     		cmp	r1, #23
+ 125 0002 09D8     		bhi	.L6
+ 126              		.loc 1 31 19 discriminator 1 view .LVU35
+ 127 0004 3B2A     		cmp	r2, #59
+ 128 0006 07D8     		bhi	.L6
+ 129              		.loc 1 31 32 discriminator 2 view .LVU36
+ 130 0008 3B2B     		cmp	r3, #59
+ 131 000a 05D8     		bhi	.L6
+  32:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     {
+  33:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****         rt->hour = _hour;
+ 132              		.loc 1 33 9 is_stmt 1 view .LVU37
+ 133              		.loc 1 33 18 is_stmt 0 view .LVU38
+ 134 000c 8170     		strb	r1, [r0, #2]
+  34:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****         rt->min = _min;
+ 135              		.loc 1 34 9 is_stmt 1 view .LVU39
+ 136              		.loc 1 34 17 is_stmt 0 view .LVU40
+ 137 000e C270     		strb	r2, [r0, #3]
+  35:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****         rt->sec = _sec;
+ 138              		.loc 1 35 9 is_stmt 1 view .LVU41
+ 139              		.loc 1 35 17 is_stmt 0 view .LVU42
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccat0sU1.s 			page 4
+
+
+ 140 0010 0371     		strb	r3, [r0, #4]
+  36:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****         rt->format = _format;
+ 141              		.loc 1 36 9 is_stmt 1 view .LVU43
+ 142              		.loc 1 36 20 is_stmt 0 view .LVU44
+ 143 0012 9DF80030 		ldrb	r3, [sp]	@ zero_extendqisi2
+ 144              	.LVL2:
+ 145              		.loc 1 36 20 view .LVU45
+ 146 0016 4371     		strb	r3, [r0, #5]
+ 147              	.LVL3:
+ 148              	.L6:
+  37:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c ****     }
+  38:Core/Src/NOS_LIB_Driver/Src/NOS_Time.c **** }...
+ 149              		.loc 1 38 1 view .LVU46
+ 150 0018 7047     		bx	lr
+ 151              		.cfi_endproc
+ 152              	.LFE1:
+ 154              		.text
+ 155              	.Letext0:
+ 156              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 157              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 158              		.file 4 "Core/Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h"
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccat0sU1.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 NOS_Time.c
+C:\Users\user\AppData\Local\Temp\ccat0sU1.s:18     .text.NOS_RealTime_Handler:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccat0sU1.s:26     .text.NOS_RealTime_Handler:0000000000000000 NOS_RealTime_Handler
+C:\Users\user\AppData\Local\Temp\ccat0sU1.s:107    .text.NOS_RealTime_SetTime:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccat0sU1.s:114    .text.NOS_RealTime_SetTime:0000000000000000 NOS_RealTime_SetTime
+
+NO UNDEFINED SYMBOLS
