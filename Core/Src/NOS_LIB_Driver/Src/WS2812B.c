@@ -231,6 +231,40 @@ case 'Z':
     break;
 /* English upper case */
 
+/* English lower case */
+case 'u':
+    return Eng_u;
+    break;
+case 'v':
+    return Eng_v;
+    break;
+case 'a':
+    return Eng_a;
+    break;
+case 'c':
+    return Eng_c;
+    break;
+/* English lower case */
+
+case 'm':
+    return Ukr_m;
+    break;
+case 'k':
+    return Ukr_k;
+    break;
+case 'd':
+    return Ukr_d;
+    break;    
+case 'o':
+    return Eng_o;
+    break;     
+ case 'g':
+    return Ukr_g;
+    break;       
+case 'y':
+    return Ukr_ch;
+    break;
+
 /* Special symvols */
 case ' ':
     return Space;
@@ -250,6 +284,10 @@ case '*':
 case '.':
     return Dot;
     break;
+case ':':
+    return DoubleDot;
+    break;
+
 
 
 /* Special symvols */

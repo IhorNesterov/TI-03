@@ -20,6 +20,9 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
+
+#include <locale.h>
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "NOS_Lib.h"
@@ -72,6 +75,7 @@ Symvol matrixCsymc[5];
 
 uint8_t x = 1;
 uint16_t y = 1;
+int num = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -101,7 +105,7 @@ typedef struct Snake_t
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+  setlocale(LC_ALL, "Rus");
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -140,9 +144,8 @@ matrixA.textColor = &blue;
 matrixA.foneColor = &fone;
 matrixB.textColor = &green;
 matrixC.textColor = &blue;
-int num = 0;
 
-NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"IT WORKS+-",1,10);
+NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"0.11 mk3B/yac",1,13);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -154,7 +157,6 @@ NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"IT WORKS+-",1,10);
     if(Time > 50)
     {
        x++;
-       num += 1;
        NOS_WS2812B_Matrix_PrintIntNumber(&matrixB,num,1,0);
        NOS_WS2812B_Matrix_Update(&matrixA,x);
 
@@ -175,6 +177,7 @@ void SysTick_Handler(void)
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
 Time++;
+       num += 1;
   /* USER CODE END SysTick_IRQn 1 */
 }
 
