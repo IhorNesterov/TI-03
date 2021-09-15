@@ -1,14 +1,16 @@
-build/main.o: Core/Src/main.c Core/Inc/main.h \
- Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
- Core/Inc/stm32f4xx_hal_conf.h \
- Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
- Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
+build/NOS_ModBus.o: Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c \
+ Core/Src/NOS_LIB_Driver/Inc/NOS_ModBus.h \
+ Core/Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h \
  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h \
  Drivers/CMSIS/Include/core_cm4.h Drivers/CMSIS/Include/cmsis_version.h \
  Drivers/CMSIS/Include/cmsis_compiler.h Drivers/CMSIS/Include/cmsis_gcc.h \
  Drivers/CMSIS/Include/mpu_armv7.h \
  Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+ Core/Inc/stm32f4xx_hal_conf.h \
+ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
+ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
@@ -27,18 +29,9 @@ build/main.o: Core/Src/main.c Core/Inc/main.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_Lib.h \
- Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h \
- Core/Inc/../Src/NOS_LIB_Driver/Inc/WS2812B_Effects.h \
- Core/Inc/../Src/NOS_LIB_Driver/Inc/WS2812B.h \
- Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_Time.h \
- Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_ModBus.h \
- Core/Src/NOS_LIB_Driver/Inc/NOS_Lib.h
-Core/Inc/main.h:
-Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
-Core/Inc/stm32f4xx_hal_conf.h:
-Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
-Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h:
+ Core/Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h
+Core/Src/NOS_LIB_Driver/Inc/NOS_ModBus.h:
+Core/Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h:
 Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:
 Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h:
 Drivers/CMSIS/Include/core_cm4.h:
@@ -47,6 +40,10 @@ Drivers/CMSIS/Include/cmsis_compiler.h:
 Drivers/CMSIS/Include/cmsis_gcc.h:
 Drivers/CMSIS/Include/mpu_armv7.h:
 Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
+Core/Inc/stm32f4xx_hal_conf.h:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h:
@@ -65,10 +62,4 @@ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_Lib.h:
-Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h:
-Core/Inc/../Src/NOS_LIB_Driver/Inc/WS2812B_Effects.h:
-Core/Inc/../Src/NOS_LIB_Driver/Inc/WS2812B.h:
-Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_Time.h:
-Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_ModBus.h:
-Core/Src/NOS_LIB_Driver/Inc/NOS_Lib.h:
+Core/Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h:

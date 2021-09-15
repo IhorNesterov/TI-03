@@ -7,6 +7,8 @@ void NOS_WS2812B_Matrix_Init(WS2812B_Matrix* matrix,uint8_t* buff,uint16_t ledsC
 
 void NOS_WS2812B_Matrix_SetPixel(WS2812B_Matrix* matrix,PixelColor* color,uint16_t pixelPos); //Set Pixel in Leds strip by pos number
 
+void NOS_WS2812B_SetPixelColor(PixelColor* color,uint8_t R,uint8_t G,uint8_t B);
+
 void NOS_WS2812B_Matrix_Update(WS2812B_Matrix* matrix,uint16_t offset); //Update frame. For stable work do it every 35-50 ms in while
 
 void NOS_WS2812B_Matrix_SetSymvol(WS2812B_Matrix* matrix,char sym,uint8_t pos);
@@ -18,6 +20,8 @@ void NOS_WS2812B_Matrix_PrintIntNumber(WS2812B_Matrix* matrix,int num,uint8_t st
 void NOS_WS2812B_Matrix_PrintFloatNumber(WS2812B_Matrix* matrix,float num,uint8_t startpos);
 
 void NOS_WS2812B_Matrix_PrintRealTime(WS2812B_Matrix* matrix,RealTime* rt);
+
+void NOS_WS2812B_EffectRainbow(WS2812B_Matrix*matrix,uint32_t counter);
 
 uint8_t* Symvol_GetBitMap(char sym);
 

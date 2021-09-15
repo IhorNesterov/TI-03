@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccpNVMjX.s 			page 1
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccdBqzJ7.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccpNVMjX.s 			page 1
   37              		.cfi_offset 14, -4
   20:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 		// Set output channel/pin, GPIO_PIN_0 = 0, for GPIO_PIN_5 = 5 - this has to correspond to WS2812B
   21:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 		ws2812b.item[0].channel = 1;
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccpNVMjX.s 			page 2
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccdBqzJ7.s 			page 2
 
 
   38              		.loc 1 21 3 view .LVU1
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccpNVMjX.s 			page 1
   82              	.L3:
   83 0038 00000000 		.word	ws2812b
   84 003c 00000000 		.word	.LANCHOR0
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccpNVMjX.s 			page 3
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccdBqzJ7.s 			page 3
 
 
   85 0040 00000000 		.word	.LANCHOR1
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccpNVMjX.s 			page 1
   43:Core/Src/NOS_LIB_Driver/Src/WS2812B_Effects.c **** 		ws2812b_handle();
  124              		.loc 1 43 3 is_stmt 1 view .LVU28
  125 0014 FFF7FEFF 		bl	ws2812b_handle
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccpNVMjX.s 			page 4
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccdBqzJ7.s 			page 4
 
 
  126              	.LVL1:
@@ -225,23 +225,23 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccpNVMjX.s 			page 1
  162              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
  163              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
  164              		.file 4 "Core/Src/NOS_LIB_Driver/Inc/WS2812B_Core.h"
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccpNVMjX.s 			page 5
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccdBqzJ7.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 WS2812B_Effects.c
-C:\Users\user\AppData\Local\Temp\ccpNVMjX.s:18     .text.visInit:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccpNVMjX.s:26     .text.visInit:0000000000000000 visInit
-C:\Users\user\AppData\Local\Temp\ccpNVMjX.s:83     .text.visInit:0000000000000038 $d
-C:\Users\user\AppData\Local\Temp\ccpNVMjX.s:91     .text.visHandle:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccpNVMjX.s:98     .text.visHandle:0000000000000000 visHandle
-C:\Users\user\AppData\Local\Temp\ccpNVMjX.s:132    .text.visHandle:000000000000001c $d
-C:\Users\user\AppData\Local\Temp\ccpNVMjX.s:158    .bss.frameBuffer3:0000000000000000 frameBuffer3
-C:\Users\user\AppData\Local\Temp\ccpNVMjX.s:151    .bss.frameBuffer2:0000000000000000 frameBuffer2
-C:\Users\user\AppData\Local\Temp\ccpNVMjX.s:144    .bss.frameBuffer1:0000000000000000 frameBuffer1
-C:\Users\user\AppData\Local\Temp\ccpNVMjX.s:140    .bss.frameBuffer1:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccpNVMjX.s:147    .bss.frameBuffer2:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccpNVMjX.s:154    .bss.frameBuffer3:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccdBqzJ7.s:18     .text.visInit:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccdBqzJ7.s:26     .text.visInit:0000000000000000 visInit
+C:\Users\user\AppData\Local\Temp\ccdBqzJ7.s:83     .text.visInit:0000000000000038 $d
+C:\Users\user\AppData\Local\Temp\ccdBqzJ7.s:91     .text.visHandle:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccdBqzJ7.s:98     .text.visHandle:0000000000000000 visHandle
+C:\Users\user\AppData\Local\Temp\ccdBqzJ7.s:132    .text.visHandle:000000000000001c $d
+C:\Users\user\AppData\Local\Temp\ccdBqzJ7.s:158    .bss.frameBuffer3:0000000000000000 frameBuffer3
+C:\Users\user\AppData\Local\Temp\ccdBqzJ7.s:151    .bss.frameBuffer2:0000000000000000 frameBuffer2
+C:\Users\user\AppData\Local\Temp\ccdBqzJ7.s:144    .bss.frameBuffer1:0000000000000000 frameBuffer1
+C:\Users\user\AppData\Local\Temp\ccdBqzJ7.s:140    .bss.frameBuffer1:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccdBqzJ7.s:147    .bss.frameBuffer2:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccdBqzJ7.s:154    .bss.frameBuffer3:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 ws2812b_init

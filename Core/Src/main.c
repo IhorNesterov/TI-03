@@ -77,6 +77,7 @@ Symvol matrixCsymc[5];
 
 uint8_t x = 1;
 uint16_t y = 1;
+uint32_t coun = 0;
 int num = 0;
 /* USER CODE END PV */
 
@@ -137,18 +138,20 @@ int main(void)
 NOS_WS2812B_Matrix_Init(&matrixA,&frameBuffer1,8 * 96);
 NOS_WS2812B_Matrix_Init(&matrixB,&frameBuffer2,8 * 64);
 NOS_WS2812B_Matrix_Init(&matrixC,&frameBuffer3,8 * 32);
-NOS_RealTime_SetTime(&realtime,11,04,25,Hour24);
+NOS_RealTime_SetTime(&realtime,11,30,25,Hour24);
 matrixA.symvols = &matrixAsymc;
 matrixA.size = &msA;
 matrixB.symvols = &matrixBsymc;
 matrixB.size = &msB;
 matrixC.symvols = &matrixCsymc;
+matrixA.bright = 120;
+matrixB.bright = 120;
 matrixA.textColor = &blue;
 matrixA.foneColor = &fone;
 matrixB.textColor = &green;
 matrixC.textColor = &blue;
 
-NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"0.11 mk3B/yac",1,13);
+NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"0.11 uSv/Hour",2,13);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -156,17 +159,24 @@ NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"0.11 mk3B/yac",1,13);
   while (1)
   {
 
-    /* USER CODE END WHILE */
     if(Time > 50)
     {
        x++;
        NOS_WS2812B_Matrix_PrintRealTime(&matrixB,&realtime);
-       NOS_WS2812B_Matrix_Update(&matrixA,x);
-
+       NOS_WS2812B_EffectRainbow(&matrixA,coun);
+       NOS_WS2812B_EffectRainbow(&matrixB,coun);
+       coun += 3;
+       if(coun > matrixA.bright * 8)
+       {
+         coun = 0;
+       }
+       NOS_WS2812B_Matrix_Update(&matrixA,0);
        NOS_WS2812B_Matrix_Update(&matrixB,0);
+
        visHandle();
        Time = 0;
     }
+        /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -179,9 +189,9 @@ void SysTick_Handler(void)
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
-Time++;
-       num += 1;
-      NOS_RealTime_Handler(&realtime);
+  Time++;
+  num += 1;
+  NOS_RealTime_Handler(&realtime);
   /* USER CODE END SysTick_IRQn 1 */
 }
 
@@ -201,10 +211,10 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_LSI;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_LSE;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
-  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
+  RCC_OscInitStruct.LSEState = RCC_LSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLM = 8;

@@ -199,6 +199,64 @@ void NOS_WS2812B_Matrix_PrintRealTime(WS2812B_Matrix* matrix,RealTime* rt)
     }
 }
 
+void NOS_WS2812B_SetPixelColor(PixelColor* color,uint8_t R,uint8_t G,uint8_t B)
+{
+    color->R = R;
+    color->G = G;
+    color->B = B;
+}
+
+void NOS_WS2812B_EffectRainbow(WS2812B_Matrix*matrix,uint32_t counter)
+{
+
+    if(counter > 0 && counter < matrix->bright)
+    {
+        NOS_WS2812B_SetPixelColor(matrix->textColor,0,counter,matrix->bright);
+    }
+
+    if(counter > matrix->bright && counter < matrix->bright * 2)
+    {
+        counter = counter - matrix->bright;
+        NOS_WS2812B_SetPixelColor(matrix->textColor,0,matrix->bright,matrix->bright - counter);
+    }
+
+    if(counter > matrix->bright * 2 && counter < matrix->bright * 3)
+    {
+        counter = counter - matrix->bright * 2;
+        NOS_WS2812B_SetPixelColor(matrix->textColor,counter,matrix->bright,0);
+    }
+
+    if(counter > matrix->bright * 3 && counter < matrix->bright * 4)
+    {
+                counter = counter - matrix->bright * 3;
+        NOS_WS2812B_SetPixelColor(matrix->textColor,matrix->bright,matrix->bright - counter,0);
+    }
+
+    if(counter > matrix->bright * 4 && counter < matrix->bright * 5)
+    {
+                counter = counter - matrix->bright * 4;
+        NOS_WS2812B_SetPixelColor(matrix->textColor,matrix->bright,counter,0);
+    }
+
+    if(counter > matrix->bright * 5 && counter < matrix->bright * 6)
+    {
+                counter = counter - matrix->bright * 5;
+        NOS_WS2812B_SetPixelColor(matrix->textColor,matrix->bright - counter,matrix->bright,0);
+    }
+
+    if(counter > matrix->bright * 6 && counter < matrix->bright * 7)
+    {        
+        counter = counter - matrix->bright * 6;
+        NOS_WS2812B_SetPixelColor(matrix->textColor,0,matrix->bright,counter);
+    }
+
+        if(counter > matrix->bright * 7 && counter < matrix->bright * 8)
+    {        
+        counter = counter - matrix->bright * 7;
+        NOS_WS2812B_SetPixelColor(matrix->textColor,0,matrix->bright - counter,matrix->bright);
+    }
+}
+
 uint8_t* Symvol_GetBitMap(char sym)
 {
     switch (sym)
