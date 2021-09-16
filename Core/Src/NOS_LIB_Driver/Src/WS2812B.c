@@ -3,10 +3,20 @@
 #include <stdbool.h>
 #include "NOS_Math.h"
 
-void NOS_WS2812B_Matrix_Init(WS2812B_Matrix* matrix,uint8_t* buff,uint16_t ledsCount)
+void NOS_WS2812B_Matrix_BaseInit(WS2812B_Matrix* matrix,uint8_t* buff,uint16_t ledsCount)
 {
      matrix->buffer = buff;
      matrix->ledsCount.data = ledsCount;
+}
+
+void NOS_WS2812B_Matrix_FullInit(WS2812B_Matrix* matrix,uint8_t* buff,MatrixSize* size,PixelColor* text,PixelColor* fone,Symvol* symvols,uint8_t bright)
+{
+    matrix->buffer = buff;
+    matrix->symvols = symvols;
+    matrix->textColor = text;
+    matrix->foneColor = fone;
+    matrix->size = size;
+    matrix->bright = bright;
 }
 
 void NOS_WS2812B_Matrix_SetPixel(WS2812B_Matrix* matrix,PixelColor* color,uint16_t pixelPos)

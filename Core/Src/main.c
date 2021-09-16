@@ -146,32 +146,10 @@ int main(void)
   MX_TIM6_Init();
   visInit();
   /* USER CODE BEGIN 2 */
-NOS_WS2812B_Matrix_Init(&matrixA,&frameBuffer1,8 * 96);
-NOS_WS2812B_Matrix_Init(&matrixB,&frameBuffer2,8 * 64);
-NOS_WS2812B_Matrix_Init(&matrixFuck,&fra,8 * 32);
-NOS_WS2812B_Matrix_Init(&matrixC,&frameBuffer3,8 * 32);
-NOS_RealTime_SetTime(&realtime,11,30,25,Hour24);
-matrixA.symvols = &matrixAsymc;
-matrixB.symvols = &matrixBsymc;
-matrixFuck.symvols = &matrixFsymc;
-matrixC.symvols = &matrixCsymc;
-matrixA.size = &msA;
-matrixB.size = &msB;
-matrixFuck.size = &msF;
-matrixC.size = &msC;
-matrixA.bright = 120;
-matrixB.bright = 120;
-matrixFuck.bright = 120;
-matrixC.bright = 120;
-matrixA.textColor = &yellow;
-matrixB.textColor = &blue;
-matrixFuck.textColor = &fone;
-matrixC.textColor = &blue;
-matrixA.foneColor = &fone;
-matrixB.foneColor = &fone;
-matrixFuck.foneColor = &fone;
-matrixC.foneColor = &fone;
-      uSv_Value = 10.25f;
+NOS_WS2812B_Matrix_FullInit(&matrixA,&frameBuffer1,&msA,&red,&fone,&matrixAsymc,120);
+NOS_WS2812B_Matrix_FullInit(&matrixB,&frameBuffer2,&msB,&yellow,&fone,&matrixBsymc,120);
+NOS_WS2812B_Matrix_FullInit(&matrixC,&frameBuffer3,&msC,&blue,&fone,&matrixCsymc,120);
+  uSv_Value = 10.25f;
   /* USER CODE END 2 */
 
   /* Infinite loop */
