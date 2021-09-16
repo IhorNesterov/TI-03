@@ -51,19 +51,26 @@ UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
+MatrixSize msA = {96,8};
+MatrixSize msB = {64,8};
+MatrixSize msF = {32,8};
+MatrixSize msC = {32,8};
+
 RealTime realtime = {0};
 
 extern uint8_t frameBuffer1[3*8*96];
 extern uint8_t frameBuffer2[3*8*64];
+uint8_t fra[3*8*32];
 extern uint8_t frameBuffer3[3*8*32];
+
+
 
 WS2812B_Matrix matrixA = {0};
 WS2812B_Matrix matrixB = {0};
+WS2812B_Matrix matrixFuck = {0};
 WS2812B_Matrix matrixC = {0};
 
-MatrixSize msA = {96,8};
-MatrixSize msB = {64,8};
-MatrixSize msC = {32,8};
+
 
 PixelColor red = {120,0x00,0x00};
 PixelColor green = {0x00,120,0x00};
@@ -73,12 +80,16 @@ PixelColor fone = {0x00,0x00,0x00};
 
 Symvol matrixAsymc[15];
 Symvol matrixBsymc[10];
+Symvol matrixFsymc[5];
 Symvol matrixCsymc[5];
 
 uint8_t x = 1;
 uint16_t y = 1;
 uint32_t coun = 0;
 int num = 0;
+
+float uSv_Value = 0.11f;
+int16_t temperature = -25;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -137,21 +148,30 @@ int main(void)
   /* USER CODE BEGIN 2 */
 NOS_WS2812B_Matrix_Init(&matrixA,&frameBuffer1,8 * 96);
 NOS_WS2812B_Matrix_Init(&matrixB,&frameBuffer2,8 * 64);
+NOS_WS2812B_Matrix_Init(&matrixFuck,&fra,8 * 32);
 NOS_WS2812B_Matrix_Init(&matrixC,&frameBuffer3,8 * 32);
 NOS_RealTime_SetTime(&realtime,11,30,25,Hour24);
 matrixA.symvols = &matrixAsymc;
-matrixA.size = &msA;
 matrixB.symvols = &matrixBsymc;
-matrixB.size = &msB;
+matrixFuck.symvols = &matrixFsymc;
 matrixC.symvols = &matrixCsymc;
+matrixA.size = &msA;
+matrixB.size = &msB;
+matrixFuck.size = &msF;
+matrixC.size = &msC;
 matrixA.bright = 120;
 matrixB.bright = 120;
-matrixA.textColor = &blue;
-matrixA.foneColor = &fone;
-matrixB.textColor = &green;
+matrixFuck.bright = 120;
+matrixC.bright = 120;
+matrixA.textColor = &yellow;
+matrixB.textColor = &blue;
+matrixFuck.textColor = &fone;
 matrixC.textColor = &blue;
-
-NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"0.11 uSv/Hour",2,13);
+matrixA.foneColor = &fone;
+matrixB.foneColor = &fone;
+matrixFuck.foneColor = &fone;
+matrixC.foneColor = &fone;
+      uSv_Value = 10.25f;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -159,19 +179,35 @@ NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"0.11 uSv/Hour",2,13);
   while (1)
   {
 
-    if(Time > 50)
+    if(Time > 100)
     {
-       x++;
-       NOS_WS2812B_Matrix_PrintRealTime(&matrixB,&realtime);
+
+      uSv_Value -= 0.10f;
+       if(uSv_Value < 10.0f)
+       {
+          NOS_WS2812B_Matrix_SetSymvol(&matrixA,' ',1);
+          NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"uSv/Hour",7,8);
+          NOS_WS2812B_Matrix_PrintFloatNumber(&matrixA,uSv_Value,2);
+       }
+       else
+       {
+          NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"uSv/Hour",7,8);
+          NOS_WS2812B_Matrix_PrintFloatNumber(&matrixA,uSv_Value,1);
+       }
+
+       NOS_WS2812B_Matrix_PrintRealTime(&matrixB,realtime);
+       NOS_WS2812B_Matrix_PrintTemperature(&matrixC,temperature);
+
        NOS_WS2812B_EffectRainbow(&matrixA,coun);
-       NOS_WS2812B_EffectRainbow(&matrixB,coun);
-       coun += 3;
+       coun+= 5;
        if(coun > matrixA.bright * 8)
        {
          coun = 0;
        }
+
        NOS_WS2812B_Matrix_Update(&matrixA,0);
        NOS_WS2812B_Matrix_Update(&matrixB,0);
+       NOS_WS2812B_Matrix_Update(&matrixC,2);
 
        visHandle();
        Time = 0;
@@ -190,7 +226,6 @@ void SysTick_Handler(void)
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
   Time++;
-  num += 1;
   NOS_RealTime_Handler(&realtime);
   /* USER CODE END SysTick_IRQn 1 */
 }

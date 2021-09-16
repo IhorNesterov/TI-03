@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccZV76XT.s 			page 1
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccy9lxJd.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -55,14 +55,15 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccZV76XT.s 			page 1
   45 0004 8842     		cmp	r0, r1
   46 0006 FCDA     		bge	.L3
    8:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     }
-   9:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** 
-  10:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     return value;
-  47              		.loc 1 10 5 view .LVU6
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccZV76XT.s 			page 2
+   9:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     
+  10:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** 
+  11:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     return value;
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccy9lxJd.s 			page 2
 
 
-  11:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** }
-  48              		.loc 1 11 1 is_stmt 0 view .LVU7
+  47              		.loc 1 11 5 view .LVU6
+  12:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** }
+  48              		.loc 1 12 1 is_stmt 0 view .LVU7
   49 0008 7047     		bx	lr
   50              		.cfi_endproc
   51              	.LFE0:
@@ -76,74 +77,74 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccZV76XT.s 			page 1
   61              	NOS_Math_GetNumberPower:
   62              	.LVL2:
   63              	.LFB1:
-  12:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** 
-  13:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** int NOS_Math_GetNumberPower(int value)
-  14:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** {
-  64              		.loc 1 14 1 is_stmt 1 view -0
+  13:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** 
+  14:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** int NOS_Math_GetNumberPower(int value)
+  15:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** {
+  64              		.loc 1 15 1 is_stmt 1 view -0
   65              		.cfi_startproc
   66              		@ args = 0, pretend = 0, frame = 0
   67              		@ frame_needed = 0, uses_anonymous_args = 0
   68              		@ link register save eliminated.
-  69              		.loc 1 14 1 is_stmt 0 view .LVU9
+  69              		.loc 1 15 1 is_stmt 0 view .LVU9
   70 0000 0246     		mov	r2, r0
-  15:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     int probe = 10;
-  71              		.loc 1 15 5 is_stmt 1 view .LVU10
+  16:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     int probe = 10;
+  71              		.loc 1 16 5 is_stmt 1 view .LVU10
   72              	.LVL3:
-  16:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     int power = 1;
-  73              		.loc 1 16 5 view .LVU11
-  17:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     while (value >= probe)
-  74              		.loc 1 17 5 view .LVU12
-  16:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     int power = 1;
-  75              		.loc 1 16 9 is_stmt 0 view .LVU13
+  17:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     int power = 1;
+  73              		.loc 1 17 5 view .LVU11
+  18:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     while (value >= probe)
+  74              		.loc 1 18 5 view .LVU12
+  17:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     int power = 1;
+  75              		.loc 1 17 9 is_stmt 0 view .LVU13
   76 0002 0120     		movs	r0, #1
   77              	.LVL4:
-  15:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     int probe = 10;
-  78              		.loc 1 15 9 view .LVU14
+  16:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     int probe = 10;
+  78              		.loc 1 16 9 view .LVU14
   79 0004 0A23     		movs	r3, #10
-  80              		.loc 1 17 11 view .LVU15
+  80              		.loc 1 18 11 view .LVU15
   81 0006 03E0     		b	.L5
   82              	.LVL5:
   83              	.L6:
-  18:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     {
-  19:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****         power++;
-  84              		.loc 1 19 9 is_stmt 1 view .LVU16
-  85              		.loc 1 19 14 is_stmt 0 view .LVU17
+  19:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     {
+  20:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****         power++;
+  84              		.loc 1 20 9 is_stmt 1 view .LVU16
+  85              		.loc 1 20 14 is_stmt 0 view .LVU17
   86 0008 0130     		adds	r0, r0, #1
   87              	.LVL6:
-  20:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****         probe = probe * 10;
-  88              		.loc 1 20 9 is_stmt 1 view .LVU18
-  89              		.loc 1 20 15 is_stmt 0 view .LVU19
+  21:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****         probe = probe * 10;
+  88              		.loc 1 21 9 is_stmt 1 view .LVU18
+  89              		.loc 1 21 15 is_stmt 0 view .LVU19
   90 000a 03EB8303 		add	r3, r3, r3, lsl #2
   91              	.LVL7:
-  92              		.loc 1 20 15 view .LVU20
+  92              		.loc 1 21 15 view .LVU20
   93 000e 5B00     		lsls	r3, r3, #1
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccy9lxJd.s 			page 3
+
+
   94              	.LVL8:
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccZV76XT.s 			page 3
-
-
   95              	.L5:
-  17:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     while (value >= probe)
-  96              		.loc 1 17 11 is_stmt 1 view .LVU21
+  18:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     while (value >= probe)
+  96              		.loc 1 18 11 is_stmt 1 view .LVU21
   97 0010 9342     		cmp	r3, r2
   98 0012 F9DD     		ble	.L6
-  21:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     }
-  22:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     return power;
-  99              		.loc 1 22 5 view .LVU22
-  23:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** }...
- 100              		.loc 1 23 1 is_stmt 0 view .LVU23
+  22:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     }
+  23:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     return power;
+  99              		.loc 1 23 5 view .LVU22
+  24:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** }...
+ 100              		.loc 1 24 1 is_stmt 0 view .LVU23
  101 0014 7047     		bx	lr
  102              		.cfi_endproc
  103              	.LFE1:
  105              		.text
  106              	.Letext0:
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccZV76XT.s 			page 4
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccy9lxJd.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 NOS_Math.c
-C:\Users\user\AppData\Local\Temp\ccZV76XT.s:18     .text.NOS_Math_NormalizeValue:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccZV76XT.s:26     .text.NOS_Math_NormalizeValue:0000000000000000 NOS_Math_NormalizeValue
-C:\Users\user\AppData\Local\Temp\ccZV76XT.s:54     .text.NOS_Math_GetNumberPower:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccZV76XT.s:61     .text.NOS_Math_GetNumberPower:0000000000000000 NOS_Math_GetNumberPower
+C:\Users\user\AppData\Local\Temp\ccy9lxJd.s:18     .text.NOS_Math_NormalizeValue:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccy9lxJd.s:26     .text.NOS_Math_NormalizeValue:0000000000000000 NOS_Math_NormalizeValue
+C:\Users\user\AppData\Local\Temp\ccy9lxJd.s:54     .text.NOS_Math_GetNumberPower:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccy9lxJd.s:61     .text.NOS_Math_GetNumberPower:0000000000000000 NOS_Math_GetNumberPower
 
 NO UNDEFINED SYMBOLS

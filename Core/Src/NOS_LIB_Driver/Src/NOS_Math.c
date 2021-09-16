@@ -6,6 +6,7 @@ int NOS_Math_NormalizeValue(int value,int maxValue)
     {
         value = value - maxValue;
     }
+    
 
     return value;
 }

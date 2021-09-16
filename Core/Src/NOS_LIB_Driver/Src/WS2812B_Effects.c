@@ -24,7 +24,7 @@ void visInit()
 		ws2812b.item[1].channel = 2;
 		ws2812b.item[1].frameBufferPointer = frameBuffer2;
 	    ws2812b.item[1].frameBufferSize = sizeof(frameBuffer2);
-		ws2812b.item[2].channel = 3;
+		ws2812b.item[2].channel = 0;
 		ws2812b.item[2].frameBufferPointer = frameBuffer3;
 	    ws2812b.item[2].frameBufferSize = sizeof(frameBuffer3);
 	ws2812b_init();

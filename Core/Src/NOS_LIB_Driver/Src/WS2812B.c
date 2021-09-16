@@ -34,6 +34,7 @@ void NOS_WS2812B_Matrix_Update(WS2812B_Matrix* matrix,uint16_t offset)
      uint8_t currByte = 0;
      bool bit = false;
      uint8_t symvolCount = matrix->size->col / 6;
+     uint8_t colls = matrix->size->col;
      //kastil
      if(symvolCount > 15)
      {
@@ -47,20 +48,24 @@ void NOS_WS2812B_Matrix_Update(WS2812B_Matrix* matrix,uint16_t offset)
         {
             currByte = matrix->symvols[currSymvol].data[Column];
 
+                   if(currColumn == 17)
+                   {
+                       bit = false;
+                   }
+
             if(currColumn % 2 == 0)
             {
                currX = 0;
                for(int currBit = 0; currBit < 8; currBit++)
                {
                    bit = ((1 << currBit) & currByte);
-
                    if(bit)
                    {
-                       NOS_WS2812B_Matrix_SetPixel(matrix,matrix->textColor,GetPixelPos(NOS_Math_NormalizeValue(currColumn,matrix->size->col),currX));
+                       NOS_WS2812B_Matrix_SetPixel(matrix,matrix->textColor,GetPixelPos(NOS_Math_NormalizeValue(currColumn,colls),currX));
                    }
                    else
                    {
-                       NOS_WS2812B_Matrix_SetPixel(matrix,matrix->foneColor,GetPixelPos(NOS_Math_NormalizeValue(currColumn,matrix->size->col),currX));
+                       NOS_WS2812B_Matrix_SetPixel(matrix,matrix->foneColor,GetPixelPos(NOS_Math_NormalizeValue(currColumn,colls),currX));
                    }
                    currX++;
                 }
@@ -74,11 +79,11 @@ void NOS_WS2812B_Matrix_Update(WS2812B_Matrix* matrix,uint16_t offset)
 
                    if(bit)
                    {
-                       NOS_WS2812B_Matrix_SetPixel(matrix,matrix->textColor,GetPixelPos(NOS_Math_NormalizeValue(currColumn,matrix->size->col),currX));
+                       NOS_WS2812B_Matrix_SetPixel(matrix,matrix->textColor,GetPixelPos(NOS_Math_NormalizeValue(currColumn,colls),currX));
                    }
                    else
                    {
-                       NOS_WS2812B_Matrix_SetPixel(matrix,matrix->foneColor,GetPixelPos(NOS_Math_NormalizeValue(currColumn,matrix->size->col),currX));
+                       NOS_WS2812B_Matrix_SetPixel(matrix,matrix->foneColor,GetPixelPos(NOS_Math_NormalizeValue(currColumn,colls),currX));
                    }
                    currX++;
                 }
@@ -89,7 +94,7 @@ void NOS_WS2812B_Matrix_Update(WS2812B_Matrix* matrix,uint16_t offset)
 
         for(int i = 1; i < 9; i++)
         {
-            NOS_WS2812B_Matrix_SetPixel(matrix,matrix->foneColor,GetPixelPos(NOS_Math_NormalizeValue(currColumn,matrix->size->col),i));
+            NOS_WS2812B_Matrix_SetPixel(matrix,matrix->foneColor,GetPixelPos(NOS_Math_NormalizeValue(currColumn,colls),i));
         }
         currColumn++;
      }
@@ -112,9 +117,9 @@ void NOS_WS2812B_Matrix_PrintStaticString(WS2812B_Matrix* matrix,char string[],u
     }
 }
 
-void NOS_WS2812B_Matrix_PrintIntNumber(WS2812B_Matrix* matrix,int num,uint8_t startpos,uint8_t lenght)
+void NOS_WS2812B_Matrix_PrintIntNumber(WS2812B_Matrix* matrix,uint32_t num,uint8_t startpos,uint8_t lenght)
 {
-
+    
     int probe = 10;
     int a = 0;
     int power = NOS_Math_GetNumberPower(num);
@@ -139,6 +144,8 @@ void NOS_WS2812B_Matrix_PrintIntNumber(WS2812B_Matrix* matrix,int num,uint8_t st
 
 void NOS_WS2812B_Matrix_PrintFloatNumber(WS2812B_Matrix* matrix,float num,uint8_t startpos)
 {
+    if(num > 0.0f)
+    {
     int before = num;
     float after = num - (float)before;
     int af = after * 100;
@@ -146,48 +153,48 @@ void NOS_WS2812B_Matrix_PrintFloatNumber(WS2812B_Matrix* matrix,float num,uint8_
     NOS_WS2812B_Matrix_PrintIntNumber(matrix,before,startpos,pow);
     NOS_WS2812B_Matrix_PrintStaticString(matrix,".",startpos + pow,1);
     NOS_WS2812B_Matrix_PrintIntNumber(matrix,af,startpos + pow + 1,2);
+    }
 }
 
-void NOS_WS2812B_Matrix_PrintRealTime(WS2812B_Matrix* matrix,RealTime* rt)
+void NOS_WS2812B_Matrix_PrintRealTime(WS2812B_Matrix* matrix,RealTime rt)
 {
     int startpos = 0;
-    if(rt->format == Hour24)
+    if(rt.format == Hour24)
     {
         startpos = 1;
     }
 
-    if(rt->format == Hour12)
+    if(rt.format == Hour12)
     {
-        if(rt->hour > 12)
+        if(rt.hour > 12)
         {
-            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt->hour - 12) / 10 + 48,startpos);
-            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt->hour - 12) % 10 + 48,startpos + 1);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt.hour - 12) / 10 + 48,startpos);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt.hour - 12) % 10 + 48,startpos + 1);
             NOS_WS2812B_Matrix_SetSymvol(matrix,'P',startpos + 8);
             NOS_WS2812B_Matrix_SetSymvol(matrix,'M',startpos + 9);
         }
         else
         {
-            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt->hour / 10 + 48,startpos);
-            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt->hour % 10 + 48,startpos + 1);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt.hour / 10 + 48,startpos);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt.hour % 10 + 48,startpos + 1);
             NOS_WS2812B_Matrix_SetSymvol(matrix,'A',startpos + 8);
             NOS_WS2812B_Matrix_SetSymvol(matrix,'M',startpos + 9);
         }
     }
     else
     {
-            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt->hour / 10 + 48,startpos);
-            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt->hour % 10 + 48,startpos + 1);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt.hour / 10 + 48,startpos);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt.hour % 10 + 48,startpos + 1);
             NOS_WS2812B_Matrix_SetSymvol(matrix,' ',startpos + 8);
-            NOS_WS2812B_Matrix_SetSymvol(matrix,' ',startpos + 9);
     }
 
-    NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt->min/10) + 48,startpos + 3);
-    NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt->min%10) + 48,startpos + 4);
+    NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt.min/10) + 48,startpos + 3);
+    NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt.min%10) + 48,startpos + 4);
 
-    NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt->sec/10 + 48,startpos + 6);
-    NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt->sec%10 + 48,startpos + 7);
+    NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt.sec/10 + 48,startpos + 6);
+    NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt.sec%10 + 48,startpos + 7);
 
-    if(rt->sec % 2 == 0)
+    if(rt.sec % 2 == 0)
     {
         NOS_WS2812B_Matrix_SetSymvol(matrix,':',startpos + 2);
         NOS_WS2812B_Matrix_SetSymvol(matrix,':',startpos + 5);
@@ -255,6 +262,29 @@ void NOS_WS2812B_EffectRainbow(WS2812B_Matrix*matrix,uint32_t counter)
         counter = counter - matrix->bright * 7;
         NOS_WS2812B_SetPixelColor(matrix->textColor,0,matrix->bright - counter,matrix->bright);
     }
+}
+
+void NOS_WS2812B_Matrix_PrintTemperature(WS2812B_Matrix* matrix,int16_t temperature)
+{
+    if(temperature > 0)
+    {
+       NOS_WS2812B_Matrix_SetSymvol(matrix,'+',0);
+    }
+    else
+    {
+       NOS_WS2812B_Matrix_SetSymvol(matrix,'-',0);       
+    }
+
+       NOS_WS2812B_Matrix_SetSymvol(matrix,'*',3);
+       NOS_WS2812B_Matrix_SetSymvol(matrix,'C',4);
+
+    uint8_t counter = 0;
+    while(temperature < 0)
+    {
+       temperature++;
+       counter++;
+    }
+    NOS_WS2812B_Matrix_PrintIntNumber(matrix,(uint32_t)counter,1,2);
 }
 
 uint8_t* Symvol_GetBitMap(char sym)
@@ -354,6 +384,9 @@ case 'a':
     break;
 case 'c':
     return Eng_c;
+    break;
+case 'r':
+    return Eng_r;
     break;
 /* English lower case */
 
