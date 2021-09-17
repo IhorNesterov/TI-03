@@ -177,7 +177,7 @@ void NOS_WS2812B_Matrix_PrintRealTime(WS2812B_Matrix* matrix,RealTime rt)
     if(rt.format == Hour12)
     {
         if(rt.hour > 12)
-        {
+        {   
             NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt.hour - 12) / 10 + 48,startpos);
             NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt.hour - 12) % 10 + 48,startpos + 1);
             NOS_WS2812B_Matrix_SetSymvol(matrix,'P',startpos + 8);
@@ -185,16 +185,16 @@ void NOS_WS2812B_Matrix_PrintRealTime(WS2812B_Matrix* matrix,RealTime rt)
         }
         else
         {
-            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt.hour / 10 + 48,startpos);
-            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt.hour % 10 + 48,startpos + 1);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt.hour) / 10 + 48,startpos);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt.hour) % 10 + 48,startpos + 1);
             NOS_WS2812B_Matrix_SetSymvol(matrix,'A',startpos + 8);
             NOS_WS2812B_Matrix_SetSymvol(matrix,'M',startpos + 9);
         }
     }
     else
     {
-            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt.hour / 10 + 48,startpos);
-            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)rt.hour % 10 + 48,startpos + 1);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt.hour) / 10 + 48,startpos);
+            NOS_WS2812B_Matrix_SetSymvol(matrix,(char)(rt.hour) % 10 + 48,startpos + 1);
             NOS_WS2812B_Matrix_SetSymvol(matrix,' ',startpos + 8);
     }
 
@@ -289,12 +289,24 @@ void NOS_WS2812B_Matrix_PrintTemperature(WS2812B_Matrix* matrix,int16_t temperat
        NOS_WS2812B_Matrix_SetSymvol(matrix,'C',4);
 
     uint8_t counter = 0;
+    if(temperature < 0)
+    {
     while(temperature < 0)
     {
        temperature++;
        counter++;
     }
+    }
+    else
+    {
+        counter = (uint32_t)temperature;
+    }
     NOS_WS2812B_Matrix_PrintIntNumber(matrix,(uint32_t)counter,1,2);
+}
+
+void NOS_WS2812B_EffectEngineHandler(WS2812B_EffectEngine* engine)
+{ 
+    engine->counter++;
 }
 
 uint8_t* Symvol_GetBitMap(char sym)

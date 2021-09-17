@@ -60,6 +60,21 @@ typedef struct WS2812B_Matrix_t
     Symvol* symvols;
 } WS2812B_Matrix;
 
+typedef enum WS2812B_EffectEncoder_e {NONE,Breathe,Rainbow} WS2812B_EffectEncoder;
+
+typedef struct WS2812B_Effect_t
+{
+  WS2812B_Matrix* matrix;
+  WS2812B_EffectEncoder effect;
+} WS2812B_Effect;
+
+typedef struct WS2812B_EffectEngine_t
+{
+  WS2812B_Effect* effects;
+  uint8_t effectsCount;
+  uint32_t counter;
+} WS2812B_EffectEngine;
+
 /*WS2812B Matrix*/
 
 typedef enum TimeFormat_e{Hour24,Hour12} TimeFormat;
@@ -74,7 +89,7 @@ typedef struct RealTime_t
 } RealTime;
 
 /*ModBus*/
-typedef enum ModBusState_t{Free,ReceiveFromMaster,ReceiveFromSlave,TransmitToMaster,TransmitToSlave} ModBusState;
+typedef enum ModBus_State_t{Free,ReceiveFromMaster,ReceiveFromSlave,TransmitToMaster,TransmitToSlave} ModBus_State;
 typedef struct ModBus_Master_Command_t
 {
     uint8_t type; 
@@ -97,16 +112,25 @@ typedef struct ModBus_Slave_Command_t
     NOS_Float FloatValue;
 } ModBus_Slave_Command;
 
+typedef struct NOS_Modbus_Device_t
+{
+  uint8_t Addr;
+  uint8_t RegisterCount;
+  NOS_Short* RegisterAddress;
+} Modbus_Device;
+
 typedef struct NOS_ModBus_Struct_t
 {
+  Modbus_Device* devices;
   ModBus_Master_Command* master;
   ModBus_Slave_Command* slave;
+  ModBus_State state;
   uint8_t* buff;
+  uint8_t devicesCount;
   bool addressOk;
   uint8_t messageLenght;
   uint8_t currCommand;
 } ModBus_Struct;
-
 
 /*ModBus*/
 
