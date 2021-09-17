@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
   19:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 0XFA01, 0X3AC0, 0X3B80, 0XFB41, 0X3900, 0XF9C1, 0XF881, 0X3840,
   20:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 0X2800, 0XE8C1, 0XE981, 0X2940, 0XEB01, 0X2BC0, 0X2A80, 0XEA41,
   21:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 0XEE01, 0X2EC0, 0X2F80, 0XEF41, 0X2D00, 0XEDC1, 0XEC81, 0X2C40,
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 2
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 2
 
 
   22:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 0XE401, 0X24C0, 0X2580, 0XE541, 0X2700, 0XE7C1, 0XE681, 0X2640,
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
   65              		.loc 1 46 13 view .LVU14
   66 0014 6140     		eors	r1, r1, r4
   67              	.LVL6:
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 3
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 3
 
 
   47:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       wCRCWord >>= 8;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
  112              		.fpu fpv4-sp-d16
  114              	NOS_ModBus_ParseMasterCommand:
  115              	.LVL11:
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 4
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 4
 
 
  116              	.LFB131:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
   80:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
   81:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****     case 0x10:
   82:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[1] = buff[offset + 3];
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 5
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 5
 
 
   83:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 4];
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
  168              		.loc 1 66 9 is_stmt 1 view .LVU47
   66:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 5];
  169              		.loc 1 66 28 is_stmt 0 view .LVU48
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 6
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 6
 
 
  170 002c 0A79     		ldrb	r2, [r1, #4]	@ zero_extendqisi2
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
   75:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 5];
  206              		.loc 1 75 28 is_stmt 0 view .LVU67
  207 0050 0A79     		ldrb	r2, [r1, #4]	@ zero_extendqisi2
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 7
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 7
 
 
   75:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 5];
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
  244 0072 62F30703 		bfi	r3, r2, #0, #8
   84:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[1] = buff[offset + 5];
  245              		.loc 1 84 9 is_stmt 1 view .LVU86
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 8
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 8
 
 
   84:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[1] = buff[offset + 5];
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
   91:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 11];
  280              		.loc 1 91 37 view .LVU107
  281 0094 C372     		strb	r3, [r0, #11]
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 9
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 9
 
 
   92:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->type = 1;
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
  326 000e 9CF802C0 		ldrb	ip, [ip, #2]	@ zero_extendqisi2
  327              		.loc 1 106 22 view .LVU124
  328 0012 80F803C0 		strb	ip, [r0, #3]
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 10
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 10
 
 
  107:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
  120:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 5];
  351              		.loc 1 120 44 is_stmt 0 view .LVU134
  352 0028 0B79     		ldrb	r3, [r1, #4]	@ zero_extendqisi2
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 11
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 11
 
 
  120:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 5];
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
  389 0046 0370     		strb	r3, [r0]
  390 0048 7047     		bx	lr
  391              		.cfi_endproc
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 12
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 12
 
 
  392              	.LFE132:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
  438              		.loc 1 143 22 is_stmt 0 view .LVU162
  439 0004 BDF80430 		ldrh	r3, [sp, #4]
  440              	.LVL36:
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 13
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 13
 
 
  441              		.loc 1 143 22 view .LVU163
@@ -758,7 +758,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
  148:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    uint8_t* rx_buff_ptr = MB_struct->buff;
  473              		.loc 1 148 4 is_stmt 1 view .LVU167
  474              		.loc 1 148 13 is_stmt 0 view .LVU168
- 475 0006 8C68     		ldr	r4, [r1, #8]
+ 475 0006 0C69     		ldr	r4, [r1, #16]
  476              	.LVL38:
  149:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    if(*rx_buff_ptr == 101 && MB_struct->addressOk)
  477              		.loc 1 149 4 is_stmt 1 view .LVU169
@@ -776,14 +776,14 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
  155:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    if(MB_struct->addressOk && MB_struct->messageLenght == 1)
  484              		.loc 1 155 4 is_stmt 1 view .LVU172
  485              		.loc 1 155 16 is_stmt 0 view .LVU173
- 486 000e 9CF80C30 		ldrb	r3, [ip, #12]	@ zero_extendqisi2
+ 486 000e 9CF81530 		ldrb	r3, [ip, #21]	@ zero_extendqisi2
  487              		.loc 1 155 6 view .LVU174
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 14
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 14
 
 
  488 0012 1BB1     		cbz	r3, .L25
  489              		.loc 1 155 40 discriminator 1 view .LVU175
- 490 0014 9CF80D30 		ldrb	r3, [ip, #13]	@ zero_extendqisi2
+ 490 0014 9CF81630 		ldrb	r3, [ip, #22]	@ zero_extendqisi2
  491              		.loc 1 155 28 discriminator 1 view .LVU176
  492 0018 012B     		cmp	r3, #1
  493 001a 11D0     		beq	.L33
@@ -795,7 +795,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
  160:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    if(MB_struct->messageLenght > 10)
  495              		.loc 1 160 4 is_stmt 1 view .LVU177
  496              		.loc 1 160 16 is_stmt 0 view .LVU178
- 497 001c 9CF80D30 		ldrb	r3, [ip, #13]	@ zero_extendqisi2
+ 497 001c 9CF81630 		ldrb	r3, [ip, #22]	@ zero_extendqisi2
  498              		.loc 1 160 6 view .LVU179
  499 0020 0A2B     		cmp	r3, #10
  500 0022 1AD9     		bls	.L26
@@ -806,11 +806,11 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
  502              		.loc 1 163 7 view .LVU181
  503              		.loc 1 163 32 is_stmt 0 view .LVU182
  504 0024 0023     		movs	r3, #0
- 505 0026 8CF80D30 		strb	r3, [ip, #13]
+ 505 0026 8CF81630 		strb	r3, [ip, #22]
  164:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->addressOk = false;
  506              		.loc 1 164 7 is_stmt 1 view .LVU183
  507              		.loc 1 164 28 is_stmt 0 view .LVU184
- 508 002a 8CF80C30 		strb	r3, [ip, #12]
+ 508 002a 8CF81530 		strb	r3, [ip, #21]
  165:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       for(int i = 0; i < 10; i++)
  509              		.loc 1 165 7 is_stmt 1 view .LVU185
  510              	.LBB2:
@@ -824,7 +824,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
  518              	.LBE2:
  149:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
  519              		.loc 1 149 39 discriminator 1 view .LVU189
- 520 0030 0B7B     		ldrb	r3, [r1, #12]	@ zero_extendqisi2
+ 520 0030 4B7D     		ldrb	r3, [r1, #21]	@ zero_extendqisi2
  149:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
  521              		.loc 1 149 27 discriminator 1 view .LVU190
  522 0032 002B     		cmp	r3, #0
@@ -834,16 +834,16 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
  151:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        MB_struct->messageLenght = 0;
  525              		.loc 1 151 29 is_stmt 0 view .LVU192
  526 0036 0123     		movs	r3, #1
- 527 0038 0B73     		strb	r3, [r1, #12]
+ 527 0038 4B75     		strb	r3, [r1, #21]
  152:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
  528              		.loc 1 152 8 is_stmt 1 view .LVU193
  152:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 15
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 15
 
 
  529              		.loc 1 152 33 is_stmt 0 view .LVU194
  530 003a 0023     		movs	r3, #0
- 531 003c 4B73     		strb	r3, [r1, #13]
+ 531 003c 8B75     		strb	r3, [r1, #22]
  532 003e E6E7     		b	.L24
  533              	.L33:
  157:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
@@ -853,7 +853,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
  536 0040 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
  157:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
  537              		.loc 1 157 30 view .LVU197
- 538 0042 8CF80E30 		strb	r3, [ip, #14]
+ 538 0042 8CF81730 		strb	r3, [ip, #23]
  539 0046 E9E7     		b	.L25
  540              	.LVL41:
  541              	.L28:
@@ -862,7 +862,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
  167:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          MB_struct->buff[i] = 0;
  543              		.loc 1 167 10 is_stmt 1 discriminator 3 view .LVU198
  544              		.loc 1 167 19 is_stmt 0 discriminator 3 view .LVU199
- 545 0048 DCF80820 		ldr	r2, [ip, #8]
+ 545 0048 DCF81020 		ldr	r2, [ip, #16]
  546              		.loc 1 167 29 discriminator 3 view .LVU200
  547 004c 4FF0000E 		mov	lr, #0
  548 0050 02F803E0 		strb	lr, [r2, r3]
@@ -890,20 +890,18 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
  171:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    if(MB_struct->addressOk && MB_struct->messageLenght == 7 && MB_struct->currCommand == 0x03)
  562              		.loc 1 171 4 is_stmt 1 view .LVU206
  563              		.loc 1 171 16 is_stmt 0 view .LVU207
- 564 005a 9CF80C30 		ldrb	r3, [ip, #12]	@ zero_extendqisi2
+ 564 005a 9CF81530 		ldrb	r3, [ip, #21]	@ zero_extendqisi2
  565              		.loc 1 171 6 view .LVU208
- 566 005e 43B1     		cbz	r3, .L29
+ 566 005e 2BB1     		cbz	r3, .L29
  567              		.loc 1 171 61 discriminator 1 view .LVU209
- 568 0060 DCF80C30 		ldr	r3, [ip, #12]
- 569 0064 23F07F43 		bic	r3, r3, #-16777216
- 570 0068 23F0FF03 		bic	r3, r3, #255
- 571 006c 104A     		ldr	r2, .L35
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 16
+ 568 0060 BCF81620 		ldrh	r2, [ip, #22]
+ 569 0064 40F20733 		movw	r3, #775
+ 570 0068 9A42     		cmp	r2, r3
+ 571 006a 11D0     		beq	.L34
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 16
 
 
- 572 006e 9342     		cmp	r3, r2
- 573 0070 11D0     		beq	.L34
- 574              	.L29:
+ 572              	.L29:
  172:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
  173:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       rx_buff_ptr = MB_struct->buff;
  174:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->addressOk = false;
@@ -913,387 +911,382 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 1
  178:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    else
  179:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
  180:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->buff[MB_struct->messageLenght] = *rx_buff_ptr;
- 575              		.loc 1 180 7 is_stmt 1 view .LVU210
- 576              		.loc 1 180 16 is_stmt 0 view .LVU211
- 577 0072 DCF80820 		ldr	r2, [ip, #8]
- 578              		.loc 1 180 32 view .LVU212
- 579 0076 9CF80D30 		ldrb	r3, [ip, #13]	@ zero_extendqisi2
- 580              		.loc 1 180 51 view .LVU213
- 581 007a 14F8011B 		ldrb	r1, [r4], #1	@ zero_extendqisi2
- 582              	.LVL44:
- 583              		.loc 1 180 49 view .LVU214
- 584 007e D154     		strb	r1, [r2, r3]
+ 573              		.loc 1 180 7 is_stmt 1 view .LVU210
+ 574              		.loc 1 180 16 is_stmt 0 view .LVU211
+ 575 006c DCF81020 		ldr	r2, [ip, #16]
+ 576              		.loc 1 180 32 view .LVU212
+ 577 0070 9CF81630 		ldrb	r3, [ip, #22]	@ zero_extendqisi2
+ 578              		.loc 1 180 51 view .LVU213
+ 579 0074 14F8011B 		ldrb	r1, [r4], #1	@ zero_extendqisi2
+ 580              	.LVL44:
+ 581              		.loc 1 180 49 view .LVU214
+ 582 0078 D154     		strb	r1, [r2, r3]
  181:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       ++rx_buff_ptr;
- 585              		.loc 1 181 7 is_stmt 1 view .LVU215
- 586              	.LVL45:
+ 583              		.loc 1 181 7 is_stmt 1 view .LVU215
+ 584              	.LVL45:
  182:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       ++MB_struct->messageLenght;
- 587              		.loc 1 182 7 view .LVU216
- 588              		.loc 1 182 18 is_stmt 0 view .LVU217
- 589 0080 9CF80D30 		ldrb	r3, [ip, #13]	@ zero_extendqisi2
- 590              		.loc 1 182 7 view .LVU218
- 591 0084 0133     		adds	r3, r3, #1
- 592 0086 8CF80D30 		strb	r3, [ip, #13]
- 593              	.LVL46:
- 594              	.L30:
+ 585              		.loc 1 182 7 view .LVU216
+ 586              		.loc 1 182 18 is_stmt 0 view .LVU217
+ 587 007a 9CF81630 		ldrb	r3, [ip, #22]	@ zero_extendqisi2
+ 588              		.loc 1 182 7 view .LVU218
+ 589 007e 0133     		adds	r3, r3, #1
+ 590 0080 8CF81630 		strb	r3, [ip, #22]
+ 591              	.LVL46:
+ 592              	.L30:
  183:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
  184:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    HAL_UART_Receive_IT (huart, rx_buff_ptr, 1); 
- 595              		.loc 1 184 4 is_stmt 1 view .LVU219
- 596 008a 0122     		movs	r2, #1
- 597 008c 2146     		mov	r1, r4
- 598 008e 2846     		mov	r0, r5
- 599 0090 FFF7FEFF 		bl	HAL_UART_Receive_IT
- 600              	.LVL47:
+ 593              		.loc 1 184 4 is_stmt 1 view .LVU219
+ 594 0084 0122     		movs	r2, #1
+ 595 0086 2146     		mov	r1, r4
+ 596 0088 2846     		mov	r0, r5
+ 597 008a FFF7FEFF 		bl	HAL_UART_Receive_IT
+ 598              	.LVL47:
  185:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** }
- 601              		.loc 1 185 1 is_stmt 0 view .LVU220
- 602 0094 38BD     		pop	{r3, r4, r5, pc}
- 603              	.LVL48:
- 604              	.L34:
+ 599              		.loc 1 185 1 is_stmt 0 view .LVU220
+ 600 008e 38BD     		pop	{r3, r4, r5, pc}
+ 601              	.LVL48:
+ 602              	.L34:
  173:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->addressOk = false;
- 605              		.loc 1 173 7 is_stmt 1 view .LVU221
+ 603              		.loc 1 173 7 is_stmt 1 view .LVU221
  173:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->addressOk = false;
- 606              		.loc 1 173 19 is_stmt 0 view .LVU222
- 607 0096 DCF80840 		ldr	r4, [ip, #8]
- 608              	.LVL49:
+ 604              		.loc 1 173 19 is_stmt 0 view .LVU222
+ 605 0090 DCF81040 		ldr	r4, [ip, #16]
+ 606              	.LVL49:
  174:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->messageLenght = 0;
- 609              		.loc 1 174 7 is_stmt 1 view .LVU223
+ 607              		.loc 1 174 7 is_stmt 1 view .LVU223
  174:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->messageLenght = 0;
- 610              		.loc 1 174 28 is_stmt 0 view .LVU224
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 17
+ 608              		.loc 1 174 28 is_stmt 0 view .LVU224
+ 609 0094 0022     		movs	r2, #0
+ 610 0096 8CF81520 		strb	r2, [ip, #21]
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 17
 
 
- 611 009a 0022     		movs	r2, #0
- 612 009c 8CF80C20 		strb	r2, [ip, #12]
  175:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       NOS_ModBus_ParseSlaveCommand(MB_struct->master,MB_struct->buff,0);
- 613              		.loc 1 175 7 is_stmt 1 view .LVU225
+ 611              		.loc 1 175 7 is_stmt 1 view .LVU225
  175:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       NOS_ModBus_ParseSlaveCommand(MB_struct->master,MB_struct->buff,0);
- 614              		.loc 1 175 32 is_stmt 0 view .LVU226
- 615 00a0 8CF80D20 		strb	r2, [ip, #13]
+ 612              		.loc 1 175 32 is_stmt 0 view .LVU226
+ 613 009a 8CF81620 		strb	r2, [ip, #22]
  176:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
- 616              		.loc 1 176 7 is_stmt 1 view .LVU227
- 617 00a4 2146     		mov	r1, r4
- 618              	.LVL50:
+ 614              		.loc 1 176 7 is_stmt 1 view .LVU227
+ 615 009e 2146     		mov	r1, r4
+ 616              	.LVL50:
  176:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
- 619              		.loc 1 176 7 is_stmt 0 view .LVU228
- 620 00a6 DCF80000 		ldr	r0, [ip]
- 621              	.LVL51:
+ 617              		.loc 1 176 7 is_stmt 0 view .LVU228
+ 618 00a0 DCF80400 		ldr	r0, [ip, #4]
+ 619              	.LVL51:
  176:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
- 622              		.loc 1 176 7 view .LVU229
- 623 00aa FFF7FEFF 		bl	NOS_ModBus_ParseSlaveCommand
- 624              	.LVL52:
+ 620              		.loc 1 176 7 view .LVU229
+ 621 00a4 FFF7FEFF 		bl	NOS_ModBus_ParseSlaveCommand
+ 622              	.LVL52:
  176:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
- 625              		.loc 1 176 7 view .LVU230
- 626 00ae ECE7     		b	.L30
- 627              	.L36:
- 628              		.align	2
- 629              	.L35:
- 630 00b0 00070300 		.word	198400
- 631              		.cfi_endproc
- 632              	.LFE135:
- 634              		.section	.rodata.wCRCTable.0,"a"
- 635              		.align	2
- 636              		.set	.LANCHOR0,. + 0
- 639              	wCRCTable.0:
- 640 0000 0000     		.short	0
- 641 0002 C1C0     		.short	-16191
- 642 0004 81C1     		.short	-15999
- 643 0006 4001     		.short	320
- 644 0008 01C3     		.short	-15615
- 645 000a C003     		.short	960
- 646 000c 8002     		.short	640
- 647 000e 41C2     		.short	-15807
- 648 0010 01C6     		.short	-14847
- 649 0012 C006     		.short	1728
- 650 0014 8007     		.short	1920
- 651 0016 41C7     		.short	-14527
- 652 0018 0005     		.short	1280
- 653 001a C1C5     		.short	-14911
- 654 001c 81C4     		.short	-15231
- 655 001e 4004     		.short	1088
- 656 0020 01CC     		.short	-13311
- 657 0022 C00C     		.short	3264
- 658 0024 800D     		.short	3456
- 659 0026 41CD     		.short	-12991
- 660 0028 000F     		.short	3840
- 661 002a C1CF     		.short	-12351
- 662 002c 81CE     		.short	-12671
- 663 002e 400E     		.short	3648
- 664 0030 000A     		.short	2560
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 18
+ 623              		.loc 1 176 7 view .LVU230
+ 624 00a8 ECE7     		b	.L30
+ 625              		.cfi_endproc
+ 626              	.LFE135:
+ 628              		.section	.rodata.wCRCTable.0,"a"
+ 629              		.align	2
+ 630              		.set	.LANCHOR0,. + 0
+ 633              	wCRCTable.0:
+ 634 0000 0000     		.short	0
+ 635 0002 C1C0     		.short	-16191
+ 636 0004 81C1     		.short	-15999
+ 637 0006 4001     		.short	320
+ 638 0008 01C3     		.short	-15615
+ 639 000a C003     		.short	960
+ 640 000c 8002     		.short	640
+ 641 000e 41C2     		.short	-15807
+ 642 0010 01C6     		.short	-14847
+ 643 0012 C006     		.short	1728
+ 644 0014 8007     		.short	1920
+ 645 0016 41C7     		.short	-14527
+ 646 0018 0005     		.short	1280
+ 647 001a C1C5     		.short	-14911
+ 648 001c 81C4     		.short	-15231
+ 649 001e 4004     		.short	1088
+ 650 0020 01CC     		.short	-13311
+ 651 0022 C00C     		.short	3264
+ 652 0024 800D     		.short	3456
+ 653 0026 41CD     		.short	-12991
+ 654 0028 000F     		.short	3840
+ 655 002a C1CF     		.short	-12351
+ 656 002c 81CE     		.short	-12671
+ 657 002e 400E     		.short	3648
+ 658 0030 000A     		.short	2560
+ 659 0032 C1CA     		.short	-13631
+ 660 0034 81CB     		.short	-13439
+ 661 0036 400B     		.short	2880
+ 662 0038 01C9     		.short	-14079
+ 663 003a C009     		.short	2496
+ 664 003c 8008     		.short	2176
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 18
 
 
- 665 0032 C1CA     		.short	-13631
- 666 0034 81CB     		.short	-13439
- 667 0036 400B     		.short	2880
- 668 0038 01C9     		.short	-14079
- 669 003a C009     		.short	2496
- 670 003c 8008     		.short	2176
- 671 003e 41C8     		.short	-14271
- 672 0040 01D8     		.short	-10239
- 673 0042 C018     		.short	6336
- 674 0044 8019     		.short	6528
- 675 0046 41D9     		.short	-9919
- 676 0048 001B     		.short	6912
- 677 004a C1DB     		.short	-9279
- 678 004c 81DA     		.short	-9599
- 679 004e 401A     		.short	6720
- 680 0050 001E     		.short	7680
- 681 0052 C1DE     		.short	-8511
- 682 0054 81DF     		.short	-8319
- 683 0056 401F     		.short	8000
- 684 0058 01DD     		.short	-8959
- 685 005a C01D     		.short	7616
- 686 005c 801C     		.short	7296
- 687 005e 41DC     		.short	-9151
- 688 0060 0014     		.short	5120
- 689 0062 C1D4     		.short	-11071
- 690 0064 81D5     		.short	-10879
- 691 0066 4015     		.short	5440
- 692 0068 01D7     		.short	-10495
- 693 006a C017     		.short	6080
- 694 006c 8016     		.short	5760
- 695 006e 41D6     		.short	-10687
- 696 0070 01D2     		.short	-11775
- 697 0072 C012     		.short	4800
- 698 0074 8013     		.short	4992
- 699 0076 41D3     		.short	-11455
- 700 0078 0011     		.short	4352
- 701 007a C1D1     		.short	-11839
- 702 007c 81D0     		.short	-12159
- 703 007e 4010     		.short	4160
- 704 0080 01F0     		.short	-4095
- 705 0082 C030     		.short	12480
- 706 0084 8031     		.short	12672
- 707 0086 41F1     		.short	-3775
- 708 0088 0033     		.short	13056
- 709 008a C1F3     		.short	-3135
- 710 008c 81F2     		.short	-3455
- 711 008e 4032     		.short	12864
- 712 0090 0036     		.short	13824
- 713 0092 C1F6     		.short	-2367
- 714 0094 81F7     		.short	-2175
- 715 0096 4037     		.short	14144
- 716 0098 01F5     		.short	-2815
- 717 009a C035     		.short	13760
- 718 009c 8034     		.short	13440
- 719 009e 41F4     		.short	-3007
- 720 00a0 003C     		.short	15360
- 721 00a2 C1FC     		.short	-831
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 19
+ 665 003e 41C8     		.short	-14271
+ 666 0040 01D8     		.short	-10239
+ 667 0042 C018     		.short	6336
+ 668 0044 8019     		.short	6528
+ 669 0046 41D9     		.short	-9919
+ 670 0048 001B     		.short	6912
+ 671 004a C1DB     		.short	-9279
+ 672 004c 81DA     		.short	-9599
+ 673 004e 401A     		.short	6720
+ 674 0050 001E     		.short	7680
+ 675 0052 C1DE     		.short	-8511
+ 676 0054 81DF     		.short	-8319
+ 677 0056 401F     		.short	8000
+ 678 0058 01DD     		.short	-8959
+ 679 005a C01D     		.short	7616
+ 680 005c 801C     		.short	7296
+ 681 005e 41DC     		.short	-9151
+ 682 0060 0014     		.short	5120
+ 683 0062 C1D4     		.short	-11071
+ 684 0064 81D5     		.short	-10879
+ 685 0066 4015     		.short	5440
+ 686 0068 01D7     		.short	-10495
+ 687 006a C017     		.short	6080
+ 688 006c 8016     		.short	5760
+ 689 006e 41D6     		.short	-10687
+ 690 0070 01D2     		.short	-11775
+ 691 0072 C012     		.short	4800
+ 692 0074 8013     		.short	4992
+ 693 0076 41D3     		.short	-11455
+ 694 0078 0011     		.short	4352
+ 695 007a C1D1     		.short	-11839
+ 696 007c 81D0     		.short	-12159
+ 697 007e 4010     		.short	4160
+ 698 0080 01F0     		.short	-4095
+ 699 0082 C030     		.short	12480
+ 700 0084 8031     		.short	12672
+ 701 0086 41F1     		.short	-3775
+ 702 0088 0033     		.short	13056
+ 703 008a C1F3     		.short	-3135
+ 704 008c 81F2     		.short	-3455
+ 705 008e 4032     		.short	12864
+ 706 0090 0036     		.short	13824
+ 707 0092 C1F6     		.short	-2367
+ 708 0094 81F7     		.short	-2175
+ 709 0096 4037     		.short	14144
+ 710 0098 01F5     		.short	-2815
+ 711 009a C035     		.short	13760
+ 712 009c 8034     		.short	13440
+ 713 009e 41F4     		.short	-3007
+ 714 00a0 003C     		.short	15360
+ 715 00a2 C1FC     		.short	-831
+ 716 00a4 81FD     		.short	-639
+ 717 00a6 403D     		.short	15680
+ 718 00a8 01FF     		.short	-255
+ 719 00aa C03F     		.short	16320
+ 720 00ac 803E     		.short	16000
+ 721 00ae 41FE     		.short	-447
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 19
 
 
- 722 00a4 81FD     		.short	-639
- 723 00a6 403D     		.short	15680
- 724 00a8 01FF     		.short	-255
- 725 00aa C03F     		.short	16320
- 726 00ac 803E     		.short	16000
- 727 00ae 41FE     		.short	-447
- 728 00b0 01FA     		.short	-1535
- 729 00b2 C03A     		.short	15040
- 730 00b4 803B     		.short	15232
- 731 00b6 41FB     		.short	-1215
- 732 00b8 0039     		.short	14592
- 733 00ba C1F9     		.short	-1599
- 734 00bc 81F8     		.short	-1919
- 735 00be 4038     		.short	14400
- 736 00c0 0028     		.short	10240
- 737 00c2 C1E8     		.short	-5951
- 738 00c4 81E9     		.short	-5759
- 739 00c6 4029     		.short	10560
- 740 00c8 01EB     		.short	-5375
- 741 00ca C02B     		.short	11200
- 742 00cc 802A     		.short	10880
- 743 00ce 41EA     		.short	-5567
- 744 00d0 01EE     		.short	-4607
- 745 00d2 C02E     		.short	11968
- 746 00d4 802F     		.short	12160
- 747 00d6 41EF     		.short	-4287
- 748 00d8 002D     		.short	11520
- 749 00da C1ED     		.short	-4671
- 750 00dc 81EC     		.short	-4991
- 751 00de 402C     		.short	11328
- 752 00e0 01E4     		.short	-7167
- 753 00e2 C024     		.short	9408
- 754 00e4 8025     		.short	9600
- 755 00e6 41E5     		.short	-6847
- 756 00e8 0027     		.short	9984
- 757 00ea C1E7     		.short	-6207
- 758 00ec 81E6     		.short	-6527
- 759 00ee 4026     		.short	9792
- 760 00f0 0022     		.short	8704
- 761 00f2 C1E2     		.short	-7487
- 762 00f4 81E3     		.short	-7295
- 763 00f6 4023     		.short	9024
- 764 00f8 01E1     		.short	-7935
- 765 00fa C021     		.short	8640
- 766 00fc 8020     		.short	8320
- 767 00fe 41E0     		.short	-8127
- 768 0100 01A0     		.short	-24575
- 769 0102 C060     		.short	24768
- 770 0104 8061     		.short	24960
- 771 0106 41A1     		.short	-24255
- 772 0108 0063     		.short	25344
- 773 010a C1A3     		.short	-23615
- 774 010c 81A2     		.short	-23935
- 775 010e 4062     		.short	25152
- 776 0110 0066     		.short	26112
- 777 0112 C1A6     		.short	-22847
- 778 0114 81A7     		.short	-22655
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 20
+ 722 00b0 01FA     		.short	-1535
+ 723 00b2 C03A     		.short	15040
+ 724 00b4 803B     		.short	15232
+ 725 00b6 41FB     		.short	-1215
+ 726 00b8 0039     		.short	14592
+ 727 00ba C1F9     		.short	-1599
+ 728 00bc 81F8     		.short	-1919
+ 729 00be 4038     		.short	14400
+ 730 00c0 0028     		.short	10240
+ 731 00c2 C1E8     		.short	-5951
+ 732 00c4 81E9     		.short	-5759
+ 733 00c6 4029     		.short	10560
+ 734 00c8 01EB     		.short	-5375
+ 735 00ca C02B     		.short	11200
+ 736 00cc 802A     		.short	10880
+ 737 00ce 41EA     		.short	-5567
+ 738 00d0 01EE     		.short	-4607
+ 739 00d2 C02E     		.short	11968
+ 740 00d4 802F     		.short	12160
+ 741 00d6 41EF     		.short	-4287
+ 742 00d8 002D     		.short	11520
+ 743 00da C1ED     		.short	-4671
+ 744 00dc 81EC     		.short	-4991
+ 745 00de 402C     		.short	11328
+ 746 00e0 01E4     		.short	-7167
+ 747 00e2 C024     		.short	9408
+ 748 00e4 8025     		.short	9600
+ 749 00e6 41E5     		.short	-6847
+ 750 00e8 0027     		.short	9984
+ 751 00ea C1E7     		.short	-6207
+ 752 00ec 81E6     		.short	-6527
+ 753 00ee 4026     		.short	9792
+ 754 00f0 0022     		.short	8704
+ 755 00f2 C1E2     		.short	-7487
+ 756 00f4 81E3     		.short	-7295
+ 757 00f6 4023     		.short	9024
+ 758 00f8 01E1     		.short	-7935
+ 759 00fa C021     		.short	8640
+ 760 00fc 8020     		.short	8320
+ 761 00fe 41E0     		.short	-8127
+ 762 0100 01A0     		.short	-24575
+ 763 0102 C060     		.short	24768
+ 764 0104 8061     		.short	24960
+ 765 0106 41A1     		.short	-24255
+ 766 0108 0063     		.short	25344
+ 767 010a C1A3     		.short	-23615
+ 768 010c 81A2     		.short	-23935
+ 769 010e 4062     		.short	25152
+ 770 0110 0066     		.short	26112
+ 771 0112 C1A6     		.short	-22847
+ 772 0114 81A7     		.short	-22655
+ 773 0116 4067     		.short	26432
+ 774 0118 01A5     		.short	-23295
+ 775 011a C065     		.short	26048
+ 776 011c 8064     		.short	25728
+ 777 011e 41A4     		.short	-23487
+ 778 0120 006C     		.short	27648
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 20
 
 
- 779 0116 4067     		.short	26432
- 780 0118 01A5     		.short	-23295
- 781 011a C065     		.short	26048
- 782 011c 8064     		.short	25728
- 783 011e 41A4     		.short	-23487
- 784 0120 006C     		.short	27648
- 785 0122 C1AC     		.short	-21311
- 786 0124 81AD     		.short	-21119
- 787 0126 406D     		.short	27968
- 788 0128 01AF     		.short	-20735
- 789 012a C06F     		.short	28608
- 790 012c 806E     		.short	28288
- 791 012e 41AE     		.short	-20927
- 792 0130 01AA     		.short	-22015
- 793 0132 C06A     		.short	27328
- 794 0134 806B     		.short	27520
- 795 0136 41AB     		.short	-21695
- 796 0138 0069     		.short	26880
- 797 013a C1A9     		.short	-22079
- 798 013c 81A8     		.short	-22399
- 799 013e 4068     		.short	26688
- 800 0140 0078     		.short	30720
- 801 0142 C1B8     		.short	-18239
- 802 0144 81B9     		.short	-18047
- 803 0146 4079     		.short	31040
- 804 0148 01BB     		.short	-17663
- 805 014a C07B     		.short	31680
- 806 014c 807A     		.short	31360
- 807 014e 41BA     		.short	-17855
- 808 0150 01BE     		.short	-16895
- 809 0152 C07E     		.short	32448
- 810 0154 807F     		.short	32640
- 811 0156 41BF     		.short	-16575
- 812 0158 007D     		.short	32000
- 813 015a C1BD     		.short	-16959
- 814 015c 81BC     		.short	-17279
- 815 015e 407C     		.short	31808
- 816 0160 01B4     		.short	-19455
- 817 0162 C074     		.short	29888
- 818 0164 8075     		.short	30080
- 819 0166 41B5     		.short	-19135
- 820 0168 0077     		.short	30464
- 821 016a C1B7     		.short	-18495
- 822 016c 81B6     		.short	-18815
- 823 016e 4076     		.short	30272
- 824 0170 0072     		.short	29184
- 825 0172 C1B2     		.short	-19775
- 826 0174 81B3     		.short	-19583
- 827 0176 4073     		.short	29504
- 828 0178 01B1     		.short	-20223
- 829 017a C071     		.short	29120
- 830 017c 8070     		.short	28800
- 831 017e 41B0     		.short	-20415
- 832 0180 0050     		.short	20480
- 833 0182 C190     		.short	-28479
- 834 0184 8191     		.short	-28287
- 835 0186 4051     		.short	20800
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 21
+ 779 0122 C1AC     		.short	-21311
+ 780 0124 81AD     		.short	-21119
+ 781 0126 406D     		.short	27968
+ 782 0128 01AF     		.short	-20735
+ 783 012a C06F     		.short	28608
+ 784 012c 806E     		.short	28288
+ 785 012e 41AE     		.short	-20927
+ 786 0130 01AA     		.short	-22015
+ 787 0132 C06A     		.short	27328
+ 788 0134 806B     		.short	27520
+ 789 0136 41AB     		.short	-21695
+ 790 0138 0069     		.short	26880
+ 791 013a C1A9     		.short	-22079
+ 792 013c 81A8     		.short	-22399
+ 793 013e 4068     		.short	26688
+ 794 0140 0078     		.short	30720
+ 795 0142 C1B8     		.short	-18239
+ 796 0144 81B9     		.short	-18047
+ 797 0146 4079     		.short	31040
+ 798 0148 01BB     		.short	-17663
+ 799 014a C07B     		.short	31680
+ 800 014c 807A     		.short	31360
+ 801 014e 41BA     		.short	-17855
+ 802 0150 01BE     		.short	-16895
+ 803 0152 C07E     		.short	32448
+ 804 0154 807F     		.short	32640
+ 805 0156 41BF     		.short	-16575
+ 806 0158 007D     		.short	32000
+ 807 015a C1BD     		.short	-16959
+ 808 015c 81BC     		.short	-17279
+ 809 015e 407C     		.short	31808
+ 810 0160 01B4     		.short	-19455
+ 811 0162 C074     		.short	29888
+ 812 0164 8075     		.short	30080
+ 813 0166 41B5     		.short	-19135
+ 814 0168 0077     		.short	30464
+ 815 016a C1B7     		.short	-18495
+ 816 016c 81B6     		.short	-18815
+ 817 016e 4076     		.short	30272
+ 818 0170 0072     		.short	29184
+ 819 0172 C1B2     		.short	-19775
+ 820 0174 81B3     		.short	-19583
+ 821 0176 4073     		.short	29504
+ 822 0178 01B1     		.short	-20223
+ 823 017a C071     		.short	29120
+ 824 017c 8070     		.short	28800
+ 825 017e 41B0     		.short	-20415
+ 826 0180 0050     		.short	20480
+ 827 0182 C190     		.short	-28479
+ 828 0184 8191     		.short	-28287
+ 829 0186 4051     		.short	20800
+ 830 0188 0193     		.short	-27903
+ 831 018a C053     		.short	21440
+ 832 018c 8052     		.short	21120
+ 833 018e 4192     		.short	-28095
+ 834 0190 0196     		.short	-27135
+ 835 0192 C056     		.short	22208
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 21
 
 
- 836 0188 0193     		.short	-27903
- 837 018a C053     		.short	21440
- 838 018c 8052     		.short	21120
- 839 018e 4192     		.short	-28095
- 840 0190 0196     		.short	-27135
- 841 0192 C056     		.short	22208
- 842 0194 8057     		.short	22400
- 843 0196 4197     		.short	-26815
- 844 0198 0055     		.short	21760
- 845 019a C195     		.short	-27199
- 846 019c 8194     		.short	-27519
- 847 019e 4054     		.short	21568
- 848 01a0 019C     		.short	-25599
- 849 01a2 C05C     		.short	23744
- 850 01a4 805D     		.short	23936
- 851 01a6 419D     		.short	-25279
- 852 01a8 005F     		.short	24320
- 853 01aa C19F     		.short	-24639
- 854 01ac 819E     		.short	-24959
- 855 01ae 405E     		.short	24128
- 856 01b0 005A     		.short	23040
- 857 01b2 C19A     		.short	-25919
- 858 01b4 819B     		.short	-25727
- 859 01b6 405B     		.short	23360
- 860 01b8 0199     		.short	-26367
- 861 01ba C059     		.short	22976
- 862 01bc 8058     		.short	22656
- 863 01be 4198     		.short	-26559
- 864 01c0 0188     		.short	-30719
- 865 01c2 C048     		.short	18624
- 866 01c4 8049     		.short	18816
- 867 01c6 4189     		.short	-30399
- 868 01c8 004B     		.short	19200
- 869 01ca C18B     		.short	-29759
- 870 01cc 818A     		.short	-30079
- 871 01ce 404A     		.short	19008
- 872 01d0 004E     		.short	19968
- 873 01d2 C18E     		.short	-28991
- 874 01d4 818F     		.short	-28799
- 875 01d6 404F     		.short	20288
- 876 01d8 018D     		.short	-29439
- 877 01da C04D     		.short	19904
- 878 01dc 804C     		.short	19584
- 879 01de 418C     		.short	-29631
- 880 01e0 0044     		.short	17408
- 881 01e2 C184     		.short	-31551
- 882 01e4 8185     		.short	-31359
- 883 01e6 4045     		.short	17728
- 884 01e8 0187     		.short	-30975
- 885 01ea C047     		.short	18368
- 886 01ec 8046     		.short	18048
- 887 01ee 4186     		.short	-31167
- 888 01f0 0182     		.short	-32255
- 889 01f2 C042     		.short	17088
- 890 01f4 8043     		.short	17280
- 891 01f6 4183     		.short	-31935
- 892 01f8 0041     		.short	16640
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 22
+ 836 0194 8057     		.short	22400
+ 837 0196 4197     		.short	-26815
+ 838 0198 0055     		.short	21760
+ 839 019a C195     		.short	-27199
+ 840 019c 8194     		.short	-27519
+ 841 019e 4054     		.short	21568
+ 842 01a0 019C     		.short	-25599
+ 843 01a2 C05C     		.short	23744
+ 844 01a4 805D     		.short	23936
+ 845 01a6 419D     		.short	-25279
+ 846 01a8 005F     		.short	24320
+ 847 01aa C19F     		.short	-24639
+ 848 01ac 819E     		.short	-24959
+ 849 01ae 405E     		.short	24128
+ 850 01b0 005A     		.short	23040
+ 851 01b2 C19A     		.short	-25919
+ 852 01b4 819B     		.short	-25727
+ 853 01b6 405B     		.short	23360
+ 854 01b8 0199     		.short	-26367
+ 855 01ba C059     		.short	22976
+ 856 01bc 8058     		.short	22656
+ 857 01be 4198     		.short	-26559
+ 858 01c0 0188     		.short	-30719
+ 859 01c2 C048     		.short	18624
+ 860 01c4 8049     		.short	18816
+ 861 01c6 4189     		.short	-30399
+ 862 01c8 004B     		.short	19200
+ 863 01ca C18B     		.short	-29759
+ 864 01cc 818A     		.short	-30079
+ 865 01ce 404A     		.short	19008
+ 866 01d0 004E     		.short	19968
+ 867 01d2 C18E     		.short	-28991
+ 868 01d4 818F     		.short	-28799
+ 869 01d6 404F     		.short	20288
+ 870 01d8 018D     		.short	-29439
+ 871 01da C04D     		.short	19904
+ 872 01dc 804C     		.short	19584
+ 873 01de 418C     		.short	-29631
+ 874 01e0 0044     		.short	17408
+ 875 01e2 C184     		.short	-31551
+ 876 01e4 8185     		.short	-31359
+ 877 01e6 4045     		.short	17728
+ 878 01e8 0187     		.short	-30975
+ 879 01ea C047     		.short	18368
+ 880 01ec 8046     		.short	18048
+ 881 01ee 4186     		.short	-31167
+ 882 01f0 0182     		.short	-32255
+ 883 01f2 C042     		.short	17088
+ 884 01f4 8043     		.short	17280
+ 885 01f6 4183     		.short	-31935
+ 886 01f8 0041     		.short	16640
+ 887 01fa C181     		.short	-32319
+ 888 01fc 8180     		.short	-32639
+ 889 01fe 4040     		.short	16448
+ 890              		.text
+ 891              	.Letext0:
+ 892              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 22
 
 
- 893 01fa C181     		.short	-32319
- 894 01fc 8180     		.short	-32639
- 895 01fe 4040     		.short	16448
- 896              		.text
- 897              	.Letext0:
- 898              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
- 899              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
- 900              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
- 901              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 902              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 903              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 904              		.file 8 "Core/Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h"
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s 			page 23
+ 893              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 894              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 895              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 896              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 897              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 898              		.file 8 "Core/Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h"
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 23
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 NOS_ModBus.c
-C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s:18     .text.GetCRC16:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s:26     .text.GetCRC16:0000000000000000 GetCRC16
-C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s:102    .text.GetCRC16:0000000000000034 $d
-C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s:107    .text.NOS_ModBus_ParseMasterCommand:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s:114    .text.NOS_ModBus_ParseMasterCommand:0000000000000000 NOS_ModBus_ParseMasterCommand
-C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s:298    .text.NOS_ModBus_ParseSlaveCommand:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s:305    .text.NOS_ModBus_ParseSlaveCommand:0000000000000000 NOS_ModBus_ParseSlaveCommand
-C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s:395    .text.NOS_ModBus_SetMasterCommand:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s:402    .text.NOS_ModBus_SetMasterCommand:0000000000000000 NOS_ModBus_SetMasterCommand
-C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s:416    .text.NOS_ModBus_SetSlaveCommand:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s:423    .text.NOS_ModBus_SetSlaveCommand:0000000000000000 NOS_ModBus_SetSlaveCommand
-C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s:449    .text.NOS_ModBus_ReceiveHandler:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s:456    .text.NOS_ModBus_ReceiveHandler:0000000000000000 NOS_ModBus_ReceiveHandler
-C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s:630    .text.NOS_ModBus_ReceiveHandler:00000000000000b0 $d
-C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s:635    .rodata.wCRCTable.0:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccnQ6Uyn.s:639    .rodata.wCRCTable.0:0000000000000000 wCRCTable.0
+C:\Users\user\AppData\Local\Temp\ccRCrldd.s:18     .text.GetCRC16:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRCrldd.s:26     .text.GetCRC16:0000000000000000 GetCRC16
+C:\Users\user\AppData\Local\Temp\ccRCrldd.s:102    .text.GetCRC16:0000000000000034 $d
+C:\Users\user\AppData\Local\Temp\ccRCrldd.s:107    .text.NOS_ModBus_ParseMasterCommand:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRCrldd.s:114    .text.NOS_ModBus_ParseMasterCommand:0000000000000000 NOS_ModBus_ParseMasterCommand
+C:\Users\user\AppData\Local\Temp\ccRCrldd.s:298    .text.NOS_ModBus_ParseSlaveCommand:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRCrldd.s:305    .text.NOS_ModBus_ParseSlaveCommand:0000000000000000 NOS_ModBus_ParseSlaveCommand
+C:\Users\user\AppData\Local\Temp\ccRCrldd.s:395    .text.NOS_ModBus_SetMasterCommand:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRCrldd.s:402    .text.NOS_ModBus_SetMasterCommand:0000000000000000 NOS_ModBus_SetMasterCommand
+C:\Users\user\AppData\Local\Temp\ccRCrldd.s:416    .text.NOS_ModBus_SetSlaveCommand:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRCrldd.s:423    .text.NOS_ModBus_SetSlaveCommand:0000000000000000 NOS_ModBus_SetSlaveCommand
+C:\Users\user\AppData\Local\Temp\ccRCrldd.s:449    .text.NOS_ModBus_ReceiveHandler:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRCrldd.s:456    .text.NOS_ModBus_ReceiveHandler:0000000000000000 NOS_ModBus_ReceiveHandler
+C:\Users\user\AppData\Local\Temp\ccRCrldd.s:629    .rodata.wCRCTable.0:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccRCrldd.s:633    .rodata.wCRCTable.0:0000000000000000 wCRCTable.0
 
 UNDEFINED SYMBOLS
 HAL_UART_Receive_IT

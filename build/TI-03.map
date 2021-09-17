@@ -127,17 +127,17 @@ Discarded input sections
  .text.NOS_ModBus_SetSlaveCommand
                 0x0000000000000000        0xc build/NOS_ModBus.o
  .text.NOS_ModBus_ReceiveHandler
-                0x0000000000000000       0xb4 build/NOS_ModBus.o
+                0x0000000000000000       0xaa build/NOS_ModBus.o
  .rodata.wCRCTable.0
                 0x0000000000000000      0x200 build/NOS_ModBus.o
- .debug_info    0x0000000000000000      0xafc build/NOS_ModBus.o
- .debug_abbrev  0x0000000000000000      0x22e build/NOS_ModBus.o
+ .debug_info    0x0000000000000000      0xbb9 build/NOS_ModBus.o
+ .debug_abbrev  0x0000000000000000      0x243 build/NOS_ModBus.o
  .debug_loc     0x0000000000000000      0x3bf build/NOS_ModBus.o
  .debug_aranges
                 0x0000000000000000       0x48 build/NOS_ModBus.o
  .debug_ranges  0x0000000000000000       0x50 build/NOS_ModBus.o
  .debug_line    0x0000000000000000      0x624 build/NOS_ModBus.o
- .debug_str     0x0000000000000000      0x820 build/NOS_ModBus.o
+ .debug_str     0x0000000000000000      0x8e0 build/NOS_ModBus.o
  .comment       0x0000000000000000       0x45 build/NOS_ModBus.o
  .debug_frame   0x0000000000000000       0x88 build/NOS_ModBus.o
  .ARM.attributes
@@ -164,15 +164,9 @@ Discarded input sections
  .text          0x0000000000000000        0x0 build/main.o
  .data          0x0000000000000000        0x0 build/main.o
  .bss           0x0000000000000000        0x0 build/main.o
- .bss.fra       0x0000000000000000      0x300 build/main.o
  .bss.hrtc      0x0000000000000000       0x20 build/main.o
- .bss.matrixFsymc
-                0x0000000000000000       0x19 build/main.o
- .bss.matrixFuck
-                0x0000000000000000       0x18 build/main.o
  .bss.num       0x0000000000000000        0x4 build/main.o
  .data.green    0x0000000000000000        0x3 build/main.o
- .data.msF      0x0000000000000000        0x2 build/main.o
  .data.x        0x0000000000000000        0x1 build/main.o
  .data.y        0x0000000000000000        0x2 build/main.o
  .text          0x0000000000000000        0x0 build/stm32f4xx_hal_msp.o
@@ -1929,69 +1923,69 @@ LOAD c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/
                 0x0000000008001828      0x194 build/WS2812B.o
                 0x0000000008001828                NOS_WS2812B_Matrix_PrintRealTime
  .text.NOS_WS2812B_Matrix_PrintTemperature
-                0x00000000080019bc       0x4a build/WS2812B.o
+                0x00000000080019bc       0x52 build/WS2812B.o
                 0x00000000080019bc                NOS_WS2812B_Matrix_PrintTemperature
  .text.DMA_TransferError
-                0x0000000008001a06       0x10 build/WS2812B_Core.o
-                0x0000000008001a06                DMA_TransferError
- *fill*         0x0000000008001a16        0x2 
+                0x0000000008001a0e       0x10 build/WS2812B_Core.o
+                0x0000000008001a0e                DMA_TransferError
+ *fill*         0x0000000008001a1e        0x2 
  .text.ws2812b_set_pixel
-                0x0000000008001a18       0xc4 build/WS2812B_Core.o
+                0x0000000008001a20       0xc4 build/WS2812B_Core.o
  .text.loadNextFramebufferData
-                0x0000000008001adc       0x34 build/WS2812B_Core.o
+                0x0000000008001ae4       0x34 build/WS2812B_Core.o
  .text.DMA_TransferCompleteHandler
-                0x0000000008001b10       0xe8 build/WS2812B_Core.o
-                0x0000000008001b10                DMA_TransferCompleteHandler
+                0x0000000008001b18       0xe8 build/WS2812B_Core.o
+                0x0000000008001b18                DMA_TransferCompleteHandler
  .text.WS2812_sendbuf
-                0x0000000008001bf8      0x170 build/WS2812B_Core.o
+                0x0000000008001c00      0x170 build/WS2812B_Core.o
  .text.DMA_TransferHalfHandler
-                0x0000000008001d68       0x44 build/WS2812B_Core.o
-                0x0000000008001d68                DMA_TransferHalfHandler
+                0x0000000008001d70       0x44 build/WS2812B_Core.o
+                0x0000000008001d70                DMA_TransferHalfHandler
  .text.ws2812b_gpio_init
-                0x0000000008001dac       0x78 build/WS2812B_Core.o
+                0x0000000008001db4       0x78 build/WS2812B_Core.o
  .text.DMA2_init
-                0x0000000008001e24      0x160 build/WS2812B_Core.o
+                0x0000000008001e2c      0x160 build/WS2812B_Core.o
  .text.TIM1_init
-                0x0000000008001f84      0x110 build/WS2812B_Core.o
+                0x0000000008001f8c      0x110 build/WS2812B_Core.o
  .text.DMA2_Stream2_IRQHandler
-                0x0000000008002094       0x20 build/WS2812B_Core.o
-                0x0000000008002094                DMA2_Stream2_IRQHandler
+                0x000000000800209c       0x20 build/WS2812B_Core.o
+                0x000000000800209c                DMA2_Stream2_IRQHandler
  .text.TIM1_UP_TIM10_IRQHandler
-                0x00000000080020b4       0x20 build/WS2812B_Core.o
-                0x00000000080020b4                TIM1_UP_TIM10_IRQHandler
+                0x00000000080020bc       0x20 build/WS2812B_Core.o
+                0x00000000080020bc                TIM1_UP_TIM10_IRQHandler
  .text.HAL_TIM_PeriodElapsedCallback
-                0x00000000080020d4       0x3c build/WS2812B_Core.o
-                0x00000000080020d4                HAL_TIM_PeriodElapsedCallback
+                0x00000000080020dc       0x3c build/WS2812B_Core.o
+                0x00000000080020dc                HAL_TIM_PeriodElapsedCallback
  .text.ws2812b_init
-                0x0000000008002110       0x1c build/WS2812B_Core.o
-                0x0000000008002110                ws2812b_init
+                0x0000000008002118       0x1c build/WS2812B_Core.o
+                0x0000000008002118                ws2812b_init
  .text.ws2812b_handle
-                0x000000000800212c       0x20 build/WS2812B_Core.o
-                0x000000000800212c                ws2812b_handle
- .text.visInit  0x000000000800214c       0x48 build/WS2812B_Effects.o
-                0x000000000800214c                visInit
+                0x0000000008002134       0x20 build/WS2812B_Core.o
+                0x0000000008002134                ws2812b_handle
+ .text.visInit  0x0000000008002154       0x48 build/WS2812B_Effects.o
+                0x0000000008002154                visInit
  .text.visHandle
-                0x0000000008002194       0x20 build/WS2812B_Effects.o
-                0x0000000008002194                visHandle
+                0x000000000800219c       0x20 build/WS2812B_Effects.o
+                0x000000000800219c                visHandle
  .text.MX_GPIO_Init
-                0x00000000080021b4       0x80 build/main.o
+                0x00000000080021bc       0x80 build/main.o
  .text.SysTick_Handler
-                0x0000000008002234       0x20 build/main.o
-                0x0000000008002234                SysTick_Handler
+                0x000000000800223c       0x20 build/main.o
+                0x000000000800223c                SysTick_Handler
  .text.Error_Handler
-                0x0000000008002254        0x4 build/main.o
-                0x0000000008002254                Error_Handler
+                0x000000000800225c        0x4 build/main.o
+                0x000000000800225c                Error_Handler
  .text.MX_USART1_UART_Init
-                0x0000000008002258       0x34 build/main.o
+                0x0000000008002260       0x34 build/main.o
  .text.MX_USART2_UART_Init
-                0x000000000800228c       0x34 build/main.o
+                0x0000000008002294       0x34 build/main.o
  .text.MX_TIM6_Init
-                0x00000000080022c0       0x48 build/main.o
+                0x00000000080022c8       0x48 build/main.o
  .text.SystemClock_Config
-                0x0000000008002308       0xa8 build/main.o
-                0x0000000008002308                SystemClock_Config
- .text.main     0x00000000080023b0      0x198 build/main.o
-                0x00000000080023b0                main
+                0x0000000008002310       0xa8 build/main.o
+                0x0000000008002310                SystemClock_Config
+ .text.main     0x00000000080023b8      0x190 build/main.o
+                0x00000000080023b8                main
  .text.HAL_MspInit
                 0x0000000008002548       0x38 build/stm32f4xx_hal_msp.o
                 0x0000000008002548                HAL_MspInit
@@ -2588,7 +2582,7 @@ LOAD c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/
                 0x0000000008006460                PROVIDE (__fini_array_end = .)
                 0x0000000008006460                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000      0x610 load address 0x0000000008006460
+.data           0x0000000020000000      0x618 load address 0x0000000008006460
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -2762,58 +2756,62 @@ LOAD c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/
  .data.blue     0x00000000200001b0        0x3 build/main.o
                 0x00000000200001b0                blue
  *fill*         0x00000000200001b3        0x1 
- .data.msA      0x00000000200001b4        0x2 build/main.o
-                0x00000000200001b4                msA
- *fill*         0x00000000200001b6        0x2 
- .data.msB      0x00000000200001b8        0x2 build/main.o
-                0x00000000200001b8                msB
+ .data.fone     0x00000000200001b4        0x3 build/main.o
+                0x00000000200001b4                fone
+ *fill*         0x00000000200001b7        0x1 
+ .data.msA      0x00000000200001b8        0x2 build/main.o
+                0x00000000200001b8                msA
  *fill*         0x00000000200001ba        0x2 
- .data.msC      0x00000000200001bc        0x2 build/main.o
-                0x00000000200001bc                msC
+ .data.msB      0x00000000200001bc        0x2 build/main.o
+                0x00000000200001bc                msB
  *fill*         0x00000000200001be        0x2 
- .data.red      0x00000000200001c0        0x3 build/main.o
-                0x00000000200001c0                red
- *fill*         0x00000000200001c3        0x1 
+ .data.msC      0x00000000200001c0        0x2 build/main.o
+                0x00000000200001c0                msC
+ *fill*         0x00000000200001c2        0x2 
+ .data.red      0x00000000200001c4        0x3 build/main.o
+                0x00000000200001c4                red
+ *fill*         0x00000000200001c7        0x1 
  .data.temperature
-                0x00000000200001c4        0x2 build/main.o
-                0x00000000200001c4                temperature
- *fill*         0x00000000200001c6        0x2 
+                0x00000000200001c8        0x2 build/main.o
+                0x00000000200001c8                temperature
+ *fill*         0x00000000200001ca        0x2 
  .data.uSv_Value
-                0x00000000200001c8        0x4 build/main.o
-                0x00000000200001c8                uSv_Value
- .data.yellow   0x00000000200001cc        0x3 build/main.o
-                0x00000000200001cc                yellow
- *fill*         0x00000000200001cf        0x1 
+                0x00000000200001cc        0x4 build/main.o
+                0x00000000200001cc                uSv_Value
+ .data.yellow   0x00000000200001d0        0x3 build/main.o
+                0x00000000200001d0                yellow
+ *fill*         0x00000000200001d3        0x1 
  .data.SystemCoreClock
-                0x00000000200001d0        0x4 build/system_stm32f4xx.o
-                0x00000000200001d0                SystemCoreClock
+                0x00000000200001d4        0x4 build/system_stm32f4xx.o
+                0x00000000200001d4                SystemCoreClock
  .data.uwTickFreq
-                0x00000000200001d4        0x1 build/stm32f4xx_hal.o
-                0x00000000200001d4                uwTickFreq
- *fill*         0x00000000200001d5        0x3 
+                0x00000000200001d8        0x1 build/stm32f4xx_hal.o
+                0x00000000200001d8                uwTickFreq
+ *fill*         0x00000000200001d9        0x3 
  .data.uwTickPrio
-                0x00000000200001d8        0x4 build/stm32f4xx_hal.o
-                0x00000000200001d8                uwTickPrio
+                0x00000000200001dc        0x4 build/stm32f4xx_hal.o
+                0x00000000200001dc                uwTickPrio
  .data._impure_ptr
-                0x00000000200001dc        0x4 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-impure.o)
-                0x00000000200001dc                _impure_ptr
+                0x00000000200001e0        0x4 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-impure.o)
+                0x00000000200001e0                _impure_ptr
+ *fill*         0x00000000200001e4        0x4 
  .data.impure_data
-                0x00000000200001e0      0x428 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-impure.o)
+                0x00000000200001e8      0x428 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-impure.o)
  .data.__atexit_recursive_mutex
-                0x0000000020000608        0x4 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-__call_atexit.o)
-                0x0000000020000608                __atexit_recursive_mutex
+                0x0000000020000610        0x4 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-__call_atexit.o)
+                0x0000000020000610                __atexit_recursive_mutex
  .data.__fdlib_version
-                0x000000002000060c        0x1 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-s_lib_ver.o)
-                0x000000002000060c                __fdlib_version
-                0x0000000020000610                . = ALIGN (0x4)
- *fill*         0x000000002000060d        0x3 
-                0x0000000020000610                _edata = .
-                0x0000000008006a70                _siccmram = LOADADDR (.ccmram)
+                0x0000000020000614        0x1 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-s_lib_ver.o)
+                0x0000000020000614                __fdlib_version
+                0x0000000020000618                . = ALIGN (0x4)
+ *fill*         0x0000000020000615        0x3 
+                0x0000000020000618                _edata = .
+                0x0000000008006a78                _siccmram = LOADADDR (.ccmram)
 
-.igot.plt       0x0000000020000610        0x0 load address 0x0000000008006a70
- .igot.plt      0x0000000020000610        0x0 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+.igot.plt       0x0000000020000618        0x0 load address 0x0000000008006a78
+ .igot.plt      0x0000000020000618        0x0 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.ccmram         0x0000000010000000        0x0 load address 0x0000000008006a70
+.ccmram         0x0000000010000000        0x0 load address 0x0000000008006a78
                 0x0000000010000000                . = ALIGN (0x4)
                 0x0000000010000000                _sccmram = .
  *(.ccmram)
@@ -2822,103 +2820,99 @@ LOAD c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/
                 0x0000000010000000                _eccmram = .
                 0x0000000010000000                . = ALIGN (0x4)
 
-.bss            0x0000000020000610     0x163c
-                0x0000000020000610                _sbss = .
-                0x0000000020000610                __bss_start__ = _sbss
+.bss            0x0000000020000618     0x1638
+                0x0000000020000618                _sbss = .
+                0x0000000020000618                __bss_start__ = _sbss
  *(.bss)
  *(.bss*)
  .bss.completed.1
-                0x0000000020000610        0x1 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/thumb/v7e-m+fp/hard/crtbegin.o
- *fill*         0x0000000020000611        0x3 
- .bss.object.0  0x0000000020000614       0x18 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/thumb/v7e-m+fp/hard/crtbegin.o
- .bss.Space     0x000000002000062c        0x5 build/WS2812B.o
-                0x000000002000062c                Space
- *fill*         0x0000000020000631        0x3 
+                0x0000000020000618        0x1 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+ *fill*         0x0000000020000619        0x3 
+ .bss.object.0  0x000000002000061c       0x18 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .bss.Space     0x0000000020000634        0x5 build/WS2812B.o
+                0x0000000020000634                Space
+ *fill*         0x0000000020000639        0x3 
  .bss.TIM1_handle
-                0x0000000020000634       0x48 build/WS2812B_Core.o
-                0x0000000020000634                TIM1_handle
- .bss.dmaCC1    0x000000002000067c       0x60 build/WS2812B_Core.o
-                0x000000002000067c                dmaCC1
- .bss.dmaCC2    0x00000000200006dc       0x60 build/WS2812B_Core.o
-                0x00000000200006dc                dmaCC2
+                0x000000002000063c       0x48 build/WS2812B_Core.o
+                0x000000002000063c                TIM1_handle
+ .bss.dmaCC1    0x0000000020000684       0x60 build/WS2812B_Core.o
+                0x0000000020000684                dmaCC1
+ .bss.dmaCC2    0x00000000200006e4       0x60 build/WS2812B_Core.o
+                0x00000000200006e4                dmaCC2
  .bss.dmaUpdate
-                0x000000002000073c       0x60 build/WS2812B_Core.o
-                0x000000002000073c                dmaUpdate
- .bss.tim2OC1   0x000000002000079c       0x1c build/WS2812B_Core.o
-                0x000000002000079c                tim2OC1
- .bss.tim2OC2   0x00000000200007b8       0x1c build/WS2812B_Core.o
-                0x00000000200007b8                tim2OC2
+                0x0000000020000744       0x60 build/WS2812B_Core.o
+                0x0000000020000744                dmaUpdate
+ .bss.tim2OC1   0x00000000200007a4       0x1c build/WS2812B_Core.o
+                0x00000000200007a4                tim2OC1
+ .bss.tim2OC2   0x00000000200007c0       0x1c build/WS2812B_Core.o
+                0x00000000200007c0                tim2OC2
  .bss.tim_period
-                0x00000000200007d4        0x4 build/WS2812B_Core.o
-                0x00000000200007d4                tim_period
+                0x00000000200007dc        0x4 build/WS2812B_Core.o
+                0x00000000200007dc                tim_period
  .bss.timer_reset_pulse_period
-                0x00000000200007d8        0x4 build/WS2812B_Core.o
-                0x00000000200007d8                timer_reset_pulse_period
- .bss.ws2812b   0x00000000200007dc       0x3c build/WS2812B_Core.o
-                0x00000000200007dc                ws2812b
+                0x00000000200007e0        0x4 build/WS2812B_Core.o
+                0x00000000200007e0                timer_reset_pulse_period
+ .bss.ws2812b   0x00000000200007e4       0x3c build/WS2812B_Core.o
+                0x00000000200007e4                ws2812b
  .bss.ws2812bDmaBitBuffer
-                0x0000000020000818       0x60 build/WS2812B_Core.o
-                0x0000000020000818                ws2812bDmaBitBuffer
+                0x0000000020000820       0x60 build/WS2812B_Core.o
+                0x0000000020000820                ws2812bDmaBitBuffer
  .bss.frameBuffer1
-                0x0000000020000878      0x900 build/WS2812B_Effects.o
-                0x0000000020000878                frameBuffer1
+                0x0000000020000880      0x900 build/WS2812B_Effects.o
+                0x0000000020000880                frameBuffer1
  .bss.frameBuffer2
-                0x0000000020001178      0x600 build/WS2812B_Effects.o
-                0x0000000020001178                frameBuffer2
+                0x0000000020001180      0x600 build/WS2812B_Effects.o
+                0x0000000020001180                frameBuffer2
  .bss.frameBuffer3
-                0x0000000020001778      0x300 build/WS2812B_Effects.o
-                0x0000000020001778                frameBuffer3
- .bss.Time      0x0000000020001a78        0x4 build/main.o
-                0x0000000020001a78                Time
- .bss.coun      0x0000000020001a7c        0x4 build/main.o
-                0x0000000020001a7c                coun
- .bss.fone      0x0000000020001a80        0x3 build/main.o
-                0x0000000020001a80                fone
- *fill*         0x0000000020001a83        0x1 
- .bss.htim6     0x0000000020001a84       0x48 build/main.o
-                0x0000000020001a84                htim6
- .bss.huart1    0x0000000020001acc       0x44 build/main.o
-                0x0000000020001acc                huart1
- .bss.huart2    0x0000000020001b10       0x44 build/main.o
-                0x0000000020001b10                huart2
- .bss.matrixA   0x0000000020001b54       0x18 build/main.o
-                0x0000000020001b54                matrixA
+                0x0000000020001780      0x300 build/WS2812B_Effects.o
+                0x0000000020001780                frameBuffer3
+ .bss.Time      0x0000000020001a80        0x4 build/main.o
+                0x0000000020001a80                Time
+ .bss.coun      0x0000000020001a84        0x4 build/main.o
+                0x0000000020001a84                coun
+ .bss.htim6     0x0000000020001a88       0x48 build/main.o
+                0x0000000020001a88                htim6
+ .bss.huart1    0x0000000020001ad0       0x44 build/main.o
+                0x0000000020001ad0                huart1
+ .bss.huart2    0x0000000020001b14       0x44 build/main.o
+                0x0000000020001b14                huart2
+ .bss.matrixA   0x0000000020001b58       0x18 build/main.o
+                0x0000000020001b58                matrixA
  .bss.matrixAsymc
-                0x0000000020001b6c       0x4b build/main.o
-                0x0000000020001b6c                matrixAsymc
- *fill*         0x0000000020001bb7        0x1 
- .bss.matrixB   0x0000000020001bb8       0x18 build/main.o
-                0x0000000020001bb8                matrixB
+                0x0000000020001b70       0x4b build/main.o
+                0x0000000020001b70                matrixAsymc
+ *fill*         0x0000000020001bbb        0x1 
+ .bss.matrixB   0x0000000020001bbc       0x18 build/main.o
+                0x0000000020001bbc                matrixB
  .bss.matrixBsymc
-                0x0000000020001bd0       0x32 build/main.o
-                0x0000000020001bd0                matrixBsymc
- *fill*         0x0000000020001c02        0x2 
- .bss.matrixC   0x0000000020001c04       0x18 build/main.o
-                0x0000000020001c04                matrixC
+                0x0000000020001bd4       0x32 build/main.o
+                0x0000000020001bd4                matrixBsymc
+ *fill*         0x0000000020001c06        0x2 
+ .bss.matrixC   0x0000000020001c08       0x18 build/main.o
+                0x0000000020001c08                matrixC
  .bss.matrixCsymc
-                0x0000000020001c1c       0x19 build/main.o
-                0x0000000020001c1c                matrixCsymc
- *fill*         0x0000000020001c35        0x3 
- .bss.realtime  0x0000000020001c38        0x6 build/main.o
-                0x0000000020001c38                realtime
- *fill*         0x0000000020001c3e        0x2 
- .bss.uwTick    0x0000000020001c40        0x4 build/stm32f4xx_hal.o
-                0x0000000020001c40                uwTick
+                0x0000000020001c20       0x19 build/main.o
+                0x0000000020001c20                matrixCsymc
+ *fill*         0x0000000020001c39        0x3 
+ .bss.realtime  0x0000000020001c3c        0x6 build/main.o
+                0x0000000020001c3c                realtime
+ *fill*         0x0000000020001c42        0x2 
+ .bss.uwTick    0x0000000020001c44        0x4 build/stm32f4xx_hal.o
+                0x0000000020001c44                uwTick
  .bss.__lock___atexit_recursive_mutex
-                0x0000000020001c44        0x1 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-lock.o)
-                0x0000000020001c44                __lock___atexit_recursive_mutex
- *fill*         0x0000000020001c45        0x3 
- .bss.errno     0x0000000020001c48        0x4 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-reent.o)
-                0x0000000020001c48                errno
+                0x0000000020001c48        0x1 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-lock.o)
+                0x0000000020001c48                __lock___atexit_recursive_mutex
+ *fill*         0x0000000020001c49        0x3 
+ .bss.errno     0x0000000020001c4c        0x4 c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-reent.o)
+                0x0000000020001c4c                errno
  *(COMMON)
-                0x0000000020001c4c                . = ALIGN (0x4)
-                0x0000000020001c4c                _ebss = .
-                0x0000000020001c4c                __bss_end__ = _ebss
+                0x0000000020001c50                . = ALIGN (0x4)
+                0x0000000020001c50                _ebss = .
+                0x0000000020001c50                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x0000000020001c4c      0x604
+                0x0000000020001c50      0x600
                 0x0000000020001c50                . = ALIGN (0x8)
- *fill*         0x0000000020001c4c        0x4 
                 0x0000000020001c50                PROVIDE (end = .)
                 [!provide]                        PROVIDE (_end = .)
                 0x0000000020001e50                . = (. + _Min_Heap_Size)
@@ -3055,25 +3049,25 @@ LOAD c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/
 LOAD c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 LOAD c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x0000000000000000    0x14714
+.debug_info     0x0000000000000000    0x146c8
  .debug_info    0x0000000000000000       0xc9 build/NOS_Math.o
  .debug_info    0x00000000000000c9      0x1cf build/NOS_Time.o
  .debug_info    0x0000000000000298     0x151b build/WS2812B.o
  .debug_info    0x00000000000017b3     0x1749 build/WS2812B_Core.o
  .debug_info    0x0000000000002efc      0x25d build/WS2812B_Effects.o
- .debug_info    0x0000000000003159     0x1dee build/main.o
- .debug_info    0x0000000000004f47     0x13f0 build/stm32f4xx_hal_msp.o
- .debug_info    0x0000000000006337      0x12e build/stm32f4xx_it.o
- .debug_info    0x0000000000006465      0x5b3 build/system_stm32f4xx.o
- .debug_info    0x0000000000006a18      0xacf build/stm32f4xx_hal.o
- .debug_info    0x00000000000074e7     0x1174 build/stm32f4xx_hal_cortex.o
- .debug_info    0x000000000000865b      0xbd1 build/stm32f4xx_hal_dma.o
- .debug_info    0x000000000000922c      0x848 build/stm32f4xx_hal_gpio.o
- .debug_info    0x0000000000009a74      0xbe6 build/stm32f4xx_hal_rcc.o
- .debug_info    0x000000000000a65a     0x4062 build/stm32f4xx_hal_tim.o
- .debug_info    0x000000000000e6bc     0x1c6a build/stm32f4xx_hal_tim_ex.o
- .debug_info    0x0000000000010326     0x43cc build/stm32f4xx_hal_uart.o
- .debug_info    0x00000000000146f2       0x22 build/startup_stm32f407xx.o
+ .debug_info    0x0000000000003159     0x1da2 build/main.o
+ .debug_info    0x0000000000004efb     0x13f0 build/stm32f4xx_hal_msp.o
+ .debug_info    0x00000000000062eb      0x12e build/stm32f4xx_it.o
+ .debug_info    0x0000000000006419      0x5b3 build/system_stm32f4xx.o
+ .debug_info    0x00000000000069cc      0xacf build/stm32f4xx_hal.o
+ .debug_info    0x000000000000749b     0x1174 build/stm32f4xx_hal_cortex.o
+ .debug_info    0x000000000000860f      0xbd1 build/stm32f4xx_hal_dma.o
+ .debug_info    0x00000000000091e0      0x848 build/stm32f4xx_hal_gpio.o
+ .debug_info    0x0000000000009a28      0xbe6 build/stm32f4xx_hal_rcc.o
+ .debug_info    0x000000000000a60e     0x4062 build/stm32f4xx_hal_tim.o
+ .debug_info    0x000000000000e670     0x1c6a build/stm32f4xx_hal_tim_ex.o
+ .debug_info    0x00000000000102da     0x43cc build/stm32f4xx_hal_uart.o
+ .debug_info    0x00000000000146a6       0x22 build/startup_stm32f407xx.o
 
 .debug_abbrev   0x0000000000000000     0x24a2
  .debug_abbrev  0x0000000000000000       0x94 build/NOS_Math.o
@@ -3095,23 +3089,23 @@ LOAD c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/
  .debug_abbrev  0x0000000000002141      0x34f build/stm32f4xx_hal_uart.o
  .debug_abbrev  0x0000000000002490       0x12 build/startup_stm32f407xx.o
 
-.debug_loc      0x0000000000000000    0x1082f
+.debug_loc      0x0000000000000000    0x1085a
  .debug_loc     0x0000000000000000       0x97 build/NOS_Math.o
  .debug_loc     0x0000000000000097       0x33 build/NOS_Time.o
- .debug_loc     0x00000000000000ca      0xaa4 build/WS2812B.o
- .debug_loc     0x0000000000000b6e      0x6fb build/WS2812B_Core.o
- .debug_loc     0x0000000000001269       0x40 build/WS2812B_Effects.o
- .debug_loc     0x00000000000012a9      0x14e build/main.o
- .debug_loc     0x00000000000013f7      0x200 build/stm32f4xx_hal_msp.o
- .debug_loc     0x00000000000015f7      0x158 build/system_stm32f4xx.o
- .debug_loc     0x000000000000174f      0x1e1 build/stm32f4xx_hal.o
- .debug_loc     0x0000000000001930      0x7a4 build/stm32f4xx_hal_cortex.o
- .debug_loc     0x00000000000020d4      0xd6d build/stm32f4xx_hal_dma.o
- .debug_loc     0x0000000000002e41      0x5e8 build/stm32f4xx_hal_gpio.o
- .debug_loc     0x0000000000003429      0x6e4 build/stm32f4xx_hal_rcc.o
- .debug_loc     0x0000000000003b0d     0x5bbc build/stm32f4xx_hal_tim.o
- .debug_loc     0x00000000000096c9     0x2137 build/stm32f4xx_hal_tim_ex.o
- .debug_loc     0x000000000000b800     0x502f build/stm32f4xx_hal_uart.o
+ .debug_loc     0x00000000000000ca      0xacf build/WS2812B.o
+ .debug_loc     0x0000000000000b99      0x6fb build/WS2812B_Core.o
+ .debug_loc     0x0000000000001294       0x40 build/WS2812B_Effects.o
+ .debug_loc     0x00000000000012d4      0x14e build/main.o
+ .debug_loc     0x0000000000001422      0x200 build/stm32f4xx_hal_msp.o
+ .debug_loc     0x0000000000001622      0x158 build/system_stm32f4xx.o
+ .debug_loc     0x000000000000177a      0x1e1 build/stm32f4xx_hal.o
+ .debug_loc     0x000000000000195b      0x7a4 build/stm32f4xx_hal_cortex.o
+ .debug_loc     0x00000000000020ff      0xd6d build/stm32f4xx_hal_dma.o
+ .debug_loc     0x0000000000002e6c      0x5e8 build/stm32f4xx_hal_gpio.o
+ .debug_loc     0x0000000000003454      0x6e4 build/stm32f4xx_hal_rcc.o
+ .debug_loc     0x0000000000003b38     0x5bbc build/stm32f4xx_hal_tim.o
+ .debug_loc     0x00000000000096f4     0x2137 build/stm32f4xx_hal_tim_ex.o
+ .debug_loc     0x000000000000b82b     0x502f build/stm32f4xx_hal_uart.o
 
 .debug_aranges  0x0000000000000000      0xd18
  .debug_aranges
@@ -3171,27 +3165,27 @@ LOAD c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/
  .debug_ranges  0x0000000000000ae0      0x208 build/stm32f4xx_hal_uart.o
  .debug_ranges  0x0000000000000ce8       0x20 build/startup_stm32f407xx.o
 
-.debug_line     0x0000000000000000    0x10b39
+.debug_line     0x0000000000000000    0x10b47
  .debug_line    0x0000000000000000       0xad build/NOS_Math.o
  .debug_line    0x00000000000000ad      0x2a3 build/NOS_Time.o
- .debug_line    0x0000000000000350      0xb37 build/WS2812B.o
- .debug_line    0x0000000000000e87      0xa7f build/WS2812B_Core.o
- .debug_line    0x0000000000001906      0x26d build/WS2812B_Effects.o
- .debug_line    0x0000000000001b73      0x741 build/main.o
- .debug_line    0x00000000000022b4      0x4a2 build/stm32f4xx_hal_msp.o
- .debug_line    0x0000000000002756      0x12a build/stm32f4xx_it.o
- .debug_line    0x0000000000002880      0x2f2 build/system_stm32f4xx.o
- .debug_line    0x0000000000002b72      0x607 build/stm32f4xx_hal.o
- .debug_line    0x0000000000003179      0x81a build/stm32f4xx_hal_cortex.o
- .debug_line    0x0000000000003993      0xecf build/stm32f4xx_hal_dma.o
- .debug_line    0x0000000000004862      0x783 build/stm32f4xx_hal_gpio.o
- .debug_line    0x0000000000004fe5      0xbb1 build/stm32f4xx_hal_rcc.o
- .debug_line    0x0000000000005b96     0x4b47 build/stm32f4xx_hal_tim.o
- .debug_line    0x000000000000a6dd     0x1d6c build/stm32f4xx_hal_tim_ex.o
- .debug_line    0x000000000000c449     0x467a build/stm32f4xx_hal_uart.o
- .debug_line    0x0000000000010ac3       0x76 build/startup_stm32f407xx.o
+ .debug_line    0x0000000000000350      0xb44 build/WS2812B.o
+ .debug_line    0x0000000000000e94      0xa7f build/WS2812B_Core.o
+ .debug_line    0x0000000000001913      0x26d build/WS2812B_Effects.o
+ .debug_line    0x0000000000001b80      0x742 build/main.o
+ .debug_line    0x00000000000022c2      0x4a2 build/stm32f4xx_hal_msp.o
+ .debug_line    0x0000000000002764      0x12a build/stm32f4xx_it.o
+ .debug_line    0x000000000000288e      0x2f2 build/system_stm32f4xx.o
+ .debug_line    0x0000000000002b80      0x607 build/stm32f4xx_hal.o
+ .debug_line    0x0000000000003187      0x81a build/stm32f4xx_hal_cortex.o
+ .debug_line    0x00000000000039a1      0xecf build/stm32f4xx_hal_dma.o
+ .debug_line    0x0000000000004870      0x783 build/stm32f4xx_hal_gpio.o
+ .debug_line    0x0000000000004ff3      0xbb1 build/stm32f4xx_hal_rcc.o
+ .debug_line    0x0000000000005ba4     0x4b47 build/stm32f4xx_hal_tim.o
+ .debug_line    0x000000000000a6eb     0x1d6c build/stm32f4xx_hal_tim_ex.o
+ .debug_line    0x000000000000c457     0x467a build/stm32f4xx_hal_uart.o
+ .debug_line    0x0000000000010ad1       0x76 build/startup_stm32f407xx.o
 
-.debug_str      0x0000000000000000     0x46a5
+.debug_str      0x0000000000000000     0x468e
  .debug_str     0x0000000000000000      0x12f build/NOS_Math.o
                                         0x135 (size before relaxing)
  .debug_str     0x000000000000012f      0x11e build/NOS_Time.o
@@ -3202,31 +3196,31 @@ LOAD c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/
                                        0x114f (size before relaxing)
  .debug_str     0x0000000000001641       0x67 build/WS2812B_Effects.o
                                         0x2ac (size before relaxing)
- .debug_str     0x00000000000016a8      0x702 build/main.o
-                                       0x11d9 (size before relaxing)
- .debug_str     0x0000000000001daa      0x165 build/stm32f4xx_hal_msp.o
+ .debug_str     0x00000000000016a8      0x6eb build/main.o
+                                       0x11c2 (size before relaxing)
+ .debug_str     0x0000000000001d93      0x165 build/stm32f4xx_hal_msp.o
                                         0xd6b (size before relaxing)
- .debug_str     0x0000000000001f0f       0x98 build/stm32f4xx_it.o
+ .debug_str     0x0000000000001ef8       0x98 build/stm32f4xx_it.o
                                         0x1f1 (size before relaxing)
- .debug_str     0x0000000000001fa7       0xc8 build/system_stm32f4xx.o
+ .debug_str     0x0000000000001f90       0xc8 build/system_stm32f4xx.o
                                         0x34d (size before relaxing)
- .debug_str     0x000000000000206f      0x34f build/stm32f4xx_hal.o
+ .debug_str     0x0000000000002058      0x34f build/stm32f4xx_hal.o
                                         0xb32 (size before relaxing)
- .debug_str     0x00000000000023be      0x441 build/stm32f4xx_hal_cortex.o
+ .debug_str     0x00000000000023a7      0x441 build/stm32f4xx_hal_cortex.o
                                         0xc04 (size before relaxing)
- .debug_str     0x00000000000027ff      0x2be build/stm32f4xx_hal_dma.o
+ .debug_str     0x00000000000027e8      0x2be build/stm32f4xx_hal_dma.o
                                         0x74e (size before relaxing)
- .debug_str     0x0000000000002abd      0x125 build/stm32f4xx_hal_gpio.o
+ .debug_str     0x0000000000002aa6      0x125 build/stm32f4xx_hal_gpio.o
                                         0x4b8 (size before relaxing)
- .debug_str     0x0000000000002be2      0x1a1 build/stm32f4xx_hal_rcc.o
+ .debug_str     0x0000000000002bcb      0x1a1 build/stm32f4xx_hal_rcc.o
                                         0x6de (size before relaxing)
- .debug_str     0x0000000000002d83      0xde3 build/stm32f4xx_hal_tim.o
+ .debug_str     0x0000000000002d6c      0xde3 build/stm32f4xx_hal_tim.o
                                        0x1691 (size before relaxing)
- .debug_str     0x0000000000003b66      0x521 build/stm32f4xx_hal_tim_ex.o
+ .debug_str     0x0000000000003b4f      0x521 build/stm32f4xx_hal_tim_ex.o
                                         0xe92 (size before relaxing)
- .debug_str     0x0000000000004087      0x5fa build/stm32f4xx_hal_uart.o
+ .debug_str     0x0000000000004070      0x5fa build/stm32f4xx_hal_uart.o
                                         0xd31 (size before relaxing)
- .debug_str     0x0000000000004681       0x24 build/startup_stm32f407xx.o
+ .debug_str     0x000000000000466a       0x24 build/startup_stm32f407xx.o
                                          0x42 (size before relaxing)
 
 .comment        0x0000000000000000       0x44
@@ -4306,7 +4300,6 @@ fabs                                              c:/users/user/appdata/roaming/
 finite                                            c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-s_finite.o)
                                                   c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-w_pow.o)
 fone                                              build/main.o
-fra                                               build/main.o
 frameBuffer1                                      build/WS2812B_Effects.o
                                                   build/main.o
 frameBuffer2                                      build/WS2812B_Effects.o
@@ -4331,8 +4324,6 @@ matrixB                                           build/main.o
 matrixBsymc                                       build/main.o
 matrixC                                           build/main.o
 matrixCsymc                                       build/main.o
-matrixFsymc                                       build/main.o
-matrixFuck                                        build/main.o
 memcpy                                            c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-memcpy.o)
                                                   c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
 memset                                            c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-memset.o)
@@ -4341,7 +4332,6 @@ memset                                            c:/users/user/appdata/roaming/
 msA                                               build/main.o
 msB                                               build/main.o
 msC                                               build/main.o
-msF                                               build/main.o
 nan                                               c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-s_nan.o)
                                                   c:/users/user/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-e_pow.o)
 num                                               build/main.o

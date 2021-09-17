@@ -53,21 +53,18 @@ UART_HandleTypeDef huart2;
 /* USER CODE BEGIN PV */
 MatrixSize msA = {96,8};
 MatrixSize msB = {64,8};
-MatrixSize msF = {32,8};
 MatrixSize msC = {32,8};
 
 RealTime realtime = {0};
 
 extern uint8_t frameBuffer1[3*8*96];
 extern uint8_t frameBuffer2[3*8*64];
-uint8_t fra[3*8*32];
 extern uint8_t frameBuffer3[3*8*32];
 
 
 
 WS2812B_Matrix matrixA = {0};
 WS2812B_Matrix matrixB = {0};
-WS2812B_Matrix matrixFuck = {0};
 WS2812B_Matrix matrixC = {0};
 
 
@@ -76,11 +73,10 @@ PixelColor red = {120,0x00,0x00};
 PixelColor green = {0x00,120,0x00};
 PixelColor yellow = {120,120,0x00};
 PixelColor blue = {0x00,0x00,120};
-PixelColor fone = {0x00,0x00,0x00};
+PixelColor fone = {40,40,40};
 
 Symvol matrixAsymc[15];
 Symvol matrixBsymc[10];
-Symvol matrixFsymc[5];
 Symvol matrixCsymc[5];
 
 uint8_t x = 1;
@@ -89,7 +85,7 @@ uint32_t coun = 0;
 int num = 0;
 
 float uSv_Value = 0.11f;
-int16_t temperature = -25;
+int16_t temperature = 25;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -146,10 +142,11 @@ int main(void)
   MX_TIM6_Init();
   visInit();
   /* USER CODE BEGIN 2 */
-NOS_WS2812B_Matrix_FullInit(&matrixA,&frameBuffer1,&msA,&red,&fone,&matrixAsymc,120);
-NOS_WS2812B_Matrix_FullInit(&matrixB,&frameBuffer2,&msB,&yellow,&fone,&matrixBsymc,120);
-NOS_WS2812B_Matrix_FullInit(&matrixC,&frameBuffer3,&msC,&blue,&fone,&matrixCsymc,120);
+  NOS_WS2812B_Matrix_FullInit(&matrixA,&frameBuffer1,&msA,&red,&fone,&matrixAsymc,120);
+  NOS_WS2812B_Matrix_FullInit(&matrixB,&frameBuffer2,&msB,&yellow,&fone,&matrixBsymc,120);
+  NOS_WS2812B_Matrix_FullInit(&matrixC,&frameBuffer3,&msC,&blue,&fone,&matrixCsymc,120);
   uSv_Value = 10.25f;
+  realtime.format = Hour12;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -157,10 +154,8 @@ NOS_WS2812B_Matrix_FullInit(&matrixC,&frameBuffer3,&msC,&blue,&fone,&matrixCsymc
   while (1)
   {
 
-    if(Time > 100)
+    if(Time > 10)
     {
-
-      uSv_Value -= 0.10f;
        if(uSv_Value < 10.0f)
        {
           NOS_WS2812B_Matrix_SetSymvol(&matrixA,' ',1);
