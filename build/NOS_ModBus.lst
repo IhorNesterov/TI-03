@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
   19:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 0XFA01, 0X3AC0, 0X3B80, 0XFB41, 0X3900, 0XF9C1, 0XF881, 0X3840,
   20:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 0X2800, 0XE8C1, 0XE981, 0X2940, 0XEB01, 0X2BC0, 0X2A80, 0XEA41,
   21:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 0XEE01, 0X2EC0, 0X2F80, 0XEF41, 0X2D00, 0XEDC1, 0XEC81, 0X2C40,
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 2
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 2
 
 
   22:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 0XE401, 0X24C0, 0X2580, 0XE541, 0X2700, 0XE7C1, 0XE681, 0X2640,
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
   65              		.loc 1 46 13 view .LVU14
   66 0014 6140     		eors	r1, r1, r4
   67              	.LVL6:
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 3
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 3
 
 
   47:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       wCRCWord >>= 8;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  112              		.fpu fpv4-sp-d16
  114              	NOS_ModBus_ParseMasterCommand:
  115              	.LVL11:
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 4
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 4
 
 
  116              	.LFB131:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
   80:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
   81:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****     case 0x10:
   82:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[1] = buff[offset + 3];
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 5
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 5
 
 
   83:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 4];
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  168              		.loc 1 66 9 is_stmt 1 view .LVU47
   66:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 5];
  169              		.loc 1 66 28 is_stmt 0 view .LVU48
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 6
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 6
 
 
  170 002c 0A79     		ldrb	r2, [r1, #4]	@ zero_extendqisi2
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
   75:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 5];
  206              		.loc 1 75 28 is_stmt 0 view .LVU67
  207 0050 0A79     		ldrb	r2, [r1, #4]	@ zero_extendqisi2
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 7
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 7
 
 
   75:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 5];
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  244 0072 62F30703 		bfi	r3, r2, #0, #8
   84:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[1] = buff[offset + 5];
  245              		.loc 1 84 9 is_stmt 1 view .LVU86
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 8
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 8
 
 
   84:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[1] = buff[offset + 5];
@@ -461,7 +461,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  269 008a 0B7A     		ldrb	r3, [r1, #8]	@ zero_extendqisi2
   89:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[2] = buff[offset + 9];
  270              		.loc 1 89 37 view .LVU101
- 271 008c 4373     		strb	r3, [r0, #13]
+ 271 008c C373     		strb	r3, [r0, #15]
   90:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 10];
  272              		.loc 1 90 9 is_stmt 1 view .LVU102
   90:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 10];
@@ -469,7 +469,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  274 008e 4B7A     		ldrb	r3, [r1, #9]	@ zero_extendqisi2
   90:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 10];
  275              		.loc 1 90 37 view .LVU104
- 276 0090 0373     		strb	r3, [r0, #12]
+ 276 0090 8373     		strb	r3, [r0, #14]
   91:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 11];
  277              		.loc 1 91 9 is_stmt 1 view .LVU105
   91:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 11];
@@ -477,8 +477,8 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  279 0092 8B7A     		ldrb	r3, [r1, #10]	@ zero_extendqisi2
   91:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 11];
  280              		.loc 1 91 37 view .LVU107
- 281 0094 C372     		strb	r3, [r0, #11]
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 9
+ 281 0094 4373     		strb	r3, [r0, #13]
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 9
 
 
   92:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->type = 1;
@@ -488,7 +488,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  284 0096 CB7A     		ldrb	r3, [r1, #11]	@ zero_extendqisi2
   92:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->type = 1;
  285              		.loc 1 92 37 view .LVU110
- 286 0098 8372     		strb	r3, [r0, #10]
+ 286 0098 0373     		strb	r3, [r0, #12]
   93:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
  287              		.loc 1 93 9 is_stmt 1 view .LVU111
   93:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  326 000e 9CF802C0 		ldrb	ip, [ip, #2]	@ zero_extendqisi2
  327              		.loc 1 106 22 view .LVU124
  328 0012 80F803C0 		strb	ip, [r0, #3]
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 10
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 10
 
 
  107:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
@@ -592,18 +592,18 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  347 0024 CB78     		ldrb	r3, [r1, #3]	@ zero_extendqisi2
  119:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 4];
  348              		.loc 1 119 38 view .LVU132
- 349 0026 4372     		strb	r3, [r0, #9]
+ 349 0026 C372     		strb	r3, [r0, #11]
  120:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 5];
  350              		.loc 1 120 11 is_stmt 1 view .LVU133
  120:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 5];
  351              		.loc 1 120 44 is_stmt 0 view .LVU134
  352 0028 0B79     		ldrb	r3, [r1, #4]	@ zero_extendqisi2
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 11
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 11
 
 
  120:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 5];
  353              		.loc 1 120 38 view .LVU135
- 354 002a 0372     		strb	r3, [r0, #8]
+ 354 002a 8372     		strb	r3, [r0, #10]
  121:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[0] = buff[offset + 6];
  355              		.loc 1 121 11 is_stmt 1 view .LVU136
  121:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[0] = buff[offset + 6];
@@ -611,7 +611,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  357 002c 4B79     		ldrb	r3, [r1, #5]	@ zero_extendqisi2
  121:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[0] = buff[offset + 6];
  358              		.loc 1 121 38 view .LVU138
- 359 002e C371     		strb	r3, [r0, #7]
+ 359 002e 4372     		strb	r3, [r0, #9]
  122:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->type = 1;
  360              		.loc 1 122 11 is_stmt 1 view .LVU139
  122:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->type = 1;
@@ -619,7 +619,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  362 0030 8B79     		ldrb	r3, [r1, #6]	@ zero_extendqisi2
  122:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->type = 1;
  363              		.loc 1 122 38 view .LVU141
- 364 0032 8371     		strb	r3, [r0, #6]
+ 364 0032 0372     		strb	r3, [r0, #8]
  123:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        }
  365              		.loc 1 123 11 is_stmt 1 view .LVU142
  123:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        }
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  389 0046 0370     		strb	r3, [r0]
  390 0048 7047     		bx	lr
  391              		.cfi_endproc
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 12
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 12
 
 
  392              	.LFE132:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  438              		.loc 1 143 22 is_stmt 0 view .LVU162
  439 0004 BDF80430 		ldrh	r3, [sp, #4]
  440              	.LVL36:
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 13
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 13
 
 
  441              		.loc 1 143 22 view .LVU163
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  485              		.loc 1 155 16 is_stmt 0 view .LVU173
  486 000e 9CF81530 		ldrb	r3, [ip, #21]	@ zero_extendqisi2
  487              		.loc 1 155 6 view .LVU174
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 14
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 14
 
 
  488 0012 1BB1     		cbz	r3, .L25
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  152:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
  528              		.loc 1 152 8 is_stmt 1 view .LVU193
  152:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 15
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 15
 
 
  529              		.loc 1 152 33 is_stmt 0 view .LVU194
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  569 0064 40F20733 		movw	r3, #775
  570 0068 9A42     		cmp	r2, r3
  571 006a 11D0     		beq	.L34
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 16
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 16
 
 
  572              	.L29:
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  608              		.loc 1 174 28 is_stmt 0 view .LVU224
  609 0094 0022     		movs	r2, #0
  610 0096 8CF81520 		strb	r2, [ip, #21]
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 17
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 17
 
 
  175:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       NOS_ModBus_ParseSlaveCommand(MB_struct->master,MB_struct->buff,0);
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  662 0038 01C9     		.short	-14079
  663 003a C009     		.short	2496
  664 003c 8008     		.short	2176
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 18
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 18
 
 
  665 003e 41C8     		.short	-14271
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  719 00aa C03F     		.short	16320
  720 00ac 803E     		.short	16000
  721 00ae 41FE     		.short	-447
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 19
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 19
 
 
  722 00b0 01FA     		.short	-1535
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  776 011c 8064     		.short	25728
  777 011e 41A4     		.short	-23487
  778 0120 006C     		.short	27648
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 20
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 20
 
 
  779 0122 C1AC     		.short	-21311
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  833 018e 4192     		.short	-28095
  834 0190 0196     		.short	-27135
  835 0192 C056     		.short	22208
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 21
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 21
 
 
  836 0194 8057     		.short	22400
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  890              		.text
  891              	.Letext0:
  892              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 22
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 22
 
 
  893              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
@@ -1267,26 +1267,26 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 1
  896              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
  897              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
  898              		.file 8 "Core/Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h"
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccRCrldd.s 			page 23
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 23
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 NOS_ModBus.c
-C:\Users\user\AppData\Local\Temp\ccRCrldd.s:18     .text.GetCRC16:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccRCrldd.s:26     .text.GetCRC16:0000000000000000 GetCRC16
-C:\Users\user\AppData\Local\Temp\ccRCrldd.s:102    .text.GetCRC16:0000000000000034 $d
-C:\Users\user\AppData\Local\Temp\ccRCrldd.s:107    .text.NOS_ModBus_ParseMasterCommand:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccRCrldd.s:114    .text.NOS_ModBus_ParseMasterCommand:0000000000000000 NOS_ModBus_ParseMasterCommand
-C:\Users\user\AppData\Local\Temp\ccRCrldd.s:298    .text.NOS_ModBus_ParseSlaveCommand:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccRCrldd.s:305    .text.NOS_ModBus_ParseSlaveCommand:0000000000000000 NOS_ModBus_ParseSlaveCommand
-C:\Users\user\AppData\Local\Temp\ccRCrldd.s:395    .text.NOS_ModBus_SetMasterCommand:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccRCrldd.s:402    .text.NOS_ModBus_SetMasterCommand:0000000000000000 NOS_ModBus_SetMasterCommand
-C:\Users\user\AppData\Local\Temp\ccRCrldd.s:416    .text.NOS_ModBus_SetSlaveCommand:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccRCrldd.s:423    .text.NOS_ModBus_SetSlaveCommand:0000000000000000 NOS_ModBus_SetSlaveCommand
-C:\Users\user\AppData\Local\Temp\ccRCrldd.s:449    .text.NOS_ModBus_ReceiveHandler:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccRCrldd.s:456    .text.NOS_ModBus_ReceiveHandler:0000000000000000 NOS_ModBus_ReceiveHandler
-C:\Users\user\AppData\Local\Temp\ccRCrldd.s:629    .rodata.wCRCTable.0:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccRCrldd.s:633    .rodata.wCRCTable.0:0000000000000000 wCRCTable.0
+C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:18     .text.GetCRC16:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:26     .text.GetCRC16:0000000000000000 GetCRC16
+C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:102    .text.GetCRC16:0000000000000034 $d
+C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:107    .text.NOS_ModBus_ParseMasterCommand:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:114    .text.NOS_ModBus_ParseMasterCommand:0000000000000000 NOS_ModBus_ParseMasterCommand
+C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:298    .text.NOS_ModBus_ParseSlaveCommand:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:305    .text.NOS_ModBus_ParseSlaveCommand:0000000000000000 NOS_ModBus_ParseSlaveCommand
+C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:395    .text.NOS_ModBus_SetMasterCommand:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:402    .text.NOS_ModBus_SetMasterCommand:0000000000000000 NOS_ModBus_SetMasterCommand
+C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:416    .text.NOS_ModBus_SetSlaveCommand:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:423    .text.NOS_ModBus_SetSlaveCommand:0000000000000000 NOS_ModBus_SetSlaveCommand
+C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:449    .text.NOS_ModBus_ReceiveHandler:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:456    .text.NOS_ModBus_ReceiveHandler:0000000000000000 NOS_ModBus_ReceiveHandler
+C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:629    .rodata.wCRCTable.0:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:633    .rodata.wCRCTable.0:0000000000000000 wCRCTable.0
 
 UNDEFINED SYMBOLS
 HAL_UART_Receive_IT

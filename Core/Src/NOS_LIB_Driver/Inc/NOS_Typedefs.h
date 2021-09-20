@@ -15,7 +15,7 @@ typedef union Short_t //uint16_t data wrap
 typedef union Float_t //float data wrap
 {
     uint8_t bytes[4];
-    uint16_t data;
+    float data;
 } NOS_Float;
 
 /* Unions end */
@@ -88,6 +88,16 @@ typedef struct RealTime_t
   TimeFormat format;
 } RealTime;
 
+typedef struct URE_Detector_t
+{
+  uint8_t Address;
+  NOS_Float value;
+  NOS_Float first_danger;
+  NOS_Float second_danger;
+  uint16_t voltage;
+  NOS_Short temperature;
+}URE_Detector;
+
 /*ModBus*/
 typedef enum ModBus_State_t{Free,ReceiveFromMaster,ReceiveFromSlave,TransmitToMaster,TransmitToSlave} ModBus_State;
 typedef struct ModBus_Master_Command_t
@@ -133,6 +143,8 @@ typedef struct NOS_ModBus_Struct_t
 } ModBus_Struct;
 
 /*ModBus*/
+
+typedef enum Language_e{English,Ukrainian,Russian} Language;
 
 /* Structures end */
 #endif

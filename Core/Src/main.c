@@ -61,19 +61,15 @@ extern uint8_t frameBuffer1[3*8*96];
 extern uint8_t frameBuffer2[3*8*64];
 extern uint8_t frameBuffer3[3*8*32];
 
-
-
 WS2812B_Matrix matrixA = {0};
 WS2812B_Matrix matrixB = {0};
 WS2812B_Matrix matrixC = {0};
 
-
-
-PixelColor red = {120,0x00,0x00};
-PixelColor green = {0x00,120,0x00};
-PixelColor yellow = {120,120,0x00};
-PixelColor blue = {0x00,0x00,120};
-PixelColor fone = {40,40,40};
+PixelColor red = {255,0x00,0x00};
+PixelColor green = {0x00,255,0x00};
+PixelColor yellow = {255,255,0x00};
+PixelColor blue = {0x00,0x00,255};
+PixelColor fone = {0,0,0};
 
 Symvol matrixAsymc[15];
 Symvol matrixBsymc[10];
@@ -85,7 +81,13 @@ uint32_t coun = 0;
 int num = 0;
 
 float uSv_Value = 0.11f;
+float first_danger = 0.25f;
+float second_danger = 1.25f;
 int16_t temperature = 25;
+
+uint32_t UpdateFrameTime = 10;
+Language language = English;
+RTC_TimeTypeDef sTime = {0};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -100,12 +102,8 @@ static void MX_TIM6_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-typedef struct Snake_t
-{
-  Point points[32 * 8];
 
-  Point head;
-}ll;
+
 /* USER CODE END 0 */
 
 /**
@@ -136,47 +134,32 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  // MX_RTC_Init();
+//MX_RTC_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   MX_TIM6_Init();
   visInit();
   /* USER CODE BEGIN 2 */
-  NOS_WS2812B_Matrix_FullInit(&matrixA,&frameBuffer1,&msA,&red,&fone,&matrixAsymc,120);
-  NOS_WS2812B_Matrix_FullInit(&matrixB,&frameBuffer2,&msB,&yellow,&fone,&matrixBsymc,120);
-  NOS_WS2812B_Matrix_FullInit(&matrixC,&frameBuffer3,&msC,&blue,&fone,&matrixCsymc,120);
-  uSv_Value = 10.25f;
-  realtime.format = Hour12;
+  NOS_WS2812B_Matrix_FullInit(&matrixA,&frameBuffer1,&msA,&red,&fone,&matrixAsymc,80);
+  NOS_WS2812B_Matrix_FullInit(&matrixB,&frameBuffer2,&msB,&yellow,&fone,&matrixBsymc,80);
+  NOS_WS2812B_Matrix_FullInit(&matrixC,&frameBuffer3,&msC,&blue,&fone,&matrixCsymc,80);
+  uSv_Value = 1.26f;
+  realtime.format = Hour24;
+  URE_Detector detector = {0};
+  detector.value.data = 0.11f;
+  detector.first_danger.data = 0.25f;
+  detector.second_danger.data = 1.25f;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
-    if(Time > 10)
+    if(Time > UpdateFrameTime)
     {
-       if(uSv_Value < 10.0f)
-       {
-          NOS_WS2812B_Matrix_SetSymvol(&matrixA,' ',1);
-          NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"uSv/Hour",7,8);
-          NOS_WS2812B_Matrix_PrintFloatNumber(&matrixA,uSv_Value,2);
-       }
-       else
-       {
-          NOS_WS2812B_Matrix_PrintStaticString(&matrixA,"uSv/Hour",7,8);
-          NOS_WS2812B_Matrix_PrintFloatNumber(&matrixA,uSv_Value,1);
-       }
-
+       NOS_WS2812B_Matrix_PrintDetectorValue(&matrixA,&detector,language,&red,&yellow,&green);  
        NOS_WS2812B_Matrix_PrintRealTime(&matrixB,realtime);
        NOS_WS2812B_Matrix_PrintTemperature(&matrixC,temperature);
-
-       NOS_WS2812B_EffectRainbow(&matrixA,coun);
-       coun+= 5;
-       if(coun > matrixA.bright * 8)
-       {
-         coun = 0;
-       }
 
        NOS_WS2812B_Matrix_Update(&matrixA,0);
        NOS_WS2812B_Matrix_Update(&matrixB,0);
@@ -219,10 +202,10 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_LSE;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_LSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
-  RCC_OscInitStruct.LSEState = RCC_LSE_ON;
+  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLM = 8;
@@ -260,7 +243,7 @@ static void MX_RTC_Init(void)
 
   /* USER CODE END RTC_Init 0 */
 
-  RTC_TimeTypeDef sTime = {0};
+ // RTC_TimeTypeDef sTime = {0};
   RTC_DateTypeDef sDate = {0};
 
   /* USER CODE BEGIN RTC_Init 1 */
@@ -286,8 +269,8 @@ static void MX_RTC_Init(void)
 
   /** Initialize RTC and set the Time and Date
   */
-  sTime.Hours = 0x0;
-  sTime.Minutes = 0x0;
+  sTime.Hours = 10;
+  sTime.Minutes = 23;
   sTime.Seconds = 0x0;
   sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
   sTime.StoreOperation = RTC_STOREOPERATION_RESET;

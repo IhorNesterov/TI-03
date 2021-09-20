@@ -21,9 +21,13 @@ void NOS_WS2812B_Matrix_FullInit(WS2812B_Matrix* matrix,uint8_t* buff,MatrixSize
 
 void NOS_WS2812B_Matrix_SetPixel(WS2812B_Matrix* matrix,PixelColor* color,uint16_t pixelPos)
 {
-    matrix->buffer[pixelPos * 3] = color->R;
-    matrix->buffer[pixelPos * 3 + 1] = color->G;
-    matrix->buffer[pixelPos * 3 + 2] = color->B;
+    float curr = 0;
+    curr = (color->R / 100) * matrix->bright;
+    matrix->buffer[pixelPos * 3] = (uint8_t)curr;
+    curr = (color->G / 100) * matrix->bright;
+    matrix->buffer[pixelPos * 3 + 1] = (uint8_t)curr;
+    curr = (color->B / 100) * matrix->bright;
+    matrix->buffer[pixelPos * 3 + 2] = (uint8_t)curr;
 }
 
 uint16_t GetPixelPos(uint8_t x, uint8_t y)
@@ -304,8 +308,50 @@ void NOS_WS2812B_Matrix_PrintTemperature(WS2812B_Matrix* matrix,int16_t temperat
     NOS_WS2812B_Matrix_PrintIntNumber(matrix,(uint32_t)counter,1,2);
 }
 
+void NOS_WS2812B_Matrix_PrintDetectorValue(WS2812B_Matrix* matrix,URE_Detector* detector,Language language,PixelColor* red,PixelColor* yellow,PixelColor* green)
+{
+       if(detector->value.data < 10.0f)
+       {
+          NOS_WS2812B_Matrix_SetSymvol(matrix,' ',1);
+          NOS_WS2812B_Matrix_PrintFloatNumber(matrix,detector->value.data,2);
+       }
+       else
+       {
+          NOS_WS2812B_Matrix_PrintFloatNumber(matrix,detector->value.data,1);
+       }
+
+       switch (language)
+       {
+       case English:
+          NOS_WS2812B_Matrix_PrintStaticString(matrix,"uSv/Hour",7,8);
+          break;
+        case Ukrainian:
+          NOS_WS2812B_Matrix_PrintStaticString(matrix,"mk3B/god",7,8);
+          break;
+        case Russian:
+          NOS_WS2812B_Matrix_PrintStaticString(matrix,"mk3B/yac",7,8);
+          break;
+       default:
+         break;
+       }
+
+       if(detector->value.data >= detector->first_danger.data && detector->value.data < detector->second_danger.data)
+       {
+         matrix->textColor = yellow;
+       }
+       else if (detector->value.data >= detector->second_danger.data)
+       {
+         matrix->textColor = red;
+       }
+       else
+       {
+         matrix->textColor = green;
+       }
+}
+
 void NOS_WS2812B_EffectEngineHandler(WS2812B_EffectEngine* engine)
-{ 
+{
+
     engine->counter++;
 }
 

@@ -25,6 +25,8 @@ void NOS_WS2812B_Matrix_PrintRealTime(WS2812B_Matrix* matrix,RealTime rt);
 
 void NOS_WS2812B_Matrix_PrintTemperature(WS2812B_Matrix* matrix,int16_t temperature);
 
+void NOS_WS2812B_Matrix_PrintDetectorValue(WS2812B_Matrix* matrix,URE_Detector* detector,Language language,PixelColor* red,PixelColor* yellow,PixelColor* green);
+
 void NOS_WS2812B_EffectRainbow(WS2812B_Matrix*matrix,uint32_t counter);
 
 void NOS_WS2812B_EffectEngineHandler(WS2812B_EffectEngine* engine);
