@@ -88,6 +88,8 @@ int16_t temperature = 25;
 uint32_t UpdateFrameTime = 10;
 Language language = English;
 RTC_TimeTypeDef sTime = {0};
+ModBus_Struct ModBus;
+GPIO_PIN PA1;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -102,7 +104,9 @@ static void MX_TIM6_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart) {
+  NOS_ModBus_ReceiveHandler(&ModBus);
+}
 
 /* USER CODE END 0 */
 
@@ -140,21 +144,38 @@ int main(void)
   MX_TIM6_Init();
   visInit();
   /* USER CODE BEGIN 2 */
+
   NOS_WS2812B_Matrix_FullInit(&matrixA,&frameBuffer1,&msA,&red,&fone,&matrixAsymc,80);
   NOS_WS2812B_Matrix_FullInit(&matrixB,&frameBuffer2,&msB,&yellow,&fone,&matrixBsymc,80);
   NOS_WS2812B_Matrix_FullInit(&matrixC,&frameBuffer3,&msC,&blue,&fone,&matrixCsymc,80);
+  NOS_GPIO_PinInit(&PA1,GPIOA,GPIO_PIN_1,Output);
   uSv_Value = 1.26f;
   realtime.format = Hour24;
   URE_Detector detector = {0};
+  detector.Address = 101;
   detector.value.data = 0.11f;
   detector.first_danger.data = 0.25f;
   detector.second_danger.data = 1.25f;
+  
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    if(ModBus.rx_buff)
+    {
+      if(ModBus.state == ReceiveFromMaster)
+      {
+        NOS_ModBus_ParseMasterCommand(&ModBus.master,&ModBus.rx_buff,0);
+      }
+
+      if(ModBus.state == ReceiveFromSlave)
+      {
+        NOS_ModBus_ParseSlaveCommand(&ModBus.slave,&ModBus.rx_buff,0);
+      }
+    }
+    
     if(Time > UpdateFrameTime)
     {
        NOS_WS2812B_Matrix_PrintDetectorValue(&matrixA,&detector,language,&red,&yellow,&green);  
@@ -347,7 +368,7 @@ static void MX_USART1_UART_Init(void)
 
   /* USER CODE END USART1_Init 1 */
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
+  huart1.Init.BaudRate = 9600;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;
@@ -380,7 +401,7 @@ static void MX_USART2_UART_Init(void)
 
   /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 115200;
+  huart2.Init.BaudRate = 9600;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;

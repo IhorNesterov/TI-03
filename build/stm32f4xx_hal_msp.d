@@ -32,7 +32,8 @@ build/stm32f4xx_hal_msp.o: Core/Src/stm32f4xx_hal_msp.c Core/Inc/main.h \
  Core/Inc/../Src/NOS_LIB_Driver/Inc/WS2812B_Effects.h \
  Core/Inc/../Src/NOS_LIB_Driver/Inc/WS2812B.h \
  Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_Time.h \
- Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_ModBus.h
+ Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_ModBus.h \
+ Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_GPIO.h
 Core/Inc/main.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 Core/Inc/stm32f4xx_hal_conf.h:
@@ -70,3 +71,4 @@ Core/Inc/../Src/NOS_LIB_Driver/Inc/WS2812B_Effects.h:
 Core/Inc/../Src/NOS_LIB_Driver/Inc/WS2812B.h:
 Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_Time.h:
 Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_ModBus.h:
+Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_GPIO.h:

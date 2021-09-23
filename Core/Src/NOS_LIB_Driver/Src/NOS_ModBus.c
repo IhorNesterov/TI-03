@@ -75,7 +75,6 @@ void NOS_ModBus_ParseMasterCommand(ModBus_Master_Command* master,uint8_t* buff,u
         com.bytes[1] = buff[offset + 4];
         com.bytes[0] = buff[offset + 5];
         master->ShortValue.data = com.data;
-        master->type = 0;
         break;
 
     case 0x10:
@@ -90,7 +89,6 @@ void NOS_ModBus_ParseMasterCommand(ModBus_Master_Command* master,uint8_t* buff,u
         master->FloatValue.bytes[2] = buff[offset + 9];
         master->FloatValue.bytes[1] = buff[offset + 10];
         master->FloatValue.bytes[0] = buff[offset + 11];
-        master->type = 1;
         break;
     
     default:
@@ -112,7 +110,6 @@ void NOS_ModBus_ParseSlaveCommand(ModBus_Slave_Command* slave,uint8_t* buff,uint
        {
           slave->ShortValue.bytes[1] = buff[offset + 3];
           slave->ShortValue.bytes[0] = buff[offset + 4];
-          slave->type = 0;
        }
        else
        {
@@ -120,7 +117,6 @@ void NOS_ModBus_ParseSlaveCommand(ModBus_Slave_Command* slave,uint8_t* buff,uint
           slave->FloatValue.bytes[2] = buff[offset + 4];
           slave->FloatValue.bytes[1] = buff[offset + 5];
           slave->FloatValue.bytes[0] = buff[offset + 6];
-          slave->type = 1;
        }
        break;
 
@@ -143,13 +139,41 @@ void NOS_ModBus_SetSlaveCommand(ModBus_Slave_Command* slave,uint8_t addr,uint8_t
    slave->ShortValue = sVal;
 }
 
-void NOS_ModBus_ReceiveHandler(UART_HandleTypeDef* huart,ModBus_Struct* MB_struct)
+void NOS_ModBus_InitDevice(Modbus_Device* device,uint8_t address,NOS_Short* regAddrs,uint8_t regCount,uint8_t _descriptor)
+{
+   if(address > 0 && address < 249)
+   {
+      device->Addr = address;
+      device->RegisterAddress = regAddrs;
+      device->RegisterCount = regCount;
+      device->Descriptor = _descriptor;
+   }
+}
+
+void NOS_ModBus_GetParam(Modbus_Device* device);
+
+
+
+void NOS_ModBus_ReceiveHandler(ModBus_Struct* MB_struct)
 {
    uint8_t* rx_buff_ptr = MB_struct->buff;
-   if(*rx_buff_ptr == 101 && MB_struct->addressOk)
+   
+   for(int i = 0; i < MB_struct->devicesCount; i++)
    {
-       MB_struct->addressOk = true;
-       MB_struct->messageLenght = 0;
+     if(*rx_buff_ptr == MB_struct->devices[i].Addr && !MB_struct->addressOk)
+     {
+         MB_struct->currDevice = i;
+         MB_struct->addressOk = true;
+         MB_struct->messageLenght = 0;
+         if(MB_struct->devices[i].Descriptor == 0)
+         {
+            MB_struct->state = ReceiveFromSlave;
+         }
+         else
+         {
+            MB_struct->state = ReceiveFromMaster;
+         }
+     }
    }
 
    if(MB_struct->addressOk && MB_struct->messageLenght == 1)
@@ -157,23 +181,43 @@ void NOS_ModBus_ReceiveHandler(UART_HandleTypeDef* huart,ModBus_Struct* MB_struc
       MB_struct->currCommand = *rx_buff_ptr;
    }
 
-   if(MB_struct->messageLenght > 10)
+   if(MB_struct->addressOk && MB_struct->messageLenght == 2)
+   {
+      switch (MB_struct->currCommand)
+      {
+      case 0x03:
+         MB_struct->expectedMessageLenght = 7;
+         break;
+      case 0x06:
+         MB_struct->expectedMessageLenght = 7;
+         break;
+      case 0x10:
+         MB_struct->expectedMessageLenght = 13;
+         break;  
+      
+      default:
+         break;
+      }
+   }
+
+   if(MB_struct->messageLenght > MB_struct->expectedMessageLenght)
    {
       rx_buff_ptr = MB_struct->buff;
       MB_struct->messageLenght = 0;
       MB_struct->addressOk = false;
-      for(int i = 0; i < 10; i++)
+      MB_struct->state = Free;
+      for(int i = 0; i < MB_struct->expectedMessageLenght; i++)
       {
          MB_struct->buff[i] = 0;
       }
    }
 
-   if(MB_struct->addressOk && MB_struct->messageLenght == 7 && MB_struct->currCommand == 0x03)
+   if(MB_struct->addressOk && MB_struct->messageLenght == MB_struct->expectedMessageLenght)
    {
       rx_buff_ptr = MB_struct->buff;
       MB_struct->addressOk = false;
       MB_struct->messageLenght = 0;
-      NOS_ModBus_ParseSlaveCommand(MB_struct->master,MB_struct->buff,0);
+      MB_struct->rx_buff = true;
    }
    else
    {
@@ -181,6 +225,39 @@ void NOS_ModBus_ReceiveHandler(UART_HandleTypeDef* huart,ModBus_Struct* MB_struc
       ++rx_buff_ptr;
       ++MB_struct->messageLenght;
    }
-   HAL_UART_Receive_IT (huart, rx_buff_ptr, 1); 
+   HAL_UART_Receive_IT (MB_struct->huart, rx_buff_ptr, 1); 
 }
 
+void NOS_ModBus_InitStruct(ModBus_Struct* mb,UART_HandleTypeDef* huart,uint8_t* _buff,GPIO_PIN pin)
+{
+   mb->huart = huart;
+   mb->buff = _buff;
+   mb->RW = pin;
+}
+
+void NOS_ModBus_AddDevice(ModBus_Struct* mb,Modbus_Device* device)
+{
+   if(mb->devicesCount < 10)
+   {
+      mb->devices[mb->devicesCount].Addr = device->Addr;
+      mb->devices[mb->devicesCount].Descriptor = device->Descriptor;
+      mb->devices[mb->devicesCount].RegisterAddress = device->RegisterAddress;
+      mb->devices[mb->devicesCount].RegisterCount = device->RegisterCount;
+      mb->devicesCount++;
+   }
+   else 
+   {
+      //NOS_Error_Handler("ModBus Device out of range");
+   }
+}
+
+void NOS_ModBus_DeleteDevice(ModBus_Struct* mb,uint8_t pos)
+{
+   for(int i = pos - 1; i < mb->devicesCount - 1; i++)
+   {
+      mb->devices[i].Addr = mb->devices[i + 1].Addr;
+      mb->devices[i].RegisterAddress = mb->devices[i + 1].RegisterAddress;
+      mb->devices[i].RegisterCount = mb->devices[i + 1].RegisterCount;
+   }
+   mb->devicesCount--;
+}

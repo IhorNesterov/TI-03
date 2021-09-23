@@ -249,19 +249,19 @@ void NOS_WS2812B_EffectRainbow(WS2812B_Matrix*matrix,uint32_t counter)
 
     if(counter > matrix->bright * 3 && counter < matrix->bright * 4)
     {
-                counter = counter - matrix->bright * 3;
+        counter = counter - matrix->bright * 3;
         NOS_WS2812B_SetPixelColor(matrix->textColor,matrix->bright,matrix->bright - counter,0);
     }
 
     if(counter > matrix->bright * 4 && counter < matrix->bright * 5)
     {
-                counter = counter - matrix->bright * 4;
+        counter = counter - matrix->bright * 4;
         NOS_WS2812B_SetPixelColor(matrix->textColor,matrix->bright,counter,0);
     }
 
     if(counter > matrix->bright * 5 && counter < matrix->bright * 6)
     {
-                counter = counter - matrix->bright * 5;
+        counter = counter - matrix->bright * 5;
         NOS_WS2812B_SetPixelColor(matrix->textColor,matrix->bright - counter,matrix->bright,0);
     }
 
@@ -271,7 +271,7 @@ void NOS_WS2812B_EffectRainbow(WS2812B_Matrix*matrix,uint32_t counter)
         NOS_WS2812B_SetPixelColor(matrix->textColor,0,matrix->bright,counter);
     }
 
-        if(counter > matrix->bright * 7 && counter < matrix->bright * 8)
+    if(counter > matrix->bright * 7 && counter < matrix->bright * 8)
     {        
         counter = counter - matrix->bright * 7;
         NOS_WS2812B_SetPixelColor(matrix->textColor,0,matrix->bright - counter,matrix->bright);

@@ -18,6 +18,12 @@ typedef union Float_t //float data wrap
     float data;
 } NOS_Float;
 
+typedef union Long_t
+{
+  uint8_t bytes[4];
+  uint32_t data;
+} NOS_Long;
+
 /* Unions end */
 
 /* Structures begin */
@@ -102,7 +108,6 @@ typedef struct URE_Detector_t
 typedef enum ModBus_State_t{Free,ReceiveFromMaster,ReceiveFromSlave,TransmitToMaster,TransmitToSlave} ModBus_State;
 typedef struct ModBus_Master_Command_t
 {
-    uint8_t type; 
     uint8_t Addr;
     uint8_t Command;
     uint8_t Byte_Count;
@@ -124,27 +129,46 @@ typedef struct ModBus_Slave_Command_t
 
 typedef struct NOS_Modbus_Device_t
 {
+  uint8_t Descriptor;
   uint8_t Addr;
   uint8_t RegisterCount;
   NOS_Short* RegisterAddress;
 } Modbus_Device;
 
+typedef struct GPIO_PIN_t
+{
+  GPIO_TypeDef* Port;
+  uint16_t Pin;
+} GPIO_PIN;
+
 typedef struct NOS_ModBus_Struct_t
 {
-  Modbus_Device* devices;
-  ModBus_Master_Command* master;
-  ModBus_Slave_Command* slave;
-  ModBus_State state;
+  Modbus_Device devices[10];
+  ModBus_Master_Command master;
+  ModBus_Slave_Command slave;
+  UART_HandleTypeDef* huart;
   uint8_t* buff;
+  GPIO_PIN RW;
+  ModBus_State state;
   uint8_t devicesCount;
-  bool addressOk;
   uint8_t messageLenght;
   uint8_t currCommand;
+  uint8_t currDevice;
+  uint8_t expectedMessageLenght;
+  bool addressOk;
+  bool rx_buff;
+  bool tx_buff;
 } ModBus_Struct;
 
 /*ModBus*/
 
 typedef enum Language_e{English,Ukrainian,Russian} Language;
+
+/* STM32 Core structures begin*/
+
+
+
+/* STM32 Core structures end*/
 
 /* Structures end */
 #endif

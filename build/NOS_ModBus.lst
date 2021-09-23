@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 1
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 1
   19:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 0XFA01, 0X3AC0, 0X3B80, 0XFB41, 0X3900, 0XF9C1, 0XF881, 0X3840,
   20:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 0X2800, 0XE8C1, 0XE981, 0X2940, 0XEB01, 0X2BC0, 0X2A80, 0XEA41,
   21:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 0XEE01, 0X2EC0, 0X2F80, 0XEF41, 0X2D00, 0XEDC1, 0XEC81, 0X2C40,
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 2
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 2
 
 
   22:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 0XE401, 0X24C0, 0X2580, 0XE541, 0X2700, 0XE7C1, 0XE681, 0X2640,
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 1
   65              		.loc 1 46 13 view .LVU14
   66 0014 6140     		eors	r1, r1, r4
   67              	.LVL6:
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 3
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 3
 
 
   47:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       wCRCWord >>= 8;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 1
  112              		.fpu fpv4-sp-d16
  114              	NOS_ModBus_ParseMasterCommand:
  115              	.LVL11:
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 4
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 4
 
 
  116              	.LFB131:
@@ -197,21 +197,21 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 1
  124              		.loc 1 57 24 is_stmt 0 view .LVU30
  125 0000 8B5C     		ldrb	r3, [r1, r2]	@ zero_extendqisi2
  126              		.loc 1 57 18 view .LVU31
- 127 0002 4370     		strb	r3, [r0, #1]
+ 127 0002 0370     		strb	r3, [r0]
   58:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****     master->Command = buff[offset + 1];
  128              		.loc 1 58 5 is_stmt 1 view .LVU32
  129              		.loc 1 58 27 is_stmt 0 view .LVU33
  130 0004 8B18     		adds	r3, r1, r2
  131 0006 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
  132              		.loc 1 58 21 view .LVU34
- 133 0008 8370     		strb	r3, [r0, #2]
+ 133 0008 4370     		strb	r3, [r0, #1]
   59:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
   60:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****     switch(master->Command)
  134              		.loc 1 60 5 is_stmt 1 view .LVU35
  135 000a 062B     		cmp	r3, #6
  136 000c 16D0     		beq	.L12
  137 000e 102B     		cmp	r3, #16
- 138 0010 28D0     		beq	.L13
+ 138 0010 26D0     		beq	.L13
  139 0012 032B     		cmp	r3, #3
  140 0014 00D0     		beq	.L15
  141              	.LVL12:
@@ -233,33 +233,31 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 1
   75:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[1] = buff[offset + 4];
   76:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 5];
   77:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->ShortValue.data = com.data;
-  78:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->type = 0;
-  79:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
-  80:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
-  81:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****     case 0x10:
-  82:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[1] = buff[offset + 3];
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 5
+  78:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
+  79:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+  80:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****     case 0x10:
+  81:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[1] = buff[offset + 3];
+  82:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 4];
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 5
 
 
-  83:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 4];
-  84:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Reg_Addr = com.data;
-  85:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[1] = buff[offset + 5];
-  86:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 6];
-  87:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Reg_Count = com.data;
-  88:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Byte_Count = buff[offset + 7];
-  89:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[3] = buff[offset + 8];
-  90:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[2] = buff[offset + 9];
-  91:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 10];
-  92:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 11];
-  93:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->type = 1;
-  94:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
-  95:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****     
-  96:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****     default:
-  97:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    // NOS_Error_Handler("Master command out of range");
-  98:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
-  99:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****     }
- 100:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** }
- 143              		.loc 1 100 1 is_stmt 0 view .LVU36
+  83:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Reg_Addr = com.data;
+  84:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[1] = buff[offset + 5];
+  85:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 6];
+  86:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Reg_Count = com.data;
+  87:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Byte_Count = buff[offset + 7];
+  88:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[3] = buff[offset + 8];
+  89:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[2] = buff[offset + 9];
+  90:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 10];
+  91:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 11];
+  92:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
+  93:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****     
+  94:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****     default:
+  95:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    // NOS_Error_Handler("Master command out of range");
+  96:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
+  97:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****     }
+  98:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** }
+ 143              		.loc 1 98 1 is_stmt 0 view .LVU36
  144 0016 7047     		bx	lr
  145              	.LVL13:
  146              	.L15:
@@ -298,11 +296,11 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 1
  168              		.loc 1 66 9 is_stmt 1 view .LVU47
   66:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 5];
  169              		.loc 1 66 28 is_stmt 0 view .LVU48
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 6
-
-
  170 002c 0A79     		ldrb	r2, [r1, #4]	@ zero_extendqisi2
   66:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 5];
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 6
+
+
  171              		.loc 1 66 22 view .LVU49
  172 002e 62F30F23 		bfi	r3, r2, #8, #8
   67:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Reg_Count = com.data;
@@ -358,11 +356,11 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 1
   75:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 5];
  206              		.loc 1 75 28 is_stmt 0 view .LVU67
  207 0050 0A79     		ldrb	r2, [r1, #4]	@ zero_extendqisi2
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 7
-
-
   75:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 5];
  208              		.loc 1 75 22 view .LVU68
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 7
+
+
  209 0052 62F30F23 		bfi	r3, r2, #8, #8
   76:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->ShortValue.data = com.data;
  210              		.loc 1 76 9 is_stmt 1 view .LVU69
@@ -372,921 +370,1350 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 1
   76:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->ShortValue.data = com.data;
  213              		.loc 1 76 22 view .LVU71
  214 0058 62F30703 		bfi	r3, r2, #0, #8
-  77:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->type = 0;
+  77:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
  215              		.loc 1 77 9 is_stmt 1 view .LVU72
-  77:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->type = 0;
+  77:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
  216              		.loc 1 77 33 is_stmt 0 view .LVU73
  217 005c 0381     		strh	r3, [r0, #8]	@ movhi
-  78:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
+  78:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
  218              		.loc 1 78 9 is_stmt 1 view .LVU74
-  78:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
- 219              		.loc 1 78 22 is_stmt 0 view .LVU75
- 220 005e 0023     		movs	r3, #0
- 221              	.LVL22:
-  78:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
- 222              		.loc 1 78 22 view .LVU76
- 223 0060 0370     		strb	r3, [r0]
-  79:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
- 224              		.loc 1 79 9 is_stmt 1 view .LVU77
- 225 0062 7047     		bx	lr
- 226              	.LVL23:
- 227              	.L13:
-  82:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 4];
- 228              		.loc 1 82 9 view .LVU78
-  82:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 4];
- 229              		.loc 1 82 28 is_stmt 0 view .LVU79
- 230 0064 1144     		add	r1, r1, r2
- 231              	.LVL24:
-  82:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 4];
- 232              		.loc 1 82 28 view .LVU80
- 233 0066 CA78     		ldrb	r2, [r1, #3]	@ zero_extendqisi2
- 234              	.LVL25:
-  82:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 4];
- 235              		.loc 1 82 22 view .LVU81
- 236 0068 4FF00003 		mov	r3, #0	@ movhi
-  82:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 4];
+ 219 005e 7047     		bx	lr
+ 220              	.LVL22:
+ 221              	.L13:
+  81:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 4];
+ 222              		.loc 1 81 9 view .LVU75
+  81:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 4];
+ 223              		.loc 1 81 28 is_stmt 0 view .LVU76
+ 224 0060 1144     		add	r1, r1, r2
+ 225              	.LVL23:
+  81:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 4];
+ 226              		.loc 1 81 28 view .LVU77
+ 227 0062 CA78     		ldrb	r2, [r1, #3]	@ zero_extendqisi2
+ 228              	.LVL24:
+  81:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 4];
+ 229              		.loc 1 81 22 view .LVU78
+ 230 0064 4FF00003 		mov	r3, #0	@ movhi
+  81:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 4];
+ 231              		.loc 1 81 22 view .LVU79
+ 232 0068 62F30F23 		bfi	r3, r2, #8, #8
+ 233              	.LVL25:
+  82:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Reg_Addr = com.data;
+ 234              		.loc 1 82 9 is_stmt 1 view .LVU80
+  82:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Reg_Addr = com.data;
+ 235              		.loc 1 82 28 is_stmt 0 view .LVU81
+ 236 006c 0A79     		ldrb	r2, [r1, #4]	@ zero_extendqisi2
+  82:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Reg_Addr = com.data;
  237              		.loc 1 82 22 view .LVU82
- 238 006c 62F30F23 		bfi	r3, r2, #8, #8
- 239              	.LVL26:
-  83:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Reg_Addr = com.data;
- 240              		.loc 1 83 9 is_stmt 1 view .LVU83
-  83:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Reg_Addr = com.data;
- 241              		.loc 1 83 28 is_stmt 0 view .LVU84
- 242 0070 0A79     		ldrb	r2, [r1, #4]	@ zero_extendqisi2
-  83:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Reg_Addr = com.data;
- 243              		.loc 1 83 22 view .LVU85
- 244 0072 62F30703 		bfi	r3, r2, #0, #8
-  84:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[1] = buff[offset + 5];
- 245              		.loc 1 84 9 is_stmt 1 view .LVU86
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 8
+ 238 006e 62F30703 		bfi	r3, r2, #0, #8
+  83:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[1] = buff[offset + 5];
+ 239              		.loc 1 83 9 is_stmt 1 view .LVU83
+  83:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[1] = buff[offset + 5];
+ 240              		.loc 1 83 26 is_stmt 0 view .LVU84
+ 241 0072 8380     		strh	r3, [r0, #4]	@ movhi
+  84:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 6];
+ 242              		.loc 1 84 9 is_stmt 1 view .LVU85
+  84:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 6];
+ 243              		.loc 1 84 28 is_stmt 0 view .LVU86
+ 244 0074 4A79     		ldrb	r2, [r1, #5]	@ zero_extendqisi2
+  84:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 6];
+ 245              		.loc 1 84 22 view .LVU87
+ 246 0076 62F30F23 		bfi	r3, r2, #8, #8
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 8
 
 
-  84:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[1] = buff[offset + 5];
- 246              		.loc 1 84 26 is_stmt 0 view .LVU87
- 247 0076 8380     		strh	r3, [r0, #4]	@ movhi
-  85:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 6];
- 248              		.loc 1 85 9 is_stmt 1 view .LVU88
-  85:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 6];
- 249              		.loc 1 85 28 is_stmt 0 view .LVU89
- 250 0078 4A79     		ldrb	r2, [r1, #5]	@ zero_extendqisi2
-  85:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 6];
- 251              		.loc 1 85 22 view .LVU90
- 252 007a 62F30F23 		bfi	r3, r2, #8, #8
-  86:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Reg_Count = com.data;
- 253              		.loc 1 86 9 is_stmt 1 view .LVU91
-  86:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Reg_Count = com.data;
- 254              		.loc 1 86 28 is_stmt 0 view .LVU92
- 255 007e 8A79     		ldrb	r2, [r1, #6]	@ zero_extendqisi2
-  86:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Reg_Count = com.data;
- 256              		.loc 1 86 22 view .LVU93
- 257 0080 62F30703 		bfi	r3, r2, #0, #8
-  87:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Byte_Count = buff[offset + 7];
- 258              		.loc 1 87 9 is_stmt 1 view .LVU94
-  87:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Byte_Count = buff[offset + 7];
- 259              		.loc 1 87 27 is_stmt 0 view .LVU95
- 260 0084 C380     		strh	r3, [r0, #6]	@ movhi
-  88:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[3] = buff[offset + 8];
+  85:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Reg_Count = com.data;
+ 247              		.loc 1 85 9 is_stmt 1 view .LVU88
+  85:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Reg_Count = com.data;
+ 248              		.loc 1 85 28 is_stmt 0 view .LVU89
+ 249 007a 8A79     		ldrb	r2, [r1, #6]	@ zero_extendqisi2
+  85:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Reg_Count = com.data;
+ 250              		.loc 1 85 22 view .LVU90
+ 251 007c 62F30703 		bfi	r3, r2, #0, #8
+  86:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Byte_Count = buff[offset + 7];
+ 252              		.loc 1 86 9 is_stmt 1 view .LVU91
+  86:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->Byte_Count = buff[offset + 7];
+ 253              		.loc 1 86 27 is_stmt 0 view .LVU92
+ 254 0080 C380     		strh	r3, [r0, #6]	@ movhi
+  87:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[3] = buff[offset + 8];
+ 255              		.loc 1 87 9 is_stmt 1 view .LVU93
+  87:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[3] = buff[offset + 8];
+ 256              		.loc 1 87 34 is_stmt 0 view .LVU94
+ 257 0082 CB79     		ldrb	r3, [r1, #7]	@ zero_extendqisi2
+ 258              	.LVL26:
+  87:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[3] = buff[offset + 8];
+ 259              		.loc 1 87 28 view .LVU95
+ 260 0084 8370     		strb	r3, [r0, #2]
+  88:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[2] = buff[offset + 9];
  261              		.loc 1 88 9 is_stmt 1 view .LVU96
-  88:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[3] = buff[offset + 8];
- 262              		.loc 1 88 34 is_stmt 0 view .LVU97
- 263 0086 CB79     		ldrb	r3, [r1, #7]	@ zero_extendqisi2
- 264              	.LVL27:
-  88:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[3] = buff[offset + 8];
- 265              		.loc 1 88 28 view .LVU98
- 266 0088 C370     		strb	r3, [r0, #3]
-  89:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[2] = buff[offset + 9];
- 267              		.loc 1 89 9 is_stmt 1 view .LVU99
-  89:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[2] = buff[offset + 9];
- 268              		.loc 1 89 43 is_stmt 0 view .LVU100
- 269 008a 0B7A     		ldrb	r3, [r1, #8]	@ zero_extendqisi2
-  89:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[2] = buff[offset + 9];
- 270              		.loc 1 89 37 view .LVU101
- 271 008c C373     		strb	r3, [r0, #15]
-  90:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 10];
- 272              		.loc 1 90 9 is_stmt 1 view .LVU102
-  90:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 10];
- 273              		.loc 1 90 43 is_stmt 0 view .LVU103
- 274 008e 4B7A     		ldrb	r3, [r1, #9]	@ zero_extendqisi2
-  90:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 10];
- 275              		.loc 1 90 37 view .LVU104
- 276 0090 8373     		strb	r3, [r0, #14]
-  91:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 11];
- 277              		.loc 1 91 9 is_stmt 1 view .LVU105
-  91:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 11];
- 278              		.loc 1 91 43 is_stmt 0 view .LVU106
- 279 0092 8B7A     		ldrb	r3, [r1, #10]	@ zero_extendqisi2
-  91:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 11];
- 280              		.loc 1 91 37 view .LVU107
- 281 0094 4373     		strb	r3, [r0, #13]
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 9
+  88:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[2] = buff[offset + 9];
+ 262              		.loc 1 88 43 is_stmt 0 view .LVU97
+ 263 0086 0B7A     		ldrb	r3, [r1, #8]	@ zero_extendqisi2
+  88:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[2] = buff[offset + 9];
+ 264              		.loc 1 88 37 view .LVU98
+ 265 0088 C373     		strb	r3, [r0, #15]
+  89:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 10];
+ 266              		.loc 1 89 9 is_stmt 1 view .LVU99
+  89:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 10];
+ 267              		.loc 1 89 43 is_stmt 0 view .LVU100
+ 268 008a 4B7A     		ldrb	r3, [r1, #9]	@ zero_extendqisi2
+  89:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 10];
+ 269              		.loc 1 89 37 view .LVU101
+ 270 008c 8373     		strb	r3, [r0, #14]
+  90:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 11];
+ 271              		.loc 1 90 9 is_stmt 1 view .LVU102
+  90:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 11];
+ 272              		.loc 1 90 43 is_stmt 0 view .LVU103
+ 273 008e 8B7A     		ldrb	r3, [r1, #10]	@ zero_extendqisi2
+  90:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 11];
+ 274              		.loc 1 90 37 view .LVU104
+ 275 0090 4373     		strb	r3, [r0, #13]
+  91:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
+ 276              		.loc 1 91 9 is_stmt 1 view .LVU105
+  91:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
+ 277              		.loc 1 91 43 is_stmt 0 view .LVU106
+ 278 0092 CB7A     		ldrb	r3, [r1, #11]	@ zero_extendqisi2
+  91:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
+ 279              		.loc 1 91 37 view .LVU107
+ 280 0094 0373     		strb	r3, [r0, #12]
+  92:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****     
+ 281              		.loc 1 92 9 is_stmt 1 view .LVU108
+ 282              		.loc 1 98 1 is_stmt 0 view .LVU109
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 9
 
 
-  92:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->type = 1;
- 282              		.loc 1 92 9 is_stmt 1 view .LVU108
-  92:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->type = 1;
- 283              		.loc 1 92 43 is_stmt 0 view .LVU109
- 284 0096 CB7A     		ldrb	r3, [r1, #11]	@ zero_extendqisi2
-  92:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         master->type = 1;
- 285              		.loc 1 92 37 view .LVU110
- 286 0098 0373     		strb	r3, [r0, #12]
-  93:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
- 287              		.loc 1 93 9 is_stmt 1 view .LVU111
-  93:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****         break;
- 288              		.loc 1 93 22 is_stmt 0 view .LVU112
- 289 009a 0123     		movs	r3, #1
- 290 009c 0370     		strb	r3, [r0]
-  94:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****     
- 291              		.loc 1 94 9 is_stmt 1 view .LVU113
- 292              		.loc 1 100 1 is_stmt 0 view .LVU114
- 293 009e BAE7     		b	.L11
- 294              		.cfi_endproc
- 295              	.LFE131:
- 297              		.section	.text.NOS_ModBus_ParseSlaveCommand,"ax",%progbits
- 298              		.align	1
- 299              		.global	NOS_ModBus_ParseSlaveCommand
- 300              		.syntax unified
- 301              		.thumb
- 302              		.thumb_func
- 303              		.fpu fpv4-sp-d16
- 305              	NOS_ModBus_ParseSlaveCommand:
- 306              	.LVL28:
- 307              	.LFB132:
- 101:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
- 102:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** void NOS_ModBus_ParseSlaveCommand(ModBus_Slave_Command* slave,uint8_t* buff,uint8_t offset)
- 103:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** {
- 308              		.loc 1 103 1 is_stmt 1 view -0
- 309              		.cfi_startproc
- 310              		@ args = 0, pretend = 0, frame = 0
- 311              		@ frame_needed = 0, uses_anonymous_args = 0
- 312              		@ link register save eliminated.
- 104:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    slave->Addr = buff[offset];
- 313              		.loc 1 104 4 view .LVU116
- 314              		.loc 1 104 22 is_stmt 0 view .LVU117
- 315 0000 8B5C     		ldrb	r3, [r1, r2]	@ zero_extendqisi2
- 316              		.loc 1 104 16 view .LVU118
- 317 0002 4370     		strb	r3, [r0, #1]
- 105:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    slave->Command = buff[offset + 1];
- 318              		.loc 1 105 4 is_stmt 1 view .LVU119
- 319              		.loc 1 105 25 is_stmt 0 view .LVU120
- 320 0004 01EB020C 		add	ip, r1, r2
- 321 0008 9CF80130 		ldrb	r3, [ip, #1]	@ zero_extendqisi2
- 322              		.loc 1 105 19 view .LVU121
- 323 000c 8370     		strb	r3, [r0, #2]
- 106:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    slave->Byte_Count = buff[offset + 2];
- 324              		.loc 1 106 4 is_stmt 1 view .LVU122
- 325              		.loc 1 106 28 is_stmt 0 view .LVU123
- 326 000e 9CF802C0 		ldrb	ip, [ip, #2]	@ zero_extendqisi2
- 327              		.loc 1 106 22 view .LVU124
- 328 0012 80F803C0 		strb	ip, [r0, #3]
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 10
+ 283 0096 BEE7     		b	.L11
+ 284              		.cfi_endproc
+ 285              	.LFE131:
+ 287              		.section	.text.NOS_ModBus_ParseSlaveCommand,"ax",%progbits
+ 288              		.align	1
+ 289              		.global	NOS_ModBus_ParseSlaveCommand
+ 290              		.syntax unified
+ 291              		.thumb
+ 292              		.thumb_func
+ 293              		.fpu fpv4-sp-d16
+ 295              	NOS_ModBus_ParseSlaveCommand:
+ 296              	.LVL27:
+ 297              	.LFB132:
+  99:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+ 100:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** void NOS_ModBus_ParseSlaveCommand(ModBus_Slave_Command* slave,uint8_t* buff,uint8_t offset)
+ 101:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** {
+ 298              		.loc 1 101 1 is_stmt 1 view -0
+ 299              		.cfi_startproc
+ 300              		@ args = 0, pretend = 0, frame = 0
+ 301              		@ frame_needed = 0, uses_anonymous_args = 0
+ 302              		@ link register save eliminated.
+ 102:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    slave->Addr = buff[offset];
+ 303              		.loc 1 102 4 view .LVU111
+ 304              		.loc 1 102 22 is_stmt 0 view .LVU112
+ 305 0000 8B5C     		ldrb	r3, [r1, r2]	@ zero_extendqisi2
+ 306              		.loc 1 102 16 view .LVU113
+ 307 0002 4370     		strb	r3, [r0, #1]
+ 103:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    slave->Command = buff[offset + 1];
+ 308              		.loc 1 103 4 is_stmt 1 view .LVU114
+ 309              		.loc 1 103 25 is_stmt 0 view .LVU115
+ 310 0004 01EB020C 		add	ip, r1, r2
+ 311 0008 9CF80130 		ldrb	r3, [ip, #1]	@ zero_extendqisi2
+ 312              		.loc 1 103 19 view .LVU116
+ 313 000c 8370     		strb	r3, [r0, #2]
+ 104:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    slave->Byte_Count = buff[offset + 2];
+ 314              		.loc 1 104 4 is_stmt 1 view .LVU117
+ 315              		.loc 1 104 28 is_stmt 0 view .LVU118
+ 316 000e 9CF802C0 		ldrb	ip, [ip, #2]	@ zero_extendqisi2
+ 317              		.loc 1 104 22 view .LVU119
+ 318 0012 80F803C0 		strb	ip, [r0, #3]
+ 105:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+ 106:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    switch(slave->Command)
+ 319              		.loc 1 106 4 is_stmt 1 view .LVU120
+ 320 0016 032B     		cmp	r3, #3
+ 321 0018 00D0     		beq	.L19
+ 322              	.LVL28:
+ 323              	.L16:
+ 107:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 108:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        case 0x03:
+ 109:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        if(slave->Byte_Count == 2)
+ 110:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        {
+ 111:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->ShortValue.bytes[1] = buff[offset + 3];
+ 112:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->ShortValue.bytes[0] = buff[offset + 4];
+ 113:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        }
+ 114:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        else
+ 115:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        {
+ 116:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[3] = buff[offset + 3];
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 10
 
 
- 107:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
- 108:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    switch(slave->Command)
- 329              		.loc 1 108 4 is_stmt 1 view .LVU125
- 330 0016 032B     		cmp	r3, #3
- 331 0018 00D0     		beq	.L19
- 332              	.LVL29:
- 333              	.L16:
- 109:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
- 110:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        case 0x03:
- 111:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        if(slave->Byte_Count == 2)
- 112:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        {
- 113:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->ShortValue.bytes[1] = buff[offset + 3];
- 114:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->ShortValue.bytes[0] = buff[offset + 4];
- 115:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->type = 0;
- 116:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        }
- 117:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        else
- 118:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        {
- 119:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[3] = buff[offset + 3];
- 120:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 4];
- 121:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 5];
- 122:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[0] = buff[offset + 6];
- 123:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->type = 1;
- 124:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        }
+ 117:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 4];
+ 118:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 5];
+ 119:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[0] = buff[offset + 6];
+ 120:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        }
+ 121:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        break;
+ 122:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+ 123:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        default:
+ 124:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****  //         NOS_Error_Handler("Slave command out of range");
  125:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        break;
- 126:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
- 127:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        default:
- 128:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****  //         NOS_Error_Handler("Slave command out of range");
- 129:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        break;
- 130:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
- 131:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** }
- 334              		.loc 1 131 1 is_stmt 0 view .LVU126
- 335 001a 7047     		bx	lr
- 336              	.LVL30:
- 337              	.L19:
- 111:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        {
- 338              		.loc 1 111 8 is_stmt 1 view .LVU127
- 111:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        {
- 339              		.loc 1 111 10 is_stmt 0 view .LVU128
- 340 001c BCF1020F 		cmp	ip, #2
- 341 0020 0BD0     		beq	.L20
- 119:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 4];
- 342              		.loc 1 119 11 is_stmt 1 view .LVU129
- 119:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 4];
- 343              		.loc 1 119 44 is_stmt 0 view .LVU130
- 344 0022 1144     		add	r1, r1, r2
- 345              	.LVL31:
- 119:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 4];
- 346              		.loc 1 119 44 view .LVU131
- 347 0024 CB78     		ldrb	r3, [r1, #3]	@ zero_extendqisi2
- 119:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 4];
- 348              		.loc 1 119 38 view .LVU132
- 349 0026 C372     		strb	r3, [r0, #11]
- 120:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 5];
- 350              		.loc 1 120 11 is_stmt 1 view .LVU133
- 120:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 5];
- 351              		.loc 1 120 44 is_stmt 0 view .LVU134
- 352 0028 0B79     		ldrb	r3, [r1, #4]	@ zero_extendqisi2
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 11
+ 126:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
+ 127:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** }
+ 324              		.loc 1 127 1 is_stmt 0 view .LVU121
+ 325 001a 7047     		bx	lr
+ 326              	.LVL29:
+ 327              	.L19:
+ 109:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        {
+ 328              		.loc 1 109 8 is_stmt 1 view .LVU122
+ 109:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        {
+ 329              		.loc 1 109 10 is_stmt 0 view .LVU123
+ 330 001c BCF1020F 		cmp	ip, #2
+ 331 0020 09D0     		beq	.L20
+ 116:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 4];
+ 332              		.loc 1 116 11 is_stmt 1 view .LVU124
+ 116:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 4];
+ 333              		.loc 1 116 44 is_stmt 0 view .LVU125
+ 334 0022 1144     		add	r1, r1, r2
+ 335              	.LVL30:
+ 116:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 4];
+ 336              		.loc 1 116 44 view .LVU126
+ 337 0024 CB78     		ldrb	r3, [r1, #3]	@ zero_extendqisi2
+ 116:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 4];
+ 338              		.loc 1 116 38 view .LVU127
+ 339 0026 C372     		strb	r3, [r0, #11]
+ 117:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 5];
+ 340              		.loc 1 117 11 is_stmt 1 view .LVU128
+ 117:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 5];
+ 341              		.loc 1 117 44 is_stmt 0 view .LVU129
+ 342 0028 0B79     		ldrb	r3, [r1, #4]	@ zero_extendqisi2
+ 117:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 5];
+ 343              		.loc 1 117 38 view .LVU130
+ 344 002a 8372     		strb	r3, [r0, #10]
+ 118:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[0] = buff[offset + 6];
+ 345              		.loc 1 118 11 is_stmt 1 view .LVU131
+ 118:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[0] = buff[offset + 6];
+ 346              		.loc 1 118 44 is_stmt 0 view .LVU132
+ 347 002c 4B79     		ldrb	r3, [r1, #5]	@ zero_extendqisi2
+ 118:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[0] = buff[offset + 6];
+ 348              		.loc 1 118 38 view .LVU133
+ 349 002e 4372     		strb	r3, [r0, #9]
+ 119:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        }
+ 350              		.loc 1 119 11 is_stmt 1 view .LVU134
+ 119:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        }
+ 351              		.loc 1 119 44 is_stmt 0 view .LVU135
+ 352 0030 8B79     		ldrb	r3, [r1, #6]	@ zero_extendqisi2
+ 119:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        }
+ 353              		.loc 1 119 38 view .LVU136
+ 354 0032 0372     		strb	r3, [r0, #8]
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 11
 
 
- 120:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 5];
- 353              		.loc 1 120 38 view .LVU135
- 354 002a 8372     		strb	r3, [r0, #10]
- 121:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[0] = buff[offset + 6];
- 355              		.loc 1 121 11 is_stmt 1 view .LVU136
- 121:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[0] = buff[offset + 6];
- 356              		.loc 1 121 44 is_stmt 0 view .LVU137
- 357 002c 4B79     		ldrb	r3, [r1, #5]	@ zero_extendqisi2
- 121:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[0] = buff[offset + 6];
- 358              		.loc 1 121 38 view .LVU138
- 359 002e 4372     		strb	r3, [r0, #9]
- 122:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->type = 1;
- 360              		.loc 1 122 11 is_stmt 1 view .LVU139
- 122:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->type = 1;
- 361              		.loc 1 122 44 is_stmt 0 view .LVU140
- 362 0030 8B79     		ldrb	r3, [r1, #6]	@ zero_extendqisi2
- 122:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->type = 1;
- 363              		.loc 1 122 38 view .LVU141
- 364 0032 0372     		strb	r3, [r0, #8]
- 123:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        }
- 365              		.loc 1 123 11 is_stmt 1 view .LVU142
- 123:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        }
- 366              		.loc 1 123 23 is_stmt 0 view .LVU143
- 367 0034 0123     		movs	r3, #1
- 368 0036 0370     		strb	r3, [r0]
- 369              		.loc 1 131 1 view .LVU144
- 370 0038 EFE7     		b	.L16
- 371              	.LVL32:
- 372              	.L20:
- 113:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->ShortValue.bytes[0] = buff[offset + 4];
- 373              		.loc 1 113 11 is_stmt 1 view .LVU145
- 113:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->ShortValue.bytes[0] = buff[offset + 4];
- 374              		.loc 1 113 44 is_stmt 0 view .LVU146
- 375 003a 1144     		add	r1, r1, r2
- 376              	.LVL33:
- 113:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->ShortValue.bytes[0] = buff[offset + 4];
- 377              		.loc 1 113 44 view .LVU147
- 378 003c CB78     		ldrb	r3, [r1, #3]	@ zero_extendqisi2
- 113:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->ShortValue.bytes[0] = buff[offset + 4];
- 379              		.loc 1 113 38 view .LVU148
- 380 003e 4371     		strb	r3, [r0, #5]
- 114:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->type = 0;
- 381              		.loc 1 114 11 is_stmt 1 view .LVU149
- 114:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->type = 0;
- 382              		.loc 1 114 44 is_stmt 0 view .LVU150
- 383 0040 0B79     		ldrb	r3, [r1, #4]	@ zero_extendqisi2
- 114:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->type = 0;
- 384              		.loc 1 114 38 view .LVU151
- 385 0042 0371     		strb	r3, [r0, #4]
- 115:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        }
- 386              		.loc 1 115 11 is_stmt 1 view .LVU152
- 115:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        }
- 387              		.loc 1 115 23 is_stmt 0 view .LVU153
- 388 0044 0023     		movs	r3, #0
- 389 0046 0370     		strb	r3, [r0]
- 390 0048 7047     		bx	lr
- 391              		.cfi_endproc
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 12
+ 355              		.loc 1 127 1 view .LVU137
+ 356 0034 F1E7     		b	.L16
+ 357              	.LVL31:
+ 358              	.L20:
+ 111:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->ShortValue.bytes[0] = buff[offset + 4];
+ 359              		.loc 1 111 11 is_stmt 1 view .LVU138
+ 111:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->ShortValue.bytes[0] = buff[offset + 4];
+ 360              		.loc 1 111 44 is_stmt 0 view .LVU139
+ 361 0036 1144     		add	r1, r1, r2
+ 362              	.LVL32:
+ 111:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->ShortValue.bytes[0] = buff[offset + 4];
+ 363              		.loc 1 111 44 view .LVU140
+ 364 0038 CB78     		ldrb	r3, [r1, #3]	@ zero_extendqisi2
+ 111:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****           slave->ShortValue.bytes[0] = buff[offset + 4];
+ 365              		.loc 1 111 38 view .LVU141
+ 366 003a 4371     		strb	r3, [r0, #5]
+ 112:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        }
+ 367              		.loc 1 112 11 is_stmt 1 view .LVU142
+ 112:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        }
+ 368              		.loc 1 112 44 is_stmt 0 view .LVU143
+ 369 003c 0B79     		ldrb	r3, [r1, #4]	@ zero_extendqisi2
+ 112:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        }
+ 370              		.loc 1 112 38 view .LVU144
+ 371 003e 0371     		strb	r3, [r0, #4]
+ 372 0040 7047     		bx	lr
+ 373              		.cfi_endproc
+ 374              	.LFE132:
+ 376              		.section	.text.NOS_ModBus_SetMasterCommand,"ax",%progbits
+ 377              		.align	1
+ 378              		.global	NOS_ModBus_SetMasterCommand
+ 379              		.syntax unified
+ 380              		.thumb
+ 381              		.thumb_func
+ 382              		.fpu fpv4-sp-d16
+ 384              	NOS_ModBus_SetMasterCommand:
+ 385              	.LVL33:
+ 386              	.LFB133:
+ 128:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+ 129:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+ 130:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** void NOS_ModBus_SetMasterCommand(ModBus_Master_Command* master,uint8_t addr,uint8_t command,uint16_
+ 131:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** {
+ 387              		.loc 1 131 1 is_stmt 1 view -0
+ 388              		.cfi_startproc
+ 389              		@ args = 4, pretend = 0, frame = 0
+ 390              		@ frame_needed = 0, uses_anonymous_args = 0
+ 391              		@ link register save eliminated.
+ 132:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    
+ 133:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** }
+ 392              		.loc 1 133 1 view .LVU146
+ 393 0000 7047     		bx	lr
+ 394              		.cfi_endproc
+ 395              	.LFE133:
+ 397              		.section	.text.NOS_ModBus_SetSlaveCommand,"ax",%progbits
+ 398              		.align	1
+ 399              		.global	NOS_ModBus_SetSlaveCommand
+ 400              		.syntax unified
+ 401              		.thumb
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 12
 
 
- 392              	.LFE132:
- 394              		.section	.text.NOS_ModBus_SetMasterCommand,"ax",%progbits
- 395              		.align	1
- 396              		.global	NOS_ModBus_SetMasterCommand
- 397              		.syntax unified
- 398              		.thumb
- 399              		.thumb_func
- 400              		.fpu fpv4-sp-d16
- 402              	NOS_ModBus_SetMasterCommand:
- 403              	.LVL34:
- 404              	.LFB133:
- 132:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
- 133:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
- 134:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** void NOS_ModBus_SetMasterCommand(ModBus_Master_Command* master,uint8_t addr,uint8_t command,uint16_
- 135:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** {
- 405              		.loc 1 135 1 is_stmt 1 view -0
- 406              		.cfi_startproc
- 407              		@ args = 4, pretend = 0, frame = 0
- 408              		@ frame_needed = 0, uses_anonymous_args = 0
- 409              		@ link register save eliminated.
- 136:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    
- 137:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** }
- 410              		.loc 1 137 1 view .LVU155
- 411 0000 7047     		bx	lr
- 412              		.cfi_endproc
- 413              	.LFE133:
- 415              		.section	.text.NOS_ModBus_SetSlaveCommand,"ax",%progbits
- 416              		.align	1
- 417              		.global	NOS_ModBus_SetSlaveCommand
- 418              		.syntax unified
- 419              		.thumb
- 420              		.thumb_func
- 421              		.fpu fpv4-sp-d16
- 423              	NOS_ModBus_SetSlaveCommand:
- 424              	.LVL35:
- 425              	.LFB134:
- 138:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
- 139:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** void NOS_ModBus_SetSlaveCommand(ModBus_Slave_Command* slave,uint8_t addr,uint8_t command,uint8_t by
- 140:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** {
- 426              		.loc 1 140 1 view -0
- 427              		.cfi_startproc
- 428              		@ args = 12, pretend = 0, frame = 0
- 429              		@ frame_needed = 0, uses_anonymous_args = 0
- 430              		@ link register save eliminated.
- 141:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    slave->Addr = addr;
- 431              		.loc 1 141 4 view .LVU157
- 432              		.loc 1 141 16 is_stmt 0 view .LVU158
- 433 0000 4170     		strb	r1, [r0, #1]
- 142:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    slave->Byte_Count = byteCount;
- 434              		.loc 1 142 4 is_stmt 1 view .LVU159
- 435              		.loc 1 142 22 is_stmt 0 view .LVU160
- 436 0002 C370     		strb	r3, [r0, #3]
- 143:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    slave->ShortValue = sVal;
- 437              		.loc 1 143 4 is_stmt 1 view .LVU161
- 438              		.loc 1 143 22 is_stmt 0 view .LVU162
- 439 0004 BDF80430 		ldrh	r3, [sp, #4]
- 440              	.LVL36:
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 13
+ 402              		.thumb_func
+ 403              		.fpu fpv4-sp-d16
+ 405              	NOS_ModBus_SetSlaveCommand:
+ 406              	.LVL34:
+ 407              	.LFB134:
+ 134:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+ 135:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** void NOS_ModBus_SetSlaveCommand(ModBus_Slave_Command* slave,uint8_t addr,uint8_t command,uint8_t by
+ 136:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** {
+ 408              		.loc 1 136 1 view -0
+ 409              		.cfi_startproc
+ 410              		@ args = 12, pretend = 0, frame = 0
+ 411              		@ frame_needed = 0, uses_anonymous_args = 0
+ 412              		@ link register save eliminated.
+ 137:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    slave->Addr = addr;
+ 413              		.loc 1 137 4 view .LVU148
+ 414              		.loc 1 137 16 is_stmt 0 view .LVU149
+ 415 0000 4170     		strb	r1, [r0, #1]
+ 138:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    slave->Byte_Count = byteCount;
+ 416              		.loc 1 138 4 is_stmt 1 view .LVU150
+ 417              		.loc 1 138 22 is_stmt 0 view .LVU151
+ 418 0002 C370     		strb	r3, [r0, #3]
+ 139:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    slave->ShortValue = sVal;
+ 419              		.loc 1 139 4 is_stmt 1 view .LVU152
+ 420              		.loc 1 139 22 is_stmt 0 view .LVU153
+ 421 0004 BDF80430 		ldrh	r3, [sp, #4]
+ 422              	.LVL35:
+ 423              		.loc 1 139 22 view .LVU154
+ 424 0008 8380     		strh	r3, [r0, #4]	@ movhi
+ 140:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** }
+ 425              		.loc 1 140 1 view .LVU155
+ 426 000a 7047     		bx	lr
+ 427              		.cfi_endproc
+ 428              	.LFE134:
+ 430              		.section	.text.NOS_ModBus_InitDevice,"ax",%progbits
+ 431              		.align	1
+ 432              		.global	NOS_ModBus_InitDevice
+ 433              		.syntax unified
+ 434              		.thumb
+ 435              		.thumb_func
+ 436              		.fpu fpv4-sp-d16
+ 438              	NOS_ModBus_InitDevice:
+ 439              	.LVL36:
+ 440              	.LFB135:
+ 141:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+ 142:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** void NOS_ModBus_InitDevice(Modbus_Device* device,uint8_t address,NOS_Short* regAddrs,uint8_t regCou
+ 143:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** {
+ 441              		.loc 1 143 1 is_stmt 1 view -0
+ 442              		.cfi_startproc
+ 443              		@ args = 4, pretend = 0, frame = 0
+ 444              		@ frame_needed = 0, uses_anonymous_args = 0
+ 445              		@ link register save eliminated.
+ 144:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    if(address > 0 && address < 249)
+ 446              		.loc 1 144 4 view .LVU157
+ 447              		.loc 1 144 19 is_stmt 0 view .LVU158
+ 448 0000 01F1FF3C 		add	ip, r1, #-1
+ 449 0004 5FFA8CFC 		uxtb	ip, ip
+ 450              		.loc 1 144 6 view .LVU159
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 13
 
 
- 441              		.loc 1 143 22 view .LVU163
- 442 0008 8380     		strh	r3, [r0, #4]	@ movhi
- 144:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** }
- 443              		.loc 1 144 1 view .LVU164
- 444 000a 7047     		bx	lr
- 445              		.cfi_endproc
- 446              	.LFE134:
- 448              		.section	.text.NOS_ModBus_ReceiveHandler,"ax",%progbits
- 449              		.align	1
- 450              		.global	NOS_ModBus_ReceiveHandler
- 451              		.syntax unified
- 452              		.thumb
- 453              		.thumb_func
- 454              		.fpu fpv4-sp-d16
- 456              	NOS_ModBus_ReceiveHandler:
- 457              	.LVL37:
- 458              	.LFB135:
- 145:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
- 146:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** void NOS_ModBus_ReceiveHandler(UART_HandleTypeDef* huart,ModBus_Struct* MB_struct)
- 147:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** {
- 459              		.loc 1 147 1 is_stmt 1 view -0
- 460              		.cfi_startproc
- 461              		@ args = 0, pretend = 0, frame = 0
- 462              		@ frame_needed = 0, uses_anonymous_args = 0
- 463              		.loc 1 147 1 is_stmt 0 view .LVU166
- 464 0000 38B5     		push	{r3, r4, r5, lr}
- 465              	.LCFI2:
- 466              		.cfi_def_cfa_offset 16
- 467              		.cfi_offset 3, -16
- 468              		.cfi_offset 4, -12
- 469              		.cfi_offset 5, -8
- 470              		.cfi_offset 14, -4
- 471 0002 0546     		mov	r5, r0
- 472 0004 8C46     		mov	ip, r1
- 148:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    uint8_t* rx_buff_ptr = MB_struct->buff;
- 473              		.loc 1 148 4 is_stmt 1 view .LVU167
- 474              		.loc 1 148 13 is_stmt 0 view .LVU168
- 475 0006 0C69     		ldr	r4, [r1, #16]
- 476              	.LVL38:
- 149:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    if(*rx_buff_ptr == 101 && MB_struct->addressOk)
- 477              		.loc 1 149 4 is_stmt 1 view .LVU169
- 478              		.loc 1 149 7 is_stmt 0 view .LVU170
- 479 0008 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
- 480              		.loc 1 149 6 view .LVU171
- 481 000a 652B     		cmp	r3, #101
- 482 000c 10D0     		beq	.L32
- 483              	.L24:
- 150:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
- 151:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        MB_struct->addressOk = true;
- 152:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        MB_struct->messageLenght = 0;
- 153:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
+ 451 0008 BCF1F70F 		cmp	ip, #247
+ 452 000c 05D8     		bhi	.L23
+ 145:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 146:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       device->Addr = address;
+ 453              		.loc 1 146 7 is_stmt 1 view .LVU160
+ 454              		.loc 1 146 20 is_stmt 0 view .LVU161
+ 455 000e 4170     		strb	r1, [r0, #1]
+ 147:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       device->RegisterAddress = regAddrs;
+ 456              		.loc 1 147 7 is_stmt 1 view .LVU162
+ 457              		.loc 1 147 31 is_stmt 0 view .LVU163
+ 458 0010 4260     		str	r2, [r0, #4]
+ 148:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       device->RegisterCount = regCount;
+ 459              		.loc 1 148 7 is_stmt 1 view .LVU164
+ 460              		.loc 1 148 29 is_stmt 0 view .LVU165
+ 461 0012 8370     		strb	r3, [r0, #2]
+ 149:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       device->Descriptor = _descriptor;
+ 462              		.loc 1 149 7 is_stmt 1 view .LVU166
+ 463              		.loc 1 149 26 is_stmt 0 view .LVU167
+ 464 0014 9DF80030 		ldrb	r3, [sp]	@ zero_extendqisi2
+ 465              	.LVL37:
+ 466              		.loc 1 149 26 view .LVU168
+ 467 0018 0370     		strb	r3, [r0]
+ 468              	.LVL38:
+ 469              	.L23:
+ 150:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
+ 151:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** }
+ 470              		.loc 1 151 1 view .LVU169
+ 471 001a 7047     		bx	lr
+ 472              		.cfi_endproc
+ 473              	.LFE135:
+ 475              		.section	.text.NOS_ModBus_ReceiveHandler,"ax",%progbits
+ 476              		.align	1
+ 477              		.global	NOS_ModBus_ReceiveHandler
+ 478              		.syntax unified
+ 479              		.thumb
+ 480              		.thumb_func
+ 481              		.fpu fpv4-sp-d16
+ 483              	NOS_ModBus_ReceiveHandler:
+ 484              	.LVL39:
+ 485              	.LFB136:
+ 152:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+ 153:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** void NOS_ModBus_GetParam(Modbus_Device* device);
  154:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
- 155:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    if(MB_struct->addressOk && MB_struct->messageLenght == 1)
- 484              		.loc 1 155 4 is_stmt 1 view .LVU172
- 485              		.loc 1 155 16 is_stmt 0 view .LVU173
- 486 000e 9CF81530 		ldrb	r3, [ip, #21]	@ zero_extendqisi2
- 487              		.loc 1 155 6 view .LVU174
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 14
+ 155:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+ 156:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+ 157:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** void NOS_ModBus_ReceiveHandler(ModBus_Struct* MB_struct)
+ 158:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** {
+ 486              		.loc 1 158 1 is_stmt 1 view -0
+ 487              		.cfi_startproc
+ 488              		@ args = 0, pretend = 0, frame = 0
+ 489              		@ frame_needed = 0, uses_anonymous_args = 0
+ 490              		.loc 1 158 1 is_stmt 0 view .LVU171
+ 491 0000 08B5     		push	{r3, lr}
+ 492              	.LCFI2:
+ 493              		.cfi_def_cfa_offset 8
+ 494              		.cfi_offset 3, -8
+ 495              		.cfi_offset 14, -4
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 14
 
 
- 488 0012 1BB1     		cbz	r3, .L25
- 489              		.loc 1 155 40 discriminator 1 view .LVU175
- 490 0014 9CF81630 		ldrb	r3, [ip, #22]	@ zero_extendqisi2
- 491              		.loc 1 155 28 discriminator 1 view .LVU176
- 492 0018 012B     		cmp	r3, #1
- 493 001a 11D0     		beq	.L33
- 494              	.L25:
- 156:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
- 157:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->currCommand = *rx_buff_ptr;
- 158:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
- 159:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
- 160:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    if(MB_struct->messageLenght > 10)
- 495              		.loc 1 160 4 is_stmt 1 view .LVU177
- 496              		.loc 1 160 16 is_stmt 0 view .LVU178
- 497 001c 9CF81630 		ldrb	r3, [ip, #22]	@ zero_extendqisi2
- 498              		.loc 1 160 6 view .LVU179
- 499 0020 0A2B     		cmp	r3, #10
- 500 0022 1AD9     		bls	.L26
+ 159:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    uint8_t* rx_buff_ptr = MB_struct->buff;
+ 496              		.loc 1 159 4 is_stmt 1 view .LVU172
+ 497              		.loc 1 159 13 is_stmt 0 view .LVU173
+ 498 0002 016F     		ldr	r1, [r0, #112]
+ 499              	.LVL40:
+ 160:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    
+ 161:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    for(int i = 0; i < MB_struct->devicesCount; i++)
+ 500              		.loc 1 161 4 is_stmt 1 view .LVU174
+ 501              	.LBB2:
+ 502              		.loc 1 161 8 view .LVU175
+ 503              		.loc 1 161 12 is_stmt 0 view .LVU176
+ 504 0004 0023     		movs	r3, #0
+ 505              		.loc 1 161 4 view .LVU177
+ 506 0006 03E0     		b	.L26
+ 507              	.LVL41:
+ 508              	.L28:
+ 162:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 163:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****      if(*rx_buff_ptr == MB_struct->devices[i].Addr && !MB_struct->addressOk)
+ 164:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****      {
+ 165:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          MB_struct->currDevice = i;
+ 166:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          MB_struct->addressOk = true;
+ 167:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          MB_struct->messageLenght = 0;
+ 168:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          if(MB_struct->devices[i].Descriptor == 0)
+ 169:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          {
+ 170:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****             MB_struct->state = ReceiveFromSlave;
+ 171:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          }
+ 172:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          else
+ 173:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          {
+ 174:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****             MB_struct->state = ReceiveFromMaster;
+ 509              		.loc 1 174 13 is_stmt 1 view .LVU178
+ 510              		.loc 1 174 30 is_stmt 0 view .LVU179
+ 511 0008 0122     		movs	r2, #1
+ 512 000a 80F87C20 		strb	r2, [r0, #124]
+ 513              	.L27:
  161:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
- 162:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       rx_buff_ptr = MB_struct->buff;
- 501              		.loc 1 162 7 is_stmt 1 view .LVU180
- 163:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->messageLenght = 0;
- 502              		.loc 1 163 7 view .LVU181
- 503              		.loc 1 163 32 is_stmt 0 view .LVU182
- 504 0024 0023     		movs	r3, #0
- 505 0026 8CF81630 		strb	r3, [ip, #22]
- 164:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->addressOk = false;
- 506              		.loc 1 164 7 is_stmt 1 view .LVU183
- 507              		.loc 1 164 28 is_stmt 0 view .LVU184
- 508 002a 8CF81530 		strb	r3, [ip, #21]
- 165:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       for(int i = 0; i < 10; i++)
- 509              		.loc 1 165 7 is_stmt 1 view .LVU185
- 510              	.LBB2:
- 511              		.loc 1 165 11 view .LVU186
- 512              	.LVL39:
- 513              		.loc 1 165 7 is_stmt 0 view .LVU187
- 514 002e 12E0     		b	.L27
- 515              	.LVL40:
- 516              	.L32:
- 517              		.loc 1 165 7 view .LVU188
- 518              	.LBE2:
- 149:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
- 519              		.loc 1 149 39 discriminator 1 view .LVU189
- 520 0030 4B7D     		ldrb	r3, [r1, #21]	@ zero_extendqisi2
- 149:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
- 521              		.loc 1 149 27 discriminator 1 view .LVU190
- 522 0032 002B     		cmp	r3, #0
- 523 0034 EBD0     		beq	.L24
- 151:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        MB_struct->messageLenght = 0;
- 524              		.loc 1 151 8 is_stmt 1 view .LVU191
- 151:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****        MB_struct->messageLenght = 0;
- 525              		.loc 1 151 29 is_stmt 0 view .LVU192
- 526 0036 0123     		movs	r3, #1
- 527 0038 4B75     		strb	r3, [r1, #21]
- 152:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
- 528              		.loc 1 152 8 is_stmt 1 view .LVU193
- 152:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 15
+ 514              		.loc 1 161 48 is_stmt 1 discriminator 2 view .LVU180
+ 161:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 515              		.loc 1 161 49 is_stmt 0 discriminator 2 view .LVU181
+ 516 000e 0133     		adds	r3, r3, #1
+ 517              	.LVL42:
+ 518              	.L26:
+ 161:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 519              		.loc 1 161 19 is_stmt 1 discriminator 1 view .LVU182
+ 161:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 520              		.loc 1 161 32 is_stmt 0 discriminator 1 view .LVU183
+ 521 0010 90F87D20 		ldrb	r2, [r0, #125]	@ zero_extendqisi2
+ 161:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 522              		.loc 1 161 4 discriminator 1 view .LVU184
+ 523 0014 9A42     		cmp	r2, r3
+ 524 0016 1ADD     		ble	.L40
+ 163:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****      {
+ 525              		.loc 1 163 6 is_stmt 1 view .LVU185
+ 163:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****      {
+ 526              		.loc 1 163 9 is_stmt 0 view .LVU186
+ 527 0018 91F800C0 		ldrb	ip, [r1]	@ zero_extendqisi2
+ 163:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****      {
+ 528              		.loc 1 163 46 view .LVU187
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 15
 
 
- 529              		.loc 1 152 33 is_stmt 0 view .LVU194
- 530 003a 0023     		movs	r3, #0
- 531 003c 8B75     		strb	r3, [r1, #22]
- 532 003e E6E7     		b	.L24
- 533              	.L33:
- 157:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
- 534              		.loc 1 157 7 is_stmt 1 view .LVU195
- 157:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
- 535              		.loc 1 157 32 is_stmt 0 view .LVU196
- 536 0040 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
- 157:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
- 537              		.loc 1 157 30 view .LVU197
- 538 0042 8CF81730 		strb	r3, [ip, #23]
- 539 0046 E9E7     		b	.L25
- 540              	.LVL41:
- 541              	.L28:
- 542              	.LBB3:
- 166:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       {
- 167:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          MB_struct->buff[i] = 0;
- 543              		.loc 1 167 10 is_stmt 1 discriminator 3 view .LVU198
- 544              		.loc 1 167 19 is_stmt 0 discriminator 3 view .LVU199
- 545 0048 DCF81020 		ldr	r2, [ip, #16]
- 546              		.loc 1 167 29 discriminator 3 view .LVU200
- 547 004c 4FF0000E 		mov	lr, #0
- 548 0050 02F803E0 		strb	lr, [r2, r3]
- 165:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       {
- 549              		.loc 1 165 30 is_stmt 1 discriminator 3 view .LVU201
- 165:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       {
- 550              		.loc 1 165 31 is_stmt 0 discriminator 3 view .LVU202
- 551 0054 0133     		adds	r3, r3, #1
- 552              	.LVL42:
- 553              	.L27:
- 165:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       {
- 554              		.loc 1 165 22 is_stmt 1 discriminator 1 view .LVU203
- 165:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       {
- 555              		.loc 1 165 7 is_stmt 0 discriminator 1 view .LVU204
- 556 0056 092B     		cmp	r3, #9
- 557 0058 F6DD     		ble	.L28
- 558              	.LVL43:
- 559              	.L26:
- 165:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       {
- 560              		.loc 1 165 7 discriminator 1 view .LVU205
- 561              	.LBE3:
- 168:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       }
- 169:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
- 170:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
- 171:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    if(MB_struct->addressOk && MB_struct->messageLenght == 7 && MB_struct->currCommand == 0x03)
- 562              		.loc 1 171 4 is_stmt 1 view .LVU206
- 563              		.loc 1 171 16 is_stmt 0 view .LVU207
- 564 005a 9CF81530 		ldrb	r3, [ip, #21]	@ zero_extendqisi2
- 565              		.loc 1 171 6 view .LVU208
- 566 005e 2BB1     		cbz	r3, .L29
- 567              		.loc 1 171 61 discriminator 1 view .LVU209
- 568 0060 BCF81620 		ldrh	r2, [ip, #22]
- 569 0064 40F20733 		movw	r3, #775
- 570 0068 9A42     		cmp	r2, r3
- 571 006a 11D0     		beq	.L34
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 16
-
-
- 572              	.L29:
- 172:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
- 173:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       rx_buff_ptr = MB_struct->buff;
- 174:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->addressOk = false;
- 175:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->messageLenght = 0;
- 176:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       NOS_ModBus_ParseSlaveCommand(MB_struct->master,MB_struct->buff,0);
+ 529 001c 00EBC302 		add	r2, r0, r3, lsl #3
+ 530 0020 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
+ 163:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****      {
+ 531              		.loc 1 163 8 view .LVU188
+ 532 0022 9445     		cmp	ip, r2
+ 533 0024 F3D1     		bne	.L27
+ 163:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****      {
+ 534              		.loc 1 163 65 discriminator 1 view .LVU189
+ 535 0026 90F88220 		ldrb	r2, [r0, #130]	@ zero_extendqisi2
+ 163:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****      {
+ 536              		.loc 1 163 52 discriminator 1 view .LVU190
+ 537 002a 002A     		cmp	r2, #0
+ 538 002c EFD1     		bne	.L27
+ 165:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          MB_struct->addressOk = true;
+ 539              		.loc 1 165 10 is_stmt 1 view .LVU191
+ 165:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          MB_struct->addressOk = true;
+ 540              		.loc 1 165 32 is_stmt 0 view .LVU192
+ 541 002e 80F88030 		strb	r3, [r0, #128]
+ 166:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          MB_struct->messageLenght = 0;
+ 542              		.loc 1 166 10 is_stmt 1 view .LVU193
+ 166:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          MB_struct->messageLenght = 0;
+ 543              		.loc 1 166 31 is_stmt 0 view .LVU194
+ 544 0032 0122     		movs	r2, #1
+ 545 0034 80F88220 		strb	r2, [r0, #130]
+ 167:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          if(MB_struct->devices[i].Descriptor == 0)
+ 546              		.loc 1 167 10 is_stmt 1 view .LVU195
+ 167:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          if(MB_struct->devices[i].Descriptor == 0)
+ 547              		.loc 1 167 35 is_stmt 0 view .LVU196
+ 548 0038 0022     		movs	r2, #0
+ 549 003a 80F87E20 		strb	r2, [r0, #126]
+ 168:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          {
+ 550              		.loc 1 168 10 is_stmt 1 view .LVU197
+ 168:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          {
+ 551              		.loc 1 168 34 is_stmt 0 view .LVU198
+ 552 003e 10F83320 		ldrb	r2, [r0, r3, lsl #3]	@ zero_extendqisi2
+ 168:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          {
+ 553              		.loc 1 168 12 view .LVU199
+ 554 0042 002A     		cmp	r2, #0
+ 555 0044 E0D1     		bne	.L28
+ 170:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          }
+ 556              		.loc 1 170 13 is_stmt 1 view .LVU200
+ 170:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          }
+ 557              		.loc 1 170 30 is_stmt 0 view .LVU201
+ 558 0046 0222     		movs	r2, #2
+ 559 0048 80F87C20 		strb	r2, [r0, #124]
+ 560 004c DFE7     		b	.L27
+ 561              	.L40:
+ 170:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          }
+ 562              		.loc 1 170 30 view .LVU202
+ 563              	.LBE2:
+ 175:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          }
+ 176:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****      }
  177:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
- 178:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    else
- 179:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
- 180:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->buff[MB_struct->messageLenght] = *rx_buff_ptr;
- 573              		.loc 1 180 7 is_stmt 1 view .LVU210
- 574              		.loc 1 180 16 is_stmt 0 view .LVU211
- 575 006c DCF81020 		ldr	r2, [ip, #16]
- 576              		.loc 1 180 32 view .LVU212
- 577 0070 9CF81630 		ldrb	r3, [ip, #22]	@ zero_extendqisi2
- 578              		.loc 1 180 51 view .LVU213
- 579 0074 14F8011B 		ldrb	r1, [r4], #1	@ zero_extendqisi2
- 580              	.LVL44:
- 581              		.loc 1 180 49 view .LVU214
- 582 0078 D154     		strb	r1, [r2, r3]
- 181:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       ++rx_buff_ptr;
- 583              		.loc 1 181 7 is_stmt 1 view .LVU215
- 584              	.LVL45:
- 182:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       ++MB_struct->messageLenght;
- 585              		.loc 1 182 7 view .LVU216
- 586              		.loc 1 182 18 is_stmt 0 view .LVU217
- 587 007a 9CF81630 		ldrb	r3, [ip, #22]	@ zero_extendqisi2
- 588              		.loc 1 182 7 view .LVU218
- 589 007e 0133     		adds	r3, r3, #1
- 590 0080 8CF81630 		strb	r3, [ip, #22]
- 591              	.LVL46:
- 592              	.L30:
- 183:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
- 184:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    HAL_UART_Receive_IT (huart, rx_buff_ptr, 1); 
- 593              		.loc 1 184 4 is_stmt 1 view .LVU219
- 594 0084 0122     		movs	r2, #1
- 595 0086 2146     		mov	r1, r4
- 596 0088 2846     		mov	r0, r5
- 597 008a FFF7FEFF 		bl	HAL_UART_Receive_IT
- 598              	.LVL47:
- 185:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** }
- 599              		.loc 1 185 1 is_stmt 0 view .LVU220
- 600 008e 38BD     		pop	{r3, r4, r5, pc}
- 601              	.LVL48:
- 602              	.L34:
- 173:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->addressOk = false;
- 603              		.loc 1 173 7 is_stmt 1 view .LVU221
- 173:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->addressOk = false;
- 604              		.loc 1 173 19 is_stmt 0 view .LVU222
- 605 0090 DCF81040 		ldr	r4, [ip, #16]
- 606              	.LVL49:
- 174:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->messageLenght = 0;
- 607              		.loc 1 174 7 is_stmt 1 view .LVU223
- 174:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->messageLenght = 0;
- 608              		.loc 1 174 28 is_stmt 0 view .LVU224
- 609 0094 0022     		movs	r2, #0
- 610 0096 8CF81520 		strb	r2, [ip, #21]
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 17
+ 178:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+ 179:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    if(MB_struct->addressOk && MB_struct->messageLenght == 1)
+ 564              		.loc 1 179 4 is_stmt 1 view .LVU203
+ 565              		.loc 1 179 16 is_stmt 0 view .LVU204
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 16
 
 
- 175:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       NOS_ModBus_ParseSlaveCommand(MB_struct->master,MB_struct->buff,0);
- 611              		.loc 1 175 7 is_stmt 1 view .LVU225
- 175:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       NOS_ModBus_ParseSlaveCommand(MB_struct->master,MB_struct->buff,0);
- 612              		.loc 1 175 32 is_stmt 0 view .LVU226
- 613 009a 8CF81620 		strb	r2, [ip, #22]
- 176:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
- 614              		.loc 1 176 7 is_stmt 1 view .LVU227
- 615 009e 2146     		mov	r1, r4
- 616              	.LVL50:
- 176:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
- 617              		.loc 1 176 7 is_stmt 0 view .LVU228
- 618 00a0 DCF80400 		ldr	r0, [ip, #4]
- 619              	.LVL51:
- 176:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
- 620              		.loc 1 176 7 view .LVU229
- 621 00a4 FFF7FEFF 		bl	NOS_ModBus_ParseSlaveCommand
- 622              	.LVL52:
- 176:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
- 623              		.loc 1 176 7 view .LVU230
- 624 00a8 ECE7     		b	.L30
- 625              		.cfi_endproc
- 626              	.LFE135:
- 628              		.section	.rodata.wCRCTable.0,"a"
- 629              		.align	2
- 630              		.set	.LANCHOR0,. + 0
- 633              	wCRCTable.0:
- 634 0000 0000     		.short	0
- 635 0002 C1C0     		.short	-16191
- 636 0004 81C1     		.short	-15999
- 637 0006 4001     		.short	320
- 638 0008 01C3     		.short	-15615
- 639 000a C003     		.short	960
- 640 000c 8002     		.short	640
- 641 000e 41C2     		.short	-15807
- 642 0010 01C6     		.short	-14847
- 643 0012 C006     		.short	1728
- 644 0014 8007     		.short	1920
- 645 0016 41C7     		.short	-14527
- 646 0018 0005     		.short	1280
- 647 001a C1C5     		.short	-14911
- 648 001c 81C4     		.short	-15231
- 649 001e 4004     		.short	1088
- 650 0020 01CC     		.short	-13311
- 651 0022 C00C     		.short	3264
- 652 0024 800D     		.short	3456
- 653 0026 41CD     		.short	-12991
- 654 0028 000F     		.short	3840
- 655 002a C1CF     		.short	-12351
- 656 002c 81CE     		.short	-12671
- 657 002e 400E     		.short	3648
- 658 0030 000A     		.short	2560
- 659 0032 C1CA     		.short	-13631
- 660 0034 81CB     		.short	-13439
- 661 0036 400B     		.short	2880
- 662 0038 01C9     		.short	-14079
- 663 003a C009     		.short	2496
- 664 003c 8008     		.short	2176
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 18
+ 566 004e 90F88230 		ldrb	r3, [r0, #130]	@ zero_extendqisi2
+ 567              	.LVL43:
+ 568              		.loc 1 179 6 view .LVU205
+ 569 0052 1BB1     		cbz	r3, .L30
+ 570              		.loc 1 179 40 discriminator 1 view .LVU206
+ 571 0054 90F87E20 		ldrb	r2, [r0, #126]	@ zero_extendqisi2
+ 572              		.loc 1 179 28 discriminator 1 view .LVU207
+ 573 0058 012A     		cmp	r2, #1
+ 574 005a 1CD0     		beq	.L41
+ 575              	.L30:
+ 180:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 181:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->currCommand = *rx_buff_ptr;
+ 182:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
+ 183:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+ 184:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    if(MB_struct->addressOk && MB_struct->messageLenght == 2)
+ 576              		.loc 1 184 4 is_stmt 1 view .LVU208
+ 577              		.loc 1 184 6 is_stmt 0 view .LVU209
+ 578 005c 1BB1     		cbz	r3, .L31
+ 579              		.loc 1 184 40 discriminator 1 view .LVU210
+ 580 005e 90F87E30 		ldrb	r3, [r0, #126]	@ zero_extendqisi2
+ 581              		.loc 1 184 28 discriminator 1 view .LVU211
+ 582 0062 022B     		cmp	r3, #2
+ 583 0064 1BD0     		beq	.L42
+ 584              	.L31:
+ 185:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 186:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       switch (MB_struct->currCommand)
+ 187:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       {
+ 188:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       case 0x03:
+ 189:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          MB_struct->expectedMessageLenght = 7;
+ 190:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          break;
+ 191:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       case 0x06:
+ 192:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          MB_struct->expectedMessageLenght = 7;
+ 193:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          break;
+ 194:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       case 0x10:
+ 195:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          MB_struct->expectedMessageLenght = 13;
+ 196:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          break;  
+ 197:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       
+ 198:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       default:
+ 199:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          break;
+ 200:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       }
+ 201:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
+ 202:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+ 203:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    if(MB_struct->messageLenght > MB_struct->expectedMessageLenght)
+ 585              		.loc 1 203 4 is_stmt 1 view .LVU212
+ 586              		.loc 1 203 16 is_stmt 0 view .LVU213
+ 587 0066 90F87E20 		ldrb	r2, [r0, #126]	@ zero_extendqisi2
+ 588              		.loc 1 203 43 view .LVU214
+ 589 006a 90F88130 		ldrb	r3, [r0, #129]	@ zero_extendqisi2
+ 590              		.loc 1 203 6 view .LVU215
+ 591 006e 9A42     		cmp	r2, r3
+ 592 0070 29D9     		bls	.L34
+ 204:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 205:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       rx_buff_ptr = MB_struct->buff;
+ 593              		.loc 1 205 7 is_stmt 1 view .LVU216
+ 206:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->messageLenght = 0;
+ 594              		.loc 1 206 7 view .LVU217
+ 595              		.loc 1 206 32 is_stmt 0 view .LVU218
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 17
 
 
- 665 003e 41C8     		.short	-14271
- 666 0040 01D8     		.short	-10239
- 667 0042 C018     		.short	6336
- 668 0044 8019     		.short	6528
- 669 0046 41D9     		.short	-9919
- 670 0048 001B     		.short	6912
- 671 004a C1DB     		.short	-9279
- 672 004c 81DA     		.short	-9599
- 673 004e 401A     		.short	6720
- 674 0050 001E     		.short	7680
- 675 0052 C1DE     		.short	-8511
- 676 0054 81DF     		.short	-8319
- 677 0056 401F     		.short	8000
- 678 0058 01DD     		.short	-8959
- 679 005a C01D     		.short	7616
- 680 005c 801C     		.short	7296
- 681 005e 41DC     		.short	-9151
- 682 0060 0014     		.short	5120
- 683 0062 C1D4     		.short	-11071
- 684 0064 81D5     		.short	-10879
- 685 0066 4015     		.short	5440
- 686 0068 01D7     		.short	-10495
- 687 006a C017     		.short	6080
- 688 006c 8016     		.short	5760
- 689 006e 41D6     		.short	-10687
- 690 0070 01D2     		.short	-11775
- 691 0072 C012     		.short	4800
- 692 0074 8013     		.short	4992
- 693 0076 41D3     		.short	-11455
- 694 0078 0011     		.short	4352
- 695 007a C1D1     		.short	-11839
- 696 007c 81D0     		.short	-12159
- 697 007e 4010     		.short	4160
- 698 0080 01F0     		.short	-4095
- 699 0082 C030     		.short	12480
- 700 0084 8031     		.short	12672
- 701 0086 41F1     		.short	-3775
- 702 0088 0033     		.short	13056
- 703 008a C1F3     		.short	-3135
- 704 008c 81F2     		.short	-3455
- 705 008e 4032     		.short	12864
- 706 0090 0036     		.short	13824
- 707 0092 C1F6     		.short	-2367
- 708 0094 81F7     		.short	-2175
- 709 0096 4037     		.short	14144
- 710 0098 01F5     		.short	-2815
- 711 009a C035     		.short	13760
- 712 009c 8034     		.short	13440
- 713 009e 41F4     		.short	-3007
- 714 00a0 003C     		.short	15360
- 715 00a2 C1FC     		.short	-831
- 716 00a4 81FD     		.short	-639
- 717 00a6 403D     		.short	15680
- 718 00a8 01FF     		.short	-255
- 719 00aa C03F     		.short	16320
- 720 00ac 803E     		.short	16000
- 721 00ae 41FE     		.short	-447
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 19
+ 596 0072 0023     		movs	r3, #0
+ 597 0074 80F87E30 		strb	r3, [r0, #126]
+ 207:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->addressOk = false;
+ 598              		.loc 1 207 7 is_stmt 1 view .LVU219
+ 599              		.loc 1 207 28 is_stmt 0 view .LVU220
+ 600 0078 80F88230 		strb	r3, [r0, #130]
+ 208:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->state = Free;
+ 601              		.loc 1 208 7 is_stmt 1 view .LVU221
+ 602              		.loc 1 208 24 is_stmt 0 view .LVU222
+ 603 007c 80F87C30 		strb	r3, [r0, #124]
+ 209:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       for(int i = 0; i < MB_struct->expectedMessageLenght; i++)
+ 604              		.loc 1 209 7 is_stmt 1 view .LVU223
+ 605              	.LBB3:
+ 606              		.loc 1 209 11 view .LVU224
+ 607              	.LVL44:
+ 608              	.L35:
+ 609              		.loc 1 209 22 discriminator 1 view .LVU225
+ 610              		.loc 1 209 35 is_stmt 0 discriminator 1 view .LVU226
+ 611 0080 90F88120 		ldrb	r2, [r0, #129]	@ zero_extendqisi2
+ 612              		.loc 1 209 7 discriminator 1 view .LVU227
+ 613 0084 9A42     		cmp	r2, r3
+ 614 0086 1EDD     		ble	.L34
+ 210:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       {
+ 211:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          MB_struct->buff[i] = 0;
+ 615              		.loc 1 211 10 is_stmt 1 discriminator 3 view .LVU228
+ 616              		.loc 1 211 19 is_stmt 0 discriminator 3 view .LVU229
+ 617 0088 026F     		ldr	r2, [r0, #112]
+ 618              		.loc 1 211 29 discriminator 3 view .LVU230
+ 619 008a 4FF0000C 		mov	ip, #0
+ 620 008e 02F803C0 		strb	ip, [r2, r3]
+ 209:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       for(int i = 0; i < MB_struct->expectedMessageLenght; i++)
+ 621              		.loc 1 209 60 is_stmt 1 discriminator 3 view .LVU231
+ 209:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       for(int i = 0; i < MB_struct->expectedMessageLenght; i++)
+ 622              		.loc 1 209 61 is_stmt 0 discriminator 3 view .LVU232
+ 623 0092 0133     		adds	r3, r3, #1
+ 624              	.LVL45:
+ 209:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       for(int i = 0; i < MB_struct->expectedMessageLenght; i++)
+ 625              		.loc 1 209 61 discriminator 3 view .LVU233
+ 626 0094 F4E7     		b	.L35
+ 627              	.LVL46:
+ 628              	.L41:
+ 209:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       for(int i = 0; i < MB_struct->expectedMessageLenght; i++)
+ 629              		.loc 1 209 61 discriminator 3 view .LVU234
+ 630              	.LBE3:
+ 181:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
+ 631              		.loc 1 181 7 is_stmt 1 view .LVU235
+ 181:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
+ 632              		.loc 1 181 32 is_stmt 0 view .LVU236
+ 633 0096 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
+ 181:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
+ 634              		.loc 1 181 30 view .LVU237
+ 635 0098 80F87F20 		strb	r2, [r0, #127]
+ 636 009c DEE7     		b	.L30
+ 637              	.L42:
+ 186:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       {
+ 638              		.loc 1 186 7 is_stmt 1 view .LVU238
+ 186:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       {
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 18
 
 
- 722 00b0 01FA     		.short	-1535
- 723 00b2 C03A     		.short	15040
- 724 00b4 803B     		.short	15232
- 725 00b6 41FB     		.short	-1215
- 726 00b8 0039     		.short	14592
- 727 00ba C1F9     		.short	-1599
- 728 00bc 81F8     		.short	-1919
- 729 00be 4038     		.short	14400
- 730 00c0 0028     		.short	10240
- 731 00c2 C1E8     		.short	-5951
- 732 00c4 81E9     		.short	-5759
- 733 00c6 4029     		.short	10560
- 734 00c8 01EB     		.short	-5375
- 735 00ca C02B     		.short	11200
- 736 00cc 802A     		.short	10880
- 737 00ce 41EA     		.short	-5567
- 738 00d0 01EE     		.short	-4607
- 739 00d2 C02E     		.short	11968
- 740 00d4 802F     		.short	12160
- 741 00d6 41EF     		.short	-4287
- 742 00d8 002D     		.short	11520
- 743 00da C1ED     		.short	-4671
- 744 00dc 81EC     		.short	-4991
- 745 00de 402C     		.short	11328
- 746 00e0 01E4     		.short	-7167
- 747 00e2 C024     		.short	9408
- 748 00e4 8025     		.short	9600
- 749 00e6 41E5     		.short	-6847
- 750 00e8 0027     		.short	9984
- 751 00ea C1E7     		.short	-6207
- 752 00ec 81E6     		.short	-6527
- 753 00ee 4026     		.short	9792
- 754 00f0 0022     		.short	8704
- 755 00f2 C1E2     		.short	-7487
- 756 00f4 81E3     		.short	-7295
- 757 00f6 4023     		.short	9024
- 758 00f8 01E1     		.short	-7935
- 759 00fa C021     		.short	8640
- 760 00fc 8020     		.short	8320
- 761 00fe 41E0     		.short	-8127
- 762 0100 01A0     		.short	-24575
- 763 0102 C060     		.short	24768
- 764 0104 8061     		.short	24960
- 765 0106 41A1     		.short	-24255
- 766 0108 0063     		.short	25344
- 767 010a C1A3     		.short	-23615
- 768 010c 81A2     		.short	-23935
- 769 010e 4062     		.short	25152
- 770 0110 0066     		.short	26112
- 771 0112 C1A6     		.short	-22847
- 772 0114 81A7     		.short	-22655
- 773 0116 4067     		.short	26432
- 774 0118 01A5     		.short	-23295
- 775 011a C065     		.short	26048
- 776 011c 8064     		.short	25728
- 777 011e 41A4     		.short	-23487
- 778 0120 006C     		.short	27648
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 20
+ 639              		.loc 1 186 24 is_stmt 0 view .LVU239
+ 640 009e 90F87F30 		ldrb	r3, [r0, #127]	@ zero_extendqisi2
+ 186:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       {
+ 641              		.loc 1 186 7 view .LVU240
+ 642 00a2 062B     		cmp	r3, #6
+ 643 00a4 07D0     		beq	.L32
+ 644 00a6 102B     		cmp	r3, #16
+ 645 00a8 09D0     		beq	.L33
+ 646 00aa 032B     		cmp	r3, #3
+ 647 00ac DBD1     		bne	.L31
+ 189:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          break;
+ 648              		.loc 1 189 10 is_stmt 1 view .LVU241
+ 189:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          break;
+ 649              		.loc 1 189 43 is_stmt 0 view .LVU242
+ 650 00ae 0723     		movs	r3, #7
+ 651 00b0 80F88130 		strb	r3, [r0, #129]
+ 190:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       case 0x06:
+ 652              		.loc 1 190 10 is_stmt 1 view .LVU243
+ 653 00b4 D7E7     		b	.L31
+ 654              	.L32:
+ 192:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          break;
+ 655              		.loc 1 192 10 view .LVU244
+ 192:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          break;
+ 656              		.loc 1 192 43 is_stmt 0 view .LVU245
+ 657 00b6 0723     		movs	r3, #7
+ 658 00b8 80F88130 		strb	r3, [r0, #129]
+ 193:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       case 0x10:
+ 659              		.loc 1 193 10 is_stmt 1 view .LVU246
+ 660 00bc D3E7     		b	.L31
+ 661              	.L33:
+ 195:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          break;  
+ 662              		.loc 1 195 10 view .LVU247
+ 195:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****          break;  
+ 663              		.loc 1 195 43 is_stmt 0 view .LVU248
+ 664 00be 0D23     		movs	r3, #13
+ 665 00c0 80F88130 		strb	r3, [r0, #129]
+ 196:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       
+ 666              		.loc 1 196 10 is_stmt 1 view .LVU249
+ 667 00c4 CFE7     		b	.L31
+ 668              	.L34:
+ 212:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       }
+ 213:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
+ 214:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+ 215:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    if(MB_struct->addressOk && MB_struct->messageLenght == MB_struct->expectedMessageLenght)
+ 669              		.loc 1 215 4 view .LVU250
+ 670              		.loc 1 215 16 is_stmt 0 view .LVU251
+ 671 00c6 90F88230 		ldrb	r3, [r0, #130]	@ zero_extendqisi2
+ 672              		.loc 1 215 6 view .LVU252
+ 673 00ca 2BB1     		cbz	r3, .L37
+ 674              		.loc 1 215 40 discriminator 1 view .LVU253
+ 675 00cc 90F87E20 		ldrb	r2, [r0, #126]	@ zero_extendqisi2
+ 676              		.loc 1 215 68 discriminator 1 view .LVU254
+ 677 00d0 90F88130 		ldrb	r3, [r0, #129]	@ zero_extendqisi2
+ 678              		.loc 1 215 28 discriminator 1 view .LVU255
+ 679 00d4 9A42     		cmp	r2, r3
+ 680 00d6 10D0     		beq	.L43
+ 681              	.L37:
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 19
 
 
- 779 0122 C1AC     		.short	-21311
- 780 0124 81AD     		.short	-21119
- 781 0126 406D     		.short	27968
- 782 0128 01AF     		.short	-20735
- 783 012a C06F     		.short	28608
- 784 012c 806E     		.short	28288
- 785 012e 41AE     		.short	-20927
- 786 0130 01AA     		.short	-22015
- 787 0132 C06A     		.short	27328
- 788 0134 806B     		.short	27520
- 789 0136 41AB     		.short	-21695
- 790 0138 0069     		.short	26880
- 791 013a C1A9     		.short	-22079
- 792 013c 81A8     		.short	-22399
- 793 013e 4068     		.short	26688
- 794 0140 0078     		.short	30720
- 795 0142 C1B8     		.short	-18239
- 796 0144 81B9     		.short	-18047
- 797 0146 4079     		.short	31040
- 798 0148 01BB     		.short	-17663
- 799 014a C07B     		.short	31680
- 800 014c 807A     		.short	31360
- 801 014e 41BA     		.short	-17855
- 802 0150 01BE     		.short	-16895
- 803 0152 C07E     		.short	32448
- 804 0154 807F     		.short	32640
- 805 0156 41BF     		.short	-16575
- 806 0158 007D     		.short	32000
- 807 015a C1BD     		.short	-16959
- 808 015c 81BC     		.short	-17279
- 809 015e 407C     		.short	31808
- 810 0160 01B4     		.short	-19455
- 811 0162 C074     		.short	29888
- 812 0164 8075     		.short	30080
- 813 0166 41B5     		.short	-19135
- 814 0168 0077     		.short	30464
- 815 016a C1B7     		.short	-18495
- 816 016c 81B6     		.short	-18815
- 817 016e 4076     		.short	30272
- 818 0170 0072     		.short	29184
- 819 0172 C1B2     		.short	-19775
- 820 0174 81B3     		.short	-19583
- 821 0176 4073     		.short	29504
- 822 0178 01B1     		.short	-20223
- 823 017a C071     		.short	29120
- 824 017c 8070     		.short	28800
- 825 017e 41B0     		.short	-20415
- 826 0180 0050     		.short	20480
- 827 0182 C190     		.short	-28479
- 828 0184 8191     		.short	-28287
- 829 0186 4051     		.short	20800
- 830 0188 0193     		.short	-27903
- 831 018a C053     		.short	21440
- 832 018c 8052     		.short	21120
- 833 018e 4192     		.short	-28095
- 834 0190 0196     		.short	-27135
- 835 0192 C056     		.short	22208
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 21
+ 216:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 217:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       rx_buff_ptr = MB_struct->buff;
+ 218:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->addressOk = false;
+ 219:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->messageLenght = 0;
+ 220:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->rx_buff = true;
+ 221:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
+ 222:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    else
+ 223:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 224:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->buff[MB_struct->messageLenght] = *rx_buff_ptr;
+ 682              		.loc 1 224 7 is_stmt 1 view .LVU256
+ 683              		.loc 1 224 16 is_stmt 0 view .LVU257
+ 684 00d8 026F     		ldr	r2, [r0, #112]
+ 685              		.loc 1 224 32 view .LVU258
+ 686 00da 90F87E30 		ldrb	r3, [r0, #126]	@ zero_extendqisi2
+ 687              		.loc 1 224 51 view .LVU259
+ 688 00de 11F801CB 		ldrb	ip, [r1], #1	@ zero_extendqisi2
+ 689              	.LVL47:
+ 690              		.loc 1 224 49 view .LVU260
+ 691 00e2 02F803C0 		strb	ip, [r2, r3]
+ 225:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       ++rx_buff_ptr;
+ 692              		.loc 1 225 7 is_stmt 1 view .LVU261
+ 693              	.LVL48:
+ 226:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       ++MB_struct->messageLenght;
+ 694              		.loc 1 226 7 view .LVU262
+ 695              		.loc 1 226 18 is_stmt 0 view .LVU263
+ 696 00e6 90F87E30 		ldrb	r3, [r0, #126]	@ zero_extendqisi2
+ 697              		.loc 1 226 7 view .LVU264
+ 698 00ea 0133     		adds	r3, r3, #1
+ 699 00ec 80F87E30 		strb	r3, [r0, #126]
+ 700              	.L38:
+ 227:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
+ 228:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    HAL_UART_Receive_IT (MB_struct->huart, rx_buff_ptr, 1); 
+ 701              		.loc 1 228 4 is_stmt 1 view .LVU265
+ 702 00f0 0122     		movs	r2, #1
+ 703 00f2 C06E     		ldr	r0, [r0, #108]
+ 704              	.LVL49:
+ 705              		.loc 1 228 4 is_stmt 0 view .LVU266
+ 706 00f4 FFF7FEFF 		bl	HAL_UART_Receive_IT
+ 707              	.LVL50:
+ 229:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** }
+ 708              		.loc 1 229 1 view .LVU267
+ 709 00f8 08BD     		pop	{r3, pc}
+ 710              	.LVL51:
+ 711              	.L43:
+ 217:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->addressOk = false;
+ 712              		.loc 1 217 7 is_stmt 1 view .LVU268
+ 217:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->addressOk = false;
+ 713              		.loc 1 217 19 is_stmt 0 view .LVU269
+ 714 00fa 016F     		ldr	r1, [r0, #112]
+ 715              	.LVL52:
+ 218:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->messageLenght = 0;
+ 716              		.loc 1 218 7 is_stmt 1 view .LVU270
+ 218:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->messageLenght = 0;
+ 717              		.loc 1 218 28 is_stmt 0 view .LVU271
+ 718 00fc 0023     		movs	r3, #0
+ 719 00fe 80F88230 		strb	r3, [r0, #130]
+ 219:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->rx_buff = true;
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 20
 
 
- 836 0194 8057     		.short	22400
- 837 0196 4197     		.short	-26815
- 838 0198 0055     		.short	21760
- 839 019a C195     		.short	-27199
- 840 019c 8194     		.short	-27519
- 841 019e 4054     		.short	21568
- 842 01a0 019C     		.short	-25599
- 843 01a2 C05C     		.short	23744
- 844 01a4 805D     		.short	23936
- 845 01a6 419D     		.short	-25279
- 846 01a8 005F     		.short	24320
- 847 01aa C19F     		.short	-24639
- 848 01ac 819E     		.short	-24959
- 849 01ae 405E     		.short	24128
- 850 01b0 005A     		.short	23040
- 851 01b2 C19A     		.short	-25919
- 852 01b4 819B     		.short	-25727
- 853 01b6 405B     		.short	23360
- 854 01b8 0199     		.short	-26367
- 855 01ba C059     		.short	22976
- 856 01bc 8058     		.short	22656
- 857 01be 4198     		.short	-26559
- 858 01c0 0188     		.short	-30719
- 859 01c2 C048     		.short	18624
- 860 01c4 8049     		.short	18816
- 861 01c6 4189     		.short	-30399
- 862 01c8 004B     		.short	19200
- 863 01ca C18B     		.short	-29759
- 864 01cc 818A     		.short	-30079
- 865 01ce 404A     		.short	19008
- 866 01d0 004E     		.short	19968
- 867 01d2 C18E     		.short	-28991
- 868 01d4 818F     		.short	-28799
- 869 01d6 404F     		.short	20288
- 870 01d8 018D     		.short	-29439
- 871 01da C04D     		.short	19904
- 872 01dc 804C     		.short	19584
- 873 01de 418C     		.short	-29631
- 874 01e0 0044     		.short	17408
- 875 01e2 C184     		.short	-31551
- 876 01e4 8185     		.short	-31359
- 877 01e6 4045     		.short	17728
- 878 01e8 0187     		.short	-30975
- 879 01ea C047     		.short	18368
- 880 01ec 8046     		.short	18048
- 881 01ee 4186     		.short	-31167
- 882 01f0 0182     		.short	-32255
- 883 01f2 C042     		.short	17088
- 884 01f4 8043     		.short	17280
- 885 01f6 4183     		.short	-31935
- 886 01f8 0041     		.short	16640
- 887 01fa C181     		.short	-32319
- 888 01fc 8180     		.short	-32639
- 889 01fe 4040     		.short	16448
- 890              		.text
- 891              	.Letext0:
- 892              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 22
+ 720              		.loc 1 219 7 is_stmt 1 view .LVU272
+ 219:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       MB_struct->rx_buff = true;
+ 721              		.loc 1 219 32 is_stmt 0 view .LVU273
+ 722 0102 80F87E30 		strb	r3, [r0, #126]
+ 220:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
+ 723              		.loc 1 220 7 is_stmt 1 view .LVU274
+ 220:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
+ 724              		.loc 1 220 26 is_stmt 0 view .LVU275
+ 725 0106 0123     		movs	r3, #1
+ 726 0108 80F88330 		strb	r3, [r0, #131]
+ 727 010c F0E7     		b	.L38
+ 728              		.cfi_endproc
+ 729              	.LFE136:
+ 731              		.section	.text.NOS_ModBus_InitStruct,"ax",%progbits
+ 732              		.align	1
+ 733              		.global	NOS_ModBus_InitStruct
+ 734              		.syntax unified
+ 735              		.thumb
+ 736              		.thumb_func
+ 737              		.fpu fpv4-sp-d16
+ 739              	NOS_ModBus_InitStruct:
+ 740              	.LVL53:
+ 741              	.LFB137:
+ 230:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+ 231:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** void NOS_ModBus_InitStruct(ModBus_Struct* mb,UART_HandleTypeDef* huart,uint8_t* _buff,GPIO_PIN pin)
+ 232:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** {
+ 742              		.loc 1 232 1 is_stmt 1 view -0
+ 743              		.cfi_startproc
+ 744              		@ args = 12, pretend = 8, frame = 0
+ 745              		@ frame_needed = 0, uses_anonymous_args = 0
+ 746              		@ link register save eliminated.
+ 747              		.loc 1 232 1 is_stmt 0 view .LVU277
+ 748 0000 82B0     		sub	sp, sp, #8
+ 749              	.LCFI3:
+ 750              		.cfi_def_cfa_offset 8
+ 751 0002 EC46     		mov	ip, sp
+ 752 0004 4CF8043F 		str	r3, [ip, #4]!
+ 233:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    mb->huart = huart;
+ 753              		.loc 1 233 4 is_stmt 1 view .LVU278
+ 754              		.loc 1 233 14 is_stmt 0 view .LVU279
+ 755 0008 C166     		str	r1, [r0, #108]
+ 234:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    mb->buff = _buff;
+ 756              		.loc 1 234 4 is_stmt 1 view .LVU280
+ 757              		.loc 1 234 13 is_stmt 0 view .LVU281
+ 758 000a 0267     		str	r2, [r0, #112]
+ 235:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    mb->RW = pin;
+ 759              		.loc 1 235 4 is_stmt 1 view .LVU282
+ 760              		.loc 1 235 11 is_stmt 0 view .LVU283
+ 761 000c 00F17403 		add	r3, r0, #116
+ 762 0010 9CE80300 		ldm	ip, {r0, r1}
+ 763              	.LVL54:
+ 764              		.loc 1 235 11 view .LVU284
+ 765 0014 83E80300 		stm	r3, {r0, r1}
+ 236:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** }
+ 766              		.loc 1 236 1 view .LVU285
+ 767 0018 02B0     		add	sp, sp, #8
+ 768              	.LCFI4:
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 21
 
 
- 893              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
- 894              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
- 895              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 896              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 897              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 898              		.file 8 "Core/Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h"
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccCj3fEk.s 			page 23
+ 769              		.cfi_def_cfa_offset 0
+ 770 001a 7047     		bx	lr
+ 771              		.cfi_endproc
+ 772              	.LFE137:
+ 774              		.section	.text.NOS_ModBus_AddDevice,"ax",%progbits
+ 775              		.align	1
+ 776              		.global	NOS_ModBus_AddDevice
+ 777              		.syntax unified
+ 778              		.thumb
+ 779              		.thumb_func
+ 780              		.fpu fpv4-sp-d16
+ 782              	NOS_ModBus_AddDevice:
+ 783              	.LVL55:
+ 784              	.LFB138:
+ 237:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+ 238:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** void NOS_ModBus_AddDevice(ModBus_Struct* mb,Modbus_Device* device)
+ 239:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** {
+ 785              		.loc 1 239 1 is_stmt 1 view -0
+ 786              		.cfi_startproc
+ 787              		@ args = 0, pretend = 0, frame = 0
+ 788              		@ frame_needed = 0, uses_anonymous_args = 0
+ 789              		@ link register save eliminated.
+ 240:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    if(mb->devicesCount < 10)
+ 790              		.loc 1 240 4 view .LVU287
+ 791              		.loc 1 240 9 is_stmt 0 view .LVU288
+ 792 0000 90F87D30 		ldrb	r3, [r0, #125]	@ zero_extendqisi2
+ 793              		.loc 1 240 6 view .LVU289
+ 794 0004 092B     		cmp	r3, #9
+ 795 0006 14D8     		bhi	.L49
+ 239:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    if(mb->devicesCount < 10)
+ 796              		.loc 1 239 1 view .LVU290
+ 797 0008 10B4     		push	{r4}
+ 798              	.LCFI5:
+ 799              		.cfi_def_cfa_offset 4
+ 800              		.cfi_offset 4, -4
+ 241:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 242:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       mb->devices[mb->devicesCount].Addr = device->Addr;
+ 801              		.loc 1 242 7 is_stmt 1 view .LVU291
+ 802              		.loc 1 242 50 is_stmt 0 view .LVU292
+ 803 000a 91F801C0 		ldrb	ip, [r1, #1]	@ zero_extendqisi2
+ 804              		.loc 1 242 42 view .LVU293
+ 805 000e 00EBC302 		add	r2, r0, r3, lsl #3
+ 806 0012 82F801C0 		strb	ip, [r2, #1]
+ 243:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       mb->devices[mb->devicesCount].Descriptor = device->Descriptor;
+ 807              		.loc 1 243 7 is_stmt 1 view .LVU294
+ 808              		.loc 1 243 56 is_stmt 0 view .LVU295
+ 809 0016 91F800C0 		ldrb	ip, [r1]	@ zero_extendqisi2
+ 810              		.loc 1 243 48 view .LVU296
+ 811 001a 00F833C0 		strb	ip, [r0, r3, lsl #3]
+ 244:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       mb->devices[mb->devicesCount].RegisterAddress = device->RegisterAddress;
+ 812              		.loc 1 244 7 is_stmt 1 view .LVU297
+ 813              		.loc 1 244 53 is_stmt 0 view .LVU298
+ 814 001e 4C68     		ldr	r4, [r1, #4]
+ 815 0020 5460     		str	r4, [r2, #4]
+ 245:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       mb->devices[mb->devicesCount].RegisterCount = device->RegisterCount;
+ 816              		.loc 1 245 7 is_stmt 1 view .LVU299
+ 817              		.loc 1 245 59 is_stmt 0 view .LVU300
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 22
+
+
+ 818 0022 8978     		ldrb	r1, [r1, #2]	@ zero_extendqisi2
+ 819              	.LVL56:
+ 820              		.loc 1 245 51 view .LVU301
+ 821 0024 9170     		strb	r1, [r2, #2]
+ 246:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       mb->devicesCount++;
+ 822              		.loc 1 246 7 is_stmt 1 view .LVU302
+ 823              		.loc 1 246 23 is_stmt 0 view .LVU303
+ 824 0026 0133     		adds	r3, r3, #1
+ 825 0028 80F87D30 		strb	r3, [r0, #125]
+ 247:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
+ 248:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    else 
+ 249:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 250:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       //NOS_Error_Handler("ModBus Device out of range");
+ 251:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
+ 826              		.loc 1 251 4 is_stmt 1 view .LVU304
+ 252:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** }
+ 827              		.loc 1 252 1 is_stmt 0 view .LVU305
+ 828 002c 5DF8044B 		ldr	r4, [sp], #4
+ 829              	.LCFI6:
+ 830              		.cfi_restore 4
+ 831              		.cfi_def_cfa_offset 0
+ 832 0030 7047     		bx	lr
+ 833              	.LVL57:
+ 834              	.L49:
+ 835              		.loc 1 252 1 view .LVU306
+ 836 0032 7047     		bx	lr
+ 837              		.cfi_endproc
+ 838              	.LFE138:
+ 840              		.section	.text.NOS_ModBus_DeleteDevice,"ax",%progbits
+ 841              		.align	1
+ 842              		.global	NOS_ModBus_DeleteDevice
+ 843              		.syntax unified
+ 844              		.thumb
+ 845              		.thumb_func
+ 846              		.fpu fpv4-sp-d16
+ 848              	NOS_ModBus_DeleteDevice:
+ 849              	.LVL58:
+ 850              	.LFB139:
+ 253:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** 
+ 254:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** void NOS_ModBus_DeleteDevice(ModBus_Struct* mb,uint8_t pos)
+ 255:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** {
+ 851              		.loc 1 255 1 is_stmt 1 view -0
+ 852              		.cfi_startproc
+ 853              		@ args = 0, pretend = 0, frame = 0
+ 854              		@ frame_needed = 0, uses_anonymous_args = 0
+ 855              		@ link register save eliminated.
+ 256:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    for(int i = pos - 1; i < mb->devicesCount - 1; i++)
+ 856              		.loc 1 256 4 view .LVU308
+ 857              	.LBB4:
+ 858              		.loc 1 256 8 view .LVU309
+ 859              		.loc 1 256 12 is_stmt 0 view .LVU310
+ 860 0000 0139     		subs	r1, r1, #1
+ 861              	.LVL59:
+ 862              		.loc 1 256 25 is_stmt 1 view .LVU311
+ 863              		.loc 1 256 31 is_stmt 0 view .LVU312
+ 864 0002 90F87D30 		ldrb	r3, [r0, #125]	@ zero_extendqisi2
+ 865              		.loc 1 256 46 view .LVU313
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 23
+
+
+ 866 0006 5A1E     		subs	r2, r3, #1
+ 867              		.loc 1 256 4 view .LVU314
+ 868 0008 8A42     		cmp	r2, r1
+ 869 000a 18DD     		ble	.L59
+ 870              	.LBE4:
+ 255:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    for(int i = pos - 1; i < mb->devicesCount - 1; i++)
+ 871              		.loc 1 255 1 view .LVU315
+ 872 000c 10B4     		push	{r4}
+ 873              	.LCFI7:
+ 874              		.cfi_def_cfa_offset 4
+ 875              		.cfi_offset 4, -4
+ 876              	.L54:
+ 877              	.LBB5:
+ 257:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 258:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       mb->devices[i].Addr = mb->devices[i + 1].Addr;
+ 878              		.loc 1 258 7 is_stmt 1 discriminator 3 view .LVU316
+ 879              		.loc 1 258 43 is_stmt 0 discriminator 3 view .LVU317
+ 880 000e 4A1C     		adds	r2, r1, #1
+ 881              		.loc 1 258 47 discriminator 3 view .LVU318
+ 882 0010 00EBC203 		add	r3, r0, r2, lsl #3
+ 883 0014 93F801C0 		ldrb	ip, [r3, #1]	@ zero_extendqisi2
+ 884              		.loc 1 258 27 discriminator 3 view .LVU319
+ 885 0018 00EBC101 		add	r1, r0, r1, lsl #3
+ 886              	.LVL60:
+ 887              		.loc 1 258 27 discriminator 3 view .LVU320
+ 888 001c 81F801C0 		strb	ip, [r1, #1]
+ 259:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       mb->devices[i].RegisterAddress = mb->devices[i + 1].RegisterAddress;
+ 889              		.loc 1 259 7 is_stmt 1 discriminator 3 view .LVU321
+ 890              		.loc 1 259 38 is_stmt 0 discriminator 3 view .LVU322
+ 891 0020 5C68     		ldr	r4, [r3, #4]
+ 892 0022 4C60     		str	r4, [r1, #4]
+ 260:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****       mb->devices[i].RegisterCount = mb->devices[i + 1].RegisterCount;
+ 893              		.loc 1 260 7 is_stmt 1 discriminator 3 view .LVU323
+ 894              		.loc 1 260 56 is_stmt 0 discriminator 3 view .LVU324
+ 895 0024 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 896              		.loc 1 260 36 discriminator 3 view .LVU325
+ 897 0026 8B70     		strb	r3, [r1, #2]
+ 256:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 898              		.loc 1 256 51 is_stmt 1 discriminator 3 view .LVU326
+ 899              	.LVL61:
+ 256:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 900              		.loc 1 256 52 is_stmt 0 discriminator 3 view .LVU327
+ 901 0028 1146     		mov	r1, r2
+ 256:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 902              		.loc 1 256 25 is_stmt 1 discriminator 3 view .LVU328
+ 256:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 903              		.loc 1 256 31 is_stmt 0 discriminator 3 view .LVU329
+ 904 002a 90F87D30 		ldrb	r3, [r0, #125]	@ zero_extendqisi2
+ 256:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 905              		.loc 1 256 46 discriminator 3 view .LVU330
+ 906 002e 5A1E     		subs	r2, r3, #1
+ 907              	.LVL62:
+ 256:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    {
+ 908              		.loc 1 256 4 discriminator 3 view .LVU331
+ 909 0030 8A42     		cmp	r2, r1
+ 910 0032 ECDC     		bgt	.L54
+ 911              	.LBE5:
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 24
+
+
+ 261:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    }
+ 262:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    mb->devicesCount--;
+ 912              		.loc 1 262 4 is_stmt 1 view .LVU332
+ 913              		.loc 1 262 20 is_stmt 0 view .LVU333
+ 914 0034 80F87D20 		strb	r2, [r0, #125]
+ 263:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c **** }...
+ 915              		.loc 1 263 1 view .LVU334
+ 916 0038 5DF8044B 		ldr	r4, [sp], #4
+ 917              	.LCFI8:
+ 918              		.cfi_restore 4
+ 919              		.cfi_def_cfa_offset 0
+ 920 003c 7047     		bx	lr
+ 921              	.L59:
+ 262:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    mb->devicesCount--;
+ 922              		.loc 1 262 4 is_stmt 1 view .LVU335
+ 262:Core/Src/NOS_LIB_Driver/Src/NOS_ModBus.c ****    mb->devicesCount--;
+ 923              		.loc 1 262 20 is_stmt 0 view .LVU336
+ 924 003e 80F87D20 		strb	r2, [r0, #125]
+ 925 0042 7047     		bx	lr
+ 926              		.cfi_endproc
+ 927              	.LFE139:
+ 929              		.section	.rodata.wCRCTable.0,"a"
+ 930              		.align	2
+ 931              		.set	.LANCHOR0,. + 0
+ 934              	wCRCTable.0:
+ 935 0000 0000     		.short	0
+ 936 0002 C1C0     		.short	-16191
+ 937 0004 81C1     		.short	-15999
+ 938 0006 4001     		.short	320
+ 939 0008 01C3     		.short	-15615
+ 940 000a C003     		.short	960
+ 941 000c 8002     		.short	640
+ 942 000e 41C2     		.short	-15807
+ 943 0010 01C6     		.short	-14847
+ 944 0012 C006     		.short	1728
+ 945 0014 8007     		.short	1920
+ 946 0016 41C7     		.short	-14527
+ 947 0018 0005     		.short	1280
+ 948 001a C1C5     		.short	-14911
+ 949 001c 81C4     		.short	-15231
+ 950 001e 4004     		.short	1088
+ 951 0020 01CC     		.short	-13311
+ 952 0022 C00C     		.short	3264
+ 953 0024 800D     		.short	3456
+ 954 0026 41CD     		.short	-12991
+ 955 0028 000F     		.short	3840
+ 956 002a C1CF     		.short	-12351
+ 957 002c 81CE     		.short	-12671
+ 958 002e 400E     		.short	3648
+ 959 0030 000A     		.short	2560
+ 960 0032 C1CA     		.short	-13631
+ 961 0034 81CB     		.short	-13439
+ 962 0036 400B     		.short	2880
+ 963 0038 01C9     		.short	-14079
+ 964 003a C009     		.short	2496
+ 965 003c 8008     		.short	2176
+ 966 003e 41C8     		.short	-14271
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 25
+
+
+ 967 0040 01D8     		.short	-10239
+ 968 0042 C018     		.short	6336
+ 969 0044 8019     		.short	6528
+ 970 0046 41D9     		.short	-9919
+ 971 0048 001B     		.short	6912
+ 972 004a C1DB     		.short	-9279
+ 973 004c 81DA     		.short	-9599
+ 974 004e 401A     		.short	6720
+ 975 0050 001E     		.short	7680
+ 976 0052 C1DE     		.short	-8511
+ 977 0054 81DF     		.short	-8319
+ 978 0056 401F     		.short	8000
+ 979 0058 01DD     		.short	-8959
+ 980 005a C01D     		.short	7616
+ 981 005c 801C     		.short	7296
+ 982 005e 41DC     		.short	-9151
+ 983 0060 0014     		.short	5120
+ 984 0062 C1D4     		.short	-11071
+ 985 0064 81D5     		.short	-10879
+ 986 0066 4015     		.short	5440
+ 987 0068 01D7     		.short	-10495
+ 988 006a C017     		.short	6080
+ 989 006c 8016     		.short	5760
+ 990 006e 41D6     		.short	-10687
+ 991 0070 01D2     		.short	-11775
+ 992 0072 C012     		.short	4800
+ 993 0074 8013     		.short	4992
+ 994 0076 41D3     		.short	-11455
+ 995 0078 0011     		.short	4352
+ 996 007a C1D1     		.short	-11839
+ 997 007c 81D0     		.short	-12159
+ 998 007e 4010     		.short	4160
+ 999 0080 01F0     		.short	-4095
+ 1000 0082 C030     		.short	12480
+ 1001 0084 8031     		.short	12672
+ 1002 0086 41F1     		.short	-3775
+ 1003 0088 0033     		.short	13056
+ 1004 008a C1F3     		.short	-3135
+ 1005 008c 81F2     		.short	-3455
+ 1006 008e 4032     		.short	12864
+ 1007 0090 0036     		.short	13824
+ 1008 0092 C1F6     		.short	-2367
+ 1009 0094 81F7     		.short	-2175
+ 1010 0096 4037     		.short	14144
+ 1011 0098 01F5     		.short	-2815
+ 1012 009a C035     		.short	13760
+ 1013 009c 8034     		.short	13440
+ 1014 009e 41F4     		.short	-3007
+ 1015 00a0 003C     		.short	15360
+ 1016 00a2 C1FC     		.short	-831
+ 1017 00a4 81FD     		.short	-639
+ 1018 00a6 403D     		.short	15680
+ 1019 00a8 01FF     		.short	-255
+ 1020 00aa C03F     		.short	16320
+ 1021 00ac 803E     		.short	16000
+ 1022 00ae 41FE     		.short	-447
+ 1023 00b0 01FA     		.short	-1535
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 26
+
+
+ 1024 00b2 C03A     		.short	15040
+ 1025 00b4 803B     		.short	15232
+ 1026 00b6 41FB     		.short	-1215
+ 1027 00b8 0039     		.short	14592
+ 1028 00ba C1F9     		.short	-1599
+ 1029 00bc 81F8     		.short	-1919
+ 1030 00be 4038     		.short	14400
+ 1031 00c0 0028     		.short	10240
+ 1032 00c2 C1E8     		.short	-5951
+ 1033 00c4 81E9     		.short	-5759
+ 1034 00c6 4029     		.short	10560
+ 1035 00c8 01EB     		.short	-5375
+ 1036 00ca C02B     		.short	11200
+ 1037 00cc 802A     		.short	10880
+ 1038 00ce 41EA     		.short	-5567
+ 1039 00d0 01EE     		.short	-4607
+ 1040 00d2 C02E     		.short	11968
+ 1041 00d4 802F     		.short	12160
+ 1042 00d6 41EF     		.short	-4287
+ 1043 00d8 002D     		.short	11520
+ 1044 00da C1ED     		.short	-4671
+ 1045 00dc 81EC     		.short	-4991
+ 1046 00de 402C     		.short	11328
+ 1047 00e0 01E4     		.short	-7167
+ 1048 00e2 C024     		.short	9408
+ 1049 00e4 8025     		.short	9600
+ 1050 00e6 41E5     		.short	-6847
+ 1051 00e8 0027     		.short	9984
+ 1052 00ea C1E7     		.short	-6207
+ 1053 00ec 81E6     		.short	-6527
+ 1054 00ee 4026     		.short	9792
+ 1055 00f0 0022     		.short	8704
+ 1056 00f2 C1E2     		.short	-7487
+ 1057 00f4 81E3     		.short	-7295
+ 1058 00f6 4023     		.short	9024
+ 1059 00f8 01E1     		.short	-7935
+ 1060 00fa C021     		.short	8640
+ 1061 00fc 8020     		.short	8320
+ 1062 00fe 41E0     		.short	-8127
+ 1063 0100 01A0     		.short	-24575
+ 1064 0102 C060     		.short	24768
+ 1065 0104 8061     		.short	24960
+ 1066 0106 41A1     		.short	-24255
+ 1067 0108 0063     		.short	25344
+ 1068 010a C1A3     		.short	-23615
+ 1069 010c 81A2     		.short	-23935
+ 1070 010e 4062     		.short	25152
+ 1071 0110 0066     		.short	26112
+ 1072 0112 C1A6     		.short	-22847
+ 1073 0114 81A7     		.short	-22655
+ 1074 0116 4067     		.short	26432
+ 1075 0118 01A5     		.short	-23295
+ 1076 011a C065     		.short	26048
+ 1077 011c 8064     		.short	25728
+ 1078 011e 41A4     		.short	-23487
+ 1079 0120 006C     		.short	27648
+ 1080 0122 C1AC     		.short	-21311
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 27
+
+
+ 1081 0124 81AD     		.short	-21119
+ 1082 0126 406D     		.short	27968
+ 1083 0128 01AF     		.short	-20735
+ 1084 012a C06F     		.short	28608
+ 1085 012c 806E     		.short	28288
+ 1086 012e 41AE     		.short	-20927
+ 1087 0130 01AA     		.short	-22015
+ 1088 0132 C06A     		.short	27328
+ 1089 0134 806B     		.short	27520
+ 1090 0136 41AB     		.short	-21695
+ 1091 0138 0069     		.short	26880
+ 1092 013a C1A9     		.short	-22079
+ 1093 013c 81A8     		.short	-22399
+ 1094 013e 4068     		.short	26688
+ 1095 0140 0078     		.short	30720
+ 1096 0142 C1B8     		.short	-18239
+ 1097 0144 81B9     		.short	-18047
+ 1098 0146 4079     		.short	31040
+ 1099 0148 01BB     		.short	-17663
+ 1100 014a C07B     		.short	31680
+ 1101 014c 807A     		.short	31360
+ 1102 014e 41BA     		.short	-17855
+ 1103 0150 01BE     		.short	-16895
+ 1104 0152 C07E     		.short	32448
+ 1105 0154 807F     		.short	32640
+ 1106 0156 41BF     		.short	-16575
+ 1107 0158 007D     		.short	32000
+ 1108 015a C1BD     		.short	-16959
+ 1109 015c 81BC     		.short	-17279
+ 1110 015e 407C     		.short	31808
+ 1111 0160 01B4     		.short	-19455
+ 1112 0162 C074     		.short	29888
+ 1113 0164 8075     		.short	30080
+ 1114 0166 41B5     		.short	-19135
+ 1115 0168 0077     		.short	30464
+ 1116 016a C1B7     		.short	-18495
+ 1117 016c 81B6     		.short	-18815
+ 1118 016e 4076     		.short	30272
+ 1119 0170 0072     		.short	29184
+ 1120 0172 C1B2     		.short	-19775
+ 1121 0174 81B3     		.short	-19583
+ 1122 0176 4073     		.short	29504
+ 1123 0178 01B1     		.short	-20223
+ 1124 017a C071     		.short	29120
+ 1125 017c 8070     		.short	28800
+ 1126 017e 41B0     		.short	-20415
+ 1127 0180 0050     		.short	20480
+ 1128 0182 C190     		.short	-28479
+ 1129 0184 8191     		.short	-28287
+ 1130 0186 4051     		.short	20800
+ 1131 0188 0193     		.short	-27903
+ 1132 018a C053     		.short	21440
+ 1133 018c 8052     		.short	21120
+ 1134 018e 4192     		.short	-28095
+ 1135 0190 0196     		.short	-27135
+ 1136 0192 C056     		.short	22208
+ 1137 0194 8057     		.short	22400
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 28
+
+
+ 1138 0196 4197     		.short	-26815
+ 1139 0198 0055     		.short	21760
+ 1140 019a C195     		.short	-27199
+ 1141 019c 8194     		.short	-27519
+ 1142 019e 4054     		.short	21568
+ 1143 01a0 019C     		.short	-25599
+ 1144 01a2 C05C     		.short	23744
+ 1145 01a4 805D     		.short	23936
+ 1146 01a6 419D     		.short	-25279
+ 1147 01a8 005F     		.short	24320
+ 1148 01aa C19F     		.short	-24639
+ 1149 01ac 819E     		.short	-24959
+ 1150 01ae 405E     		.short	24128
+ 1151 01b0 005A     		.short	23040
+ 1152 01b2 C19A     		.short	-25919
+ 1153 01b4 819B     		.short	-25727
+ 1154 01b6 405B     		.short	23360
+ 1155 01b8 0199     		.short	-26367
+ 1156 01ba C059     		.short	22976
+ 1157 01bc 8058     		.short	22656
+ 1158 01be 4198     		.short	-26559
+ 1159 01c0 0188     		.short	-30719
+ 1160 01c2 C048     		.short	18624
+ 1161 01c4 8049     		.short	18816
+ 1162 01c6 4189     		.short	-30399
+ 1163 01c8 004B     		.short	19200
+ 1164 01ca C18B     		.short	-29759
+ 1165 01cc 818A     		.short	-30079
+ 1166 01ce 404A     		.short	19008
+ 1167 01d0 004E     		.short	19968
+ 1168 01d2 C18E     		.short	-28991
+ 1169 01d4 818F     		.short	-28799
+ 1170 01d6 404F     		.short	20288
+ 1171 01d8 018D     		.short	-29439
+ 1172 01da C04D     		.short	19904
+ 1173 01dc 804C     		.short	19584
+ 1174 01de 418C     		.short	-29631
+ 1175 01e0 0044     		.short	17408
+ 1176 01e2 C184     		.short	-31551
+ 1177 01e4 8185     		.short	-31359
+ 1178 01e6 4045     		.short	17728
+ 1179 01e8 0187     		.short	-30975
+ 1180 01ea C047     		.short	18368
+ 1181 01ec 8046     		.short	18048
+ 1182 01ee 4186     		.short	-31167
+ 1183 01f0 0182     		.short	-32255
+ 1184 01f2 C042     		.short	17088
+ 1185 01f4 8043     		.short	17280
+ 1186 01f6 4183     		.short	-31935
+ 1187 01f8 0041     		.short	16640
+ 1188 01fa C181     		.short	-32319
+ 1189 01fc 8180     		.short	-32639
+ 1190 01fe 4040     		.short	16448
+ 1191              		.text
+ 1192              	.Letext0:
+ 1193              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 1194              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 29
+
+
+ 1195              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 1196              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1197              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1198              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 1199              		.file 8 "Core/Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h"
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRES9fH.s 			page 30
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 NOS_ModBus.c
-C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:18     .text.GetCRC16:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:26     .text.GetCRC16:0000000000000000 GetCRC16
-C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:102    .text.GetCRC16:0000000000000034 $d
-C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:107    .text.NOS_ModBus_ParseMasterCommand:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:114    .text.NOS_ModBus_ParseMasterCommand:0000000000000000 NOS_ModBus_ParseMasterCommand
-C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:298    .text.NOS_ModBus_ParseSlaveCommand:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:305    .text.NOS_ModBus_ParseSlaveCommand:0000000000000000 NOS_ModBus_ParseSlaveCommand
-C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:395    .text.NOS_ModBus_SetMasterCommand:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:402    .text.NOS_ModBus_SetMasterCommand:0000000000000000 NOS_ModBus_SetMasterCommand
-C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:416    .text.NOS_ModBus_SetSlaveCommand:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:423    .text.NOS_ModBus_SetSlaveCommand:0000000000000000 NOS_ModBus_SetSlaveCommand
-C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:449    .text.NOS_ModBus_ReceiveHandler:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:456    .text.NOS_ModBus_ReceiveHandler:0000000000000000 NOS_ModBus_ReceiveHandler
-C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:629    .rodata.wCRCTable.0:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccCj3fEk.s:633    .rodata.wCRCTable.0:0000000000000000 wCRCTable.0
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:18     .text.GetCRC16:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:26     .text.GetCRC16:0000000000000000 GetCRC16
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:102    .text.GetCRC16:0000000000000034 $d
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:107    .text.NOS_ModBus_ParseMasterCommand:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:114    .text.NOS_ModBus_ParseMasterCommand:0000000000000000 NOS_ModBus_ParseMasterCommand
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:288    .text.NOS_ModBus_ParseSlaveCommand:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:295    .text.NOS_ModBus_ParseSlaveCommand:0000000000000000 NOS_ModBus_ParseSlaveCommand
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:377    .text.NOS_ModBus_SetMasterCommand:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:384    .text.NOS_ModBus_SetMasterCommand:0000000000000000 NOS_ModBus_SetMasterCommand
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:398    .text.NOS_ModBus_SetSlaveCommand:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:405    .text.NOS_ModBus_SetSlaveCommand:0000000000000000 NOS_ModBus_SetSlaveCommand
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:431    .text.NOS_ModBus_InitDevice:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:438    .text.NOS_ModBus_InitDevice:0000000000000000 NOS_ModBus_InitDevice
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:476    .text.NOS_ModBus_ReceiveHandler:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:483    .text.NOS_ModBus_ReceiveHandler:0000000000000000 NOS_ModBus_ReceiveHandler
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:732    .text.NOS_ModBus_InitStruct:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:739    .text.NOS_ModBus_InitStruct:0000000000000000 NOS_ModBus_InitStruct
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:775    .text.NOS_ModBus_AddDevice:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:782    .text.NOS_ModBus_AddDevice:0000000000000000 NOS_ModBus_AddDevice
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:841    .text.NOS_ModBus_DeleteDevice:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:848    .text.NOS_ModBus_DeleteDevice:0000000000000000 NOS_ModBus_DeleteDevice
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:930    .rodata.wCRCTable.0:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccRES9fH.s:934    .rodata.wCRCTable.0:0000000000000000 wCRCTable.0
 
 UNDEFINED SYMBOLS
 HAL_UART_Receive_IT

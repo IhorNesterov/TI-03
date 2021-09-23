@@ -6,4 +6,5 @@
 #include "WS2812B.h"
 #include "NOS_Time.h"
 #include "NOS_ModBus.h"
+#include "NOS_GPIO.h"
 #endif 
