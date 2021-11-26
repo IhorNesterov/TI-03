@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccHKVHQr.s 			page 1
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccv4Mh7X.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -27,7 +27,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccHKVHQr.s 			page 1
   24              		.fpu fpv4-sp-d16
   26              	NOS_Math_NormalizeValue:
   27              	.LVL0:
-  28              	.LFB0:
+  28              	.LFB130:
   29              		.file 1 "Core/Src/NOS_LIB_Driver/Src/NOS_Math.c"
    1:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** #include "NOS_Math.h"
    2:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** 
@@ -58,14 +58,14 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccHKVHQr.s 			page 1
    9:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     
   10:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c ****     return value;
   47              		.loc 1 10 5 view .LVU6
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccHKVHQr.s 			page 2
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccv4Mh7X.s 			page 2
 
 
   11:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** }
   48              		.loc 1 11 1 is_stmt 0 view .LVU7
   49 0008 7047     		bx	lr
   50              		.cfi_endproc
-  51              	.LFE0:
+  51              	.LFE130:
   53              		.section	.text.NOS_Math_GetNumberPower,"ax",%progbits
   54              		.align	1
   55              		.global	NOS_Math_GetNumberPower
@@ -75,7 +75,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccHKVHQr.s 			page 1
   59              		.fpu fpv4-sp-d16
   61              	NOS_Math_GetNumberPower:
   62              	.LVL2:
-  63              	.LFB1:
+  63              	.LFB131:
   12:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** 
   13:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** int NOS_Math_GetNumberPower(int value)
   14:Core/Src/NOS_LIB_Driver/Src/NOS_Math.c **** {
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccHKVHQr.s 			page 1
   92              		.loc 1 20 15 view .LVU20
   93 000e 5B00     		lsls	r3, r3, #1
   94              	.LVL8:
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccHKVHQr.s 			page 3
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccv4Mh7X.s 			page 3
 
 
   95              	.L5:
@@ -133,17 +133,17 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccHKVHQr.s 			page 1
  100              		.loc 1 23 1 is_stmt 0 view .LVU23
  101 0014 7047     		bx	lr
  102              		.cfi_endproc
- 103              	.LFE1:
+ 103              	.LFE131:
  105              		.text
  106              	.Letext0:
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccHKVHQr.s 			page 4
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccv4Mh7X.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 NOS_Math.c
-C:\Users\user\AppData\Local\Temp\ccHKVHQr.s:18     .text.NOS_Math_NormalizeValue:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccHKVHQr.s:26     .text.NOS_Math_NormalizeValue:0000000000000000 NOS_Math_NormalizeValue
-C:\Users\user\AppData\Local\Temp\ccHKVHQr.s:54     .text.NOS_Math_GetNumberPower:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccHKVHQr.s:61     .text.NOS_Math_GetNumberPower:0000000000000000 NOS_Math_GetNumberPower
+C:\Users\user\AppData\Local\Temp\ccv4Mh7X.s:18     .text.NOS_Math_NormalizeValue:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccv4Mh7X.s:26     .text.NOS_Math_NormalizeValue:0000000000000000 NOS_Math_NormalizeValue
+C:\Users\user\AppData\Local\Temp\ccv4Mh7X.s:54     .text.NOS_Math_GetNumberPower:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccv4Mh7X.s:61     .text.NOS_Math_GetNumberPower:0000000000000000 NOS_Math_GetNumberPower
 
 NO UNDEFINED SYMBOLS

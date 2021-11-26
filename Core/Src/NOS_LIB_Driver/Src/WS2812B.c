@@ -21,7 +21,7 @@ void NOS_WS2812B_Matrix_FullInit(WS2812B_Matrix* matrix,uint8_t* buff,MatrixSize
 
 void NOS_WS2812B_Matrix_SetPixel(WS2812B_Matrix* matrix,PixelColor* color,uint16_t pixelPos)
 {
-    float curr = 0;
+    double curr = 0;
     curr = (color->R / 100) * matrix->bright;
     matrix->buffer[pixelPos * 3] = (uint8_t)curr;
     curr = (color->G / 100) * matrix->bright;
@@ -303,8 +303,10 @@ void NOS_WS2812B_Matrix_PrintTemperature(WS2812B_Matrix* matrix,int16_t temperat
     }
     else
     {
-        counter = (uint32_t)temperature;
+        counter = (uint8_t)temperature;
     }
+
+
     NOS_WS2812B_Matrix_PrintIntNumber(matrix,(uint32_t)counter,1,2);
 }
 
@@ -347,6 +349,16 @@ void NOS_WS2812B_Matrix_PrintDetectorValue(WS2812B_Matrix* matrix,URE_Detector* 
        {
          matrix->textColor = green;
        }
+}
+
+void NOS_WS2812B_Matrix_FillColor(WS2812B_Matrix* matrix,PixelColor* color)
+{
+    uint8_t symvolCount = matrix->size->col / 6;
+    for(int i = 0; i < symvolCount; i++)
+    {
+        NOS_WS2812B_Matrix_SetSymvol(matrix,'{', i);
+    }
+    matrix->textColor = color;
 }
 
 void NOS_WS2812B_EffectEngineHandler(WS2812B_EffectEngine* engine)
@@ -499,7 +511,9 @@ case '.':
 case ':':
     return DoubleDot;
     break;
-
+case '{':
+    return FullSym;
+    break;
 
 
 /* Special symvols */

@@ -3,6 +3,7 @@
     "cortex-debug.openocdPath": "C:\\USERS\\USER\\APPDATA\\ROAMING\\CODE\\USER\\GLOBALSTORAGE\\BMD.STM32-FOR-VSCODE\\@XPACK-DEV-TOOLS\\OPENOCD\\0.11.0-1.1\\.CONTENT\\BIN\\OPENOCD.EXE",
     "C_Cpp.errorSquiggles": "Disabled",
     "files.associations": {
-        "charlib(7x5).h": "c"
+        "charlib(7x5).h": "c",
+        "nos_includes.h": "c"
     }
 }

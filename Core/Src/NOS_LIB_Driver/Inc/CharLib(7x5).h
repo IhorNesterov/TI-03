@@ -1,4 +1,4 @@
-#include "stdint.h"
+#include "NOS_Includes.h"
 
 /* English Upper Case begin*/
 
@@ -59,7 +59,7 @@ uint8_t Plus[5] = {16,16,124,16,16};
 uint8_t Minus[5] = {16,16,16,16,16};
 uint8_t Multiply[5] = {68,40,16,40,68};
 uint8_t Celcium[5] = {0,0,4,10,4};
-
+uint8_t FullSym[5] = {255,255,255,255,255};
 /* Special Symvols end */
 
 /* Numbers begin */

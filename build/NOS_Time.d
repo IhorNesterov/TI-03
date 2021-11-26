@@ -1,5 +1,6 @@
 build/NOS_Time.o: Core/Src/NOS_LIB_Driver/Src/NOS_Time.c \
  Core/Src/NOS_LIB_Driver/Inc/NOS_Time.h \
+ Core/Src/NOS_LIB_Driver/Inc/NOS_Includes.h \
  Core/Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h \
  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h \
@@ -30,6 +31,7 @@ build/NOS_Time.o: Core/Src/NOS_LIB_Driver/Src/NOS_Time.c \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 Core/Src/NOS_LIB_Driver/Inc/NOS_Time.h:
+Core/Src/NOS_LIB_Driver/Inc/NOS_Includes.h:
 Core/Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h:
 Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:
 Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h:

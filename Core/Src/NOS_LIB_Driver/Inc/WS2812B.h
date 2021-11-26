@@ -1,7 +1,6 @@
 #ifndef WS2812B_MATRIX
 #define WS2812B_MATRIX
-#include "NOS_Typedefs.h"
-
+#include "NOS_Includes.h"
 
 void NOS_WS2812B_Matrix_BaseInit(WS2812B_Matrix* matrix,uint8_t* buff,uint16_t ledsCount); //First initialization of matrix parameters
 
@@ -26,6 +25,8 @@ void NOS_WS2812B_Matrix_PrintRealTime(WS2812B_Matrix* matrix,RealTime rt);
 void NOS_WS2812B_Matrix_PrintTemperature(WS2812B_Matrix* matrix,int16_t temperature);
 
 void NOS_WS2812B_Matrix_PrintDetectorValue(WS2812B_Matrix* matrix,URE_Detector* detector,Language language,PixelColor* red,PixelColor* yellow,PixelColor* green);
+
+void NOS_WS2812B_Matrix_FillColor(WS2812B_Matrix* matrix,PixelColor* color);
 
 void NOS_WS2812B_EffectRainbow(WS2812B_Matrix*matrix,uint32_t counter);
 

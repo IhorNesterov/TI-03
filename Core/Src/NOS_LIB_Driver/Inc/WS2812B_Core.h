@@ -1,6 +1,7 @@
 #ifndef WS2812B_H_
 #define WS2812B_H_
 #include "WS2812B_Core.h"
+#include "NOS_Includes.h"
 
 // GPIO enable command
 #define WS2812B_GPIO_CLK_ENABLE() __HAL_RCC_GPIOC_CLK_ENABLE()

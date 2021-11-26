@@ -1,9 +1,9 @@
 #ifndef NOS_TYPEDEFS
 #define NOS_TYPEDEFS
-#include <stdint.h>
-#include <stdbool.h>
+#include "NOS_Includes.h"
+#include "stdint.h"
 #include "stm32f4xx.h"
-
+#include "stdbool.h"
 /* Unions begin */
 
 typedef union Short_t //uint16_t data wrap
@@ -104,6 +104,18 @@ typedef struct URE_Detector_t
   NOS_Short temperature;
 }URE_Detector;
 
+typedef struct URE_TITABLE_t
+{
+  uint8_t Address;
+  uint8_t detector_Address;
+ // Language language;
+  PixelColor valueColor;
+  PixelColor timeColor;
+  PixelColor tempColor;
+  RealTime time;
+
+}URE_Table;
+
 /*ModBus*/
 typedef enum ModBus_State_t{Free,ReceiveFromMaster,ReceiveFromSlave,TransmitToMaster,TransmitToSlave} ModBus_State;
 typedef struct ModBus_Master_Command_t
@@ -111,8 +123,8 @@ typedef struct ModBus_Master_Command_t
     uint8_t Addr;
     uint8_t Command;
     uint8_t Byte_Count;
-    uint16_t Reg_Addr;
-    uint16_t Reg_Count;
+    NOS_Short Reg_Addr;
+    NOS_Short Reg_Count;
     NOS_Short ShortValue;
     NOS_Float FloatValue;
 } ModBus_Master_Command;
@@ -123,6 +135,7 @@ typedef struct ModBus_Slave_Command_t
     uint8_t Addr;
     uint8_t Command;
     uint8_t Byte_Count;
+    uint16_t RegAddr;
     NOS_Short ShortValue;
     NOS_Float FloatValue;
 } ModBus_Slave_Command;
@@ -147,7 +160,7 @@ typedef struct NOS_ModBus_Struct_t
   ModBus_Master_Command master;
   ModBus_Slave_Command slave;
   UART_HandleTypeDef* huart;
-  uint8_t* buff;
+  uint8_t* rx_buff;
   GPIO_PIN RW;
   ModBus_State state;
   uint8_t devicesCount;
@@ -156,12 +169,12 @@ typedef struct NOS_ModBus_Struct_t
   uint8_t currDevice;
   uint8_t expectedMessageLenght;
   bool addressOk;
-  bool rx_buff;
-  bool tx_buff;
+  bool rx_flag;
+  bool tx_flag;
 } ModBus_Struct;
 
 /*ModBus*/
-
+//typedef enum TemperatureFormat_t{Celcium,Farengheit} TempFormat;
 typedef enum Language_e{English,Ukrainian,Russian} Language;
 
 /* STM32 Core structures begin*/

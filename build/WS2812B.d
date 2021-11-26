@@ -1,5 +1,6 @@
 build/WS2812B.o: Core/Src/NOS_LIB_Driver/Src/WS2812B.c \
  Core/Src/NOS_LIB_Driver/Inc/WS2812B.h \
+ Core/Src/NOS_LIB_Driver/Inc/NOS_Includes.h \
  Core/Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h \
  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h \
@@ -32,6 +33,7 @@ build/WS2812B.o: Core/Src/NOS_LIB_Driver/Src/WS2812B.c \
  Core/Src/NOS_LIB_Driver/Inc/CharLib(7x5).h \
  Core/Src/NOS_LIB_Driver/Inc/NOS_Math.h
 Core/Src/NOS_LIB_Driver/Inc/WS2812B.h:
+Core/Src/NOS_LIB_Driver/Inc/NOS_Includes.h:
 Core/Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h:
 Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:
 Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h:

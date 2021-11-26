@@ -62,16 +62,16 @@ void NOS_ModBus_ParseMasterCommand(ModBus_Master_Command* master,uint8_t* buff,u
     case 0x03:
         com.bytes[1] = buff[offset + 2];
         com.bytes[0] = buff[offset + 3];
-        master->Reg_Addr = com.data;
+        master->Reg_Addr.data = com.data;
         com.bytes[1] = buff[offset + 4];
         com.bytes[0] = buff[offset + 5];
-        master->Reg_Count = com.data;
+        master->Reg_Count.data = com.data;
         break;
 
     case 0x06:
         com.bytes[1] = buff[offset + 2];
         com.bytes[0] = buff[offset + 3];
-        master->Reg_Addr = com.data;
+        master->Reg_Addr.data = com.data;
         com.bytes[1] = buff[offset + 4];
         com.bytes[0] = buff[offset + 5];
         master->ShortValue.data = com.data;
@@ -80,10 +80,10 @@ void NOS_ModBus_ParseMasterCommand(ModBus_Master_Command* master,uint8_t* buff,u
     case 0x10:
         com.bytes[1] = buff[offset + 3];
         com.bytes[0] = buff[offset + 4];
-        master->Reg_Addr = com.data;
+        master->Reg_Addr.data = com.data;
         com.bytes[1] = buff[offset + 5];
         com.bytes[0] = buff[offset + 6];
-        master->Reg_Count = com.data;
+        master->Reg_Count.data = com.data;
         master->Byte_Count = buff[offset + 7];
         master->FloatValue.bytes[3] = buff[offset + 8];
         master->FloatValue.bytes[2] = buff[offset + 9];
@@ -127,10 +127,14 @@ void NOS_ModBus_ParseSlaveCommand(ModBus_Slave_Command* slave,uint8_t* buff,uint
 }
 
 
-void NOS_ModBus_SetMasterCommand(ModBus_Master_Command* master,uint8_t addr,uint8_t command,uint16_t regAddr, uint16_t data)
+
+
+void NOS_ModBus_AddShortValueToBuff(ModBus_Struct* mb,NOS_Short value)
 {
    
 }
+
+
 
 void NOS_ModBus_SetSlaveCommand(ModBus_Slave_Command* slave,uint8_t addr,uint8_t command,uint8_t byteCount,uint8_t typ,NOS_Short sVal,NOS_Float fVal)
 {
@@ -156,7 +160,7 @@ void NOS_ModBus_GetParam(Modbus_Device* device);
 
 void NOS_ModBus_ReceiveHandler(ModBus_Struct* MB_struct)
 {
-   uint8_t* rx_buff_ptr = MB_struct->buff;
+   uint8_t* rx_buff_ptr = MB_struct->rx_buff;
    
    for(int i = 0; i < MB_struct->devicesCount; i++)
    {
@@ -202,26 +206,26 @@ void NOS_ModBus_ReceiveHandler(ModBus_Struct* MB_struct)
 
    if(MB_struct->messageLenght > MB_struct->expectedMessageLenght)
    {
-      rx_buff_ptr = MB_struct->buff;
+      rx_buff_ptr = MB_struct->rx_buff;
       MB_struct->messageLenght = 0;
       MB_struct->addressOk = false;
       MB_struct->state = Free;
       for(int i = 0; i < MB_struct->expectedMessageLenght; i++)
       {
-         MB_struct->buff[i] = 0;
+         MB_struct->rx_buff[i] = 0;
       }
    }
 
    if(MB_struct->addressOk && MB_struct->messageLenght == MB_struct->expectedMessageLenght)
    {
-      rx_buff_ptr = MB_struct->buff;
+      rx_buff_ptr = MB_struct->rx_buff;
       MB_struct->addressOk = false;
       MB_struct->messageLenght = 0;
-      MB_struct->rx_buff = true;
+      MB_struct->rx_flag = true;
    }
    else
    {
-      MB_struct->buff[MB_struct->messageLenght] = *rx_buff_ptr;
+      MB_struct->rx_buff[MB_struct->messageLenght] = *rx_buff_ptr;
       ++rx_buff_ptr;
       ++MB_struct->messageLenght;
    }
@@ -231,7 +235,7 @@ void NOS_ModBus_ReceiveHandler(ModBus_Struct* MB_struct)
 void NOS_ModBus_InitStruct(ModBus_Struct* mb,UART_HandleTypeDef* huart,uint8_t* _buff,GPIO_PIN pin)
 {
    mb->huart = huart;
-   mb->buff = _buff;
+   mb->rx_buff = _buff;
    mb->RW = pin;
 }
 
@@ -260,4 +264,14 @@ void NOS_ModBus_DeleteDevice(ModBus_Struct* mb,uint8_t pos)
       mb->devices[i].RegisterCount = mb->devices[i + 1].RegisterCount;
    }
    mb->devicesCount--;
+}
+
+//void NOS_ModBus_InitDevice(Modbus_Device* md,uint8_t _addr)
+//{
+//   md->Addr = _addr;
+//}
+
+void NOS_ModBus_DeviceAddRegisterAddress(Modbus_Device* mb,uint16_t rAddr)
+{
+
 }

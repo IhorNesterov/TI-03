@@ -1,6 +1,6 @@
 #ifndef WS2812BEFFECT_H_
 #define WS2812BEFFECT_H_
-#include <stdint.h>
+#include "NOS_Includes.h"
 
 void visInit();
 void visHandle();

@@ -28,6 +28,7 @@ build/stm32f4xx_it.o: Core/Src/stm32f4xx_it.c Core/Inc/main.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_Lib.h \
+ Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_Includes.h \
  Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h \
  Core/Inc/../Src/NOS_LIB_Driver/Inc/WS2812B_Effects.h \
  Core/Inc/../Src/NOS_LIB_Driver/Inc/WS2812B.h \
@@ -66,6 +67,7 @@ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_Lib.h:
+Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_Includes.h:
 Core/Inc/../Src/NOS_LIB_Driver/Inc/NOS_Typedefs.h:
 Core/Inc/../Src/NOS_LIB_Driver/Inc/WS2812B_Effects.h:
 Core/Inc/../Src/NOS_LIB_Driver/Inc/WS2812B.h:

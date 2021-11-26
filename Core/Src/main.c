@@ -19,10 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
-
 #include <locale.h>
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "NOS_Lib.h"
@@ -68,6 +65,7 @@ WS2812B_Matrix matrixC = {0};
 PixelColor red = {255,0x00,0x00};
 PixelColor green = {0x00,255,0x00};
 PixelColor yellow = {255,255,0x00};
+PixelColor white = {255,255,255};
 PixelColor blue = {0x00,0x00,255};
 PixelColor fone = {0,0,0};
 
@@ -90,6 +88,22 @@ Language language = English;
 RTC_TimeTypeDef sTime = {0};
 ModBus_Struct ModBus;
 GPIO_PIN PA1;
+uint8_t rx_buff[16];
+uint8_t tx_buff[16];
+URE_Detector detector = {0};
+ModBus_State mbState = Free;
+uint8_t messageLenght = 0;
+bool rx_flag;
+bool tx_flag;
+bool AddressOK = false;
+uint8_t TIaddr = 102;
+uint8_t currCommand = 0;
+uint8_t expectedMessageLenght = 0;
+uint8_t TxCommandCounter = 0;
+uint8_t currMessageLenght = 0;
+static uint8_t fuckBuff[1024] = {0};
+static uint16_t fuckIndex = 0;
+uint16_t timelastReceiveMessage = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -104,8 +118,73 @@ static void MX_TIM6_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart) {
-  NOS_ModBus_ReceiveHandler(&ModBus);
+void HAL_UART_RxCpltCallback (UART_HandleTypeDef* huart) {
+  //NOS_ModBus_ReceiveHandler(&ModBus);
+static uint8_t* rx_buff_ptr = rx_buff;
+
+fuckBuff[fuckIndex] = *rx_buff_ptr;
+fuckIndex++;
+if(fuckIndex > 1023)
+{
+  fuckIndex = 0;
+}
+
+if(*rx_buff_ptr == 101 && !AddressOK)
+{
+  AddressOK = true;
+  currMessageLenght = 0;
+}
+
+if(currMessageLenght == 2 && AddressOK)
+{
+  expectedMessageLenght = *rx_buff_ptr + 4;
+}
+
+if(currMessageLenght > 10 || currMessageLenght > expectedMessageLenght && expectedMessageLenght != 0)
+{
+  rx_buff_ptr = rx_buff;
+  currMessageLenght = 0;
+  AddressOK = false;
+  for(int i = 0; i < 10; i++)
+  {
+    rx_buff[i] = 0;
+  }
+}
+
+if(AddressOK && currMessageLenght == expectedMessageLenght && expectedMessageLenght != 0)
+{
+  rx_buff_ptr = rx_buff;
+  AddressOK = false;
+  currMessageLenght = 0;
+  rx_flag = true;
+}
+else
+{
+  rx_buff[currMessageLenght] = *rx_buff_ptr;
+  ++rx_buff_ptr;
+  currMessageLenght++;
+}
+    HAL_UART_Receive_IT (&huart2, rx_buff_ptr, 1); 
+}
+
+
+void NOS_ModBus_SendMasterCommand(ModBus_Struct* mb)
+{
+   uint8_t message[16];
+   NOS_Short _CRC;
+   message[0] = mb->master.Addr;
+   message[1] = mb->master.Command;
+   message[2] = mb->master.Reg_Addr.bytes[1];
+   message[3] = mb->master.Reg_Addr.bytes[0];
+   message[4] = mb->master.Reg_Count.bytes[1];
+   message[5] = mb->master.Reg_Count.bytes[0];
+
+   _CRC.data = GetCRC16(&message,6);
+
+   message[6] = _CRC.bytes[0];
+   message[7] = _CRC.bytes[1];
+
+   HAL_UART_Transmit(&huart2,&message,8,1000);
 }
 
 /* USER CODE END 0 */
@@ -139,52 +218,143 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
 //MX_RTC_Init();
-  MX_USART1_UART_Init();
+ // MX_USART1_UART_Init();
   MX_USART2_UART_Init();
+  HAL_UART_Receive_IT(&huart2,rx_buff,1);
   MX_TIM6_Init();
   visInit();
   /* USER CODE BEGIN 2 */
 
-  NOS_WS2812B_Matrix_FullInit(&matrixA,&frameBuffer1,&msA,&red,&fone,&matrixAsymc,80);
-  NOS_WS2812B_Matrix_FullInit(&matrixB,&frameBuffer2,&msB,&yellow,&fone,&matrixBsymc,80);
-  NOS_WS2812B_Matrix_FullInit(&matrixC,&frameBuffer3,&msC,&blue,&fone,&matrixCsymc,80);
-  NOS_GPIO_PinInit(&PA1,GPIOA,GPIO_PIN_1,Output);
+  NOS_WS2812B_Matrix_FullInit(&matrixA,&frameBuffer1,&msA,&red,&fone,&matrixAsymc,40);
+  NOS_WS2812B_Matrix_FullInit(&matrixB,&frameBuffer2,&msB,&yellow,&fone,&matrixBsymc,40);
+  NOS_WS2812B_Matrix_FullInit(&matrixC,&frameBuffer3,&msC,&blue,&fone,&matrixCsymc,40);
+  //NOS_ModBus_InitStruct(&ModBus,&huart2,NULL,PA1);
+  //NOS_GPIO_PinInit(&PA1,GPIOA,GPIO_PIN_1,Output);
   uSv_Value = 1.26f;
   realtime.format = Hour24;
-  URE_Detector detector = {0};
   detector.Address = 101;
-  detector.value.data = 0.11f;
+  detector.value.data = 0.15f;
   detector.first_danger.data = 0.25f;
   detector.second_danger.data = 1.25f;
-  
+  for(int i = 0; i < 1023; i++)
+  {
+    fuckBuff[i] = 15;
+  }
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    if(ModBus.rx_buff)
+    if(fuckBuff[10] == 12)
+    {
+
+    }
+
+    if(rx_flag)
     {
       if(ModBus.state == ReceiveFromMaster)
       {
-        NOS_ModBus_ParseMasterCommand(&ModBus.master,&ModBus.rx_buff,0);
+        NOS_ModBus_ParseMasterCommand(&ModBus.master,rx_buff,0);
       }
 
       if(ModBus.state == ReceiveFromSlave)
       {
-        NOS_ModBus_ParseSlaveCommand(&ModBus.slave,&ModBus.rx_buff,0);
+        NOS_ModBus_ParseSlaveCommand(&ModBus.slave,rx_buff,0);
+        switch (ModBus.master.Reg_Addr.data)
+        {
+        case 0x0001:
+          detector.temperature.data = ModBus.slave.ShortValue.data;
+          break;
+
+        case 0x0002:
+          detector.value.data = ModBus.slave.FloatValue.data;
+          break;
+
+        case 0x0004:
+          detector.voltage = ModBus.slave.ShortValue.data;
+          break;
+
+        case 0x0005:
+          detector.first_danger.data = ModBus.slave.FloatValue.data;
+          break;
+
+        case 0x0007:
+          detector.second_danger.data = ModBus.slave.FloatValue.data;
+          break;
+
+        default:
+
+          break;
+        }
       }
+      timelastReceiveMessage = 0;
+      rx_flag = false;
+      if(timelastReceiveMessage >= 20)
+      {
+ //        tx_flag = true;
+      }
+      timelastReceiveMessage = 0;
     }
     
+    if(tx_flag)
+    {
+      if(fuckBuff[5] == 167)
+      {
+
+      }
+      HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,1);
+      ModBus.master.Addr = 0x65;
+      ModBus.master.Command = 0x03; 
+      switch(TxCommandCounter)
+      {
+        case 0:
+        ModBus.master.Reg_Addr.data = 0x0001;
+        ModBus.master.Reg_Count.data = 0x0001;
+        break;
+        
+        case 1:
+        ModBus.master.Reg_Addr.data = 0x0002;
+        ModBus.master.Reg_Count.data = 0x0002;
+        break;
+
+        case 2:
+        ModBus.master.Reg_Addr.data = 0x0004;
+        ModBus.master.Reg_Count.data = 0x0001;
+        break;
+
+        case 3:
+        ModBus.master.Reg_Addr.data = 0x0005;
+        ModBus.master.Reg_Count.data = 0x0002;
+        break;
+
+        case 4:
+        ModBus.master.Reg_Addr.data = 0x0007;
+        ModBus.master.Reg_Count.data = 0x0002;
+        break;
+
+        default:
+        TxCommandCounter = 0;
+        break;
+      }
+      
+        NOS_ModBus_SendMasterCommand(&ModBus);
+        tx_flag = false;
+      
+      HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,0);
+      TxCommandCounter++;
+    }
+
     if(Time > UpdateFrameTime)
     {
        NOS_WS2812B_Matrix_PrintDetectorValue(&matrixA,&detector,language,&red,&yellow,&green);  
        NOS_WS2812B_Matrix_PrintRealTime(&matrixB,realtime);
        NOS_WS2812B_Matrix_PrintTemperature(&matrixC,temperature);
+      //NOS_WS2812B_Matrix_FillColor(&matrixC,&white);
 
        NOS_WS2812B_Matrix_Update(&matrixA,0);
        NOS_WS2812B_Matrix_Update(&matrixB,0);
-       NOS_WS2812B_Matrix_Update(&matrixC,2);
+       NOS_WS2812B_Matrix_Update(&matrixC,0);
 
        visHandle();
        Time = 0;
@@ -202,6 +372,12 @@ void SysTick_Handler(void)
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
+  timelastReceiveMessage++;
+  if(timelastReceiveMessage >= 5000)
+  {
+    timelastReceiveMessage = 0;
+    tx_flag = true;
+  }
   Time++;
   NOS_RealTime_Handler(&realtime);
   /* USER CODE END SysTick_IRQn 1 */
@@ -434,13 +610,27 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15, GPIO_PIN_RESET);
-
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13,0);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1|GPIO_PIN_4,0);
   /*Configure GPIO pins : PD12 PD13 PD14 PD15 */
   GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = GPIO_PIN_13;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_4;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
 
 }
 
