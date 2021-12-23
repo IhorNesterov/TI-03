@@ -83,7 +83,7 @@ float first_danger = 0.25f;
 float second_danger = 1.25f;
 int16_t temperature = 25;
 
-uint32_t UpdateFrameTime = 10;
+uint32_t UpdateFrameTime = 25;
 Language language = English;
 RTC_TimeTypeDef sTime = {0};
 ModBus_Struct ModBus;
@@ -184,7 +184,7 @@ void NOS_ModBus_SendMasterCommand(ModBus_Struct* mb)
    message[6] = _CRC.bytes[0];
    message[7] = _CRC.bytes[1];
 
-   HAL_UART_Transmit(&huart2,&message,8,1000);
+   HAL_UART_Transmit(&huart2,message,8,1000);
 }
 
 /* USER CODE END 0 */
@@ -253,13 +253,6 @@ int main(void)
 
     if(rx_flag)
     {
-      if(ModBus.state == ReceiveFromMaster)
-      {
-        NOS_ModBus_ParseMasterCommand(&ModBus.master,rx_buff,0);
-      }
-
-      if(ModBus.state == ReceiveFromSlave)
-      {
         NOS_ModBus_ParseSlaveCommand(&ModBus.slave,rx_buff,0);
         switch (ModBus.master.Reg_Addr.data)
         {
@@ -287,7 +280,7 @@ int main(void)
 
           break;
         }
-      }
+      
       timelastReceiveMessage = 0;
       rx_flag = false;
       if(timelastReceiveMessage >= 20)
@@ -299,10 +292,6 @@ int main(void)
     
     if(tx_flag)
     {
-      if(fuckBuff[5] == 167)
-      {
-
-      }
       HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,1);
       ModBus.master.Addr = 0x65;
       ModBus.master.Command = 0x03; 
